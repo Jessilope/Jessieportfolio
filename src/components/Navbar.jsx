@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom'
 import { colors, spacing, borderRadius, shadows, typography } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
+import { documents } from '../assets'
 
 const Navbar = () => {
   const navigate = useNavigate()
@@ -147,7 +148,7 @@ const Navbar = () => {
 
       {/* Buttons - Hidden on mobile */}
       <div style={buttonGroupStyles}>
-        <SecondaryButton href="/Professional-Modern-CV-Resume.pdf">
+        <SecondaryButton href={documents.cv}>
           CV
         </SecondaryButton>
         <PrimaryButton href="mailto:ale.mogollon06@gmail.com">

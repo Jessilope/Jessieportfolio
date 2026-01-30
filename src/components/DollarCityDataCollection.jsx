@@ -1,12 +1,16 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Image paths
+const dataCollectionImages = {
+  image1: '/assets/images/dollarcity/data-collection-1.png',
+  image2: '/assets/images/dollarcity/data-collection-2.png',
+  image3: '/assets/images/dollarcity/data-collection-3.png',
+  image4: '/assets/images/dollarcity/data-collection-4.png',
+}
+
 const DollarCityDataCollection = () => {
   const { isMobile } = useResponsive()
-
-  const imgImage2 = "http://localhost:3845/assets/057b5db097126bda222ad715c5b8e80a4fdc1475.png"
-  const imgImage4 = "http://localhost:3845/assets/4ebfb6b17ca3d57feec74a84fe259a4c81d52f89.png"
-  const imgImage5 = "http://localhost:3845/assets/e4b97f8256739d8e35295f39491cefa8147e6fa4.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefa',
@@ -136,36 +140,36 @@ const DollarCityDataCollection = () => {
           </div>
         </div>
 
-        {/* First Row - Images 2 and 3 */}
+        {/* First Row - Images 1 and 2 */}
         <div style={firstRowImagesStyles}>
           <div style={image2ContainerStyles}>
             <img 
-              src={imgImage2} 
+              src={dataCollectionImages.image1} 
               alt="Google review 1"
               style={imageStyles}
             />
           </div>
           <div style={image3ContainerStyles}>
             <img 
-              src={imgImage2} 
+              src={dataCollectionImages.image2} 
               alt="Google review 2"
               style={imageStyles}
             />
           </div>
         </div>
 
-        {/* Second Row - Images 4 and 5 */}
+        {/* Second Row - Images 3 and 4 */}
         <div style={secondRowImagesStyles}>
           <div style={image4ContainerStyles}>
             <img 
-              src={imgImage4} 
+              src={dataCollectionImages.image3} 
               alt="Google review 3"
               style={imageStyles}
             />
           </div>
           <div style={image5ContainerStyles}>
             <img 
-              src={imgImage5} 
+              src={dataCollectionImages.image4} 
               alt="Google review 4"
               style={imageStyles}
             />

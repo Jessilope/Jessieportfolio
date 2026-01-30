@@ -1,10 +1,11 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Color palette image for mobile
+const colorPaletteImage = '/assets/images/tucredit/color-palette.png'
+
 const TuCreditColorPalette = () => {
   const { isMobile } = useResponsive()
-  
-  const imgColorPaletteMobile = "http://localhost:3845/assets/3bf466b96b2a6aae31771d719e2c208418856d01.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefb',
@@ -128,14 +129,14 @@ const TuCreditColorPalette = () => {
 
         {/* Color palette */}
         {isMobile ? (
-          /* Mobile: Show image from Figma */
+          /* Mobile: Show color palette image */
           <img
-            src={imgColorPaletteMobile}
+            src={colorPaletteImage}
             alt="Color palette - Primary #9427FF, Secondary #6BD2A7, #303030, #EDDBFE, #FFFFFF"
             style={{
               width: '100%',
               height: 'auto',
-              objectFit: 'contain',
+              display: 'block',
               pointerEvents: 'none',
             }}
           />

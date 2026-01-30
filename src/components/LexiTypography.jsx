@@ -1,6 +1,9 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Mobile image path
+const fontsAndSpacingImage = '/assets/images/lexi/fonts-and-spacing.png'
+
 const LexiTypography = () => {
   const { isMobile } = useResponsive()
 
@@ -27,16 +30,13 @@ const LexiTypography = () => {
   // Mobile image styles for typography
   const mobileImageContainerStyles = {
     width: '100%',
-    aspectRatio: '1246 / 940',
     position: 'relative',
   }
 
   const mobileImageStyles = {
-    position: 'absolute',
-    inset: 0,
     width: '100%',
-    height: '100%',
-    objectFit: 'cover',
+    height: 'auto',
+    display: 'block',
     pointerEvents: 'none',
   }
 
@@ -128,7 +128,7 @@ const LexiTypography = () => {
       {isMobile ? (
         <div style={mobileImageContainerStyles}>
           <img
-            src="http://localhost:3845/assets/39ef550c92f46a24463e4c78965d0f650d7f93da.png"
+            src={fontsAndSpacingImage}
             alt="Typography and spacing system"
             style={mobileImageStyles}
           />

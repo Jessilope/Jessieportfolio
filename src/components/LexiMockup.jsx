@@ -1,5 +1,8 @@
 import { spacing } from '../tokens'
 
+// Image path
+const mockupImage = '/assets/images/lexi/mockup.png'
+
 const LexiMockup = () => {
   const sectionStyles = {
     backgroundColor: '#fffefa',
@@ -32,7 +35,7 @@ const LexiMockup = () => {
     <section style={sectionStyles}>
       <div style={imageContainerStyles}>
         <img 
-          src="http://localhost:3845/assets/7795b0bffb2945a3d818e1723fb4cc8705c5b6fd.png"
+          src={mockupImage}
           alt="Lexi app mockup with all screens"
           style={imageStyles}
         />

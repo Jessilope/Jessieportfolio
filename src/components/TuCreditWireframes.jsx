@@ -1,10 +1,15 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Wireframe images
+const wireframeImages = {
+  wireframe1: '/assets/images/tucredit/wireframe-1.png',
+  wireframe2: '/assets/images/tucredit/wireframe-2.png',
+  wireframe3: '/assets/images/tucredit/wireframe-3.png',
+}
+
 const TuCreditWireframes = () => {
   const { isMobile } = useResponsive()
-
-  const imgHome21 = "http://localhost:3845/assets/706693d9e8a56600887187284654c24abb383f89.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefb',
@@ -100,62 +105,42 @@ const TuCreditWireframes = () => {
           <div style={{
             width: isMobile ? '100%' : '421px',
             height: isMobile ? 'auto' : '498px',
-            aspectRatio: isMobile ? '421 / 498' : undefined,
             position: 'relative',
             borderRadius: isMobile ? '20px' : '34px',
             flexShrink: 0,
+            overflow: 'hidden',
           }}>
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              opacity: 0.5,
-              overflow: 'hidden',
-              pointerEvents: 'none',
-              borderRadius: isMobile ? '20px' : '34px',
-            }}>
-              <img 
-                src={imgHome21}
-                alt="Wireframe 1"
-                style={{
-                  position: 'absolute',
-                  height: '289.64%',
-                  left: '-0.04%',
-                  top: 0,
-                  width: '100.07%',
-                }}
-              />
-            </div>
+            <img 
+              src={wireframeImages.wireframe1}
+              alt="Wireframe 1"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                borderRadius: isMobile ? '20px' : '34px',
+              }}
+            />
           </div>
 
           {/* Image 2 */}
           <div style={{
             width: isMobile ? '100%' : '425px',
             height: isMobile ? 'auto' : '502px',
-            aspectRatio: isMobile ? '425 / 502' : undefined,
             position: 'relative',
             borderRadius: isMobile ? '20px' : '34px',
             flexShrink: 0,
+            overflow: 'hidden',
           }}>
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              opacity: 0.5,
-              overflow: 'hidden',
-              pointerEvents: 'none',
-              borderRadius: isMobile ? '20px' : '34px',
-            }}>
-              <img 
-                src={imgHome21}
-                alt="Wireframe 2"
-                style={{
-                  position: 'absolute',
-                  height: '289.64%',
-                  left: '-1.09%',
-                  top: '-107.16%',
-                  width: '100.07%',
-                }}
-              />
-            </div>
+            <img 
+              src={wireframeImages.wireframe2}
+              alt="Wireframe 2"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                borderRadius: isMobile ? '20px' : '34px',
+              }}
+            />
           </div>
         </div>
 
@@ -164,31 +149,21 @@ const TuCreditWireframes = () => {
           <div style={{
             width: isMobile ? '100%' : '515px',
             height: isMobile ? 'auto' : '384px',
-            aspectRatio: isMobile ? '515 / 384' : undefined,
             position: 'relative',
             borderRadius: isMobile ? '25px' : '50px',
             flexShrink: 0,
+            overflow: 'hidden',
           }}>
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              opacity: 0.6,
-              overflow: 'hidden',
-              pointerEvents: 'none',
-              borderRadius: isMobile ? '25px' : '50px',
-            }}>
-              <img 
-                src={imgHome21}
-                alt="Wireframe 3"
-                style={{
-                  position: 'absolute',
-                  height: '458.68%',
-                  left: 0,
-                  top: '-358.68%',
-                  width: '100%',
-                }}
-              />
-            </div>
+            <img 
+              src={wireframeImages.wireframe3}
+              alt="Wireframe 3"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                borderRadius: isMobile ? '25px' : '50px',
+              }}
+            />
           </div>
         </div>
       </div>

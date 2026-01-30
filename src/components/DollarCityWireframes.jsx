@@ -1,10 +1,11 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Wireframes image
+const wireframesImage = '/assets/images/dollarcity/wireframes.png'
+
 const DollarCityWireframes = () => {
   const { isMobile } = useResponsive()
-
-  const imgImage6 = "http://localhost:3845/assets/c68f110da313b0f8c2d289d44565bf51d4041f99.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefb',
@@ -84,7 +85,7 @@ const DollarCityWireframes = () => {
         </div>
         <div style={imageContainerStyles}>
           <img 
-            src={imgImage6} 
+            src={wireframesImage} 
             alt="Wireframes" 
             style={imageStyles}
           />

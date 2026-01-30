@@ -1,11 +1,11 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Mobile OOUX table image
+const oouxTableImage = '/assets/images/dollarcity/ooux-table.png'
+
 const DollarCityOOUX = () => {
   const { isMobile } = useResponsive()
-
-  // Mobile OOUX table image from Figma
-  const imgOOUXMobile = "http://localhost:3845/assets/a3898e97696fd71a93f7df6b6669508b229c8dce.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefb',
@@ -127,7 +127,7 @@ const DollarCityOOUX = () => {
         {isMobile ? (
           <div style={mobileImageContainerStyles}>
             <img
-              src={imgOOUXMobile}
+              src={oouxTableImage}
               alt="OOUX Table - Object-Oriented UX analysis"
               style={mobileImageStyles}
             />

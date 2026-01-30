@@ -1,11 +1,14 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// User persona images
+const personaImages = {
+  persona1: '/assets/images/tucredit/user-persona-1.png',
+  persona2: '/assets/images/tucredit/user-persona-2.png',
+}
+
 const TuCreditUserPersonas = () => {
   const { isMobile } = useResponsive()
-
-  const imgImage3 = "http://localhost:3845/assets/0ac6eb4bab1d7a5715186ea2f8ec39bf3114dc80.png"
-  const imgImage2 = "http://localhost:3845/assets/a130df0379359925d668cf468ade3892fb6c7f6a.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefb',
@@ -107,20 +110,20 @@ const TuCreditUserPersonas = () => {
           </p>
         </div>
 
-        {/* Image 1 - Jorge Martinez persona */}
+        {/* Image 1 - User persona 1 */}
         <div style={imageContainerStyles}>
           <img 
-            src={imgImage3}
-            alt="User persona - Jorge Martinez"
+            src={personaImages.persona1}
+            alt="User persona 1"
             style={imageStyles}
           />
         </div>
 
-        {/* Image 2 - Laura Ramirez persona */}
+        {/* Image 2 - User persona 2 */}
         <div style={imageContainerStyles}>
           <img 
-            src={imgImage2}
-            alt="User persona - Laura Ramirez"
+            src={personaImages.persona2}
+            alt="User persona 2"
             style={imageStyles}
           />
         </div>

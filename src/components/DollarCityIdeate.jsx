@@ -1,10 +1,11 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Image path
+const informationArchitectureImage = '/assets/images/dollarcity/information-architecture.png'
+
 const DollarCityIdeate = () => {
   const { isMobile } = useResponsive()
-
-  const imgInfoArchitecture = "http://localhost:3845/assets/c071c10667768cf8b1df63cb825c10081db97a88.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefb',
@@ -119,7 +120,7 @@ const DollarCityIdeate = () => {
           {/* Diagram */}
           <div style={diagramContainerStyles}>
             <img 
-              src={imgInfoArchitecture} 
+              src={informationArchitectureImage} 
               alt="Information Architecture Diagram"
               style={diagramImageStyles}
             />

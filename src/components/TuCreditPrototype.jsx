@@ -1,13 +1,16 @@
 import { colors } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Mockup images
+const mockupImages = {
+  mockup1: '/assets/images/tucredit/mockup-1.png',
+  mockup2: '/assets/images/tucredit/mockup-2.png',
+  mockup3: '/assets/images/tucredit/mockup-3.png',
+  mockup4: '/assets/images/tucredit/mockup-4.png',
+}
+
 const TuCreditPrototype = () => {
   const { isMobile } = useResponsive()
-
-  const imgHome32 = "http://localhost:3845/assets/c8bc1d983ee23af307abe38014d0b8cc2c41cb68.png"
-  const imgHome41 = "http://localhost:3845/assets/859c2ce1b2088201ba002209fa97f24502d15a18.png"
-  const imgRequisitos1 = "http://localhost:3845/assets/24d03f314e0d5374a575ee1f1adbf01a817d4f3e.png"
-  const imgGlosary1 = "http://localhost:3845/assets/52996d29c161247afa131b6ab426bcb4c30c3c18.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefa',
@@ -191,16 +194,26 @@ const TuCreditPrototype = () => {
         <div style={mockupsRowStyles}>
           <div style={mockup1ContainerStyles}>
             <img 
-              src={imgHome32}
+              src={mockupImages.mockup1}
               alt="Home screen mockup"
-              style={mockup1ImageStyles}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                borderRadius: '15px',
+              }}
             />
           </div>
           <div style={mockup2ContainerStyles}>
             <img 
-              src={imgHome41}
+              src={mockupImages.mockup2}
               alt="Home screen alternate mockup"
-              style={mockup2ImageStyles}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                borderRadius: '6px',
+              }}
             />
           </div>
         </div>
@@ -209,14 +222,19 @@ const TuCreditPrototype = () => {
         <div style={mockupsRowStyles}>
           <div style={mockup3ContainerStyles}>
             <img 
-              src={imgRequisitos1}
+              src={mockupImages.mockup3}
               alt="Requirements screen mockup"
-              style={mockup3ImageStyles}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                borderRadius: '15px',
+              }}
             />
           </div>
           <div style={mockup4ContainerStyles}>
             <img 
-              src={imgGlosary1}
+              src={mockupImages.mockup4}
               alt="Glossary screen mockup"
               style={mockup4ImageStyles}
             />

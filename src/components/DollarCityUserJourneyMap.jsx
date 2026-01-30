@@ -1,10 +1,11 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Image path
+const userJourneyMapImage = '/assets/images/dollarcity/user-journey-map.png'
+
 const DollarCityUserJourneyMap = () => {
   const { isMobile } = useResponsive()
-
-  const imgImage8 = "http://localhost:3845/assets/fbfafa30cbd6634ffac4e20908e5aa8226f723be.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefb',
@@ -87,7 +88,7 @@ const DollarCityUserJourneyMap = () => {
         {/* User Journey Map Image */}
         <div style={imageContainerStyles}>
           <img 
-            src={imgImage8} 
+            src={userJourneyMapImage} 
             alt="User Journey Map"
             style={imageStyles}
           />

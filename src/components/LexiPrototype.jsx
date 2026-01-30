@@ -1,6 +1,12 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Image paths
+const prototypeImages = {
+  onboarding: '/assets/images/lexi/prototype-onboarding.png',
+  screens: '/assets/images/lexi/prototype-screens.png',
+}
+
 const LexiPrototype = () => {
   const { isMobile } = useResponsive()
 
@@ -102,7 +108,7 @@ const LexiPrototype = () => {
         {/* Prototype Image 1 - 3 screens (Splash, Onboarding, Language selection) */}
         <div style={imageContainerStyles}>
           <img 
-            src="http://localhost:3845/assets/182f55704b9af17d37c43edaf73a473ec4deb736.png"
+            src={prototypeImages.onboarding}
             alt="Lexi onboarding screens"
             style={imageStyles}
           />
@@ -111,7 +117,7 @@ const LexiPrototype = () => {
         {/* Prototype Image 2 - 4 screens (Home and Calendar views) */}
         <div style={secondImageContainerStyles}>
           <img 
-            src="http://localhost:3845/assets/5eb0128e781cc7afa000f72281b57d3451813cab.png"
+            src={prototypeImages.screens}
             alt="Lexi app screens"
             style={imageStyles}
           />

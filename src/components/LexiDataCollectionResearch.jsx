@@ -1,6 +1,18 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Image paths
+const researchImages = {
+  doc1: '/assets/images/lexi/research-1.png',
+  doc2: '/assets/images/lexi/research-2.png',
+  doc3: '/assets/images/lexi/research-3.png',
+  doc4: '/assets/images/lexi/research-4.png',
+  doc5: '/assets/images/lexi/research-5.png',
+  doc6: '/assets/images/lexi/research-6.png',
+  doc7: '/assets/images/lexi/research-7.png',
+  doc8: '/assets/images/lexi/research-8.png',
+}
+
 const LexiDataCollectionResearch = () => {
   const { isMobile } = useResponsive()
 
@@ -113,22 +125,22 @@ const LexiDataCollectionResearch = () => {
         {/* First Group of Images (4 images) */}
         <div style={imagesColumnStyles}>
           <img 
-            src="http://localhost:3845/assets/10bf078bd9b38fd9c26e841d747a46ce81e7ccd2.png"
+            src={researchImages.doc1}
             alt="Research document 1"
             style={imageStyles}
           />
           <img 
-            src="http://localhost:3845/assets/a263ee278e50b4de92374eaa9b7cc3ce878f3e68.png"
+            src={researchImages.doc2}
             alt="Research document 2"
             style={imageStyles}
           />
           <img 
-            src="http://localhost:3845/assets/191eccda253cd1f9b203d032b3f9d8de398cb4da.png"
+            src={researchImages.doc3}
             alt="Research document 3"
             style={imageStyles}
           />
           <img 
-            src="http://localhost:3845/assets/be29f232d8a7b6d005dc85a17608b47c29bc221b.png"
+            src={researchImages.doc4}
             alt="Research document 4"
             style={imageStyles}
           />
@@ -137,22 +149,22 @@ const LexiDataCollectionResearch = () => {
         {/* Second Group of Images (4 images) */}
         <div style={imagesColumnStyles}>
           <img 
-            src="http://localhost:3845/assets/1bd9c96f907828c17dd779d8255c699eb843dd46.png"
+            src={researchImages.doc5}
             alt="Research document 5"
             style={imageStyles}
           />
           <img 
-            src="http://localhost:3845/assets/ea14691afc82c79f68fbf8f1faf5a84644063077.png"
+            src={researchImages.doc6}
             alt="Research document 6"
             style={imageStyles}
           />
           <img 
-            src="http://localhost:3845/assets/8b0d4d2ffc00c8dea3340ca8c4799969ded36555.png"
+            src={researchImages.doc7}
             alt="Research document 7"
             style={imageStyles}
           />
           <img 
-            src="http://localhost:3845/assets/86744352863de33970808733ed97c019798a76f0.png"
+            src={researchImages.doc8}
             alt="Research document 8"
             style={imageStyles}
           />

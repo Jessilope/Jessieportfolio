@@ -1,10 +1,11 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Components image
+const componentsImage = '/assets/images/tucredit/components.png'
+
 const TuCreditComponentSet = () => {
   const { isMobile } = useResponsive()
-
-  const imgImage29 = "http://localhost:3845/assets/c20aa78dd71638dd750f7be05b856f35c127b17b.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefb',
@@ -107,7 +108,7 @@ const TuCreditComponentSet = () => {
         {/* Component image */}
         <div style={imageContainerStyles}>
           <img 
-            src={imgImage29}
+            src={componentsImage}
             alt="Component set examples"
             style={imageStyles}
           />

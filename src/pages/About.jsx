@@ -28,7 +28,7 @@ const About = () => {
 
   const contentStyles = {
     width: '100%',
-    height: isMobile ? '60vh' : '100vh',
+    height: '100vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -40,16 +40,18 @@ const About = () => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: isMobile ? '180px' : '249px',
-    height: isMobile ? '176px' : '243px',
+    width: isMobile ? '256px' : '249px',
+    height: isMobile ? '256px' : '243px',
+    marginTop: isMobile ? '190px' : '0', // Position below center on mobile as per Figma
   }
 
   const flowerStyles = {
     position: 'absolute',
-    width: isMobile ? '180px' : '249px',
-    height: isMobile ? '176px' : '243px',
+    width: isMobile ? '256px' : '249px',
+    height: isMobile ? '256px' : '243px',
     top: '50%',
     left: '50%',
+    transform: 'translate(-50%, -50%)',
     ...(shouldAnimate && {
       animation: 'flowerEntrance 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards'
     }),
@@ -57,24 +59,23 @@ const About = () => {
 
   const logoTextStyles = {
     fontFamily: `'Barlow Condensed', sans-serif`,
-    fontSize: isMobile ? '24px' : '32px',
-    letterSpacing: isMobile ? '10px' : '13px',
+    fontSize: isMobile ? '32px' : '32px',
+    letterSpacing: isMobile ? '13px' : '13px',
     fontWeight: 600,
-    lineHeight: isMobile ? '24px' : '32px',
+    lineHeight: isMobile ? '32px' : '32px',
     color: colors.primary['700'],
     margin: 0,
     position: 'absolute',
     top: '50%',
     left: '50%',
-    transform: isMobile ? 'translate(-50%, calc(-50% + 60px))' : 'translate(-50%, calc(-50% + 82.5px))',
+    transform: 'translate(-50%, -50%)',
+    paddingLeft: isMobile ? '13px' : '13px', // Compensate for letter-spacing
     zIndex: 1,
-    height: isMobile ? '30px' : '39px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: isMobile ? '110px' : '145px',
     ...(shouldAnimate && {
-      animation: isMobile ? 'logoEntranceMobile 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards' : 'logoEntrance 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards'
+      animation: 'logoEntrance 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards'
     }),
   }
 
@@ -93,40 +94,27 @@ const About = () => {
       <style>{`
         @keyframes flowerEntrance {
           0% {
-            transform: translate(-50%, calc(-50% + 87.5px)) scale(3);
+            transform: translate(-50%, -50%) scale(3);
             opacity: 0;
           }
           50% {
             opacity: 1;
           }
           100% {
-            transform: translate(-50%, calc(-50% + 87.5px)) scale(1);
+            transform: translate(-50%, -50%) scale(1);
             opacity: 1;
           }
         }
         @keyframes logoEntrance {
           0% {
-            transform: translate(-50%, calc(-50% + 82.5px)) scale(3);
+            transform: translate(-50%, -50%) scale(3);
             opacity: 0;
           }
           50% {
             opacity: 1;
           }
           100% {
-            transform: translate(-50%, calc(-50% + 82.5px)) scale(1);
-            opacity: 1;
-          }
-        }
-        @keyframes logoEntranceMobile {
-          0% {
-            transform: translate(-50%, calc(-50% + 60px)) scale(3);
-            opacity: 0;
-          }
-          50% {
-            opacity: 1;
-          }
-          100% {
-            transform: translate(-50%, calc(-50% + 60px)) scale(1);
+            transform: translate(-50%, -50%) scale(1);
             opacity: 1;
           }
         }

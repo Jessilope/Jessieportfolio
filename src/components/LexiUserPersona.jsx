@@ -1,6 +1,39 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Image paths
+const personaImages = {
+  persona1: '/assets/images/lexi/persona-1.png',
+  persona2: '/assets/images/lexi/persona-2.png',
+  digitalNomad: '/assets/images/lexi/digital-nomad-working.png',
+  teamBrainstorming: '/assets/images/lexi/team-brainstorming.png',
+  mobilePersonas: '/assets/images/lexi/user-personas-mobile.png',
+}
+
+// Icon components
+const JobIcon = () => (
+  <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M27.167 9.33333H5.83366C4.36091 9.33333 3.16699 10.5273 3.16699 12V25.3333C3.16699 26.8061 4.36091 28 5.83366 28H27.167C28.6398 28 29.8337 26.8061 29.8337 25.3333V12C29.8337 10.5273 28.6398 9.33333 27.167 9.33333Z" stroke="#370161" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M21.833 28V6.66667C21.833 5.95942 21.5521 5.28115 21.0521 4.78105C20.552 4.28095 19.8737 4 19.1664 4H13.833C13.1258 4 12.4475 4.28095 11.9474 4.78105C11.4473 5.28115 11.1664 5.95942 11.1664 6.66667V28" stroke="#370161" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+)
+
+const LocationIcon = () => (
+  <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M28.5 13.3333C28.5 22.6667 16.5 30.6667 16.5 30.6667C16.5 30.6667 4.5 22.6667 4.5 13.3333C4.5 10.1507 5.76428 7.09849 8.01472 4.84805C10.2652 2.59762 13.3174 1.33333 16.5 1.33333C19.6826 1.33333 22.7348 2.59762 24.9853 4.84805C27.2357 7.09849 28.5 10.1507 28.5 13.3333Z" stroke="#370161" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M16.5 17.3333C18.7091 17.3333 20.5 15.5425 20.5 13.3333C20.5 11.1242 18.7091 9.33333 16.5 9.33333C14.2909 9.33333 12.5 11.1242 12.5 13.3333C12.5 15.5425 14.2909 17.3333 16.5 17.3333Z" stroke="#370161" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+)
+
+const FamilyIcon = () => (
+  <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M23.167 28V25.3333C23.167 23.9188 22.6052 22.5623 21.6051 21.5621C20.6049 20.5619 19.2483 20 17.8337 20H7.16699C5.75237 20 4.39585 20.5619 3.39566 21.5621C2.39546 22.5623 1.83366 23.9188 1.83366 25.3333V28" stroke="#370161" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M12.5003 14.6667C15.4458 14.6667 17.8337 12.2789 17.8337 9.33333C17.8337 6.38781 15.4458 4 12.5003 4C9.5548 4 7.16699 6.38781 7.16699 9.33333C7.16699 12.2789 9.5548 14.6667 12.5003 14.6667Z" stroke="#370161" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M31.167 28V25.3333C31.1661 24.1517 30.7701 23.0037 30.0431 22.0698C29.3162 21.1358 28.2992 20.4688 27.152 20.176" stroke="#370161" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M22.4854 4.17603C23.6356 4.46698 24.6558 5.13398 25.3849 6.0693C26.114 7.00462 26.5107 8.15514 26.5107 9.33936C26.5107 10.5236 26.114 11.6741 25.3849 12.6094C24.6558 13.5448 23.6356 14.2117 22.4854 14.5027" stroke="#370161" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+)
+
 const LexiUserPersona = () => {
   const { isMobile } = useResponsive()
 
@@ -228,7 +261,7 @@ const LexiUserPersona = () => {
           {/* Mobile Image */}
           <div style={mobileImageContainerStyles}>
             <img 
-              src="http://localhost:3845/assets/06ae4e806b870f6ffd274c1b46bfbe2e4015f40b.png"
+              src={personaImages.mobilePersonas}
               alt="User Personas - Amanda Rodriguez and Daniel Garcia"
               style={mobileImageStyles}
             />
@@ -258,7 +291,7 @@ const LexiUserPersona = () => {
           {/* Image Column */}
           <div style={imageColumnStyles}>
             <img 
-              src="http://localhost:3845/assets/6c7f32069e2e2b6a6993b86780d6cce483bd1e92.png"
+              src={personaImages.persona1}
               alt="Amanda Rodriguez"
               style={profileImageStyles}
             />
@@ -269,15 +302,15 @@ const LexiUserPersona = () => {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%' }}>
                 <div style={infoItemStyles}>
-                  <img src="http://localhost:3845/assets/62b688d7d4f9ea89231f02370fe585dbdc58d233.svg" alt="" style={iconStyles} />
+                  <JobIcon />
                   <p style={infoTextStyles}>Remote professional</p>
                 </div>
                 <div style={infoItemStyles}>
-                  <img src="http://localhost:3845/assets/9bf21cbedaee5741965cd38907f69d9ec083a02a.svg" alt="" style={iconStyles} />
+                  <LocationIcon />
                   <p style={infoTextStyles}>Colombia</p>
                 </div>
                 <div style={infoItemStyles}>
-                  <img src="http://localhost:3845/assets/642e2a0797228c4898dff1dff9790ec70a8ef7dd.svg" alt="" style={iconStyles} />
+                  <FamilyIcon />
                   <p style={infoTextStyles}>Unmarried with children</p>
                 </div>
               </div>
@@ -312,7 +345,7 @@ const LexiUserPersona = () => {
           <div style={themeColumnStyles}>
             <p style={{ ...themeTextStyles, color: '#2cb7a5' }}>Consistent Learning</p>
             <img 
-              src="http://localhost:3845/assets/fcf598e39f80c441923677b4234b5f0bb6488c18.png"
+              src={personaImages.digitalNomad}
               alt="Consistent Learning"
               style={themeImageStyles}
             />
@@ -324,7 +357,7 @@ const LexiUserPersona = () => {
           {/* Theme Column */}
           <div style={{ ...themeColumnStyles, width: '266px' }}>
             <img 
-              src="http://localhost:3845/assets/9c87c0f3a8a911de690b775231c6bb9ba1444fd7.png"
+              src={personaImages.teamBrainstorming}
               alt="Confidence Building"
               style={{ width: '100%', height: '220px', objectFit: 'cover' }}
             />
@@ -357,7 +390,7 @@ const LexiUserPersona = () => {
           {/* Image Column */}
           <div style={imageColumnStyles}>
             <img 
-              src="http://localhost:3845/assets/f1326acd84b14d7fca1da878a3fa9ec7be74ee69.png"
+              src={personaImages.persona2}
               alt="Daniel Garcia"
               style={{ width: '172px', height: '303px', borderRadius: '89px', objectFit: 'cover' }}
             />
@@ -368,15 +401,15 @@ const LexiUserPersona = () => {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%' }}>
                 <div style={infoItemStyles}>
-                  <img src="http://localhost:3845/assets/62b688d7d4f9ea89231f02370fe585dbdc58d233.svg" alt="" style={iconStyles} />
+                  <JobIcon />
                   <p style={infoTextStyles}>Student</p>
                 </div>
                 <div style={infoItemStyles}>
-                  <img src="http://localhost:3845/assets/9bf21cbedaee5741965cd38907f69d9ec083a02a.svg" alt="" style={iconStyles} />
+                  <LocationIcon />
                   <p style={infoTextStyles}>Colombia</p>
                 </div>
                 <div style={infoItemStyles}>
-                  <img src="http://localhost:3845/assets/642e2a0797228c4898dff1dff9790ec70a8ef7dd.svg" alt="" style={iconStyles} />
+                  <FamilyIcon />
                   <p style={infoTextStyles}>Single</p>
                 </div>
               </div>

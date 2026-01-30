@@ -1,6 +1,15 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Image paths
+const wireframeImages = {
+  wireframe1: '/assets/images/lexi/wireframe-1.png',
+  wireframe2: '/assets/images/lexi/wireframe-2.png',
+  wireframe3: '/assets/images/lexi/wireframe-3.png',
+  wireframe4: '/assets/images/lexi/wireframe-4.png',
+  wireframe5: '/assets/images/lexi/wireframe-5.png',
+}
+
 const LexiWireframes = () => {
   const { isMobile } = useResponsive()
 
@@ -105,73 +114,37 @@ const LexiWireframes = () => {
 
         {/* First row of images */}
         <div style={imagesRowStyles}>
-          <div style={imageContainerStyles}>
-            <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
-              <img 
-                src="http://localhost:3845/assets/baef8e255735ac518e8218f6692f894fa26cd91d.png"
-                alt="Wireframe 1"
-                style={{
-                  position: 'absolute',
-                  height: '100%',
-                  left: '-0.08%',
-                  maxWidth: 'none',
-                  top: 0,
-                  width: '419.31%',
-                }}
-              />
-            </div>
+          <div style={singleImageContainerStyles}>
+            <img 
+              src={wireframeImages.wireframe1}
+              alt="Wireframe 1"
+              style={imageStyles}
+            />
           </div>
-          <div style={imageContainerStyles}>
-            <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
-              <img 
-                src="http://localhost:3845/assets/baef8e255735ac518e8218f6692f894fa26cd91d.png"
-                alt="Wireframe 2"
-                style={{
-                  position: 'absolute',
-                  height: '100%',
-                  left: '-106.48%',
-                  maxWidth: 'none',
-                  top: '1.37%',
-                  width: '419.31%',
-                }}
-              />
-            </div>
+          <div style={singleImageContainerStyles}>
+            <img 
+              src={wireframeImages.wireframe2}
+              alt="Wireframe 2"
+              style={imageStyles}
+            />
           </div>
         </div>
 
         {/* Second row of images */}
         <div style={imagesRowStyles}>
-          <div style={imageContainerStyles}>
-            <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
-              <img 
-                src="http://localhost:3845/assets/baef8e255735ac518e8218f6692f894fa26cd91d.png"
-                alt="Wireframe 3"
-                style={{
-                  position: 'absolute',
-                  height: '100%',
-                  left: '-318.41%',
-                  maxWidth: 'none',
-                  top: '0.46%',
-                  width: '419.31%',
-                }}
-              />
-            </div>
+          <div style={singleImageContainerStyles}>
+            <img 
+              src={wireframeImages.wireframe3}
+              alt="Wireframe 3"
+              style={imageStyles}
+            />
           </div>
-          <div style={imageContainerStyles}>
-            <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
-              <img 
-                src="http://localhost:3845/assets/baef8e255735ac518e8218f6692f894fa26cd91d.png"
-                alt="Wireframe 4"
-                style={{
-                  position: 'absolute',
-                  height: '100%',
-                  left: '-0.08%',
-                  maxWidth: 'none',
-                  top: 0,
-                  width: '419.31%',
-                }}
-              />
-            </div>
+          <div style={singleImageContainerStyles}>
+            <img 
+              src={wireframeImages.wireframe4}
+              alt="Wireframe 4"
+              style={imageStyles}
+            />
           </div>
         </div>
 
@@ -179,7 +152,7 @@ const LexiWireframes = () => {
         <div style={{ display: 'flex', alignItems: isMobile ? 'center' : 'flex-start', justifyContent: 'center', width: '100%' }}>
           <div style={singleImageContainerStyles}>
             <img 
-              src="http://localhost:3845/assets/1ec282ce97b6307dff6a83909f824d14cfc1dfad.png"
+              src={wireframeImages.wireframe5}
               alt="Wireframe 5"
               style={imageStyles}
             />

@@ -1,10 +1,11 @@
 import { colors } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Components image
+const componentsImage = '/assets/images/tripfinder/components.png'
+
 const TripFinderComponentSet = () => {
   const { isMobile } = useResponsive()
-
-  const imgImage30 = "http://localhost:3845/assets/de73d3ab9c0163b324eae5ef8e1840ef24a7b2c3.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefb',
@@ -95,7 +96,7 @@ const TripFinderComponentSet = () => {
         {/* Component set image */}
         <div style={imageContainerStyles}>
           <img 
-            src={imgImage30}
+            src={componentsImage}
             alt="Component set examples"
             style={imageStyles}
           />

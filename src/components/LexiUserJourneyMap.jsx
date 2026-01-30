@@ -1,6 +1,9 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Image path
+const userJourneyMapImage = '/assets/images/lexi/user-journey-map.png'
+
 const LexiUserJourneyMap = () => {
   const { isMobile } = useResponsive()
 
@@ -58,7 +61,7 @@ const LexiUserJourneyMap = () => {
         </div>
         <div style={imageContainerStyles}>
           <img 
-            src="http://localhost:3845/assets/e5013d067b2c684f246e3580f180e0fdd240423b.png"
+            src={userJourneyMapImage}
             alt="User Journey Map"
             style={imageStyles}
           />

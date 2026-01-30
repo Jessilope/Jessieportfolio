@@ -1,6 +1,9 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Image path
+const informationArchitectureImage = '/assets/images/lexi/information-architecture.png'
+
 const LexiIdeate = () => {
   const { isMobile } = useResponsive()
 
@@ -110,7 +113,7 @@ const LexiIdeate = () => {
           </div>
           <div style={imageContainerStyles}>
             <img 
-              src="http://localhost:3845/assets/980b3bdc8c76502215cc967aadc15e0314fd4f57.png"
+              src={informationArchitectureImage}
               alt="Information Architecture"
               style={imageStyles}
             />

@@ -1,10 +1,11 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Steps image
+const stepsImage = '/assets/images/tucredit/steps.png'
+
 const TuCreditEmpathize = () => {
   const { isMobile } = useResponsive()
-
-  const imgImage28 = "http://localhost:3845/assets/cbc95ccee961f480ad10b357588acae27267792c.png"
 
   const sectionStyles = {
     backgroundColor: colors.backgrounds.main,
@@ -193,8 +194,8 @@ const TuCreditEmpathize = () => {
         {/* Image */}
         <div style={imageContainerStyles}>
           <img 
-            src={imgImage28}
-            alt="User journey diagram"
+            src={stepsImage}
+            alt="Steps diagram"
             style={imageStyles}
           />
         </div>

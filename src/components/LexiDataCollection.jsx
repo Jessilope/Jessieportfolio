@@ -1,6 +1,15 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Image paths
+const dataCollectionImages = {
+  review1: '/assets/images/lexi/data-collection-1.png',
+  review2: '/assets/images/lexi/data-collection-2.png',
+  review3: '/assets/images/lexi/data-collection-3.png',
+  review4: '/assets/images/lexi/data-collection-4.png',
+  review5: '/assets/images/lexi/data-collection-5.png',
+}
+
 const LexiDataCollection = () => {
   const { isMobile } = useResponsive()
 
@@ -103,21 +112,21 @@ const LexiDataCollection = () => {
         <div style={imagesRowStyles}>
           <div style={imageContainerStyles(299, 379)}>
             <img 
-              src="http://localhost:3845/assets/975dc9f9211b17d24c2b35c88a78f3be802c8c85.png"
+              src={dataCollectionImages.review1}
               alt="App review 1"
               style={imageStyles}
             />
           </div>
           <div style={imageContainerStyles(319, 421)}>
             <img 
-              src="http://localhost:3845/assets/5b1f9ff0d254352bbb97796c157839e794b2a615.png"
+              src={dataCollectionImages.review2}
               alt="App review 2"
               style={imageStyles}
             />
           </div>
           <div style={imageContainerStyles(328, 416)}>
             <img 
-              src="http://localhost:3845/assets/28c9f36b99583840636cec16942cc7af810facb4.png"
+              src={dataCollectionImages.review3}
               alt="App review 3"
               style={imageStyles}
             />
@@ -128,14 +137,14 @@ const LexiDataCollection = () => {
         <div style={imagesRowStyles}>
           <div style={imageContainerStyles(296, 572.225)}>
             <img 
-              src="http://localhost:3845/assets/3d63c43e32e63bbfc18c41a37abc160f9ad55e92.png"
+              src={dataCollectionImages.review4}
               alt="App review 4"
               style={imageStyles}
             />
           </div>
           <div style={imageContainerStyles(338, 444)}>
             <img 
-              src="http://localhost:3845/assets/91d9014cc9e5f99a7c1d24cf7c42e31b0bded1a9.png"
+              src={dataCollectionImages.review5}
               alt="App review 5"
               style={imageStyles}
             />

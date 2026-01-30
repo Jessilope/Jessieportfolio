@@ -1,11 +1,13 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Mobile fonts image
+const fontsImage = '/assets/images/tucredit/fonts.png'
+
 const TuCreditVisual = () => {
   const { isMobile } = useResponsive()
 
   const imgLine7 = "http://localhost:3845/assets/394f81462ca09b8978882920d1ff27427f2f81b3.svg"
-  const imgVisualMobile = "http://localhost:3845/assets/dcf6cc62514ae0e244dc78fd1caffaed9bfe134a.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefb',
@@ -101,14 +103,14 @@ const TuCreditVisual = () => {
       </div>
 
       {isMobile ? (
-        /* Mobile: Show consolidated image from Figma */
+        /* Mobile: Show fonts image */
         <img
-          src={imgVisualMobile}
+          src={fontsImage}
           alt="Typography - Font sizes and styles"
           style={{
             width: '100%',
             height: 'auto',
-            objectFit: 'contain',
+            display: 'block',
             pointerEvents: 'none',
           }}
         />

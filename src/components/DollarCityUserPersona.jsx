@@ -1,18 +1,41 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Image paths
+const personaImages = {
+  persona1: '/assets/images/dollarcity/persona-1.png',
+  persona2: '/assets/images/dollarcity/persona-2.png',
+  womanShopping: '/assets/images/dollarcity/woman-shopping.png',
+  successfulPayment: '/assets/images/dollarcity/successful-payment.png',
+  mobilePersonas: '/assets/images/dollarcity/user-personas-mobile.png',
+}
+
+// Icon components
+const JobIcon = () => (
+  <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M27.167 9.33333H5.83366C4.36091 9.33333 3.16699 10.5273 3.16699 12V25.3333C3.16699 26.8061 4.36091 28 5.83366 28H27.167C28.6398 28 29.8337 26.8061 29.8337 25.3333V12C29.8337 10.5273 28.6398 9.33333 27.167 9.33333Z" stroke="#370161" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M21.833 28V6.66667C21.833 5.95942 21.5521 5.28115 21.0521 4.78105C20.552 4.28095 19.8737 4 19.1664 4H13.833C13.1258 4 12.4475 4.28095 11.9474 4.78105C11.4473 5.28115 11.1664 5.95942 11.1664 6.66667V28" stroke="#370161" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+)
+
+const LocationIcon = () => (
+  <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M28.5 13.3333C28.5 22.6667 16.5 30.6667 16.5 30.6667C16.5 30.6667 4.5 22.6667 4.5 13.3333C4.5 10.1507 5.76428 7.09849 8.01472 4.84805C10.2652 2.59762 13.3174 1.33333 16.5 1.33333C19.6826 1.33333 22.7348 2.59762 24.9853 4.84805C27.2357 7.09849 28.5 10.1507 28.5 13.3333Z" stroke="#370161" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M16.5 17.3333C18.7091 17.3333 20.5 15.5425 20.5 13.3333C20.5 11.1242 18.7091 9.33333 16.5 9.33333C14.2909 9.33333 12.5 11.1242 12.5 13.3333C12.5 15.5425 14.2909 17.3333 16.5 17.3333Z" stroke="#370161" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+)
+
+const FamilyIcon = () => (
+  <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M23.167 28V25.3333C23.167 23.9188 22.6052 22.5623 21.6051 21.5621C20.6049 20.5619 19.2483 20 17.8337 20H7.16699C5.75237 20 4.39585 20.5619 3.39566 21.5621C2.39546 22.5623 1.83366 23.9188 1.83366 25.3333V28" stroke="#370161" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M12.5003 14.6667C15.4458 14.6667 17.8337 12.2789 17.8337 9.33333C17.8337 6.38781 15.4458 4 12.5003 4C9.5548 4 7.16699 6.38781 7.16699 9.33333C7.16699 12.2789 9.5548 14.6667 12.5003 14.6667Z" stroke="#370161" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M31.167 28V25.3333C31.1661 24.1517 30.7701 23.0037 30.0431 22.0698C29.3162 21.1358 28.2992 20.4688 27.152 20.176" stroke="#370161" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M22.4854 4.17603C23.6356 4.46698 24.6558 5.13398 25.3849 6.0693C26.114 7.00462 26.5107 8.15514 26.5107 9.33936C26.5107 10.5236 26.114 11.6741 25.3849 12.6094C24.6558 13.5448 23.6356 14.2117 22.4854 14.5027" stroke="#370161" strokeWidth="2.67" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+)
+
 const DollarCityUserPersona = () => {
   const { isMobile } = useResponsive()
-
-  const imgDany = "http://localhost:3845/assets/440406e09dd8ae0e7fdfc2802ef76575d3c9a736.png"
-  const imgJuan = "http://localhost:3845/assets/658f17468d2831b1a85d10aaf50b1e47859e1d34.png"
-  const imgMarketShopping = "http://localhost:3845/assets/766962047dda9b82a0c89fcf768ac465ec416086.png"
-  const imgOnlineShopping = "http://localhost:3845/assets/744ed60bf42f9ae2e189292d5f3c50bb8a20dc2d.png"
-  const imgIconWork = "http://localhost:3845/assets/62b688d7d4f9ea89231f02370fe585dbdc58d233.svg"
-  const imgIconLocation = "http://localhost:3845/assets/9bf21cbedaee5741965cd38907f69d9ec083a02a.svg"
-  const imgIconFamily = "http://localhost:3845/assets/642e2a0797228c4898dff1dff9790ec70a8ef7dd.svg"
-  // Consolidated image for mobile
-  const imgUserPersonasMobile = "http://localhost:3845/assets/a56f7aedf3058e9c27ecb0163761998108a8537f.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefb',
@@ -63,16 +86,13 @@ const DollarCityUserPersona = () => {
   // Mobile image styles
   const mobileImageContainerStyles = {
     width: '100%',
-    aspectRatio: '1372 / 1356',
     position: 'relative',
   }
 
   const mobileImageStyles = {
-    position: 'absolute',
-    inset: 0,
     width: '100%',
-    height: '100%',
-    objectFit: 'cover',
+    height: 'auto',
+    display: 'block',
     pointerEvents: 'none',
   }
 
@@ -223,7 +243,7 @@ const DollarCityUserPersona = () => {
         {isMobile ? (
           <div style={mobileImageContainerStyles}>
             <img
-              src={imgUserPersonasMobile}
+              src={personaImages.mobilePersonas}
               alt="User personas - Dany Delgado and Juan Morales"
               style={mobileImageStyles}
             />
@@ -234,7 +254,7 @@ const DollarCityUserPersona = () => {
         <div style={personaCardStyles}>
           {/* Image Column */}
           <div style={imageColumnStyles}>
-            <img src={imgDany} alt="Dany Delgado" style={avatarStyles} />
+            <img src={personaImages.persona1} alt="Dany Delgado" style={avatarStyles} />
             
             <div style={personalInfoStyles}>
               {/* Name and Age */}
@@ -246,15 +266,15 @@ const DollarCityUserPersona = () => {
               {/* Info Items */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start', width: '100%' }}>
                 <div style={infoItemStyles}>
-                  <img src={imgIconWork} alt="" style={iconStyles} />
+                  <JobIcon />
                   <p style={{ ...listItemStyles, margin: 0 }}>Employee</p>
                 </div>
                 <div style={infoItemStyles}>
-                  <img src={imgIconLocation} alt="" style={iconStyles} />
+                  <LocationIcon />
                   <p style={{ ...listItemStyles, margin: 0 }}>Colombia</p>
                 </div>
                 <div style={infoItemStyles}>
-                  <img src={imgIconFamily} alt="" style={iconStyles} />
+                  <FamilyIcon />
                   <p style={{ ...listItemStyles, margin: 0, flex: '1 0 0' }}>Unmarried with children</p>
                 </div>
               </div>
@@ -304,7 +324,7 @@ const DollarCityUserPersona = () => {
           {/* Illustration */}
           <div style={illustrationColumnStyles}>
             <p style={{ ...illustrationTextStyles, color: '#2cb7a5' }}>Shopping at market</p>
-            <img src={imgMarketShopping} alt="Shopping at market" style={{ width: '173px', height: '193px', objectFit: 'contain' }} />
+            <img src={personaImages.womanShopping} alt="Shopping at market" style={{ width: '173px', height: '193px', objectFit: 'contain' }} />
           </div>
         </div>
 
@@ -312,7 +332,7 @@ const DollarCityUserPersona = () => {
         <div style={personaCardStyles}>
           {/* Illustration */}
           <div style={{ ...illustrationColumnStyles, width: '220px' }}>
-            <img src={imgOnlineShopping} alt="Shopping online" style={{ width: '161px', height: '203px', objectFit: 'contain' }} />
+            <img src={personaImages.successfulPayment} alt="Shopping online" style={{ width: '161px', height: '203px', objectFit: 'contain' }} />
             <p style={{ ...illustrationTextStyles, color: '#f18181' }}>shopping online</p>
           </div>
 
@@ -358,7 +378,7 @@ const DollarCityUserPersona = () => {
 
           {/* Image Column */}
           <div style={imageColumnStyles}>
-            <img src={imgJuan} alt="Juan Morales" style={avatarStyles} />
+            <img src={personaImages.persona2} alt="Juan Morales" style={avatarStyles} />
             
             <div style={personalInfoStyles}>
               {/* Name and Age */}
@@ -370,15 +390,15 @@ const DollarCityUserPersona = () => {
               {/* Info Items */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start', width: '100%' }}>
                 <div style={infoItemStyles}>
-                  <img src={imgIconWork} alt="" style={iconStyles} />
+                  <JobIcon />
                   <p style={{ ...listItemStyles, margin: 0 }}>Student</p>
                 </div>
                 <div style={infoItemStyles}>
-                  <img src={imgIconLocation} alt="" style={iconStyles} />
+                  <LocationIcon />
                   <p style={{ ...listItemStyles, margin: 0 }}>Colombia</p>
                 </div>
                 <div style={infoItemStyles}>
-                  <img src={imgIconFamily} alt="" style={iconStyles} />
+                  <FamilyIcon />
                   <p style={{ ...listItemStyles, margin: 0 }}>Single</p>
                 </div>
               </div>

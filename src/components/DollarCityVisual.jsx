@@ -1,11 +1,11 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Mobile color palette image
+const colorPaletteImage = '/assets/images/dollarcity/color-palette.png'
+
 const DollarCityVisual = () => {
   const { isMobile } = useResponsive()
-
-  const imgImage10 = "http://localhost:3845/assets/2d4b8051a498034ee9b60050baec2f7d6760495b.png"
-  const imgColorPalette = "http://localhost:3845/assets/2d4b8051a498034ee9b60050baec2f7d6760495b.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefb',
@@ -211,6 +211,19 @@ const DollarCityVisual = () => {
     objectFit: 'cover',
   }
 
+  // Mobile image styles
+  const mobileImageContainerStyles = {
+    width: '100%',
+    position: 'relative',
+  }
+
+  const mobileImageStyles = {
+    width: '100%',
+    height: 'auto',
+    display: 'block',
+    pointerEvents: 'none',
+  }
+
   return (
     <div style={sectionStyles}>
       <p style={titleStyles}>Visual</p>
@@ -218,6 +231,16 @@ const DollarCityVisual = () => {
       <div style={contentWrapperStyles}>
         <p style={subtitleStyles}>Color palette</p>
         
+        {/* Mobile: Show color palette image */}
+        {isMobile ? (
+          <div style={mobileImageContainerStyles}>
+            <img
+              src={colorPaletteImage}
+              alt="Color palette showing primary, secondary, neutral and status colors"
+              style={mobileImageStyles}
+            />
+          </div>
+        ) : (
         <div style={colorPaletteContainerStyles}>
           {/* Primaries Section */}
           <div style={primariesContainerStyles}>
@@ -314,15 +337,8 @@ const DollarCityVisual = () => {
             </div>
           </div>
 
-          {/* Image */}
-          <div style={imageContainerStyles}>
-            <img 
-              src={imgImage10} 
-              alt="App mockup" 
-              style={imageStyles}
-            />
-          </div>
         </div>
+        )}
       </div>
     </div>
   )

@@ -1,12 +1,15 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Mockup images
+const mockupImages = {
+  mockup1: '/assets/images/dollarcity/mockup-1.png',
+  mockup2: '/assets/images/dollarcity/mockup-2.png',
+  mockup3: '/assets/images/dollarcity/mockup-3.png',
+}
+
 const DollarCityPrototype = () => {
   const { isMobile } = useResponsive()
-
-  const imgRectangle = "http://localhost:3845/assets/c86fa070260ad1969430f5b9c45dd5a99de7269f.png"
-  const imgRectangle1 = "http://localhost:3845/assets/d304507ffb1717319cfbaa3caad78f9189d979da.png"
-  const imgRectangle2 = "http://localhost:3845/assets/0603bd22b030e1cf110f1908c7b58dc62c94c6bb.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefa',
@@ -124,52 +127,37 @@ const DollarCityPrototype = () => {
         </div>
         <div style={imageMockupsStyles}>
           <div style={imageContainer1Styles}>
-            <div style={imageWrapperStyles}>
-              <img 
-                alt="Dollar City app prototype 1" 
-                src={imgRectangle}
-                style={{
-                  position: 'absolute',
-                  height: '152.21%',
-                  left: '-153.18%',
-                  maxWidth: 'none',
-                  top: '-20.78%',
-                  width: '407.08%',
-                }}
-              />
-            </div>
+            <img 
+              alt="Dollar City app prototype 1" 
+              src={mockupImages.mockup1}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain',
+              }}
+            />
           </div>
           <div style={imageContainer2Styles}>
-            <div style={imageWrapperStyles}>
-              <img 
-                alt="Dollar City app prototype 2" 
-                src={imgRectangle1}
-                style={{
-                  position: 'absolute',
-                  height: '111.13%',
-                  left: '-100%',
-                  maxWidth: 'none',
-                  top: 0,
-                  width: '300%',
-                }}
-              />
-            </div>
+            <img 
+              alt="Dollar City app prototype 2" 
+              src={mockupImages.mockup2}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain',
+              }}
+            />
           </div>
           <div style={imageContainer3Styles}>
-            <div style={imageWrapperStyles}>
-              <img 
-                alt="Dollar City app prototype 3" 
-                src={imgRectangle2}
-                style={{
-                  position: 'absolute',
-                  height: '157.26%',
-                  left: '-153.23%',
-                  maxWidth: 'none',
-                  top: '-23.4%',
-                  width: '403.8%',
-                }}
-              />
-            </div>
+            <img 
+              alt="Dollar City app prototype 3" 
+              src={mockupImages.mockup3}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain',
+              }}
+            />
           </div>
         </div>
       </div>

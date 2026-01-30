@@ -1,6 +1,9 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Image path
+const componentsImage = '/assets/images/lexi/components.png'
+
 const LexiComponents = () => {
   const { isMobile } = useResponsive()
 
@@ -63,7 +66,7 @@ const LexiComponents = () => {
         {/* Components Image */}
         <div style={imageContainerStyles}>
           <img 
-            src="http://localhost:3845/assets/a9080967a450ce2c203337216c058eb20dfc8c27.png"
+            src={componentsImage}
             alt="Lexi app components"
             style={imageStyles}
           />

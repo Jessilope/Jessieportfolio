@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { colors, typography, spacing, borderRadius } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
+import { documents } from '../assets'
 
 // Yellow Flower SVG Component (6 petals) - Figma node 293:2146
 const YellowFlower = ({ style }) => {
@@ -221,7 +222,7 @@ const Hero = () => {
             Contact me
           </a>
           <a 
-            href="/Professional-Modern-CV-Resume.pdf" 
+            href={documents.cv} 
             target="_blank"
             rel="noopener noreferrer"
             style={secondaryButtonStyles}

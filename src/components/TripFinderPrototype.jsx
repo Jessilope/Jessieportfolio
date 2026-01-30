@@ -1,12 +1,15 @@
 import { colors } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Mockup images
+const mockupImages = {
+  mockup1: '/assets/images/tripfinder/mockup-1.png',
+  mockup2: '/assets/images/tripfinder/mockup-2.png',
+  mockup3: '/assets/images/tripfinder/mockup-3.png',
+}
+
 const TripFinderPrototype = () => {
   const { isMobile } = useResponsive()
-
-  const imgImage32 = "http://localhost:3845/assets/cbd09a83dadc65af0395cb8d30e914bee93849ed.png"
-  const imgImage33 = "http://localhost:3845/assets/5971c3704ac299476cb4d6c1eea83351715383e3.png"
-  const imgImage34 = "http://localhost:3845/assets/947e0f8bbafd98fba155ccd1dbd2618fc148ad1e.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefa',
@@ -176,7 +179,7 @@ const TripFinderPrototype = () => {
           <div style={mockup1ContainerStyles}>
             <div style={mockup1WrapperStyles}>
               <img 
-                src={imgImage32}
+                src={mockupImages.mockup1}
                 alt="Prototype mockup 1"
                 style={mockup1ImageStyles}
               />
@@ -188,7 +191,7 @@ const TripFinderPrototype = () => {
         <div style={mockupRowStyles}>
           <div style={mockup2ContainerStyles}>
             <img 
-              src={imgImage33}
+              src={mockupImages.mockup2}
               alt="Prototype mockup 2"
               style={mockup2ImageStyles}
             />
@@ -199,7 +202,7 @@ const TripFinderPrototype = () => {
         <div style={mockupRowStyles}>
           <div style={mockup3ContainerStyles}>
             <img 
-              src={imgImage34}
+              src={mockupImages.mockup3}
               alt="Prototype mockup 3"
               style={mockup3ImageStyles}
             />

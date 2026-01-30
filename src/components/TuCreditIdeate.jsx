@@ -1,10 +1,11 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Information architecture image
+const informationArchitectureImage = '/assets/images/tucredit/information-architecture.png'
+
 const TuCreditIdeate = () => {
   const { isMobile } = useResponsive()
-
-  const imgImage4 = "http://localhost:3845/assets/ee0d33ff165e9a64dfb31c91bf31fb22176aef1c.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefb',
@@ -148,7 +149,7 @@ const TuCreditIdeate = () => {
           </div>
           <div style={imageWrapperStyles}>
             <img 
-              src={imgImage4}
+              src={informationArchitectureImage}
               alt="Information Architecture diagram"
               style={imageStyles}
             />

@@ -1,6 +1,9 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Mobile image path
+const colorPaletteImage = '/assets/images/lexi/color-palette.png'
+
 const LexiVisual = () => {
   const { isMobile } = useResponsive()
 
@@ -72,16 +75,13 @@ const LexiVisual = () => {
   // Mobile image for color palette
   const mobileColorPaletteImageStyles = {
     width: '100%',
-    aspectRatio: '1164 / 1072',
     position: 'relative',
   }
 
   const mobileImageStyles = {
-    position: 'absolute',
-    inset: 0,
     width: '100%',
-    height: '100%',
-    objectFit: 'cover',
+    height: 'auto',
+    display: 'block',
     pointerEvents: 'none',
   }
 
@@ -317,7 +317,7 @@ const LexiVisual = () => {
         {isMobile ? (
           <div style={mobileColorPaletteImageStyles}>
             <img
-              src="http://localhost:3845/assets/07f36ea5c82e0aa8a93fa6ec6971f54cbb221c31.png"
+              src={colorPaletteImage}
               alt="Color palette showing primary, secondary, neutral and status colors"
               style={mobileImageStyles}
             />

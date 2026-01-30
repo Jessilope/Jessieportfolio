@@ -1,10 +1,11 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
+// Image path
+const componentsImage = '/assets/images/dollarcity/components.png'
+
 const DollarCityComponents = () => {
   const { isMobile } = useResponsive()
-
-  const imgImage11 = "http://localhost:3845/assets/856836e6758ececdd4e67ac444efcfea6ed84434.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefb',
@@ -64,7 +65,7 @@ const DollarCityComponents = () => {
         </p>
         <div style={imageContainerStyles}>
           <img 
-            src={imgImage11} 
+            src={componentsImage} 
             alt="Dollar City app components" 
             style={imageStyles}
           />

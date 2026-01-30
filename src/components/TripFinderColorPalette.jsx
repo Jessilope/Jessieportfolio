@@ -1,9 +1,10 @@
 import useResponsive from '../hooks/useResponsive'
 
+// Color palette image for mobile
+const colorPaletteImage = '/assets/images/tripfinder/color-palette.png'
+
 const TripFinderColorPalette = () => {
   const { isMobile } = useResponsive()
-  
-  const imgColorPaletteMobile = "http://localhost:3845/assets/169d4f284c85d5371fd738c8880e7f396d6e6cf9.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefb',
@@ -169,12 +170,12 @@ const TripFinderColorPalette = () => {
         {isMobile ? (
           /* Mobile: Show image from Figma */
           <img
-            src={imgColorPaletteMobile}
+            src={colorPaletteImage}
             alt="Color palette - Primary #650AD7, Secondary #9F760B, #282020, #FFFFFF"
             style={{
               width: '100%',
               height: 'auto',
-              objectFit: 'contain',
+              display: 'block',
               pointerEvents: 'none',
             }}
           />

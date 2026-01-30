@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import SocialIcon from '../components/SocialIcon'
 import CtaIcon from '../components/CtaIcon'
 import useResponsive from '../hooks/useResponsive'
+import { aboutImages, documents } from '../assets'
 
 const AboutMeSection = () => {
   const { isMobile } = useResponsive()
@@ -19,7 +20,7 @@ const AboutMeSection = () => {
   }
 
   const handleDownloadResume = () => {
-    window.open('/Professional-Modern-CV-Resume.pdf', '_blank')
+    window.open(documents.cv, '_blank')
   }
 
   const handleHaveFun = () => {
@@ -112,9 +113,10 @@ const AboutMeSection = () => {
   const profileImageStyles = {
     position: 'absolute',
     width: '100%',
-    height: '134.83%',
-    left: 0,
-    top: '0.09%',
+    height: '100%',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%, -50%)',
     objectFit: 'cover',
   }
 
@@ -156,7 +158,7 @@ const AboutMeSection = () => {
             <div style={imageColumnStyles}>
               <div style={profileImageContainerStyles}>
                 <img 
-                  src="http://localhost:3845/assets/42c7d136fc9bb8d188f6cbae3224e52c67c94fc1.png"
+                  src={aboutImages.profilePhoto}
                   alt="Jessie ML"
                   style={profileImageStyles}
                 />

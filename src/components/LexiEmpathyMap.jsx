@@ -1,5 +1,6 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
+import { lexiImages } from '../assets'
 
 const LexiEmpathyMap = () => {
   const { isMobile } = useResponsive()
@@ -78,7 +79,7 @@ const LexiEmpathyMap = () => {
 
         <div style={imageContainerStyles}>
           <img 
-            src="http://localhost:3845/assets/9064fc7585dfa2faae74825c6a61d086a44b6036.png"
+            src={lexiImages.empathyMap}
             alt="Empathy map showing user insights"
             style={imageStyles}
           />

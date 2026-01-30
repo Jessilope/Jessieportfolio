@@ -1,143 +1,143 @@
 import { spacing } from '../tokens'
 
-const Logo = ({ logo = 'notion', size = 'Desktop' }) => {
-  // SVG URLs from Figma localhost server
-  const svgUrls = {
-    framer: "http://localhost:3845/assets/e9a62d05f34c5597ed3df4adb5a18f78ff372dfd.svg",
-    webflow: "http://localhost:3845/assets/ded4fc680a6c91cca09829c744e786b4bb23a530.svg",
-    webflowLogo: "http://localhost:3845/assets/a0f58a83c763f946ae0746a38a78d2cab586b770.svg",
-    figma: "http://localhost:3845/assets/718ca4ba48021d613f1ec3329f097ac58243acdc.svg",
-    figmaDesktop: "http://localhost:3845/assets/e62edb526a0cb9b6f0b829441cceba9950c6222d.svg",
-    miroVector1: "http://localhost:3845/assets/bf9d527e5a0b6d9a9dc51900845687b65109863e.svg",
-    miroVector2: "http://localhost:3845/assets/c8d6f211522fc9a3b21ea3f1dfba82287a8fa8b3.svg",
-    miroVector1Desktop: "http://localhost:3845/assets/212d8fb1b0208891fdface5fa34d66a37fcdc576.svg",
-    miroVector2Desktop: "http://localhost:3845/assets/7a358f904f471bdb41ad2146a6929af0bce915be.svg",
-    miroVector3Desktop: "http://localhost:3845/assets/7a7066c451cbff167ece1c2517e0bb6b8a51f64e.svg",
-    notionVector1: "http://localhost:3845/assets/57b1aecc3e7d673ebc14cb3210efcdeea1c1e296.svg",
-    notionVector2: "http://localhost:3845/assets/e32d6a38d099de9cb8ecf2f2562b5701c42392f6.svg",
-    notionGroup: "http://localhost:3845/assets/7e8a65f1b0369dc159975dd3a76c45dc6ad7342c.svg",
-    webflowIcon: "http://localhost:3845/assets/7df432310509187258d0881f90ab6a7bef40272c.svg"
-  }
+// ===========================================
+// ICON IMAGES
+// ===========================================
+const iconImages = {
+  figma: '/assets/icons/figma.png',
+  framer: '/assets/icons/framer.png',
+  miro: '/assets/icons/miro.png',
+  notion: '/assets/icons/notions.png',
+}
 
+// ===========================================
+// DESKTOP IMAGE COMPONENTS
+// ===========================================
+
+// Notion Desktop - Icon image
+const NotionDesktopIcon = () => (
+  <img src={iconImages.notion} alt="Notion" style={{ width: '36px', height: '36px', objectFit: 'contain', display: 'block' }} />
+)
+
+// Miro Desktop - Icon image
+const MiroDesktopIcon = () => (
+  <img src={iconImages.miro} alt="Miro" style={{ width: '36px', height: '36px', objectFit: 'contain', display: 'block' }} />
+)
+
+// Figma Desktop - Icon image
+const FigmaDesktopIcon = () => (
+  <img src={iconImages.figma} alt="Figma" style={{ width: '24px', height: '36px', objectFit: 'contain', display: 'block' }} />
+)
+
+// Webflow Desktop - W icon (keeping SVG as no PNG provided)
+const WebflowDesktopIcon = () => (
+  <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
+    <path d="M28.5 4s-4.7 12.8-5 13.6c0-1.4-4-13.6-4-13.6-3 0-6 2-7 5 0 0-4 8.6-4.4 9.6 0-.4 0-14.6 0-14.6H0v24h8.1s4.4-10 4.8-11c0 1.2 4.1 11 4.1 11h8s7-16 7.4-17c0 0 0 17 0 17h7.6V4H28.5z" fill="#4353FF"/>
+  </svg>
+)
+
+// Framer Desktop - Icon image
+const FramerDesktopIcon = () => (
+  <img src={iconImages.framer} alt="Framer" style={{ width: '22px', height: '33px', objectFit: 'contain', display: 'block' }} />
+)
+
+// ===========================================
+// MOBILE IMAGE COMPONENTS (icons only, 32x32)
+// ===========================================
+
+// Notion Mobile - Small icon
+const NotionMobileIcon = () => (
+  <img src={iconImages.notion} alt="Notion" style={{ width: '24px', height: '27px', objectFit: 'contain' }} />
+)
+
+// Miro Mobile - Icon
+const MiroMobileIcon = () => (
+  <img src={iconImages.miro} alt="Miro" style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
+)
+
+// Figma Mobile - Icon
+const FigmaMobileIcon = () => (
+  <img src={iconImages.figma} alt="Figma" style={{ width: '21px', height: '32px', objectFit: 'contain' }} />
+)
+
+// Webflow Mobile - Blue W icon (keeping SVG as no PNG provided)
+const WebflowMobileIcon = () => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M22.8 8s-3.76 10.24-4 10.88c0-1.12-3.2-10.88-3.2-10.88-2.4 0-4.8 1.6-5.6 4 0 0-3.2 6.88-3.52 7.68 0-.32 0-11.68 0-11.68H0v19.2h6.48s3.52-8 3.84-8.8c0 .96 3.28 8.8 3.28 8.8h6.4s5.6-12.8 5.92-13.6c0 0 0 13.6 0 13.6H32V8h-9.2z" fill="#4353FF"/>
+  </svg>
+)
+
+// Framer Mobile - Icon
+const FramerMobileIcon = () => (
+  <img src={iconImages.framer} alt="Framer" style={{ width: '22px', height: '33px', objectFit: 'contain' }} />
+)
+
+// ===========================================
+// MAIN LOGO COMPONENT
+// ===========================================
+
+const Logo = ({ logo = 'notion', size = 'Desktop' }) => {
   const textStyles = {
     fontFamily: `'Katibeh', sans-serif`,
     fontSize: '36px',
-    lineHeight: 1.1,
+    lineHeight: 1,
     fontStyle: 'normal',
     color: '#2a2a2a',
     margin: 0,
+    transform: 'translateY(4px)',
   }
 
-  // Desktop versions with text labels
+  const containerStyles = {
+    display: 'flex',
+    alignItems: 'center',
+    padding: spacing.xxs,
+    position: 'relative',
+    flexShrink: 0,
+  }
+
+  // Desktop versions with icons and text labels
   if (size === 'Desktop') {
     if (logo === 'notion') {
       return (
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '10px',
-          alignItems: 'flex-start',
-          overflow: 'clip',
-          padding: spacing.xxs,
-          position: 'relative',
-          flexShrink: 0,
-        }}>
-          <div style={{ height: '36.936px', position: 'relative', flexShrink: 0, width: '107px' }}>
-            <img alt="Notion" style={{ display: 'block', maxWidth: 'none', width: '100%', height: '100%' }} src={svgUrls.notionVector1} />
-          </div>
-          <div style={{ 
-            position: 'absolute', 
-            inset: '0 66.78% 0.17% 0' 
-          }}>
-            <img alt="" style={{ display: 'block', maxWidth: 'none', width: '100%', height: '100%' }} src={svgUrls.notionVector2} />
-          </div>
+        <div style={{ ...containerStyles, gap: '10px' }}>
+          <NotionDesktopIcon />
+          <p style={textStyles}>Notion</p>
         </div>
       )
     }
 
     if (logo === 'miro') {
       return (
-        <div style={{
-          display: 'flex',
-          gap: '7px',
-          alignItems: 'center',
-          overflow: 'clip',
-          padding: spacing.xxs,
-          position: 'relative',
-          flexShrink: 0,
-        }}>
-          <div style={{ height: '36.809px', position: 'relative', flexShrink: 0, width: '36.895px' }}>
-            <img alt="" style={{ display: 'block', maxWidth: 'none', width: '100%', height: '100%' }} src={svgUrls.miroVector1Desktop} />
-          </div>
-          <div style={{ height: '20.13px', position: 'relative', flexShrink: 0, width: '57.187px' }}>
-            <img alt="" style={{ display: 'block', maxWidth: 'none', width: '100%', height: '100%' }} src={svgUrls.miroVector2Desktop} />
-          </div>
-          <div style={{
-            position: 'absolute',
-            inset: '19.94% 64.79% 19.8% 7.71%',
-          }}>
-            <img alt="" style={{ display: 'block', maxWidth: 'none', width: '100%', height: '100%' }} src={svgUrls.miroVector3Desktop} />
-          </div>
+        <div style={{ ...containerStyles, gap: '7px' }}>
+          <MiroDesktopIcon />
+          <p style={textStyles}>miro</p>
         </div>
       )
     }
 
     if (logo === 'figma') {
       return (
-        <div style={{
-          display: 'flex',
-          gap: '11px',
-          alignItems: 'center',
-          padding: spacing.xxs,
-          position: 'relative',
-          flexShrink: 0,
-        }}>
-          <div style={{ height: '36px', position: 'relative', flexShrink: 0, width: '24px' }}>
-            <img alt="" style={{ display: 'block', maxWidth: 'none', width: '100%', height: '100%' }} src={svgUrls.figmaDesktop} />
-          </div>
-          <p style={{ ...textStyles, height: '22px', width: '80px' }}>
-            Figma
-          </p>
+        <div style={{ ...containerStyles, gap: '11px' }}>
+          <FigmaDesktopIcon />
+          <p style={textStyles}>Figma</p>
         </div>
       )
     }
 
     if (logo === 'webflow') {
       return (
-        <div style={{
-          display: 'flex',
-          gap: '14px',
-          alignItems: 'center',
-          padding: spacing.xxs,
-          position: 'relative',
-          flexShrink: 0,
-        }}>
-          <div style={{ height: '32px', position: 'relative', flexShrink: 0, width: '40px' }}>
-            <img alt="" style={{ display: 'block', maxWidth: 'none', width: '100%', height: '100%' }} src={svgUrls.webflowIcon} />
-          </div>
-          <div style={{ height: '25.951px', position: 'relative', flexShrink: 0, width: '103px' }}>
-            <img alt="" style={{ display: 'block', maxWidth: 'none', width: '100%', height: '100%' }} src={svgUrls.webflowLogo} />
-          </div>
+        <div style={{ ...containerStyles, gap: '14px' }}>
+          <WebflowDesktopIcon />
+          <p style={textStyles}>webflow</p>
         </div>
       )
     }
 
     if (logo === 'framer') {
       return (
-        <div style={{
-          display: 'flex',
-          gap: '11px',
-          alignItems: 'center',
-          padding: spacing.xxs,
-          position: 'relative',
-          flexShrink: 0,
-        }}>
-          <div style={{ height: '33px', position: 'relative', flexShrink: 0, width: '22px' }}>
-            <img alt="" style={{ display: 'block', maxWidth: 'none', width: '100%', height: '100%' }} src={svgUrls.framer} />
-          </div>
-          <p style={{ ...textStyles, height: '23px', width: '93px' }}>
-            Framer
-          </p>
+        <div style={{ ...containerStyles, gap: '11px' }}>
+          <FramerDesktopIcon />
+          <p style={textStyles}>Framer</p>
         </div>
       )
     }
@@ -148,18 +148,16 @@ const Logo = ({ logo = 'notion', size = 'Desktop' }) => {
     if (logo === 'notion') {
       return (
         <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           overflow: 'clip',
           position: 'relative',
           flexShrink: 0,
           width: '32px',
           height: '32px',
         }}>
-          <div style={{
-            position: 'absolute',
-            inset: '8.53% 12.5% 6.75% 12.5%',
-          }}>
-            <img alt="Notion" style={{ display: 'block', maxWidth: 'none', width: '100%', height: '100%' }} src={svgUrls.notionGroup} />
-          </div>
+          <NotionMobileIcon />
         </div>
       )
     }
@@ -176,15 +174,7 @@ const Logo = ({ logo = 'notion', size = 'Desktop' }) => {
           width: '32px',
           height: '32px',
         }}>
-          <div style={{ flex: '1 0 0', height: '100%', minHeight: '1px', minWidth: '1px', position: 'relative' }}>
-            <img alt="" style={{ display: 'block', maxWidth: 'none', width: '100%', height: '100%' }} src={svgUrls.miroVector1} />
-          </div>
-          <div style={{
-            position: 'absolute',
-            inset: '9px 6.28px 7px 6.72px',
-          }}>
-            <img alt="" style={{ display: 'block', maxWidth: 'none', width: '100%', height: '100%' }} src={svgUrls.miroVector2} />
-          </div>
+          <MiroMobileIcon />
         </div>
       )
     }
@@ -199,9 +189,7 @@ const Logo = ({ logo = 'notion', size = 'Desktop' }) => {
           flexShrink: 0,
           width: '21.333px',
         }}>
-          <div style={{ flex: '1 0 0', height: '100%', minHeight: '1px', minWidth: '1px', position: 'relative' }}>
-            <img alt="Figma" style={{ display: 'block', maxWidth: 'none', width: '100%', height: '100%' }} src={svgUrls.figma} />
-          </div>
+          <FigmaMobileIcon />
         </div>
       )
     }
@@ -216,9 +204,7 @@ const Logo = ({ logo = 'notion', size = 'Desktop' }) => {
           width: '32px',
           height: '32px',
         }}>
-          <div style={{ flex: '1 0 0', height: '100%', minHeight: '1px', minWidth: '1px', position: 'relative' }}>
-            <img alt="Webflow" style={{ display: 'block', maxWidth: 'none', width: '100%', height: '100%' }} src={svgUrls.webflow} />
-          </div>
+          <WebflowMobileIcon />
         </div>
       )
     }
@@ -234,9 +220,7 @@ const Logo = ({ logo = 'notion', size = 'Desktop' }) => {
           width: '32px',
           height: '32px',
         }}>
-          <div style={{ height: '33px', position: 'relative', flexShrink: 0, width: '22px' }}>
-            <img alt="Framer" style={{ display: 'block', maxWidth: 'none', width: '100%', height: '100%' }} src={svgUrls.framer} />
-          </div>
+          <FramerMobileIcon />
         </div>
       )
     }

@@ -1,9 +1,10 @@
 import useResponsive from '../hooks/useResponsive'
 
+// Fonts image
+const fontsImage = '/assets/images/tripfinder/fonts.png'
+
 const TripFinderTypography = () => {
   const { isMobile } = useResponsive()
-
-  const imgImage31 = "http://localhost:3845/assets/576d29eb7a620d439a33cae7d1dd2c54fa451b58.png"
 
   const sectionStyles = {
     backgroundColor: '#fffefb',
@@ -78,7 +79,7 @@ const TripFinderTypography = () => {
       {isMobile ? (
         /* Mobile: Simple responsive image */
         <img 
-          src={imgImage31}
+          src={fontsImage}
           alt="Typography system"
           style={{
             width: '100%',
@@ -92,7 +93,7 @@ const TripFinderTypography = () => {
         <div style={fontsContainerStyles}>
           <div style={imageContainerStyles}>
             <img 
-              src={imgImage31}
+              src={fontsImage}
               alt="Typography system"
               style={imageStyles}
             />
