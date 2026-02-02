@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "homepage": "https://jessieportfolio.github.io/",
+  "homepage": "https://jessilope.github.io/Jessieportfolio.github.io/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
