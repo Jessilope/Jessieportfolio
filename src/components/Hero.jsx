@@ -186,7 +186,7 @@ const Hero = () => {
   const yellowFlowerStyles = {
     position: 'absolute',
     left: isMobile ? 'auto' : '939px',
-    right: isMobile ? '-76px' : 'auto',
+    right: isMobile ? '-40px' : 'auto',
     top: isMobile ? '95px' : '80px',
     width: isMobile ? '129px' : '289px',
     height: isMobile ? '129px' : '308px',
@@ -195,7 +195,7 @@ const Hero = () => {
   // Purple Flower position - desktop vs mobile
   const purpleFlowerStyles = {
     position: 'absolute',
-    left: isMobile ? '-63px' : '-88px',
+    left: isMobile ? '-30px' : '-88px',
     top: isMobile ? 'auto' : '329px',
     bottom: isMobile ? '164px' : 'auto',
     width: isMobile ? '144px' : '332px',
