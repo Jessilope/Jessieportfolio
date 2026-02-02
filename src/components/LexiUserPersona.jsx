@@ -249,7 +249,7 @@ const LexiUserPersona = () => {
           {/* Intro Text */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
             <p style={introTextStyles}>
-              Based on the research insights, I identified two different types of users who typically shop at this kind of store. From these patterns, I created user personas to synthesize their behaviors, needs, and concerns, helping guide design decisions in the next stages.
+              Based on the insights gathered during the design exploration, I identified the main user profiles who would interact with LEXI. These patterns helped me define user personas that represent their goals, expectations, and challenges, guiding design decisions throughout the process.
             </p>
           </div>
 
@@ -277,7 +277,7 @@ const LexiUserPersona = () => {
         {/* Intro Text */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
           <p style={introTextStyles}>
-            Based on the research insights, I identified two different types of users who typically shop at this kind of store. From these patterns, I created user personas to synthesize their behaviors, needs, and concerns, helping guide design decisions in the next stages.
+            Based on the insights gathered during the design exploration, I identified the main user profiles who would interact with LEXI. These patterns helped me define user personas that represent their goals, expectations, and challenges, guiding design decisions throughout the process.
           </p>
         </div>
 
