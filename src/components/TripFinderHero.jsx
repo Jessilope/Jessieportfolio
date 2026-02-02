@@ -10,7 +10,7 @@ const TripFinderHero = () => {
     flexDirection: 'column',
     alignItems: 'flex-start',
     width: '100%',
-    height: isMobile ? '500px' : '100vh',
+    height: '100vh',
     flexShrink: 0,
     position: 'relative',
   }

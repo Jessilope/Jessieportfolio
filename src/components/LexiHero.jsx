@@ -8,7 +8,7 @@ const LexiHero = () => {
   const heroStyles = {
     position: 'relative',
     width: '100%',
-    height: isMobile ? '500px' : '100vh',
+    height: '100vh',
     backgroundColor: '#155DFC',
     display: 'flex',
     flexDirection: 'column',

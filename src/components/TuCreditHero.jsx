@@ -8,7 +8,7 @@ const TuCreditHero = () => {
   const heroStyles = {
     backgroundColor: 'white',
     width: '100%',
-    height: isMobile ? '500px' : '892px',
+    height: isMobile ? '100vh' : '892px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',

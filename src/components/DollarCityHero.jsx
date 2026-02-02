@@ -13,7 +13,7 @@ const DollarCityHero = () => {
   }
 
   const workContainerStyles = {
-    height: isMobile ? '500px' : '832px',
+    height: isMobile ? '100vh' : '832px',
     overflow: 'clip',
     position: 'relative',
     width: '100%',
