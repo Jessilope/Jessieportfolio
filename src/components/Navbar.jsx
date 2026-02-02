@@ -22,8 +22,8 @@ const Navbar = () => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingTop: spacing.s, // 16px
-    paddingBottom: spacing.s, // 16px
+    paddingTop: isMobile ? spacing.m : spacing.s, // 24px mobile : 16px desktop
+    paddingBottom: isMobile ? spacing.m : spacing.s, // 24px mobile : 16px desktop
     paddingLeft: isMobile ? spacing.m : spacing.l, // 24px : 32px
     paddingRight: isMobile ? spacing.m : spacing.l, // 24px : 32px
     overflow: 'clip',
