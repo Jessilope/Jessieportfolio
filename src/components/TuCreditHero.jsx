@@ -75,8 +75,31 @@ const TuCreditHero = () => {
     fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700",
   }
 
+  const gradientTopStyles = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: '120px',
+    background: 'linear-gradient(to bottom, white 0%, transparent 100%)',
+    pointerEvents: 'none',
+    zIndex: 1,
+  }
+
+  const gradientBottomStyles = {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '120px',
+    background: 'linear-gradient(to top, white 0%, transparent 100%)',
+    pointerEvents: 'none',
+    zIndex: 1,
+  }
+
   return (
     <div style={heroStyles}>
+      {isMobile && <div style={gradientTopStyles} />}
       {/* Navbar */}
       <Navbar />
 
@@ -89,6 +112,7 @@ const TuCreditHero = () => {
           <p style={subtitleStyles}>Based in Bogota, Colombia</p>
         </div>
       </div>
+      {isMobile && <div style={gradientBottomStyles} />}
     </div>
   )
 }

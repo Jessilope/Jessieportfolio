@@ -62,9 +62,32 @@ const TripFinderHero = () => {
     fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700",
   }
 
+  const gradientTopStyles = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: '120px',
+    background: 'linear-gradient(to bottom, #8125f4 0%, transparent 100%)',
+    pointerEvents: 'none',
+    zIndex: 1,
+  }
+
+  const gradientBottomStyles = {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '120px',
+    background: 'linear-gradient(to top, #8125f4 0%, transparent 100%)',
+    pointerEvents: 'none',
+    zIndex: 1,
+  }
+
   return (
     <div style={heroContainerStyles}>
       <div style={heroContentStyles}>
+        {isMobile && <div style={gradientTopStyles} />}
         {/* Fixed Navbar */}
         <Navbar />
 
@@ -73,6 +96,7 @@ const TripFinderHero = () => {
           <p style={logoTextStyles}>Tripfinder</p>
           <p style={subtitleStyles}>Based in Bogota, Colombia</p>
         </div>
+        {isMobile && <div style={gradientBottomStyles} />}
       </div>
     </div>
   )

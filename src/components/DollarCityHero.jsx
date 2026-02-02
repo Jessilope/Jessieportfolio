@@ -83,10 +83,33 @@ const DollarCityHero = () => {
     flexShrink: 0,
   }
 
+  const gradientTopStyles = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: '120px',
+    background: 'linear-gradient(to bottom, #f4fff8 0%, transparent 100%)',
+    pointerEvents: 'none',
+    zIndex: 1,
+  }
+
+  const gradientBottomStyles = {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '120px',
+    background: 'linear-gradient(to top, #f4fff8 0%, transparent 100%)',
+    pointerEvents: 'none',
+    zIndex: 1,
+  }
+
   return (
     <section style={sectionStyles}>
       <Navbar />
       <div style={workContainerStyles}>
+        {isMobile && <div style={gradientTopStyles} />}
         <div style={titleContainerStyles}>
           <p style={logoStyles}>DOLLAR CITY</p>
           <div style={contentStyles}>
@@ -94,6 +117,7 @@ const DollarCityHero = () => {
             <p style={subtitle2Styles}>Based in Bogota, Colombia</p>
           </div>
         </div>
+        {isMobile && <div style={gradientBottomStyles} />}
       </div>
     </section>
   )
