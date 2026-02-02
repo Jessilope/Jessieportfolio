@@ -17,7 +17,6 @@ import LexiVisual from '../components/LexiVisual'
 import LexiTypography from '../components/LexiTypography'
 import LexiComponents from '../components/LexiComponents'
 import LexiPrototype from '../components/LexiPrototype'
-import LexiMockup from '../components/LexiMockup'
 import ContentTable from '../components/ContentTable'
 import Footer from '../components/Footer'
 
@@ -196,9 +195,6 @@ const Lexi = () => {
           </p>
         </div>
       </div>
-
-      {/* Mockup Section */}
-      <LexiMockup />
 
       <Footer />
     </div>
