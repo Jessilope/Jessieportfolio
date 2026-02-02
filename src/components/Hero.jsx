@@ -197,7 +197,7 @@ const Hero = () => {
     position: 'absolute',
     left: isMobile ? '-30px' : '-88px',
     top: isMobile ? 'auto' : '329px',
-    bottom: isMobile ? '164px' : 'auto',
+    bottom: isMobile ? '220px' : 'auto',
     width: isMobile ? '144px' : '332px',
     height: isMobile ? '144px' : '332px',
   }
