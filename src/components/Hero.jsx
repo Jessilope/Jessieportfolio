@@ -90,7 +90,7 @@ const Hero = () => {
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'hidden',
-    paddingTop: isMobile ? '283px' : '0',
+    paddingTop: isMobile ? '220px' : '0',
     paddingBottom: isMobile ? '68px' : '0',
   }
 

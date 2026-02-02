@@ -27,6 +27,7 @@ const CtaIcon = ({ text = 'About', onClick }) => {
     color: isHovered ? colors.primary['700'] : colors.neutral['700'],
     fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
     margin: 0,
+    textAlign: 'left',
     transition: 'all 0.3s ease',
   }
 

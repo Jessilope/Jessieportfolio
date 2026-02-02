@@ -174,9 +174,9 @@ const AboutMeSection = () => {
 
         {/* Bottom section - links */}
         <div style={linksContainerStyles}>
-          <CtaIcon text={isMobile ? "About" : "Check my work"} onClick={handleCheckMyWork} />
+          <CtaIcon text="Check my work" onClick={handleCheckMyWork} />
           <CtaIcon text="Download my Resume" onClick={handleDownloadResume} />
-          <CtaIcon text={isMobile ? "Know about Me" : "Have some fun!"} onClick={handleHaveFun} />
+          <CtaIcon text="Have some fun!" onClick={handleHaveFun} />
         </div>
 
         {/* Social icons - Mobile only */}
