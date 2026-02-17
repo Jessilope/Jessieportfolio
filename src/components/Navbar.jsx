@@ -479,8 +479,7 @@ const SecondaryButton = ({ children, href }) => {
   const [isHovered, setIsHovered] = React.useState(false)
 
   const buttonStyles = {
-    // Size: big (from Figma)
-    width: '99px',
+    // Hug content - no fixed width
     height: '56px',
     display: 'flex',
     alignItems: 'center',
@@ -508,6 +507,7 @@ const SecondaryButton = ({ children, href }) => {
     textDecoration: 'none',
     transition: 'all 0.3s ease',
     flexShrink: 0,
+    whiteSpace: 'nowrap',
   }
 
   return (
@@ -529,8 +529,7 @@ const PrimaryButton = ({ children, href, onClick }) => {
   const [isHovered, setIsHovered] = React.useState(false)
 
   const buttonStyles = {
-    // Size: Big (from Figma - width: 135px, height: 56px)
-    minWidth: '135px',
+    // Hug content - no fixed width
     height: '56px',
     display: 'flex',
     alignItems: 'center',
@@ -558,6 +557,7 @@ const PrimaryButton = ({ children, href, onClick }) => {
     transition: 'all 0.3s ease',
     flexShrink: 0,
     textDecoration: 'none',
+    whiteSpace: 'nowrap',
   }
 
   // If href is provided, render as a link
