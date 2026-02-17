@@ -89,7 +89,7 @@ const TripFinderComponentSet = () => {
         <div style={textContainerStyles}>
           <p style={titleStyles}>Component set</p>
           <p style={descriptionStyles}>
-            A consistent component set was created to maintain visual harmony across the interface and support scalability. Core elements such as buttons, cards, navigation bars, and input fields were designed with flexibility in mind, allowing them to adapt seamlessly to both light and dark modes. Reusable components ensure alignment in spacing, typography, and interaction patterns, helping the interface feel cohesive and easy to navigate. This systemized approach allowed the UI to remain clean and predictable while supporting different screen contexts throughout the app.
+            A consistent component set was created to maintain visual harmony across the interface and support scalability. Core elements such as buttons, cards, navigation bars, and input fields were designed with flexibility in mind, allowing them to adapt seamlessly to both light and dark modes.
           </p>
         </div>
 

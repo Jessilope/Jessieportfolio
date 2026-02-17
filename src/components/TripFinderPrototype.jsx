@@ -168,9 +168,6 @@ const TripFinderPrototype = () => {
             <p style={paragraphStyles}>
               The prototype connects the key screens to demonstrate navigation, transitions, and visual consistency across the experience. At this stage, the focus was on how components behave together, how users move between sections, and how light and dark modes adapt across the interface.
             </p>
-            <p style={lastParagraphStyles}>
-              Rather than testing functionality, the prototype was used to validate the overall look, rhythm, and feel of the UI, ensuring a smooth and cohesive experience from screen to screen.
-            </p>
           </div>
         </div>
 
