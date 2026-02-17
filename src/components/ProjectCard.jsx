@@ -56,17 +56,14 @@ const ProjectCard = ({ title, tags, backgroundColor, name, route, index = 0 }) =
 
   return (
     <AnimatedOnScroll 
-      animation="slideUp" 
-      delay={index * 100} 
-      duration={700}
+      animation={isMobile ? "fadeIn" : "slideUp"}
+      delay={isMobile ? 0 : index * 100} 
+      duration={isMobile ? 400 : 700}
       threshold={0.15}
     >
       <div style={cardContainerStyles}>
-        <AnimatedOnScroll 
-          animation="scaleIn" 
-          delay={index * 100 + 100}
-          duration={600}
-        >
+        {isMobile ? (
+          // Mobile - sin animaciones complejas
           <div style={imageContainerStyles}>
             <ProjectImage 
               name={name}
@@ -76,30 +73,49 @@ const ProjectCard = ({ title, tags, backgroundColor, name, route, index = 0 }) =
               isMobile={isMobile}
             />
           </div>
-        </AnimatedOnScroll>
-        
-        <AnimatedOnScroll 
-          animation="fadeIn" 
-          delay={index * 100 + 200}
-          duration={600}
-        >
-          <div style={textContainerStyles}>
-            <h3 style={titleStyles}>{title}</h3>
-            
-            <div style={tagsContainerStyles}>
-              {tags.map((tag, tagIndex) => (
-                <AnimatedOnScroll
-                  key={tagIndex}
-                  animation="slideLeft"
-                  delay={index * 100 + 300 + (tagIndex * 50)}
-                  duration={500}
-                >
-                  <Tag>{tag}</Tag>
-                </AnimatedOnScroll>
-              ))}
+        ) : (
+          // Desktop - con animación
+          <AnimatedOnScroll 
+            animation="scaleIn" 
+            delay={index * 100 + 100}
+            duration={600}
+          >
+            <div style={imageContainerStyles}>
+              <ProjectImage 
+                name={name}
+                backgroundColor={backgroundColor}
+                route={route}
+                navigate={navigate}
+                isMobile={isMobile}
+              />
             </div>
-          </div>
-        </AnimatedOnScroll>
+          </AnimatedOnScroll>
+        )}
+        
+        {!isMobile && (
+          <AnimatedOnScroll 
+            animation="fadeIn" 
+            delay={index * 100 + 200}
+            duration={600}
+          >
+            <div style={textContainerStyles}>
+              <h3 style={titleStyles}>{title}</h3>
+              
+              <div style={tagsContainerStyles}>
+                {tags.map((tag, tagIndex) => (
+                  <AnimatedOnScroll
+                    key={tagIndex}
+                    animation="slideLeft"
+                    delay={index * 100 + 300 + (tagIndex * 50)}
+                    duration={500}
+                  >
+                    <Tag>{tag}</Tag>
+                  </AnimatedOnScroll>
+                ))}
+              </div>
+            </div>
+          </AnimatedOnScroll>
+        )}
       </div>
     </AnimatedOnScroll>
   )

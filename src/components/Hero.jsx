@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { colors, typography, spacing, borderRadius } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 import { documents } from '../assets'
+import AnimatedOnScroll from './AnimatedOnScroll'
 
 // Yellow Flower SVG Component (6 petals) - Figma node 293:2146
 const YellowFlower = ({ style }) => {
@@ -217,21 +218,30 @@ const Hero = () => {
       <div style={containerStyles}>
         {/* Text content */}
         <div style={textContainerStyles}>
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
-            <p style={headerStyles}>Hello, I'm a UX/UI designer.</p>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', alignItems: 'center' }}>
-            <p style={bodyTextStyles}>
-              Jessie is a junior product designer driven to create user-centered solutions. She combines creativity and strategic thinking to craft intuitive and impactful digital experiences.
-            </p>
-          </div>
+          <AnimatedOnScroll animation="fadeIn" duration={800}>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
+              <p style={headerStyles}>Hello, I'm a UX/UI designer.</p>
+            </div>
+          </AnimatedOnScroll>
+          
+          <AnimatedOnScroll animation="slideUp" delay={200} duration={700}>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', alignItems: 'center' }}>
+              <p style={bodyTextStyles}>
+                Jessie is a junior product designer driven to create user-centered solutions. She combines creativity and strategic thinking to craft intuitive and impactful digital experiences.
+              </p>
+            </div>
+          </AnimatedOnScroll>
         </div>
 
         {/* Yellow Flower - top right */}
-        <YellowFlower style={yellowFlowerStyles} />
+        <AnimatedOnScroll animation="scaleIn" delay={300} duration={900}>
+          <YellowFlower style={yellowFlowerStyles} />
+        </AnimatedOnScroll>
 
         {/* Purple Flower - bottom left */}
-        <PurpleFlower style={purpleFlowerStyles} />
+        <AnimatedOnScroll animation="scaleIn" delay={400} duration={900}>
+          <PurpleFlower style={purpleFlowerStyles} />
+        </AnimatedOnScroll>
       </div>
     </section>
   )
