@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { colors, typography, spacing, borderRadius } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 import { documents } from '../assets'
+import useScrollAnimation from '../hooks/useScrollAnimation'
 
 // Yellow Flower SVG Component (6 petals) - Figma node 293:2146
 const YellowFlower = ({ style }) => {
@@ -79,6 +80,12 @@ const Hero = () => {
   const { isMobile } = useResponsive()
   const [isContactHovered, setIsContactHovered] = useState(false)
   const [isCVHovered, setIsCVHovered] = useState(false)
+  
+  // Animation hooks
+  const headerAnimation = useScrollAnimation({ threshold: 0.2 })
+  const bodyAnimation = useScrollAnimation({ threshold: 0.2 })
+  const yellowFlowerAnimation = useScrollAnimation({ threshold: 0.2 })
+  const purpleFlowerAnimation = useScrollAnimation({ threshold: 0.2 })
 
   // Landing section - matches Figma mobile
   const sectionStyles = {
@@ -199,6 +206,9 @@ const Hero = () => {
     width: isMobile ? '140px' : '289px',
     height: isMobile ? '140px' : '308px',
     zIndex: 0,
+    opacity: yellowFlowerAnimation.isVisible ? 1 : 0,
+    transform: yellowFlowerAnimation.isVisible ? 'scale(1)' : 'scale(0.9)',
+    transition: 'opacity 900ms cubic-bezier(0.4, 0, 0.2, 1) 300ms, transform 900ms cubic-bezier(0.4, 0, 0.2, 1) 300ms',
   }
 
   // Purple Flower position - bottom left
@@ -210,6 +220,22 @@ const Hero = () => {
     width: isMobile ? '170px' : '332px',
     height: isMobile ? '170px' : '332px',
     zIndex: 0,
+    opacity: purpleFlowerAnimation.isVisible ? 1 : 0,
+    transform: purpleFlowerAnimation.isVisible ? 'scale(1)' : 'scale(0.9)',
+    transition: 'opacity 900ms cubic-bezier(0.4, 0, 0.2, 1) 400ms, transform 900ms cubic-bezier(0.4, 0, 0.2, 1) 400ms',
+  }
+
+  // Header animation styles
+  const headerAnimationStyles = {
+    opacity: headerAnimation.isVisible ? 1 : 0,
+    transition: 'opacity 800ms cubic-bezier(0.4, 0, 0.2, 1)',
+  }
+
+  // Body animation styles
+  const bodyAnimationStyles = {
+    opacity: bodyAnimation.isVisible ? 1 : 0,
+    transform: bodyAnimation.isVisible ? 'translateY(0)' : 'translateY(40px)',
+    transition: 'opacity 700ms cubic-bezier(0.4, 0, 0.2, 1) 200ms, transform 700ms cubic-bezier(0.4, 0, 0.2, 1) 200ms',
   }
 
   return (
@@ -217,10 +243,10 @@ const Hero = () => {
       <div style={containerStyles}>
         {/* Text content */}
         <div style={textContainerStyles}>
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
+          <div ref={headerAnimation.ref} style={{ ...headerAnimationStyles, display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
             <p style={headerStyles}>Hello, I'm a UX/UI designer.</p>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', alignItems: 'center' }}>
+          <div ref={bodyAnimation.ref} style={{ ...bodyAnimationStyles, display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', alignItems: 'center' }}>
             <p style={bodyTextStyles}>
               Jessie is a junior product designer driven to create user-centered solutions. She combines creativity and strategic thinking to craft intuitive and impactful digital experiences.
             </p>
@@ -228,10 +254,14 @@ const Hero = () => {
         </div>
 
         {/* Yellow Flower - top right */}
-        <YellowFlower style={yellowFlowerStyles} />
+        <div ref={yellowFlowerAnimation.ref}>
+          <YellowFlower style={yellowFlowerStyles} />
+        </div>
 
         {/* Purple Flower - bottom left */}
-        <PurpleFlower style={purpleFlowerStyles} />
+        <div ref={purpleFlowerAnimation.ref}>
+          <PurpleFlower style={purpleFlowerStyles} />
+        </div>
       </div>
     </section>
   )
