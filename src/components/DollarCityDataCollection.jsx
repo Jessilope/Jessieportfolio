@@ -15,12 +15,15 @@ const DollarCityDataCollection = () => {
   const sectionStyles = {
     backgroundColor: '#fffefa',
     width: '100%',
+    maxWidth: '100vw',
     paddingLeft: isMobile ? '24px' : '96px',
     paddingRight: isMobile ? '24px' : '218px',
     paddingTop: isMobile ? '64px' : '112px',
     paddingBottom: isMobile ? '32px' : '48px',
     display: 'flex',
     alignItems: 'center',
+    overflow: 'hidden',
+    boxSizing: 'border-box',
   }
 
   const contentContainerStyles = {

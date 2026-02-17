@@ -4,14 +4,17 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
   font-family: 'Kantumruy', 'Noto Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 #root {
   width: 100%;
   min-height: 100vh;
+  overflow-x: hidden;
 }
