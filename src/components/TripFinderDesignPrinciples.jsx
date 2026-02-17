@@ -67,7 +67,7 @@ const TripFinderDesignPrinciples = () => {
 
   const lineStyles = {
     width: '3px',
-    backgroundColor: '#8134E2',
+    backgroundColor: '#370161',
     flexShrink: 0,
     alignSelf: 'stretch',
     minHeight: isMobile ? '60px' : undefined,
