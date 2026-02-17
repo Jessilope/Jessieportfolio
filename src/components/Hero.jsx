@@ -211,28 +211,6 @@ const Hero = () => {
           <p style={titleStyles}>UX-UI designer in trainee</p>
         </div>
 
-        {/* Buttons - Only on mobile */}
-        <div style={buttonsContainerStyles}>
-          <a 
-            href="mailto:ale.mogollon06@gmail.com" 
-            style={primaryButtonStyles}
-            onMouseEnter={() => setIsContactHovered(true)}
-            onMouseLeave={() => setIsContactHovered(false)}
-          >
-            Contact me
-          </a>
-          <a 
-            href={documents.cv} 
-            target="_blank"
-            rel="noopener noreferrer"
-            style={secondaryButtonStyles}
-            onMouseEnter={() => setIsCVHovered(true)}
-            onMouseLeave={() => setIsCVHovered(false)}
-          >
-            Download my CV
-          </a>
-        </div>
-
         {/* Yellow Flower - top right (desktop) / top right smaller (mobile) */}
         <YellowFlower style={yellowFlowerStyles} />
 

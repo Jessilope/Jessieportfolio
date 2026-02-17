@@ -7,26 +7,42 @@ const Navbar = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const { isMobile } = useResponsive()
+  const [menuOpen, setMenuOpen] = React.useState(false)
 
-  // Navbar container - Especificaciones exactas de Figma
+  // Close menu on route change
+  React.useEffect(() => {
+    setMenuOpen(false)
+  }, [location.pathname])
+
+  // Prevent body scroll when menu is open
+  React.useEffect(() => {
+    if (menuOpen && isMobile) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen, isMobile])
+
+  // Navbar container
   const navbarStyles = {
     position: 'fixed',
-    top: spacing.xxl, // 64px
+    top: spacing.xxl,
     left: '50%',
     transform: 'translateX(-50%)',
     width: isMobile ? '380px' : '1152px',
     height: isMobile ? '56px' : '88px',
-    backgroundColor: colors.backgrounds.primary, // #FFFFFF
-    borderRadius: borderRadius.xxl, // 48px
+    backgroundColor: colors.backgrounds.primary,
+    borderRadius: borderRadius.xxl,
     boxShadow: shadows.card,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingTop: isMobile ? spacing.m : spacing.s, // 24px mobile : 16px desktop
-    paddingBottom: isMobile ? spacing.m : spacing.s, // 24px mobile : 16px desktop
-    paddingLeft: isMobile ? spacing.m : spacing.l, // 24px : 32px
-    paddingRight: isMobile ? spacing.m : spacing.l, // 24px : 32px
-    overflow: 'clip',
+    paddingTop: isMobile ? spacing.m : spacing.s,
+    paddingBottom: isMobile ? spacing.m : spacing.s,
+    paddingLeft: isMobile ? spacing.m : spacing.l,
+    paddingRight: isMobile ? spacing.m : spacing.l,
+    overflow: 'visible',
     flexShrink: 0,
     zIndex: 1000,
   }
@@ -44,22 +60,22 @@ const Navbar = () => {
     cursor: 'pointer',
   }
 
-  // Logo text - Barlow Condensed SemiBold
+  // Logo text
   const logoTextStyles = {
     fontFamily: "'Barlow Condensed', sans-serif",
     fontSize: '24px',
     letterSpacing: '6px',
     fontWeight: 600,
     lineHeight: '32px',
-    color: colors.semantic.textHeaders, // #580092
+    color: colors.semantic.textHeaders,
     margin: 0,
     fontStyle: 'normal',
   }
 
-  // Nav links wrapper (flex-1 on mobile to center links in remaining space)
+  // Nav links wrapper (desktop only)
   const navLinksWrapperStyles = {
-    display: isMobile ? 'flex' : 'contents',
-    flex: isMobile ? '1 0 0' : 'none',
+    display: isMobile ? 'none' : 'contents',
+    flex: 'none',
     alignItems: 'center',
     alignSelf: 'stretch',
     minHeight: '1px',
@@ -69,28 +85,196 @@ const Navbar = () => {
   // Nav links container
   const navLinksStyles = {
     display: 'flex',
-    gap: isMobile ? spacing.m : spacing.xl, // 24px : 40px
+    gap: spacing.xl,
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
     flexShrink: 0,
     cursor: 'pointer',
-    flex: isMobile ? '1 0 0' : 'none',
+    flex: 'none',
   }
 
-  // Button group
+  // Button group (desktop only)
   const buttonGroupStyles = {
     display: isMobile ? 'none' : 'flex',
-    gap: spacing.xs, // 8px
+    gap: spacing.xs,
     alignItems: 'center',
     position: 'relative',
     flexShrink: 0,
   }
 
+  // Burger icon button
+  const burgerButtonStyles = {
+    display: isMobile ? 'flex' : 'none',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '44px',
+    height: '44px',
+    background: 'white',
+    border: 'none',
+    borderRadius: '8px',
+    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+    cursor: 'pointer',
+    padding: '10px',
+    flexShrink: 0,
+    zIndex: 1002,
+  }
+
+  // Overlay when menu is open
+  const overlayStyles = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    zIndex: 999,
+    opacity: menuOpen ? 1 : 0,
+    pointerEvents: menuOpen ? 'auto' : 'none',
+    transition: 'opacity 0.3s ease',
+  }
+
+  // Mobile dropdown panel
+  const dropdownStyles = {
+    position: 'absolute',
+    top: '52px',
+    right: '0',
+    marginTop: '8px',
+    width: '287px',
+    backgroundColor: 'white',
+    borderRadius: '16px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0',
+    alignItems: 'center',
+    paddingLeft: '8px',
+    paddingRight: '8px',
+    paddingTop: '8px',
+    paddingBottom: '8px',
+    boxShadow: '0px 4px 16px rgba(0, 0, 0, 0.12)',
+    opacity: menuOpen ? 1 : 0,
+    transform: menuOpen ? 'translateY(0)' : 'translateY(-10px)',
+    pointerEvents: menuOpen ? 'auto' : 'none',
+    transition: 'opacity 0.25s ease, transform 0.25s ease',
+    zIndex: 1001,
+  }
+
+  // Dropdown links container
+  const dropdownLinksContainerStyles = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '24px',
+    alignItems: 'flex-start',
+    width: '100%',
+    cursor: 'pointer',
+  }
+
+  // Dropdown links content
+  const dropdownLinksContentStyles = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '4px',
+    alignItems: 'flex-start',
+    width: '100%',
+    paddingTop: '24px',
+    paddingBottom: '16px',
+    paddingLeft: '8px',
+    paddingRight: '8px',
+  }
+
+  // Dropdown link item
+  const dropdownLinkStyles = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    padding: '4px',
+    width: '100%',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    textAlign: 'left',
+  }
+
+  // Dropdown link text
+  const dropdownLinkTextStyles = {
+    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
+    fontWeight: 400,
+    fontSize: '16px',
+    lineHeight: 1.6,
+    letterSpacing: '0.8px',
+    color: '#1B0022',
+    margin: 0,
+    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+  }
+
+  // Dropdown buttons container
+  const dropdownButtonsStyles = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    paddingLeft: '8px',
+    paddingRight: '8px',
+    paddingTop: '16px',
+    paddingBottom: '16px',
+  }
+
+  // Dropdown primary button
+  const dropdownPrimaryBtnStyles = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '10px',
+    width: '100%',
+    paddingTop: '8px',
+    paddingBottom: '8px',
+    paddingLeft: '16px',
+    paddingRight: '16px',
+    borderRadius: '32px',
+    border: 'none',
+    backgroundColor: '#580092',
+    color: 'white',
+    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
+    fontSize: '16px',
+    fontWeight: 400,
+    lineHeight: '24px',
+    cursor: 'pointer',
+    textDecoration: 'none',
+    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+  }
+
+  // Dropdown secondary button
+  const dropdownSecondaryBtnStyles = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '10px',
+    width: '100%',
+    paddingTop: '8px',
+    paddingBottom: '8px',
+    paddingLeft: '16px',
+    paddingRight: '16px',
+    borderRadius: '32px',
+    border: '1px solid #580092',
+    backgroundColor: 'transparent',
+    color: '#580092',
+    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
+    fontSize: '16px',
+    fontWeight: 400,
+    lineHeight: '24px',
+    cursor: 'pointer',
+    textDecoration: 'none',
+    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+  }
+
   const isHomePage = location.pathname === '/'
 
   const handleWorkClick = () => {
+    setMenuOpen(false)
     if (isHomePage) {
       const projectsSection = document.getElementById('projects')
       if (projectsSection) {
@@ -108,6 +292,7 @@ const Navbar = () => {
   }
 
   const handleHomeClick = () => {
+    setMenuOpen(false)
     if (isHomePage) {
       const landingSection = document.getElementById('landing')
       if (landingSection) {
@@ -119,6 +304,7 @@ const Navbar = () => {
   }
 
   const handleAboutClick = () => {
+    setMenuOpen(false)
     navigate('/about')
   }
 
@@ -126,18 +312,62 @@ const Navbar = () => {
     navigate('/')
   }
 
+  if (isMobile) {
+    return (
+      <>
+        {/* Overlay */}
+        <div style={overlayStyles} onClick={() => setMenuOpen(false)} />
+
+        {/* Floating burger button */}
+        <div style={{
+          position: 'fixed',
+          top: spacing.xxl,
+          right: '24px',
+          zIndex: 1001,
+        }}>
+          <button style={burgerButtonStyles} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+            {menuOpen ? <CloseIcon /> : <BurgerIcon />}
+          </button>
+
+          {/* Mobile dropdown */}
+          <div style={dropdownStyles}>
+            <div style={dropdownLinksContainerStyles}>
+              <div style={dropdownLinksContentStyles}>
+                <button style={dropdownLinkStyles} onClick={handleWorkClick}>
+                  <p style={dropdownLinkTextStyles}>Work</p>
+                </button>
+                <button style={dropdownLinkStyles} onClick={handleHomeClick}>
+                  <p style={dropdownLinkTextStyles}>Home</p>
+                </button>
+                <button style={dropdownLinkStyles} onClick={handleAboutClick}>
+                  <p style={dropdownLinkTextStyles}>About</p>
+                </button>
+              </div>
+
+              <div style={dropdownButtonsStyles}>
+                <a href="mailto:ale.mogollon06@gmail.com" style={dropdownPrimaryBtnStyles}>
+                  Contact me
+                </a>
+                <a href={documents.cv} target="_blank" rel="noopener noreferrer" style={dropdownSecondaryBtnStyles}>
+                  Download CV
+                  <DownloadIcon />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    )
+  }
+
   return (
     <nav style={navbarStyles}>
-      {/* Logo - Flower on mobile, JESSIE text on desktop */}
+      {/* Logo */}
       <div style={logoContainerStyles} onClick={handleLogoClick}>
-        {isMobile ? (
-          <FlowerLogo size={44} />
-        ) : (
-          <p style={logoTextStyles}>JESSIE</p>
-        )}
+        <p style={logoTextStyles}>JESSIE</p>
       </div>
       
-      {/* Nav Links - Wrapped in flex-1 container on mobile */}
+      {/* Nav Links */}
       <div style={navLinksWrapperStyles}>
         <div style={navLinksStyles}>
           <NavbarLink text="Work" onClick={handleWorkClick} />
@@ -146,7 +376,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Buttons - Hidden on mobile */}
+      {/* Buttons */}
       <div style={buttonGroupStyles}>
         <SecondaryButton href={documents.cv}>
           CV
@@ -358,6 +588,31 @@ const PrimaryButton = ({ children, href, onClick }) => {
 
 // Import React for useState
 import React from 'react'
+
+// Burger icon (3 horizontal lines)
+const BurgerIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3 6H21" stroke="#370161" strokeWidth="2" strokeLinecap="round" />
+    <path d="M3 12H21" stroke="#370161" strokeWidth="2" strokeLinecap="round" />
+    <path d="M3 18H21" stroke="#370161" strokeWidth="2" strokeLinecap="round" />
+  </svg>
+)
+
+// Close icon (X)
+const CloseIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 6L18 18" stroke="#370161" strokeWidth="2" strokeLinecap="round" />
+    <path d="M18 6L6 18" stroke="#370161" strokeWidth="2" strokeLinecap="round" />
+  </svg>
+)
+
+// Download icon for CV button
+const DownloadIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 3V15M12 15L8 11M12 15L16 11" stroke="#580092" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M4 17V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V17" stroke="#580092" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+)
 
 // FlowerLogo Component for mobile navbar - Same as About page flower (variant 1), scalable
 const FlowerLogo = ({ size = 44 }) => {
