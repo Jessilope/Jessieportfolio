@@ -115,40 +115,36 @@ const Hero = () => {
   const textContainerStyles = {
     display: 'flex',
     flexDirection: 'column',
-    gap: '24px',
-    alignItems: 'flex-start',
+    gap: '12px',
+    alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
-    lineHeight: 0,
     width: '100%',
     position: 'relative',
     zIndex: 1,
   }
 
-  // Header - "Hello, I'm a UX/UI designer."
-  const headerStyles = {
-    fontFamily: `'${typography.presets.header2.fontFamily}', sans-serif`,
-    fontSize: isMobile ? '32px' : typography.presets.header.fontSize,
-    fontWeight: 400,
-    lineHeight: 1.3,
-    letterSpacing: '0',
-    color: colors.semantic.textHeaders,
+  // Subtitle - "Hi, this is Jessie ML"
+  const subtitleStyles = {
+    fontFamily: `'${typography.presets.subtitle.fontFamily}', ${typography.fontFamilies.fallback}`,
+    fontSize: isMobile ? '18px' : '24px',
+    fontWeight: isMobile ? 400 : 700,
+    lineHeight: isMobile ? 1.5 : 1.3,
+    letterSpacing: isMobile ? '0.9px' : '1.2px',
     margin: 0,
-    width: '100%',
+    fontVariationSettings: isMobile ? "'CTGR' 0, 'wdth' 100, 'wght' 400" : "'CTGR' 0, 'wdth' 100, 'wght' 700",
+    color: colors.semantic.textHeaders,
   }
 
-  // Body text - Longer description
-  const bodyTextStyles = {
-    fontFamily: `'${typography.presets.bodyLarge.fontFamily}', ${typography.fontFamilies.fallback}`,
-    fontSize: isMobile ? '18px' : '18px',
-    fontWeight: 400,
-    lineHeight: 1.5,
-    letterSpacing: '0.9px',
-    color: colors.neutral['400'],
+  // Title - "UX-UI designer in trainee"
+  const titleStyles = {
+    fontFamily: `'${typography.presets.header.fontFamily}', sans-serif`,
+    fontSize: isMobile ? '20px' : '48px',
+    fontWeight: isMobile ? 700 : 400,
+    lineHeight: isMobile ? 1.3 : 1.3,
+    letterSpacing: isMobile ? '1px' : '0',
     margin: 0,
-    width: '100%',
-    maxWidth: isMobile ? '100%' : '600px',
-    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+    color: colors.semantic.textHeaders,
   }
 
   // Buttons container for mobile
@@ -219,17 +215,11 @@ const Hero = () => {
         {/* Text content */}
         <div style={textContainerStyles}>
           <AnimatedOnScroll animation="fadeIn" duration={800}>
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
-              <p style={headerStyles}>Hello, I'm a UX/UI designer.</p>
-            </div>
+            <p style={subtitleStyles}>Hi, this is Jessie ML</p>
           </AnimatedOnScroll>
           
           <AnimatedOnScroll animation="slideUp" delay={200} duration={700}>
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', alignItems: 'center' }}>
-              <p style={bodyTextStyles}>
-                Jessie is a junior product designer driven to create user-centered solutions. She combines creativity and strategic thinking to craft intuitive and impactful digital experiences.
-              </p>
-            </div>
+            <p style={titleStyles}>UX-UI designer in trainee</p>
           </AnimatedOnScroll>
         </div>
 
