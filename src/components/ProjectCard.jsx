@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import Tag from './Tag'
 import ProjectImage from './ProjectImage'
 import useResponsive from '../hooks/useResponsive'
+import AnimatedOnScroll from './AnimatedOnScroll'
 
-const ProjectCard = ({ title, tags, backgroundColor, name, route }) => {
+const ProjectCard = ({ title, tags, backgroundColor, name, route, index = 0 }) => {
   const navigate = useNavigate()
   const { isMobile } = useResponsive()
 
@@ -54,27 +55,53 @@ const ProjectCard = ({ title, tags, backgroundColor, name, route }) => {
   }
 
   return (
-    <div style={cardContainerStyles}>
-      <div style={imageContainerStyles}>
-        <ProjectImage 
-          name={name}
-          backgroundColor={backgroundColor}
-          route={route}
-          navigate={navigate}
-          isMobile={isMobile}
-        />
-      </div>
-      
-      <div style={textContainerStyles}>
-        <h3 style={titleStyles}>{title}</h3>
+    <AnimatedOnScroll 
+      animation="slideUp" 
+      delay={index * 100} 
+      duration={700}
+      threshold={0.15}
+    >
+      <div style={cardContainerStyles}>
+        <AnimatedOnScroll 
+          animation="scaleIn" 
+          delay={index * 100 + 100}
+          duration={600}
+        >
+          <div style={imageContainerStyles}>
+            <ProjectImage 
+              name={name}
+              backgroundColor={backgroundColor}
+              route={route}
+              navigate={navigate}
+              isMobile={isMobile}
+            />
+          </div>
+        </AnimatedOnScroll>
         
-        <div style={tagsContainerStyles}>
-          {tags.map((tag, index) => (
-            <Tag key={index}>{tag}</Tag>
-          ))}
-        </div>
+        <AnimatedOnScroll 
+          animation="fadeIn" 
+          delay={index * 100 + 200}
+          duration={600}
+        >
+          <div style={textContainerStyles}>
+            <h3 style={titleStyles}>{title}</h3>
+            
+            <div style={tagsContainerStyles}>
+              {tags.map((tag, tagIndex) => (
+                <AnimatedOnScroll
+                  key={tagIndex}
+                  animation="slideLeft"
+                  delay={index * 100 + 300 + (tagIndex * 50)}
+                  duration={500}
+                >
+                  <Tag>{tag}</Tag>
+                </AnimatedOnScroll>
+              ))}
+            </div>
+          </div>
+        </AnimatedOnScroll>
       </div>
-    </div>
+    </AnimatedOnScroll>
   )
 }
 

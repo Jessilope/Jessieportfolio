@@ -1,5 +1,6 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
+import AnimatedOnScroll from './AnimatedOnScroll'
 
 const LexiOverview = () => {
   const { isMobile } = useResponsive()
@@ -65,35 +66,41 @@ const LexiOverview = () => {
   return (
     <section style={sectionStyles}>
       <div style={contentStyles}>
-        <p style={headerStyles}>
-          A Supportive AI-Driven Language Learning Experience
-        </p>
-        
-        <div style={paragraphContainerStyles}>
-          <p style={bodyTextStyles}>
-            The app LEXI provides a structured and supportive environment where users can practice without fear of judgment, making language learning feel approachable rather than intimidating. Through the integration of Lexi AI, users receive personalized guidance, adaptive conversations, and meaningful practice tailored to their level and interests. As a result, learners feel more secure, more motivated, and more willing to communicate — transforming language practice into a consistent, natural habit instead of a stressful experience.
+        <AnimatedOnScroll animation="fadeIn" duration={700}>
+          <p style={headerStyles}>
+            A Supportive AI-Driven Language Learning Experience
           </p>
-        </div>
-
-        <div style={paragraphContainerStyles}>
-          <div style={bodyTextStyles}>
-            <p style={{ margin: '0 0 0 0', lineHeight: 1.6 }}>The final outcome is a mobile app flow composed of six core screens:</p>
-            <ul style={listStyles}>
-              <li style={{ marginBottom: '0' }}>
-                <span style={{ lineHeight: 1.6 }}>Home</span>
-              </li>
-              <li style={{ marginBottom: '0' }}>
-                <span style={{ lineHeight: 1.6 }}>Messages by LEXI</span>
-              </li>
-              <li style={{ marginBottom: '0' }}>
-                <span style={{ lineHeight: 1.6 }}>Vocabulary</span>
-              </li>
-              <li style={{ marginBottom: '0' }}>
-                <span style={{ lineHeight: 1.6 }}>Profile track</span>
-              </li>
-            </ul>
+        </AnimatedOnScroll>
+        
+        <AnimatedOnScroll animation="slideUp" delay={100} duration={600}>
+          <div style={paragraphContainerStyles}>
+            <p style={bodyTextStyles}>
+              The app LEXI provides a structured and supportive environment where users can practice without fear of judgment, making language learning feel approachable rather than intimidating. Through the integration of Lexi AI, users receive personalized guidance, adaptive conversations, and meaningful practice tailored to their level and interests. As a result, learners feel more secure, more motivated, and more willing to communicate — transforming language practice into a consistent, natural habit instead of a stressful experience.
+            </p>
           </div>
-        </div>
+        </AnimatedOnScroll>
+
+        <AnimatedOnScroll animation="slideUp" delay={200} duration={600}>
+          <div style={paragraphContainerStyles}>
+            <div style={bodyTextStyles}>
+              <p style={{ margin: '0 0 0 0', lineHeight: 1.6 }}>The final outcome is a mobile app flow composed of six core screens:</p>
+              <ul style={listStyles}>
+                <li style={{ marginBottom: '0' }}>
+                  <span style={{ lineHeight: 1.6 }}>Home</span>
+                </li>
+                <li style={{ marginBottom: '0' }}>
+                  <span style={{ lineHeight: 1.6 }}>Messages by LEXI</span>
+                </li>
+                <li style={{ marginBottom: '0' }}>
+                  <span style={{ lineHeight: 1.6 }}>Vocabulary</span>
+                </li>
+                <li style={{ marginBottom: '0' }}>
+                  <span style={{ lineHeight: 1.6 }}>Profile track</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </AnimatedOnScroll>
       </div>
     </section>
   )
