@@ -163,8 +163,8 @@ const ProjectImage = ({ name, backgroundColor, route, navigate, isMobile = false
       return {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: isMobile ? 'center' : 'flex-start',
-        justifyContent: isMobile ? 'center' : 'flex-end',
+        alignItems: 'center',
+        justifyContent: 'center',
         position: 'relative',
         flexShrink: 0,
         width: isMobile ? '100%' : '191px',

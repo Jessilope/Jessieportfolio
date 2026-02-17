@@ -63,58 +63,27 @@ const DollarCityDataCollection = () => {
     width: '100%',
   }
 
-  const firstRowImagesStyles = {
+  const imagesRowStyles = {
     display: 'flex',
-    flexDirection: isMobile ? 'column' : 'row',
+    flexDirection: 'row',
     alignItems: 'flex-start',
-    justifyContent: 'space-between',
-    gap: isMobile ? '24px' : '0',
+    justifyContent: 'flex-start',
+    gap: isMobile ? '16px' : '24px',
     width: '100%',
+    overflowX: 'auto',
+    overflowY: 'visible',
+    paddingBottom: '16px',
+    scrollbarWidth: 'thin',
+    scrollbarColor: '#370161 #f0f0f0',
   }
 
-  const secondRowImagesStyles = {
-    display: 'flex',
-    flexDirection: isMobile ? 'column' : 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
-    gap: isMobile ? '24px' : '0',
-    width: '100%',
-    position: isMobile ? 'relative' : 'relative',
-    height: isMobile ? 'auto' : '181px',
-  }
-
-  const image2ContainerStyles = {
-    width: isMobile ? '100%' : '564px',
-    height: isMobile ? 'auto' : '168px',
-    borderRadius: '34px',
+  const imageContainerStyles = (width, height) => ({
+    width: isMobile ? '280px' : `${width}px`,
+    height: isMobile ? 'auto' : `${height}px`,
+    flexShrink: 0,
     overflow: 'hidden',
     position: 'relative',
-  }
-
-  const image3ContainerStyles = {
-    width: isMobile ? '100%' : '564px',
-    height: isMobile ? 'auto' : '188px',
-    overflow: 'hidden',
-    position: 'relative',
-  }
-
-  const image4ContainerStyles = {
-    width: isMobile ? '100%' : '564px',
-    height: isMobile ? 'auto' : '160px',
-    overflow: 'hidden',
-    position: isMobile ? 'relative' : 'absolute',
-    left: isMobile ? undefined : 0,
-    top: isMobile ? undefined : 0,
-  }
-
-  const image5ContainerStyles = {
-    width: isMobile ? '100%' : '564px',
-    height: isMobile ? 'auto' : '181px',
-    overflow: 'hidden',
-    position: isMobile ? 'relative' : 'absolute',
-    left: isMobile ? undefined : '588px',
-    top: isMobile ? undefined : 0,
-  }
+  })
 
   const imageStyles = {
     width: '100%',
@@ -140,34 +109,30 @@ const DollarCityDataCollection = () => {
           </div>
         </div>
 
-        {/* First Row - Images 1 and 2 */}
-        <div style={firstRowImagesStyles}>
-          <div style={image2ContainerStyles}>
+        {/* All Images in One Row with Horizontal Scroll */}
+        <div style={imagesRowStyles}>
+          <div style={imageContainerStyles(564, 168)}>
             <img 
               src={dataCollectionImages.image1} 
               alt="Google review 1"
               style={imageStyles}
             />
           </div>
-          <div style={image3ContainerStyles}>
+          <div style={imageContainerStyles(564, 188)}>
             <img 
               src={dataCollectionImages.image2} 
               alt="Google review 2"
               style={imageStyles}
             />
           </div>
-        </div>
-
-        {/* Second Row - Images 3 and 4 */}
-        <div style={secondRowImagesStyles}>
-          <div style={image4ContainerStyles}>
+          <div style={imageContainerStyles(564, 160)}>
             <img 
               src={dataCollectionImages.image3} 
               alt="Google review 3"
               style={imageStyles}
             />
           </div>
-          <div style={image5ContainerStyles}>
+          <div style={imageContainerStyles(564, 181)}>
             <img 
               src={dataCollectionImages.image4} 
               alt="Google review 4"

@@ -128,16 +128,7 @@ const TuCreditIdeate = () => {
           {/* Description */}
           <div style={descriptionStyles}>
             <p style={paragraphStyles}>
-              At this stage, the challenge was clear: people don't avoid mortgage loans because of lack of interest, but because the process feels complex, intimidating, and unclear.
-            </p>
-            <p style={paragraphStyles}>
-              Ideation focused on rethinking the experience as a guided journey rather than a traditional banking flow. Instead of pushing users directly into forms, the experience begins by helping them understand key concepts, requirements, and options in a simple and approachable way.
-            </p>
-            <p style={paragraphStyles}>
-              Education, transparency, and simulation became central ideas. Users should know what to expect, explore scenarios without pressure, and feel supported at every step. The goal was not to oversimplify the process, but to make it understandable and confidence-building.
-            </p>
-            <p style={paragraphStyles}>
-              These ideas shaped TuCredit as an experience designed to guide users forward with clarity and trust, setting the foundation for the following design stages.
+              At this stage, the challenge was clear: people don't avoid mortgage loans because of lack of interest, but because the process feels complex, intimidating, and unclear. Ideation focused on rethinking the experience as a guided journey.
             </p>
           </div>
         </div>

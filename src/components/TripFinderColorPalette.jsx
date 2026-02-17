@@ -162,7 +162,7 @@ const TripFinderColorPalette = () => {
         <div style={textContainerStyles}>
           <p style={titleStyles}>Color palette</p>
           <p style={descriptionStyles}>
-            The color palette was designed to communicate confidence, calm, and approachability. Soft yet expressive tones create a sense of reliability while keeping the interface fresh and modern. Balanced with neutral shades, the palette ensures clarity and readability, allowing content to stand out while maintaining a cohesive and adaptable experience across both light and dark modes.
+            The color palette was designed to communicate confidence, calm, and approachability. Soft yet expressive tones create a sense of reliability while keeping the interface fresh and modern.
           </p>
         </div>
 

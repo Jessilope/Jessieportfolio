@@ -1,14 +1,8 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 
-// Image paths
-const wireframeImages = {
-  wireframe1: '/assets/images/lexi/wireframe-1.png',
-  wireframe2: '/assets/images/lexi/wireframe-2.png',
-  wireframe3: '/assets/images/lexi/wireframe-3.png',
-  wireframe4: '/assets/images/lexi/wireframe-4.png',
-  wireframe5: '/assets/images/lexi/wireframe-5.png',
-}
+// Image path
+const wireframesImage = '/assets/images/lexi/wirframes.jpg'
 
 const LexiWireframes = () => {
   const { isMobile } = useResponsive()
@@ -65,40 +59,16 @@ const LexiWireframes = () => {
     width: '100%',
   }
 
-  const imagesRowStyles = {
-    display: 'flex',
-    flexDirection: isMobile ? 'column' : 'row',
-    gap: isMobile ? '24px' : spacing.xxl, // 48px
-    alignItems: isMobile ? 'center' : 'flex-start',
-    justifyContent: 'center',
-    width: '100%',
-  }
-
   const imageContainerStyles = {
-    width: isMobile ? '100%' : '311px',
-    maxWidth: isMobile ? '311px' : 'none',
-    height: isMobile ? 'auto' : '601px',
-    aspectRatio: isMobile ? '311 / 601' : undefined,
-    flexShrink: 0,
+    width: '100%',
     position: 'relative',
     overflow: 'hidden',
   }
 
-  const singleImageContainerStyles = {
-    width: isMobile ? '100%' : '311px',
-    maxWidth: isMobile ? '311px' : 'none',
-    height: isMobile ? 'auto' : '601px',
-    aspectRatio: isMobile ? '311 / 601' : undefined,
-    flexShrink: 0,
-    position: 'relative',
-  }
-
   const imageStyles = {
-    position: 'absolute',
-    inset: 0,
     width: '100%',
-    height: '100%',
-    objectFit: 'cover',
+    height: 'auto',
+    display: 'block',
   }
 
   return (
@@ -112,51 +82,13 @@ const LexiWireframes = () => {
           </p>
         </div>
 
-        {/* First row of images */}
-        <div style={imagesRowStyles}>
-          <div style={singleImageContainerStyles}>
-            <img 
-              src={wireframeImages.wireframe1}
-              alt="Wireframe 1"
-              style={imageStyles}
-            />
-          </div>
-          <div style={singleImageContainerStyles}>
-            <img 
-              src={wireframeImages.wireframe2}
-              alt="Wireframe 2"
-              style={imageStyles}
-            />
-          </div>
-        </div>
-
-        {/* Second row of images */}
-        <div style={imagesRowStyles}>
-          <div style={singleImageContainerStyles}>
-            <img 
-              src={wireframeImages.wireframe3}
-              alt="Wireframe 3"
-              style={imageStyles}
-            />
-          </div>
-          <div style={singleImageContainerStyles}>
-            <img 
-              src={wireframeImages.wireframe4}
-              alt="Wireframe 4"
-              style={imageStyles}
-            />
-          </div>
-        </div>
-
-        {/* Single centered image */}
-        <div style={{ display: 'flex', alignItems: isMobile ? 'center' : 'flex-start', justifyContent: 'center', width: '100%' }}>
-          <div style={singleImageContainerStyles}>
-            <img 
-              src={wireframeImages.wireframe5}
-              alt="Wireframe 5"
-              style={imageStyles}
-            />
-          </div>
+        {/* Single Wireframes Image */}
+        <div style={imageContainerStyles}>
+          <img 
+            src={wireframesImage}
+            alt="Wireframes"
+            style={imageStyles}
+          />
         </div>
       </div>
     </section>

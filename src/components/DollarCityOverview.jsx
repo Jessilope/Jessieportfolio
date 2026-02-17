@@ -106,14 +106,8 @@ const DollarCityOverview = () => {
                 <span style={{ lineHeight: 1.6 }}>Payment Method</span>
               </li>
             </ul>
-            <p style={{ margin: '0', lineHeight: 1.6 }}>&nbsp;</p>
           </div>
         </div>
-
-        {/* Closing Paragraph */}
-        <p style={textStyles}>
-          Each screen was intentionally designed to support quick decision-making and a smooth transition from browsing to checkout. So I designed and developed a responsive app for Dollar City that enhances its digital presence, addresses user insecurities regarding online purchases, and improves the overall shopping experience.
-        </p>
       </div>
     </section>
   )

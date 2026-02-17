@@ -136,58 +136,37 @@ const TuCreditEmpathize = () => {
         <div style={bodyContainerStyles}>
           {/* First paragraph */}
           <div style={paragraphContainerStyles}>
-            <p style={{...paragraphStyles, marginBottom: 0}}>
-              To better understand users interested in mortgage loans, I focused on how people perceive and approach long-term financial decisions. For many users, applying for a mortgage is one of the most significant commitments they will ever make, often accompanied by fear, confusion, and a lack of financial confidence.
-            </p>
             <p style={paragraphStyles}>
-              Research showed that potential borrowers want to feel informed and in control, but they frequently struggle with complex terminology, unclear requirements, and overwhelming information. Many users delay or abandon the process because they feel unprepared or unsure about their eligibility, even before starting an application.
+              To better understand users interested in mortgage loans, I focused on how people perceive and approach long-term financial decisions. For many users, applying for a mortgage is one of the most significant commitments they will ever make, often accompanied by fear, confusion, and a lack of financial confidence. Research showed that potential borrowers want to feel informed and in control, but they frequently struggle with complex terminology, unclear requirements, and overwhelming information. Many users delay or abandon the process because they feel unprepared or unsure about their eligibility, even before starting an application.
             </p>
           </div>
 
           {/* Second paragraph */}
           <div style={paragraphContainerStyles}>
-            <p style={{...paragraphStyles, marginBottom: 0}}>
-              As part of the research phase, I conducted a benchmark of existing mortgage loan experiences from banks and financial institutions. By reviewing digital flows, educational content, and credit information, I identified common patterns in how banks communicate loan requirements, credit types, and financial concepts.
-            </p>
             <p style={paragraphStyles}>
-              The benchmark revealed that many platforms rely on complex language, dense information, and fragmented flows, which can increase confusion and discourage users early in the process. These insights highlighted an opportunity to create a more educational, transparent, and user-centered mortgage experience.
+              Applying for a mortgage is one of the most significant financial commitments users make. Research revealed that the process is often associated confusion, and low financial confidence. Potential borrowers want to feel informed and in control, yet they struggle with complex terminology, unclear requirements, and information overload. Many abandon the process before applying due to uncertainty about eligibility. The analysis showed a recurring pattern: dense information, technical language, and fragmented flows that increase cognitive load and discourage early engagement.
             </p>
           </div>
 
-          {/* Third paragraph with list */}
+          {/* Benchmark section with list */}
           <div style={listContainerStyles}>
             <p style={listParagraphStyles}>
-              By placing myself in the user's position, I identified an emotional goal for the experience:<br />
-              to reduce uncertainty and help users feel confident enough to move forward.
-            </p>
-            <p style={listParagraphStyles}>
-              This empathy-driven approach highlighted the importance of:
+              I conducted a benchmark of digital mortgage experiences across banks and financial institutions, analyzing:
             </p>
             <ul style={listStyles}>
               <li style={listItemStyles}>
-                <span style={listItemSpanStyles}>
-                  Clear and accessible financial education
-                </span>
+                <span style={listItemSpanStyles}>Application flows</span>
               </li>
               <li style={listItemStyles}>
-                <span style={listItemSpanStyles}>
-                  Transparent explanations of credit types and requirements
-                </span>
+                <span style={listItemSpanStyles}>Educational content</span>
               </li>
               <li style={listItemStyles}>
-                <span style={listItemSpanStyles}>
-                  A guided, step-by-step experience
-                </span>
+                <span style={listItemSpanStyles}>Credit type explanations</span>
               </li>
               <li style={listItemStyles}>
-                <span style={listItemSpanStyles}>
-                  Language that feels supportive rather than intimidating
-                </span>
+                <span style={listItemSpanStyles}>Requirements communication</span>
               </li>
             </ul>
-            <p style={{...listParagraphStyles, lineHeight: '1.6'}}>
-              These insights shaped the foundation for designing a mortgage experience that prioritizes clarity, trust, and informed decision-making from the very first interaction.
-            </p>
           </div>
         </div>
 

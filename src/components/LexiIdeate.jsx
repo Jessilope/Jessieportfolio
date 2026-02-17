@@ -94,15 +94,12 @@ const LexiIdeate = () => {
             <p style={{ ...bodyTextStyles, marginBottom: '1em' }}>
               To ensure ideas stayed aligned with the user's goals, I focused on solutions that:
             </p>
-            <ul style={{ margin: '0 0 1em 0', padding: 0, listStyleType: 'disc', paddingLeft: '24px' }}>
+            <ul style={{ margin: '0', padding: 0, listStyleType: 'disc', paddingLeft: '24px' }}>
               <li style={listItemStyles}>Simulate natural conversations without social pressure</li>
               <li style={listItemStyles}>Provide real-time, supportive feedback</li>
               <li style={listItemStyles}>Adapt to the user's level, interests, and daily routine</li>
               <li style={listItemStyles}>Reinforce motivation through progress and consistency</li>
             </ul>
-            <p style={bodyTextStyles}>
-              Through brainstorming and feature exploration, I identified key opportunities for Lexi, including AI-guided chats based on skill level, personalized conversation topics, real-time correction, pronunciation support, and progress tracking. These ideas formed the foundation for the app's core experience and informed the features selected for the final design.
-            </p>
           </div>
         </div>
 

@@ -65,6 +65,13 @@ const DollarCityEmpathize = () => {
     margin: 0,
     paddingLeft: isMobile ? '20px' : '24px',
     listStyleType: 'disc',
+    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
+    fontSize: isMobile ? '14px' : '16px',
+    fontWeight: 400,
+    lineHeight: 1.6,
+    letterSpacing: '0',
+    color: colors.neutral['700'],
+    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
   }
 
   const listItemStyles = {
@@ -115,34 +122,24 @@ const DollarCityEmpathize = () => {
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
             <div style={textStyles}>
               <p style={{ margin: '0', lineHeight: 1.6 }}>
-                Many users associate Dollar City with speed and practicality, so any digital experience that feels slow or complex would create frustration. This insight shaped the emotional goal of the app:
-                <br />
-                make users feel in control, efficient, and reassured throughout the journey.
-              </p>
-              <p style={{ margin: '0', lineHeight: 1.6 }}>
-                By putting myself in the user's position, I prioritized:
+                Many users associate Dollar City with speed and practicality, so any digital experience that feels slow or complex would create frustration. This insight shaped the emotional goal of the app: make users feel in control, efficient, and reassured throughout the journey. So, I prioritized:
               </p>
             </div>
           </div>
 
           {/* Second list */}
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
-            <div style={textStyles}>
-              <ul style={listStyles}>
-                <li style={listItemStyles}>
-                  <span style={{ lineHeight: 1.6 }}>Familiar patterns instead of innovation for innovation's sake</span>
-                </li>
-                <li style={listItemStyles}>
-                  <span style={{ lineHeight: 1.6 }}>Clear visual hierarchy to reduce cognitive load</span>
-                </li>
-                <li style={listItemStyles}>
-                  <span style={{ lineHeight: 1.6 }}>Simple language and predictable interactions</span>
-                </li>
-              </ul>
-              <p style={{ margin: '0', lineHeight: 1.6 }}>
-                Empathy guided the design toward an experience that feels straightforward, honest, and easy, just like shopping at Dollar City in person.
-              </p>
-            </div>
+            <ul style={listStyles}>
+              <li style={listItemStyles}>
+                <span style={{ lineHeight: 1.6 }}>Familiar patterns instead of innovation for innovation's sake</span>
+              </li>
+              <li style={listItemStyles}>
+                <span style={{ lineHeight: 1.6 }}>Clear visual hierarchy to reduce cognitive load</span>
+              </li>
+              <li style={listItemStyles}>
+                <span style={{ lineHeight: 1.6 }}>Simple language and predictable interactions</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

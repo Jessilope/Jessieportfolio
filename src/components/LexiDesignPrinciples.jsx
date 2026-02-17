@@ -110,6 +110,7 @@ const LexiDesignPrinciples = () => {
               alignSelf: 'stretch',
               backgroundColor: '#580092',
               flexShrink: 0,
+              borderRadius: '1.5px',
             }} />
             <p style={highlightTextStyles}>
               <span style={highlightLabelStyles}>Modern</span>
@@ -126,6 +127,7 @@ const LexiDesignPrinciples = () => {
               alignSelf: 'stretch',
               backgroundColor: '#580092',
               flexShrink: 0,
+              borderRadius: '1.5px',
             }} />
             <p style={highlightTextStyles}>
               <span style={highlightLabelStyles}>Human & Supportive</span>
@@ -142,6 +144,7 @@ const LexiDesignPrinciples = () => {
               alignSelf: 'stretch',
               backgroundColor: '#580092',
               flexShrink: 0,
+              borderRadius: '1.5px',
             }} />
             <p style={highlightTextStyles}>
               <span style={highlightLabelStyles}>Guided & Clear</span>

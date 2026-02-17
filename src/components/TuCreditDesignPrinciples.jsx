@@ -133,10 +133,7 @@ const TuCreditDesignPrinciples = () => {
           <p style={titleStyles}>Design Principles</p>
           <div style={descriptionStyles}>
             <p style={paragraphStyles}>
-              Insights from the benchmark and user research revealed a consistent pattern: users need education before action, guidance before commitment, and reassurance throughout the process. Complex terminology, long forms, and unclear steps created friction and hesitation.
-            </p>
-            <p style={paragraphStyles}>
-              To address these challenges, I translated research findings into a set of design principles that would act as decision-making anchors throughout the project. These principles ensured that every screen, interaction, and piece of content supported user confidence and reduced cognitive load.
+              To address these challenges, I translated research findings into a set of design principles that would act as decision-making anchors throughout the project.
             </p>
           </div>
         </div>

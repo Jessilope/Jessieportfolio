@@ -95,7 +95,7 @@ const LexiDefine = () => {
         </div>
         
         <p style={bodyTextStyles}>
-          Based on the insights gathered during the empathy phase, I defined a clear point of view to focus the problem on a specific user and need. This helped translate research findings into an actionable design challenge aligned with both functional and emotional goals.
+          Based on the insights gathered during the empathy phase, I defined a clear point of view to focus the problem on a specific user and need.
         </p>
 
         <div style={highlightContainerStyles}>
@@ -108,6 +108,7 @@ const LexiDefine = () => {
               backgroundColor: '#580092',
               flexShrink: 0,
               alignSelf: 'stretch',
+              borderRadius: '1.5px',
             }} />
             <p style={highlightTextStyles}>
               <span style={highlightLabelStyles}>Point of View</span>
@@ -125,6 +126,7 @@ const LexiDefine = () => {
               backgroundColor: '#580092',
               flexShrink: 0,
               alignSelf: 'stretch',
+              borderRadius: '1.5px',
             }} />
             <p style={highlightTextStyles}>
               <span style={highlightLabelStyles}>How Might We</span>
@@ -133,10 +135,6 @@ const LexiDefine = () => {
             </p>
           </div>
         </div>
-
-        <p style={bodyTextStyles}>
-          This problem statement guided all design decisions, ensuring the app addresses real emotional and functional barriers faced by learners, while staying aligned with Lexi's goal of providing a supportive, intentional, and confidence-building learning environment.
-        </p>
       </div>
     </section>
   )

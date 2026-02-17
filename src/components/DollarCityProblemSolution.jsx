@@ -64,6 +64,7 @@ const DollarCityProblemSolution = () => {
     flexShrink: 0,
     alignSelf: 'stretch',
     minHeight: isMobile ? '80px' : undefined,
+    borderRadius: '1.5px',
   }
 
   const highlightTextStyles = {
@@ -88,11 +89,6 @@ const DollarCityProblemSolution = () => {
               After reviewing Dollar City's current digital presence, analyzing user reviews, and synthesizing survey insights, clear patterns began to emerge. Users value the brand for its accessibility and pricing, but recurring concerns around customer service, trust, and online purchasing highlighted a gap between user expectations and the existing digital experience.
             </p>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
-            <p style={textStyles}>
-              By mapping these insights and emotional pain points, it became evident that the absence of an official e-commerce solution was a key friction point. This realization led to the definition of the core problem and the opportunity to propose a focused digital solution.
-            </p>
-          </div>
         </div>
 
         {/* Highlights Container */}
@@ -103,7 +99,7 @@ const DollarCityProblemSolution = () => {
             <p style={highlightTextStyles}>
               <span style={{ color: '#370161', lineHeight: 1.6 }}>Problem</span>
               <br />
-              Although Dollar city has a digital presence to showcase their offerings and locations, so far online shopping is not available on their official platform. So, considering online purchases, users face insecurities about the quality of service and the overall experience.
+              Although Dollar city has a digital presence to showcase their offerings and locations, so far online shopping is not available on their official platform.
             </p>
           </div>
 

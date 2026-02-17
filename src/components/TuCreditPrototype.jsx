@@ -184,9 +184,6 @@ const TuCreditPrototype = () => {
             <p style={paragraphStyles}>
               The prototype brings the experience together by connecting screens into a clear and guided flow. At this stage, the focus was on demonstrating how users move from understanding mortgage concepts to exploring requirements and evaluating loan options.
             </p>
-            <p style={lastParagraphStyles}>
-              Interactions were designed to feel smooth and predictable, helping users navigate educational content, access key information, and explore simulations without friction. The prototype reflects the intended pacing of the experience, reinforcing clarity and confidence at every step.
-            </p>
           </div>
         </div>
 

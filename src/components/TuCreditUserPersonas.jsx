@@ -103,10 +103,7 @@ const TuCreditUserPersonas = () => {
         {/* Description */}
         <div style={descriptionContainerStyles}>
           <p style={paragraphStyles}>
-            Based on the insights gathered during research and benchmarking, I created user personas to represent the main user types interacting with the mortgage experience. These personas helped keep real user needs, motivations, and concerns at the center of the design process.
-          </p>
-          <p style={paragraphStyles}>
-            By referring back to these personas throughout the project, I was able to make more intentional decisions around content, flow, and interaction, ensuring the experience supports different levels of financial knowledge and readiness.
+            I created user personas to represent the main user types interacting with the mortgage experience. These personas helped keep real user needs, motivations, and concerns at the center of the design process.
           </p>
         </div>
 

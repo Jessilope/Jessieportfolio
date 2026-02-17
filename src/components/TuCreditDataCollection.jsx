@@ -126,64 +126,6 @@ const TuCreditDataCollection = () => {
                 </span>
               </li>
             </ul>
-            <p style={paragraphStyles}>&nbsp;</p>
-
-            <p style={paragraphStyles}>
-              In terms of application structure, the process is typically divided into progressive steps:
-            </p>
-            <ul style={listStyles}>
-              <li style={listItemStyles}>
-                <span style={listItemSpanStyles}>
-                  Step 1: Personal information (name, email, phone number)
-                </span>
-              </li>
-              <li style={listItemStyles}>
-                <span style={listItemSpanStyles}>
-                  Step 2: Residency and employment details (location, occupation, time in current job)
-                </span>
-              </li>
-              <li style={listItemStyles}>
-                <span style={listItemSpanStyles}>
-                  Step 3: Financial information (monthly income, additional income, total assets)
-                </span>
-              </li>
-            </ul>
-            <p style={paragraphStyles}>&nbsp;</p>
-
-            <p style={paragraphStyles}>
-              Nearly all banks also provide a loan simulator as a key decision-support tool. Simulation options usually allow users to calculate affordability either by property value or monthly income, considering factors such as:
-            </p>
-            <ul style={listStyles}>
-              <li style={listItemStyles}>
-                <span style={listItemSpanStyles}>
-                  Occupation and income
-                </span>
-              </li>
-              <li style={listItemStyles}>
-                <span style={listItemSpanStyles}>
-                  Number of applicants
-                </span>
-              </li>
-              <li style={listItemStyles}>
-                <span style={listItemSpanStyles}>
-                  Property type (new or used)
-                </span>
-              </li>
-              <li style={listItemStyles}>
-                <span style={listItemSpanStyles}>
-                  Project status (selected or not)
-                </span>
-              </li>
-              <li style={listItemStyles}>
-                <span style={listItemSpanStyles}>
-                  Credit type (VIS, VIP, or non-VIS)
-                </span>
-              </li>
-            </ul>
-            
-            <p style={{...paragraphStyles, lineHeight: '1.6'}}>
-              These findings highlighted the importance of structured guidance, financial education, and simulation tools in helping users understand their options and feel prepared to move forward with a mortgage application.
-            </p>
           </div>
         </div>
       </div>

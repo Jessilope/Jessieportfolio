@@ -22,7 +22,7 @@ const TuCreditOverview = () => {
     flexDirection: 'column',
     gap: isMobile ? '32px' : '48px',
     alignItems: 'flex-start',
-    width: isMobile ? '100%' : '1126px',
+    width: '100%',
     flexShrink: 0,
   }
 
@@ -100,46 +100,34 @@ const TuCreditOverview = () => {
           Mortgage Loans — Designing a Clear and Trust-Driven Credit Experience
         </p>
 
-        {/* First paragraph */}
+        {/* Combined paragraph */}
         <div style={paragraphContainerStyles}>
           <p style={paragraphStyles}>
-            This project explores the design of a digital experience for mortgage loans, focused on helping users understand, evaluate, and start a home financing process with confidence. Mortgage products are complex, high-commitment decisions, often associated with confusion, mistrust, and information overload. The goal of this project was to simplify that complexity through clarity, transparency, and user-centered design. The experience was designed to guide users step by step, helping them understand their options, assess affordability, and feel supported throughout the process—without pressure or unnecessary friction.
+            This project focuses on designing a digital mortgage experience that simplifies a complex and high-commitment financial decision. Mortgage loans often generate confusion and mistrust due to technical language and information overload. The goal was to reduce that friction by prioritizing clarity, transparency, and structured guidance. The experience breaks down complex information into clear, manageable steps helping users understand their options, assess affordability, and move forward with confidence. The final solution transforms a traditionally intimidating process into a guided, transparent journey that supports informed decision-making and builds trust from the first interaction.
           </p>
         </div>
 
-        {/* Second paragraph */}
-        <div style={{...paragraphContainerStyles, lineHeight: '1.6'}}>
-          <p style={paragraphStyles}>
-            The final outcome is a mortgage loan experience that prioritizes clarity, trust, and user confidence. By breaking down complex financial information into manageable steps, the design helps users understand their options, assess affordability, and move forward in the process with greater certainty. The solution transforms a traditionally intimidating process into a guided and transparent journey, supporting informed decision-making and building trust from the first interaction.
-          </p>
-          <p style={paragraphStyles}>&nbsp;</p>
-        </div>
-
-        {/* Screens Designed section */}
+        {/* Key Features section */}
         <div style={listContainerStyles}>
-          <p style={listTitleStyles}>Screens Designed</p>
-          <p style={listTitleStyles}>
-            The mortgage loan experience was structured across the following key screens:
-          </p>
           <ul style={listStyles}>
             <li style={listItemStyles}>
               <span style={listItemSpanStyles}>
-                Financial Education – Provides clear and accessible information to help users understand how mortgage loans work, including key concepts and terminology.
+                Financial Education: Clear explanations of mortgage fundamentals and terminology.
               </span>
             </li>
             <li style={listItemStyles}>
               <span style={listItemSpanStyles}>
-                Credit Requirements – Outlines the necessary documents, conditions, and eligibility criteria needed to apply for a mortgage loan.
+                Credit Requirements: Eligibility criteria and required documentation.
               </span>
             </li>
             <li style={listItemStyles}>
               <span style={listItemSpanStyles}>
-                Type of Credit Information – Explains the different mortgage options available, helping users compare and understand which credit type fits their needs.
+                Mortgage Options: Comparison of available credit types.
               </span>
             </li>
             <li style={listItemStyles}>
               <span style={listItemSpanStyles}>
-                Educational Information – Reinforces financial literacy through supportive content that builds confidence and prepares users to make informed decisions.
+                Supportive Education: Content designed to reinforce financial confidence.
               </span>
             </li>
           </ul>

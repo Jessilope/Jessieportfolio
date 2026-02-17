@@ -21,7 +21,7 @@ const DollarCityUserJourneyMap = () => {
   const contentStyles = {
     display: 'flex',
     flexDirection: 'column',
-    gap: isMobile ? '32px' : spacing.xxl, // 48px
+    gap: isMobile ? '32px' : spacing.xxl, // 64px
     alignItems: 'flex-start',
     width: isMobile ? '100%' : '1033px',
   }
@@ -71,18 +71,11 @@ const DollarCityUserJourneyMap = () => {
           <p style={titleStyles}>User Journey Map</p>
         </div>
 
-        {/* Text Block - All paragraphs grouped */}
+        {/* Text Block */}
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
-          <div style={textStyles}>
-            <p style={{ margin: '0', lineHeight: 1.6 }}>
-              After analyzing user reviews and survey results, I needed a way to visualize the full Dollar City shopping experience and understand where frustrations actually occur. I created a User Journey Map to map each step of the user's process, from discovering Dollar City to completing a purchase, and aligned it with the user's emotional state at every stage.
-            </p>
-            <p style={{ margin: '0', lineHeight: 1.6 }}>&nbsp;</p>
-            <p style={{ margin: '0', lineHeight: 1.6 }}>
-              The map revealed key pain points, such as difficulty finding information, poor customer service, and friction during checkout. Emotional drops highlighted moments where trust and efficiency break down.
-              This exercise helped transform scattered feedback into clear insights, providing a strong empathy foundation and guiding the definition of design opportunities for the digital experience.
-            </p>
-          </div>
+          <p style={textStyles}>
+            After analyzing user reviews and survey results, I needed a way to visualize the full Dollar City shopping experience and understand where frustrations actually occur. I created a User Journey Map to map each step of the user's process, from discovering Dollar City to completing a purchase, and aligned it with the user's emotional state at every stage.
+          </p>
         </div>
 
         {/* User Journey Map Image */}

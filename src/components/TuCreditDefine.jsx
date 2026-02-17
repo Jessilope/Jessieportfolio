@@ -126,77 +126,20 @@ const TuCreditDefine = () => {
             Based on the research and benchmark analysis, it became clear that applying for a mortgage loan is often overwhelming for users. While banks provide extensive information, it is frequently presented using complex language, long forms, and fragmented flows that make it difficult for users to understand where to start and what is required of them.
           </p>
           <p style={paragraphStyles}>&nbsp;</p>
-          <p style={paragraphStyles}>Point of View (POV)</p>
+          <p style={paragraphStyles}>Users need</p>
+          <p style={paragraphStyles}>
+            A mortgage experience that helps them learn, prepare, and evaluate their options before committing to an application.
+          </p>
+          <p style={paragraphStyles}>&nbsp;</p>
+          <p style={{...paragraphStyles, ...highlightTextStyles}}>Point of View (POV)</p>
           <p style={paragraphStyles}>
             A first-time home buyer needs a clear and educational mortgage experience because they want to understand loan options, requirements, and financial implications before making a high-impact decision.
           </p>
-          <p style={paragraphStyles}>How Might We (HMW)</p>
+          <p style={paragraphStyles}>&nbsp;</p>
+          <p style={{...paragraphStyles, ...highlightTextStyles}}>How Might We (HMW)</p>
           <p style={paragraphStyles}>
             How might we design a mortgage loan experience that educates users, simplifies complex financial information, and helps them evaluate their eligibility and options with confidence?
           </p>
-          <p style={paragraphStyles}>
-            This problem definition guided the design toward an experience focused on education, transparency, and step-by-step guidance, ensuring users feel supported rather than pressured throughout the journey.
-          </p>
-        </div>
-
-        {/* First content block with line - Users need */}
-        <div style={contentBlockStyles}>
-          <div style={{...lineContainerStyles, height: '83px'}}>
-            <div style={lineWrapperStyles}>
-              <div style={{width: '83px', height: '0', position: 'relative'}}>
-                <div style={{position: 'absolute', inset: '-3px 0 0 0'}}>
-                  <img src={imgLine7} alt="" style={{display: 'block', maxWidth: 'none', width: '100%', height: '100%'}} />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style={textContainerStyles}>
-            <p style={paragraphStyles}>
-              <span style={{...spanStyles, ...highlightTextStyles}}>Users need</span>
-              <span style={spanStyles}> </span>
-            </p>
-            <p style={{...paragraphStyles, lineHeight: '1.6'}}>
-              a mortgage experience that helps them learn, prepare, and evaluate their options before committing to an application. Many are not ready to apply immediately; instead, they seek clarity around credit types, requirements, and affordability in order to feel confident and informed.
-            </p>
-          </div>
-        </div>
-
-        {/* Second content block - POV */}
-        <div style={contentBlockStyles}>
-          <div style={{...lineContainerStyles, height: '83px'}}>
-            <div style={lineWrapperStyles}>
-              <div style={{width: '83px', height: '0', position: 'relative'}}>
-                <div style={{position: 'absolute', inset: '-3px 0 0 0'}}>
-                  <img src={imgLine7} alt="" style={{display: 'block', maxWidth: 'none', width: '100%', height: '100%'}} />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style={{...textContainerStyles, lineHeight: '1.6'}}>
-            <p style={{...paragraphStyles, ...highlightTextStyles}}>Point of View (POV)</p>
-            <p style={paragraphStyles}>
-              A first-time home buyer needs a clear and educational mortgage experience because they want to understand loan options, requirements, and financial implications before making a high-impact decision.
-            </p>
-          </div>
-        </div>
-
-        {/* Third content block - HMW */}
-        <div style={contentBlockStyles}>
-          <div style={{...lineContainerStyles, height: '148px'}}>
-            <div style={lineWrapperStyles}>
-              <div style={{width: '148px', height: '0', position: 'relative'}}>
-                <div style={{position: 'absolute', inset: '-3px 0 0 0'}}>
-                  <img src={imgLine8} alt="" style={{display: 'block', maxWidth: 'none', width: '100%', height: '100%'}} />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style={{...textContainerStyles, lineHeight: '1.6'}}>
-            <p style={{...paragraphStyles, ...highlightTextStyles}}>How Might We (HMW)</p>
-            <p style={paragraphStyles}>
-              How might we design a mortgage loan experience that educates users, simplifies complex financial information, and helps them evaluate their eligibility and options with confidence? This problem definition guided the design toward an experience focused on education, transparency, and step-by-step guidance, ensuring users feel supported rather than pressured throughout the journey.
-            </p>
-          </div>
         </div>
       </div>
     </div>

@@ -67,11 +67,17 @@ const LexiDataCollection = () => {
 
   const imagesRowStyles = {
     display: 'flex',
-    flexDirection: isMobile ? 'column' : 'row',
+    flexDirection: 'row',
     gap: isMobile ? '16px' : '10px',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     width: '100%',
+    maxWidth: isMobile ? '100%' : '1005px',
+    overflowX: 'auto',
+    overflowY: 'visible',
+    paddingBottom: '16px',
+    scrollbarWidth: 'thin',
+    scrollbarColor: '#370161 #f0f0f0',
   }
 
   const imageContainerStyles = (width, height) => ({
@@ -108,7 +114,7 @@ const LexiDataCollection = () => {
           </div>
         </div>
 
-        {/* First Row of Images (3 images) */}
+        {/* All Images in One Row with Horizontal Scroll */}
         <div style={imagesRowStyles}>
           <div style={imageContainerStyles(299, 379)}>
             <img 
@@ -131,10 +137,6 @@ const LexiDataCollection = () => {
               style={imageStyles}
             />
           </div>
-        </div>
-
-        {/* Second Row of Images (2 images) */}
-        <div style={imagesRowStyles}>
           <div style={imageContainerStyles(296, 572.225)}>
             <img 
               src={dataCollectionImages.review4}

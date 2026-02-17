@@ -72,6 +72,7 @@ const DollarCityDefine = () => {
     flexShrink: 0,
     alignSelf: 'stretch',
     minHeight: isMobile ? '60px' : undefined,
+    borderRadius: '1.5px',
   }
 
   const highlightTextStyles = {
@@ -136,20 +137,14 @@ const DollarCityDefine = () => {
 
         {/* Final Problem Statement */}
         <div style={{ ...textStyles, display: 'flex', flexDirection: 'column' }}>
-          <p style={{ margin: '0', lineHeight: 1.6 }}>
-            <span style={{ lineHeight: 1.6 }}>These findings helped define the core design challenge:</span>
-            <span style={{ 
-              fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
-              fontWeight: 700,
-              color: '#370161',
-              lineHeight: 1.6,
-              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400"
-            }}>
-              How might I design a Dollar City mobile experience that feels fast, clear, and trustworthy, reducing friction and increasing user confidence in online purchases?
-            </span>
-          </p>
-          <p style={{ margin: '0', lineHeight: 1.6 }}>
-            This problem statement guided all design decisions, ensuring the app addresses real user concerns while staying aligned with Dollar City's value-driven and practical brand identity.
+          <p style={{ 
+            margin: '0', 
+            lineHeight: 1.6,
+            fontWeight: 700,
+            color: '#370161',
+            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700"
+          }}>
+            How might I design a Dollar City mobile experience that feels fast, clear, and trustworthy, reducing friction and increasing user confidence in online purchases?
           </p>
         </div>
       </div>

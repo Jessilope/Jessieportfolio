@@ -116,13 +116,7 @@ const TuCreditColorPalette = () => {
           <p style={titleStyles}>Color palette</p>
           <div style={descriptionStyles}>
             <p style={paragraphStyles}>
-              The color palette was selected based on the emotional values the product needed to communicate in a financial context. The goal was to create an interface that feels trustworthy, calm, and professional, helping users feel secure while exploring mortgage options.
-            </p>
-            <p style={paragraphStyles}>
-              The primary color conveys reliability and confidence, reinforcing the idea of trust throughout the experience. Supporting tones add a sense of balance and reassurance, guiding users without overwhelming them. Softer shades were used to structure content and create visual hierarchy, while neutral colors ensure clarity, readability, and a clean overall aesthetic.
-            </p>
-            <p style={paragraphStyles}>
-              Together, the palette supports a focused and reassuring experience, allowing users to concentrate on understanding information and making informed decisions with confidence.
+              The color palette was selected based on the emotional values the product needed to communicate in a financial context. The primary color conveys reliability and confidence, reinforcing the idea of trust throughout the experience.
             </p>
           </div>
         </div>

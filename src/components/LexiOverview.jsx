@@ -71,7 +71,7 @@ const LexiOverview = () => {
         
         <div style={paragraphContainerStyles}>
           <p style={bodyTextStyles}>
-            Lexi became a safe, confidence-driven language learning experience designed specifically for beginners. The app provides a structured and supportive environment where users can practice without fear of judgment, making language learning feel approachable rather than intimidating. Through the integration of Lexi AI, users receive personalized guidance, adaptive conversations, and meaningful practice tailored to their level and interests. As a result, learners feel more secure, more motivated, and more willing to communicate — transforming language practice into a consistent, natural habit instead of a stressful experience.
+            The app LEXI provides a structured and supportive environment where users can practice without fear of judgment, making language learning feel approachable rather than intimidating. Through the integration of Lexi AI, users receive personalized guidance, adaptive conversations, and meaningful practice tailored to their level and interests. As a result, learners feel more secure, more motivated, and more willing to communicate — transforming language practice into a consistent, natural habit instead of a stressful experience.
           </p>
         </div>
 
@@ -92,13 +92,8 @@ const LexiOverview = () => {
                 <span style={{ lineHeight: 1.6 }}>Profile track</span>
               </li>
             </ul>
-            <p style={{ margin: '0', lineHeight: 1.6 }}>&nbsp;</p>
           </div>
         </div>
-
-        <p style={bodyTextStyles}>
-          ach screen was intentionally designed to support confidence, clarity, and continuous practice throughout the learning journey. I designed a responsive app with four core screens — Home, Messages by Lexi, Vocabulary, and Profile Track — creating a smooth flow from guided practice to progress tracking. The result is an intuitive experience that reduces learner insecurity, encourages consistent interaction, and supports beginners as they build confidence in a new language.
-        </p>
       </div>
     </section>
   )

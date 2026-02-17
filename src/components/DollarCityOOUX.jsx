@@ -119,7 +119,7 @@ const DollarCityOOUX = () => {
         <div style={textContentStyles}>
           <p style={titleStyles}>OOUX</p>
           <p style={descriptionStyles}>
-            To structure the ideas and reduce complexity, I defined the information architecture using an Object-Oriented UX (OOUX) approach. By identifying core objects such as products, categories, cart, and payment methods, I organized the experience around elements users already understand. This method helped create a clear hierarchy, consistent navigation, and predictable interactions, ensuring users could move through the app quickly and with confidence.
+            I defined the information architecture using an Object-Oriented UX (OOUX) approach. By identifying core objects such as products, categories, cart, and payment methods, I organized the experience around elements users already understand.
           </p>
         </div>
 

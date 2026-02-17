@@ -96,12 +96,6 @@ const TuCreditComponentSet = () => {
             <p style={paragraphStyles}>
               The component system was designed to ensure consistency, clarity, and scalability across the TuCredit experience. Each component follows familiar patterns, helping users feel comfortable and oriented as they move through the flow.
             </p>
-            <p style={paragraphStyles}>
-              Key components such as buttons, input fields, cards, and informational blocks were kept simple and structured, reducing visual noise and cognitive load. Clear states and spacing help guide attention, while reusable components support a cohesive experience across educational content, requirements, and simulation screens.
-            </p>
-            <p style={paragraphStyles}>
-              By defining a consistent component system, the interface remains predictable and easy to navigate, reinforcing trust and supporting users through a complex financial process in a clear and organized way
-            </p>
           </div>
         </div>
 

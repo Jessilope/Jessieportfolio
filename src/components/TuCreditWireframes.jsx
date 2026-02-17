@@ -95,7 +95,7 @@ const TuCreditWireframes = () => {
         <div style={textContainerStyles}>
           <p style={titleStyles}>Wireframes</p>
           <p style={descriptionStyles}>
-            I started by mapping out a low-fidelity user flow to visualize the main steps of the mortgage process before designing high-fidelity screens. With the design principles defined, I translated the ideas into low-fidelity wireframes to establish structure, content hierarchy, and user flow. The focus at this stage was on organizing information in a way that feels clear and guided, allowing users to understand mortgage concepts before being asked to take action.
+            I started by mapping out a low-fidelity user flow to visualize the main steps of the mortgage process before designing high-fidelity screens. With the design principles defined, This low-fidelity wireframes establish structure, content hierarchy, and user flow. The focus at this stage was on organizing information in a way that feels clear and guided.
           </p>
         </div>
 

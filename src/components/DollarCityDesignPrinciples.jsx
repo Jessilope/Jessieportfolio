@@ -77,6 +77,7 @@ const DollarCityDesignPrinciples = () => {
     flexShrink: 0,
     alignSelf: 'stretch',
     minHeight: isMobile ? '60px' : undefined,
+    borderRadius: '1.5px',
   }
 
   const highlightTextStyles = {
@@ -100,12 +101,9 @@ const DollarCityDesignPrinciples = () => {
           {/* Title */}
           <p style={titleStyles}>Design Principles</p>
 
-          {/* Description Paragraphs */}
+          {/* Description */}
           <p style={textStyles}>
             Once the structure and flow were validated through low-fidelity wireframes, I focused on defining a visual system that reinforced clarity, trust, and accessibility.
-          </p>
-          <p style={textStyles}>
-            The visual and interaction design was guided by three core principles that shaped every decision throughout the experience:
           </p>
         </div>
 
@@ -124,16 +122,11 @@ const DollarCityDesignPrinciples = () => {
           {/* Organic */}
           <div style={highlightItemStyles}>
             <div style={lineStyles}></div>
-            <div style={highlightTextStyles}>
-              <p style={{ margin: '0', lineHeight: 1.6 }}>
-                <span style={{ color: '#370161', lineHeight: 1.6 }}>Organic</span>
-                <br />
-                The experience feels human and natural, using clear language and fluid interactions to reduce friction and make the shopping process feel comfortable and approachable.
-              </p>
-              <p style={{ margin: '0', lineHeight: 1.6 }}>
-                These principles ensured the design remained consistent, purposeful, and aligned with user expectations at every stage of the journey.
-              </p>
-            </div>
+            <p style={highlightTextStyles}>
+              <span style={{ color: '#370161', lineHeight: 1.6 }}>Organic</span>
+              <br />
+              The experience feels human and natural, using clear language and fluid interactions to reduce friction and make the shopping process feel comfortable and approachable.
+            </p>
           </div>
 
           {/* Intuitive */}

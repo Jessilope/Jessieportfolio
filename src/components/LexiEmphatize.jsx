@@ -80,7 +80,7 @@ const LexiEmphatize = () => {
           {/* Paragraph 1 */}
           <div style={paragraphContainerStyles}>
             <p style={bodyTextStyles}>
-              I focused on understanding how language beginners feel when practicing a new language, especially in digital environments that rely on social interaction. Research and user behavior show that beginners often experience high anxiety and low perceived competence, even when they are motivated and interested in learning.
+              I focused on understanding how language beginners feel when practicing a new language, especially in digital environments that rely on social interaction. Even when learners enjoy the exchange, anxiety and pressure can limit participation and slow progress. However, studies also show that supportive interaction, real-time feedback, and a sense of accountability help reduce fear and increase motivation.
             </p>
           </div>
 
@@ -105,20 +105,8 @@ const LexiEmphatize = () => {
             </ul>
           </div>
 
-          {/* Paragraph 3 */}
+          {/* Paragraph 3 with bullet list */}
           <div style={paragraphContainerStyles}>
-            <p style={bodyTextStyles}>
-              Even when learners enjoy the exchange, anxiety and pressure can limit participation and slow progress. However, studies also show that supportive interaction, real-time feedback, and a sense of accountability help reduce fear and increase motivation.
-            </p>
-          </div>
-
-          {/* Paragraph 4 with multiple parts */}
-          <div style={paragraphContainerStyles}>
-            <p style={{ ...bodyTextStyles, marginBottom: '0' }}>
-              Putting myself in the learner's position, I identified an emotional goal for Lexi:<br />
-              to make users feel safe, supported, and confident enough to keep practicing.
-            </p>
-            <p style={{ ...bodyTextStyles, marginTop: '1em', marginBottom: '0' }}>&nbsp;</p>
             <p style={{ ...bodyTextStyles, marginBottom: '0' }}>
               This empathy-driven approach led me to prioritize:
             </p>
@@ -136,10 +124,6 @@ const LexiEmphatize = () => {
                 <span style={{ lineHeight: 1.6 }}>A calm, friendly tone that reduces tension and builds trust</span>
               </li>
             </ul>
-            <p style={{ ...bodyTextStyles, marginTop: '1em', marginBottom: '0' }}>&nbsp;</p>
-            <p style={bodyTextStyles}>
-              Empathy shaped Lexi into an experience that values emotional safety as much as language progress, helping beginners feel comfortable practicing consistently and confidently.
-            </p>
           </div>
         </div>
       </div>
