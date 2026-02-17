@@ -4,10 +4,6 @@ import useResponsive from '../hooks/useResponsive'
 const TripFinderDesignPrinciples = () => {
   const { isMobile } = useResponsive()
 
-  const imgLine10 = "http://localhost:3845/assets/23926dcbd83e23bcf525dd6265992e6d1a08e6f3.svg"
-  const imgLine11 = "http://localhost:3845/assets/140855ac4e9aff4465620809ac0d702104cecaab.svg"
-  const imgLine12 = "http://localhost:3845/assets/43ec9691753b63462341129e13c998b822069938.svg"
-
   const sectionStyles = {
     backgroundColor: '#fffefb',
     display: 'flex',
@@ -69,37 +65,13 @@ const TripFinderDesignPrinciples = () => {
     flexShrink: 0,
   }
 
-  const lineContainerStyles = (height) => ({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: isMobile ? `${Math.max(height, 60)}px` : `${height}px`,
-    width: '0',
-    position: 'relative',
+  const lineStyles = {
+    width: '3px',
+    backgroundColor: '#8134E2',
     flexShrink: 0,
-  })
-
-  const lineWrapperStyles = {
-    transform: 'rotate(90deg)',
-    flexShrink: 0,
-  }
-
-  const lineStyles = (width) => ({
-    width: `${width}px`,
-    height: '0',
-    position: 'relative',
-  })
-
-  const lineImageContainerStyles = {
-    position: 'absolute',
-    inset: '-3px 0 0 0',
-  }
-
-  const lineImageStyles = {
-    display: 'block',
-    maxWidth: 'none',
-    width: '100%',
-    height: '100%',
+    alignSelf: 'stretch',
+    minHeight: isMobile ? '60px' : undefined,
+    borderRadius: '1.5px',
   }
 
   const textBlockStyles = {
@@ -142,15 +114,7 @@ const TripFinderDesignPrinciples = () => {
         <div style={highlightsContainerStyles}>
           {/* First principle */}
           <div style={highlightRowStyles}>
-            <div style={lineContainerStyles(74)}>
-              <div style={lineWrapperStyles}>
-                <div style={lineStyles(74)}>
-                  <div style={lineImageContainerStyles}>
-                    <img src={imgLine10} alt="" style={lineImageStyles} />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div style={lineStyles}></div>
             <div style={textBlockStyles}>
               <p style={paragraphStyles}>
                 <span style={highlightSpanStyles}>Safety Through Calm Visuals</span>
@@ -164,15 +128,7 @@ const TripFinderDesignPrinciples = () => {
 
           {/* Second principle */}
           <div style={highlightRowStyles}>
-            <div style={lineContainerStyles(67)}>
-              <div style={lineWrapperStyles}>
-                <div style={lineStyles(67)}>
-                  <div style={lineImageContainerStyles}>
-                    <img src={imgLine11} alt="" style={lineImageStyles} />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div style={lineStyles}></div>
             <div style={textBlockStyles}>
               <p style={paragraphStyles}>
                 <span style={highlightSpanStyles}>Content Comes First</span>
@@ -186,15 +142,7 @@ const TripFinderDesignPrinciples = () => {
 
           {/* Third principle */}
           <div style={highlightRowStyles}>
-            <div style={lineContainerStyles(45)}>
-              <div style={lineWrapperStyles}>
-                <div style={lineStyles(45)}>
-                  <div style={lineImageContainerStyles}>
-                    <img src={imgLine12} alt="" style={lineImageStyles} />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div style={lineStyles}></div>
             <div style={textBlockStyles}>
               <p style={paragraphStyles}>
                 <span style={highlightSpanStyles}>Clear and Consistent Structure</span>
