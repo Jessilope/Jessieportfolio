@@ -1,5 +1,6 @@
 import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
+import AnimatedOnScroll from './AnimatedOnScroll'
 
 const DollarCityOverview = () => {
   const { isMobile } = useResponsive()
