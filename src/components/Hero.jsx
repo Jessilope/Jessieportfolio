@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { colors, typography, spacing, borderRadius } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 import { documents } from '../assets'
-import AnimatedOnScroll from './AnimatedOnScroll'
 
 // Yellow Flower SVG Component (6 petals) - Figma node 293:2146
 const YellowFlower = ({ style }) => {
@@ -115,36 +114,40 @@ const Hero = () => {
   const textContainerStyles = {
     display: 'flex',
     flexDirection: 'column',
-    gap: '12px',
-    alignItems: 'center',
+    gap: '24px',
+    alignItems: 'flex-start',
     justifyContent: 'center',
     textAlign: 'center',
+    lineHeight: 0,
     width: '100%',
     position: 'relative',
     zIndex: 1,
   }
 
-  // Subtitle - "Hi, this is Jessie ML"
-  const subtitleStyles = {
-    fontFamily: `'${typography.presets.subtitle.fontFamily}', ${typography.fontFamilies.fallback}`,
-    fontSize: isMobile ? '18px' : '24px',
-    fontWeight: isMobile ? 400 : 700,
-    lineHeight: isMobile ? 1.5 : 1.3,
-    letterSpacing: isMobile ? '0.9px' : '1.2px',
-    margin: 0,
-    fontVariationSettings: isMobile ? "'CTGR' 0, 'wdth' 100, 'wght' 400" : "'CTGR' 0, 'wdth' 100, 'wght' 700",
+  // Header - "Hello, I'm a UX/UI designer."
+  const headerStyles = {
+    fontFamily: `'${typography.presets.header2.fontFamily}', sans-serif`,
+    fontSize: isMobile ? '32px' : typography.presets.header.fontSize,
+    fontWeight: 400,
+    lineHeight: 1.3,
+    letterSpacing: '0',
     color: colors.semantic.textHeaders,
+    margin: 0,
+    width: '100%',
   }
 
-  // Title - "UX-UI designer in trainee"
-  const titleStyles = {
-    fontFamily: `'${typography.presets.header.fontFamily}', sans-serif`,
-    fontSize: isMobile ? '20px' : '48px',
-    fontWeight: isMobile ? 700 : 400,
-    lineHeight: isMobile ? 1.3 : 1.3,
-    letterSpacing: isMobile ? '1px' : '0',
+  // Body text - Longer description
+  const bodyTextStyles = {
+    fontFamily: `'${typography.presets.bodyLarge.fontFamily}', ${typography.fontFamilies.fallback}`,
+    fontSize: isMobile ? '18px' : '18px',
+    fontWeight: 400,
+    lineHeight: 1.5,
+    letterSpacing: '0.9px',
+    color: colors.neutral['400'],
     margin: 0,
-    color: colors.semantic.textHeaders,
+    width: '100%',
+    maxWidth: isMobile ? '100%' : '600px',
+    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
   }
 
   // Buttons container for mobile
@@ -214,24 +217,21 @@ const Hero = () => {
       <div style={containerStyles}>
         {/* Text content */}
         <div style={textContainerStyles}>
-          <AnimatedOnScroll animation="fadeIn" duration={800}>
-            <p style={subtitleStyles}>Hi, this is Jessie ML</p>
-          </AnimatedOnScroll>
-          
-          <AnimatedOnScroll animation="slideUp" delay={200} duration={700}>
-            <p style={titleStyles}>UX-UI designer in trainee</p>
-          </AnimatedOnScroll>
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
+            <p style={headerStyles}>Hello, I'm a UX/UI designer.</p>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', alignItems: 'center' }}>
+            <p style={bodyTextStyles}>
+              Jessie is a junior product designer driven to create user-centered solutions. She combines creativity and strategic thinking to craft intuitive and impactful digital experiences.
+            </p>
+          </div>
         </div>
 
         {/* Yellow Flower - top right */}
-        <AnimatedOnScroll animation="scaleIn" delay={300} duration={900}>
-          <YellowFlower style={yellowFlowerStyles} />
-        </AnimatedOnScroll>
+        <YellowFlower style={yellowFlowerStyles} />
 
         {/* Purple Flower - bottom left */}
-        <AnimatedOnScroll animation="scaleIn" delay={400} duration={900}>
-          <PurpleFlower style={purpleFlowerStyles} />
-        </AnimatedOnScroll>
+        <PurpleFlower style={purpleFlowerStyles} />
       </div>
     </section>
   )
