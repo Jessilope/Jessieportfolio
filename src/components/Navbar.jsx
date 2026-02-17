@@ -379,7 +379,7 @@ const Navbar = () => {
       {/* Buttons */}
       <div style={buttonGroupStyles}>
         <SecondaryButton href={documents.cv}>
-          CV
+          Download CV
         </SecondaryButton>
         <PrimaryButton href="mailto:ale.mogollon06@gmail.com">
           Contact me

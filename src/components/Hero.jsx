@@ -80,66 +80,74 @@ const Hero = () => {
   const [isContactHovered, setIsContactHovered] = useState(false)
   const [isCVHovered, setIsCVHovered] = useState(false)
 
-  // Landing section - matches Figma 1280x760 (desktop) / 928px height (mobile)
+  // Landing section - matches Figma mobile
   const sectionStyles = {
-    backgroundColor: colors.backgrounds.main, // #FFFEFA
+    backgroundColor: colors.backgrounds.main,
     width: '100%',
-    minHeight: isMobile ? '928px' : '760px',
+    minHeight: isMobile ? 'auto' : '760px',
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'hidden',
-    paddingTop: isMobile ? '220px' : '0',
-    paddingBottom: isMobile ? '68px' : '0',
+    paddingTop: isMobile ? '220px' : '180px',
+    paddingBottom: isMobile ? '120px' : '100px',
+    paddingLeft: isMobile ? '24px' : '0',
+    paddingRight: isMobile ? '24px' : '0',
   }
 
-  // Container - matches Figma: 1152x562 (desktop) / full width (mobile)
+  // Container
   const containerStyles = {
     position: 'relative',
     width: isMobile ? '100%' : '1152px',
-    height: isMobile ? 'auto' : '562px',
+    height: isMobile ? '438px' : '562px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingLeft: isMobile ? '24px' : '64px',
-    paddingRight: isMobile ? '24px' : '64px',
-    gap: isMobile ? '64px' : '0',
+    paddingLeft: isMobile ? '0' : '64px',
+    paddingRight: isMobile ? '0' : '64px',
+    gap: isMobile ? '84px' : '0',
   }
 
   // Text container
   const textContainerStyles = {
     display: 'flex',
     flexDirection: 'column',
-    gap: '12px',
-    alignItems: 'center',
+    gap: '24px',
+    alignItems: 'flex-start',
     justifyContent: 'center',
     textAlign: 'center',
-    color: colors.semantic.textHeaders, // #580092
+    lineHeight: 0,
     width: '100%',
-    height: isMobile ? 'auto' : '347px',
+    position: 'relative',
+    zIndex: 1,
   }
 
-  // Subtitle - "Hi, this is Jessie ML"
-  const subtitleStyles = {
-    fontFamily: `'${typography.presets.subtitle.fontFamily}', ${typography.fontFamilies.fallback}`,
-    fontSize: isMobile ? '18px' : '24px',
-    fontWeight: isMobile ? 400 : 700,
-    lineHeight: isMobile ? 1.5 : 1.3,
-    letterSpacing: isMobile ? '0.9px' : '1.2px',
+  // Header - "Hello, I'm a UX/UI designer."
+  const headerStyles = {
+    fontFamily: `'${typography.presets.header2.fontFamily}', sans-serif`,
+    fontSize: isMobile ? '32px' : typography.presets.header.fontSize,
+    fontWeight: 400,
+    lineHeight: 1.3,
+    letterSpacing: '0',
+    color: colors.semantic.textHeaders,
     margin: 0,
-    fontVariationSettings: isMobile ? "'CTGR' 0, 'wdth' 100, 'wght' 400" : "'CTGR' 0, 'wdth' 100, 'wght' 700",
+    width: '100%',
   }
 
-  // Title - "UX-UI designer in trainee"
-  const titleStyles = {
-    fontFamily: `'${typography.presets.header.fontFamily}', sans-serif`,
-    fontSize: isMobile ? '20px' : '48px',
-    fontWeight: isMobile ? 700 : 400,
-    lineHeight: isMobile ? 1.3 : 1.4,
-    letterSpacing: isMobile ? '1px' : '2.4px',
+  // Body text - Longer description
+  const bodyTextStyles = {
+    fontFamily: `'${typography.presets.bodyLarge.fontFamily}', ${typography.fontFamilies.fallback}`,
+    fontSize: isMobile ? '18px' : '18px',
+    fontWeight: 400,
+    lineHeight: 1.5,
+    letterSpacing: '0.9px',
+    color: colors.neutral['400'],
     margin: 0,
+    width: '100%',
+    maxWidth: isMobile ? '100%' : '600px',
+    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
   }
 
   // Buttons container for mobile
@@ -182,24 +190,26 @@ const Hero = () => {
     transition: 'all 0.3s ease',
   }
 
-  // Yellow Flower position - desktop vs mobile
+  // Yellow Flower position - top right
   const yellowFlowerStyles = {
     position: 'absolute',
     left: isMobile ? 'auto' : '939px',
-    right: isMobile ? '-40px' : 'auto',
-    top: isMobile ? '95px' : '80px',
-    width: isMobile ? '129px' : '289px',
-    height: isMobile ? '129px' : '308px',
+    right: isMobile ? '-80px' : 'auto',
+    top: isMobile ? '20px' : '80px',
+    width: isMobile ? '140px' : '289px',
+    height: isMobile ? '140px' : '308px',
+    zIndex: 0,
   }
 
-  // Purple Flower position - desktop vs mobile
+  // Purple Flower position - bottom left
   const purpleFlowerStyles = {
     position: 'absolute',
-    left: isMobile ? '-30px' : '-88px',
+    left: isMobile ? '-70px' : '-88px',
     top: isMobile ? 'auto' : '329px',
-    bottom: isMobile ? '220px' : 'auto',
-    width: isMobile ? '144px' : '332px',
-    height: isMobile ? '144px' : '332px',
+    bottom: isMobile ? '-20px' : 'auto',
+    width: isMobile ? '170px' : '332px',
+    height: isMobile ? '170px' : '332px',
+    zIndex: 0,
   }
 
   return (
@@ -207,11 +217,17 @@ const Hero = () => {
       <div style={containerStyles}>
         {/* Text content */}
         <div style={textContainerStyles}>
-          <p style={subtitleStyles}>Hi, this is Jessie ML</p>
-          <p style={titleStyles}>UX-UI designer in trainee</p>
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
+            <p style={headerStyles}>Hello, I'm a UX/UI designer.</p>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', alignItems: 'center' }}>
+            <p style={bodyTextStyles}>
+              Jessie is a junior product designer driven to create user-centered solutions. She combines creativity and strategic thinking to craft intuitive and impactful digital experiences.
+            </p>
+          </div>
         </div>
 
-        {/* Yellow Flower - top right (desktop) / top right smaller (mobile) */}
+        {/* Yellow Flower - top right */}
         <YellowFlower style={yellowFlowerStyles} />
 
         {/* Purple Flower - bottom left */}

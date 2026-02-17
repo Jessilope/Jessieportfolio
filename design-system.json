@@ -16,6 +16,7 @@
       "700": "#EBDB32"
     },
     "neutral": {
+      "400": "#747474",
       "700": "#212121"
     },
     "backgrounds": {
@@ -40,7 +41,7 @@
   "typography": {
     "fontFamilies": {
       "primary": "Kantumruy",
-      "heading": "Kanit",
+      "heading": "Arimo",
       "fallback": "Noto Sans, sans-serif"
     },
     "fontSizes": {
@@ -77,17 +78,17 @@
     },
     "presets": {
       "header": {
-        "fontFamily": "Kanit",
+        "fontFamily": "Arimo",
         "fontSize": "48px",
         "fontWeight": 400,
-        "lineHeight": 1.4,
-        "letterSpacing": "2.4px"
+        "lineHeight": 1.3,
+        "letterSpacing": "0"
       },
       "header2": {
-        "fontFamily": "Kanit",
+        "fontFamily": "Arimo",
         "fontSize": "32px",
         "fontWeight": 400,
-        "lineHeight": "32px",
+        "lineHeight": 1.3,
         "letterSpacing": "0"
       },
       "subtitle": {
