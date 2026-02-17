@@ -56,14 +56,19 @@ const ProjectCard = ({ title, tags, backgroundColor, name, route, index = 0 }) =
 
   return (
     <AnimatedOnScroll 
-      animation={isMobile ? "fadeIn" : "slideUp"}
-      delay={isMobile ? 0 : index * 100} 
-      duration={isMobile ? 400 : 700}
+      animation={isMobile ? "slideUp" : "slideUp"}
+      delay={index * 100} 
+      duration={isMobile ? 600 : 700}
       threshold={0.15}
+      style={{ width: '100%' }}
     >
       <div style={cardContainerStyles}>
-        {isMobile ? (
-          // Mobile - sin animaciones complejas
+        <AnimatedOnScroll 
+          animation="scaleIn" 
+          delay={index * 100 + 100}
+          duration={600}
+          style={{ width: isMobile ? '100%' : 'auto' }}
+        >
           <div style={imageContainerStyles}>
             <ProjectImage 
               name={name}
@@ -73,24 +78,7 @@ const ProjectCard = ({ title, tags, backgroundColor, name, route, index = 0 }) =
               isMobile={isMobile}
             />
           </div>
-        ) : (
-          // Desktop - con animación
-          <AnimatedOnScroll 
-            animation="scaleIn" 
-            delay={index * 100 + 100}
-            duration={600}
-          >
-            <div style={imageContainerStyles}>
-              <ProjectImage 
-                name={name}
-                backgroundColor={backgroundColor}
-                route={route}
-                navigate={navigate}
-                isMobile={isMobile}
-              />
-            </div>
-          </AnimatedOnScroll>
-        )}
+        </AnimatedOnScroll>
         
         {!isMobile && (
           <AnimatedOnScroll 

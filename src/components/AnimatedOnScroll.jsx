@@ -55,10 +55,10 @@ const AnimatedOnScroll = ({
   const currentState = isVisible ? selectedAnimation.animate : selectedAnimation.initial
 
   const animatedStyle = {
+    ...style,
     ...currentState,
     transition: `all ${duration}ms cubic-bezier(0.4, 0, 0.2, 1) ${delay}ms`,
     willChange: 'opacity, transform',
-    ...style,
   }
 
   return (
