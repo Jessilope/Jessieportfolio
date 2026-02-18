@@ -1,7 +1,6 @@
 import { colors } from '../tokens'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
-import LogoStripe from '../components/LogoStripe'
 import ProjectsSection from '../sections/ProjectsSection'
 import ClosingSection from '../sections/ClosingSection'
 import Footer from '../components/Footer'
@@ -23,7 +22,6 @@ const Home = () => {
     <div style={homeStyles}>
       <Navbar />
       <Hero />
-      <LogoStripe size={isMobile ? 'mobile' : 'Desktop'} state="Default" />
       <ProjectsSection />
       <ClosingSection />
       <Footer />
