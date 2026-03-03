@@ -43,7 +43,7 @@ const TuCreditDataCollection = () => {
     fontSize: isMobile ? '20px' : '24px',
     fontWeight: 700,
     letterSpacing: '1.2px',
-    color: '#370161',
+    color: '#5D5F98',
     width: '100%',
     flexShrink: 0,
     fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700",

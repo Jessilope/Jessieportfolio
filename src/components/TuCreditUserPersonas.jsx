@@ -42,7 +42,7 @@ const TuCreditUserPersonas = () => {
     fontSize: isMobile ? '20px' : '24px',
     fontWeight: 700,
     letterSpacing: '1.2px',
-    color: '#370161',
+    color: '#5D5F98',
     width: '100%',
     minWidth: '100%',
     flexShrink: 0,

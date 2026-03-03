@@ -30,7 +30,7 @@ const LexiDefine = () => {
     fontWeight: 400,
     lineHeight: isMobile ? '28px' : '32px',
     letterSpacing: '0',
-    color: '#370161',
+    color: '#5D5F98',
     textAlign: 'center',
     margin: 0,
   }
@@ -84,7 +84,7 @@ const LexiDefine = () => {
   }
 
   const highlightLabelStyles = {
-    color: '#580092',
+    color: '#5D5F98',
   }
 
   return (
@@ -105,7 +105,7 @@ const LexiDefine = () => {
               width: '3px',
               minHeight: isMobile ? '100px' : '81px',
               height: isMobile ? 'auto' : '81px',
-              backgroundColor: '#580092',
+              backgroundColor: '#5D5F98',
               flexShrink: 0,
               alignSelf: 'stretch',
               borderRadius: '1.5px',
@@ -123,7 +123,7 @@ const LexiDefine = () => {
               width: '3px',
               minHeight: isMobile ? '80px' : '56px',
               height: isMobile ? 'auto' : '56px',
-              backgroundColor: '#580092',
+              backgroundColor: '#5D5F98',
               flexShrink: 0,
               alignSelf: 'stretch',
               borderRadius: '1.5px',

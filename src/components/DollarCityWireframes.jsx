@@ -42,7 +42,7 @@ const DollarCityWireframes = () => {
     fontWeight: 700,
     lineHeight: '1.3',
     letterSpacing: isMobile ? '1px' : '1.2px',
-    color: '#370161',
+    color: '#5D5F98',
     width: '100%',
     flexShrink: 0,
     fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700",

@@ -33,7 +33,7 @@ const LexiIdeate = () => {
     fontWeight: isMobile ? 700 : 400,
     lineHeight: isMobile ? 1.3 : '32px',
     letterSpacing: isMobile ? '1px' : '0',
-    color: '#370161',
+    color: '#5D5F98',
     textAlign: 'center',
     margin: 0,
     width: '100%',

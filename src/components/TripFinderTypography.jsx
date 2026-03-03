@@ -31,7 +31,7 @@ const TripFinderTypography = () => {
     fontWeight: 400,
     lineHeight: '0',
     textAlign: 'center',
-    color: '#370161',
+    color: '#5D5F98',
     height: '32px',
     width: isMobile ? '100%' : '1121px',
     flexShrink: 0,

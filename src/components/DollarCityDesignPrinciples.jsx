@@ -37,7 +37,7 @@ const DollarCityDesignPrinciples = () => {
     fontWeight: 700,
     lineHeight: 1.3,
     letterSpacing: '0',
-    color: '#370161',
+    color: '#5D5F98',
     fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700",
     margin: 0,
     width: '100%',
@@ -73,7 +73,7 @@ const DollarCityDesignPrinciples = () => {
 
   const lineStyles = {
     width: '3px',
-    backgroundColor: '#370161',
+    backgroundColor: '#5D5F98',
     flexShrink: 0,
     alignSelf: 'stretch',
     minHeight: isMobile ? '60px' : undefined,
@@ -113,7 +113,7 @@ const DollarCityDesignPrinciples = () => {
           <div style={highlightItemStyles}>
             <div style={lineStyles}></div>
             <p style={highlightTextStyles}>
-              <span style={{ color: '#370161', lineHeight: 1.6 }}>Modern</span>
+              <span style={{ color: '#5D5F98', lineHeight: 1.6 }}>Modern</span>
               <br />
               The interface uses contemporary patterns and a clean visual language that feels current and familiar, aligning with how users interact with digital products today.
             </p>
@@ -123,7 +123,7 @@ const DollarCityDesignPrinciples = () => {
           <div style={highlightItemStyles}>
             <div style={lineStyles}></div>
             <p style={highlightTextStyles}>
-              <span style={{ color: '#370161', lineHeight: 1.6 }}>Organic</span>
+              <span style={{ color: '#5D5F98', lineHeight: 1.6 }}>Organic</span>
               <br />
               The experience feels human and natural, using clear language and fluid interactions to reduce friction and make the shopping process feel comfortable and approachable.
             </p>
@@ -133,7 +133,7 @@ const DollarCityDesignPrinciples = () => {
           <div style={highlightItemStyles}>
             <div style={lineStyles}></div>
             <p style={highlightTextStyles}>
-              <span style={{ color: '#370161', lineHeight: 1.6 }}>Intuitive</span>
+              <span style={{ color: '#5D5F98', lineHeight: 1.6 }}>Intuitive</span>
               <br />
               Interactions are designed to be immediately understandable, allowing users to navigate, browse, and complete actions without hesitation or unnecessary effort.
             </p>

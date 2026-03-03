@@ -2,12 +2,22 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { colors, spacing, borderRadius, shadows, typography } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 import { documents } from '../assets'
+import PrimaryButton from './PrimaryButton'
+import SecondaryButton from './SecondaryButton'
 
 const Navbar = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const { isMobile } = useResponsive()
   const [menuOpen, setMenuOpen] = React.useState(false)
+  const [isScrolled, setIsScrolled] = React.useState(false)
+
+  // Track scroll position to show/hide shadow
+  React.useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Close menu on route change
   React.useEffect(() => {
@@ -36,7 +46,8 @@ const Navbar = () => {
     backdropFilter: 'blur(10px)',
     WebkitBackdropFilter: 'blur(10px)',
     borderRadius: borderRadius.xxl,
-    boxShadow: shadows.card,
+    boxShadow: isScrolled ? shadows.navbar : 'none',
+    transition: 'box-shadow 0.3s ease',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -206,7 +217,7 @@ const Navbar = () => {
     fontSize: '16px',
     lineHeight: 1.6,
     letterSpacing: '0.8px',
-    color: '#1B0022',
+    color: '#212121',
     margin: 0,
     fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
   }
@@ -238,7 +249,7 @@ const Navbar = () => {
     paddingRight: '16px',
     borderRadius: '32px',
     border: 'none',
-    backgroundColor: '#580092',
+    backgroundColor: colors.primary[700],
     color: 'white',
     fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
     fontSize: '16px',
@@ -261,9 +272,9 @@ const Navbar = () => {
     paddingLeft: '16px',
     paddingRight: '16px',
     borderRadius: '32px',
-    border: '1px solid #580092',
+    border: '1px solid #5D5F98',
     backgroundColor: 'transparent',
-    color: '#580092',
+    color: '#5D5F98',
     fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
     fontSize: '16px',
     fontWeight: 400,
@@ -383,7 +394,7 @@ const Navbar = () => {
         <SecondaryButton href={documents.cv}>
           Download CV
         </SecondaryButton>
-        <PrimaryButton href="mailto:ale.mogollon06@gmail.com">
+        <PrimaryButton href="mailto:ale.mogollon06@gmail.com" showIcon={false}>
           Contact me
         </PrimaryButton>
       </div>
@@ -476,117 +487,7 @@ const NavbarLink = ({ text, onClick }) => {
   )
 }
 
-// SecondaryButton Component - Con hover (Figma node 261:2112 & 384:1244)
-const SecondaryButton = ({ children, href }) => {
-  const [isHovered, setIsHovered] = React.useState(false)
-
-  const buttonStyles = {
-    // Hug content - no fixed width
-    height: '56px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingLeft: spacing.m, // 24px
-    paddingRight: spacing.m, // 24px
-    paddingTop: spacing.s, // 16px
-    paddingBottom: spacing.s, // 16px
-    borderRadius: borderRadius.l, // 32px
-    
-    // States: Default -> Hover
-    border: `1px solid ${isHovered ? colors.primary['300'] : colors.primary['700']}`,
-    backgroundColor: 'transparent',
-    color: isHovered ? colors.primary['300'] : colors.primary['700'], // #E0C7FF : #580092
-    
-    // Typography from Figma: Kantumruy Regular 16px
-    fontFamily: `'${typography.presets.button.fontFamily}', ${typography.fontFamilies.fallback}`,
-    fontSize: typography.presets.button.fontSize, // 16px
-    fontWeight: typography.presets.button.fontWeight, // 400
-    lineHeight: typography.presets.button.lineHeight, // 24px
-    letterSpacing: typography.presets.button.letterSpacing, // 0
-    
-    cursor: 'pointer',
-    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
-    textDecoration: 'none',
-    transition: 'all 0.3s ease',
-    flexShrink: 0,
-    whiteSpace: 'nowrap',
-  }
-
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      style={buttonStyles}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {children}
-    </a>
-  )
-}
-
-// PrimaryButton Component - Con hover (Figma node 261:2111 & 344:507)
-const PrimaryButton = ({ children, href, onClick }) => {
-  const [isHovered, setIsHovered] = React.useState(false)
-
-  const buttonStyles = {
-    // Hug content - no fixed width
-    height: '56px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingLeft: spacing.m, // 24px
-    paddingRight: spacing.m, // 24px
-    paddingTop: spacing.s, // 16px
-    paddingBottom: spacing.s, // 16px
-    borderRadius: borderRadius.l, // 32px
-    border: 'none',
-    
-    // States: Default -> Hover
-    backgroundColor: isHovered ? colors.primary['300'] : colors.primary['700'], // #E0C7FF : #580092
-    color: colors.backgrounds.primary, // #FFFFFF
-    
-    // Typography from Figma: Kantumruy Regular 16px
-    fontFamily: `'${typography.presets.button.fontFamily}', ${typography.fontFamilies.fallback}`,
-    fontSize: typography.presets.button.fontSize, // 16px
-    fontWeight: typography.presets.button.fontWeight, // 400
-    lineHeight: typography.presets.button.lineHeight, // 24px
-    letterSpacing: typography.presets.button.letterSpacing, // 0
-    
-    cursor: 'pointer',
-    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
-    transition: 'all 0.3s ease',
-    flexShrink: 0,
-    textDecoration: 'none',
-    whiteSpace: 'nowrap',
-  }
-
-  // If href is provided, render as a link
-  if (href) {
-    return (
-      <a
-        href={href}
-        style={buttonStyles}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        {children}
-      </a>
-    )
-  }
-
-  return (
-    <button
-      style={buttonStyles}
-      onClick={onClick}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {children}
-    </button>
-  )
-}
+// PrimaryButton and SecondaryButton are imported from their shared components
 
 // Import React for useState
 import React from 'react'
@@ -594,25 +495,25 @@ import React from 'react'
 // Burger icon (3 horizontal lines)
 const BurgerIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M3 6H21" stroke="#370161" strokeWidth="2" strokeLinecap="round" />
-    <path d="M3 12H21" stroke="#370161" strokeWidth="2" strokeLinecap="round" />
-    <path d="M3 18H21" stroke="#370161" strokeWidth="2" strokeLinecap="round" />
+    <path d="M3 6H21" stroke="#5D5F98" strokeWidth="2" strokeLinecap="round" />
+    <path d="M3 12H21" stroke="#5D5F98" strokeWidth="2" strokeLinecap="round" />
+    <path d="M3 18H21" stroke="#5D5F98" strokeWidth="2" strokeLinecap="round" />
   </svg>
 )
 
 // Close icon (X)
 const CloseIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M6 6L18 18" stroke="#370161" strokeWidth="2" strokeLinecap="round" />
-    <path d="M18 6L6 18" stroke="#370161" strokeWidth="2" strokeLinecap="round" />
+    <path d="M6 6L18 18" stroke="#5D5F98" strokeWidth="2" strokeLinecap="round" />
+    <path d="M18 6L6 18" stroke="#5D5F98" strokeWidth="2" strokeLinecap="round" />
   </svg>
 )
 
 // Download icon for CV button
 const DownloadIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 3V15M12 15L8 11M12 15L16 11" stroke="#580092" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M4 17V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V17" stroke="#580092" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M12 3V15M12 15L8 11M12 15L16 11" stroke="#5D5F98" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M4 17V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V17" stroke="#5D5F98" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 )
 

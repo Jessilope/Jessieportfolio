@@ -48,7 +48,7 @@ const DollarCityDataCollection = () => {
     fontWeight: 700,
     lineHeight: 1.3,
     letterSpacing: '0',
-    color: '#370161',
+    color: '#5D5F98',
     fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700",
     margin: 0,
     width: '100%',
@@ -77,7 +77,7 @@ const DollarCityDataCollection = () => {
     overflowY: 'visible',
     paddingBottom: '16px',
     scrollbarWidth: 'thin',
-    scrollbarColor: '#370161 #f0f0f0',
+    scrollbarColor: '#5D5F98 #f0f0f0',
   }
 
   const imageContainerStyles = (width, height) => ({

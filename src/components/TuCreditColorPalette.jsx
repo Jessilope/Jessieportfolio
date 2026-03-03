@@ -46,7 +46,7 @@ const TuCreditColorPalette = () => {
     fontWeight: 700,
     lineHeight: '1.3',
     letterSpacing: '1.2px',
-    color: '#370161',
+    color: '#5D5F98',
     width: '100%',
     margin: 0,
     flexShrink: 0,

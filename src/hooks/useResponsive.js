@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 
 const BREAKPOINTS = {
-  mobile: 768,
-  tablet: 1024,
-  desktop: 1280,
+  mobile: 768,   // < 768px → mobile
+  tablet: 1280,  // 768px–1279px → tablet (Figma tablet frame: 834px)
+  desktop: 1280, // ≥ 1280px → desktop (Figma desktop frame: 1280px)
 }
 
 const useResponsive = () => {
@@ -27,8 +27,8 @@ const useResponsive = () => {
   }, [])
 
   const isMobile = windowSize.width < BREAKPOINTS.mobile
-  const isTablet = windowSize.width >= BREAKPOINTS.mobile && windowSize.width < BREAKPOINTS.tablet
-  const isDesktop = windowSize.width >= BREAKPOINTS.tablet
+  const isTablet = windowSize.width >= BREAKPOINTS.mobile && windowSize.width < BREAKPOINTS.desktop
+  const isDesktop = windowSize.width >= BREAKPOINTS.desktop
 
   return {
     windowSize,

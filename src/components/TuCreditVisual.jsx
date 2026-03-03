@@ -33,7 +33,7 @@ const TuCreditVisual = () => {
     fontWeight: 400,
     lineHeight: '32px',
     letterSpacing: '0',
-    color: '#370161',
+    color: '#5D5F98',
     textAlign: 'center',
     width: isMobile ? '100%' : '1121px',
     height: '32px',

@@ -91,10 +91,10 @@ const PurpleFlower = ({ width = '130px', height = '130px' }) => {
       >
         {/* 8 rounded petals */}
         {petals.map((petal, i) => (
-          <circle key={i} cx={petal.x} cy={petal.y} r={petalRadius} fill="#E0C7FF"/>
+          <circle key={i} cx={petal.x} cy={petal.y} r={petalRadius} fill="#C1C2D9"/>
         ))}
         {/* Center circle */}
-        <circle cx={centerX} cy={centerY} r="50" fill="#C192FF"/>
+        <circle cx={centerX} cy={centerY} r="50" fill="#8485B4"/>
       </svg>
     </div>
   )

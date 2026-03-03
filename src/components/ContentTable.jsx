@@ -18,7 +18,7 @@ const ContentTableFilter = ({ text, isActive, onClick }) => {
     fontWeight: 400,
     lineHeight: isHovered ? 1.5 : 1.6,
     letterSpacing: '0',
-    color: isActive ? '#580092' : (isHovered ? 'rgba(55, 1, 97, 0.5)' : 'rgba(55, 1, 97, 0.14)'),
+    color: isActive ? '#5D5F98' : (isHovered ? 'rgba(93, 95, 152, 0.5)' : 'rgba(93, 95, 152, 0.14)'),
     fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
     margin: 0,
     transition: 'color 0.3s ease',

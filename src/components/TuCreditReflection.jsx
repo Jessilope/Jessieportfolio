@@ -35,7 +35,7 @@ const TuCreditReflection = () => {
     fontSize: isMobile ? '24px' : '32px',
     fontStyle: 'normal',
     fontWeight: 400,
-    color: '#370161',
+    color: '#5D5F98',
     textAlign: 'center',
     width: '100%',
     flexShrink: 0,

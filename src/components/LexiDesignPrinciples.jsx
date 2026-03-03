@@ -38,7 +38,7 @@ const LexiDesignPrinciples = () => {
     fontWeight: 700,
     lineHeight: 1.3,
     letterSpacing: isMobile ? '1px' : '1.2px',
-    color: '#370161',
+    color: '#5D5F98',
     fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700",
     margin: 0,
     width: '100%',
@@ -86,7 +86,7 @@ const LexiDesignPrinciples = () => {
   }
 
   const highlightLabelStyles = {
-    color: '#580092',
+    color: '#5D5F98',
   }
 
   return (
@@ -108,7 +108,7 @@ const LexiDesignPrinciples = () => {
               width: '3px',
               minHeight: isMobile ? '60px' : '74px',
               alignSelf: 'stretch',
-              backgroundColor: '#580092',
+              backgroundColor: '#5D5F98',
               flexShrink: 0,
               borderRadius: '1.5px',
             }} />
@@ -125,7 +125,7 @@ const LexiDesignPrinciples = () => {
               width: '3px',
               minHeight: isMobile ? '60px' : '67px',
               alignSelf: 'stretch',
-              backgroundColor: '#580092',
+              backgroundColor: '#5D5F98',
               flexShrink: 0,
               borderRadius: '1.5px',
             }} />
@@ -142,7 +142,7 @@ const LexiDesignPrinciples = () => {
               width: '3px',
               minHeight: isMobile ? '60px' : '45px',
               alignSelf: 'stretch',
-              backgroundColor: '#580092',
+              backgroundColor: '#5D5F98',
               flexShrink: 0,
               borderRadius: '1.5px',
             }} />

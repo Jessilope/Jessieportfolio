@@ -1,125 +1,88 @@
 import Navbar from './Navbar'
 import useResponsive from '../hooks/useResponsive'
 
+const Ring = ({ style, color = 'rgba(255,255,255,0.25)' }) => (
+  <div style={{
+    borderRadius: '50%',
+    border: `1.5px solid ${color}`,
+    position: 'absolute',
+    ...style,
+  }} />
+)
+
 const DollarCityHero = () => {
   const { isMobile } = useResponsive()
 
-  const sectionStyles = {
-    backgroundColor: '#f4fff8',
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-  }
-
-  const workContainerStyles = {
-    height: isMobile ? '100vh' : '832px',
-    overflow: 'clip',
+  // Figma: height 892px, gradient from #087831 to white
+  const heroStyles = {
     position: 'relative',
     width: '100%',
+    height: '892px',
+    background: 'linear-gradient(to bottom, #087831 0%, #6ec98a 55%, #ffffff 100%)',
+    overflow: 'hidden',
     flexShrink: 0,
-  }
-
-  const titleContainerStyles = {
-    position: 'absolute',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: isMobile ? '48px' : '212px',
-    alignItems: 'center',
-    justifyContent: 'center',
-    left: '50%',
-    top: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: isMobile ? '90%' : '758px',
-    padding: isMobile ? '0 24px' : '0',
-  }
-
-  const logoStyles = {
-    fontFamily: `'Archivo Black', sans-serif`,
-    fontSize: isMobile ? '48px' : '96px',
-    fontWeight: 400,
-    lineHeight: isMobile ? '50px' : '90px',
-    letterSpacing: '0',
-    color: '#ebdb32',
-    textAlign: 'center',
-    margin: 0,
-    width: '100%',
-  }
-
-  const contentStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '9px',
-    alignItems: 'center',
-    width: '100%',
-    flexShrink: 0,
-  }
-
-  const subtitle1Styles = {
-    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
-    fontSize: isMobile ? '16px' : '24px',
-    fontWeight: 700,
-    lineHeight: 1.3,
-    letterSpacing: '1.2px',
-    color: '#929292',
-    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700",
-    textAlign: 'center',
-    margin: 0,
-    width: '100%',
-    flexShrink: 0,
-  }
-
-  const subtitle2Styles = {
-    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
-    fontSize: isMobile ? '14px' : '24px',
-    fontWeight: 700,
-    lineHeight: 1.3,
-    letterSpacing: '1.2px',
-    color: '#bbb',
-    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700",
-    textAlign: 'center',
-    margin: 0,
-    width: '100%',
-    flexShrink: 0,
-  }
-
-  const gradientTopStyles = {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: '120px',
-    background: 'linear-gradient(to bottom, #f4fff8 0%, transparent 100%)',
-    pointerEvents: 'none',
-    zIndex: 1,
-  }
-
-  const gradientBottomStyles = {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: '120px',
-    background: 'linear-gradient(to top, #f4fff8 0%, transparent 100%)',
-    pointerEvents: 'none',
-    zIndex: 1,
   }
 
   return (
-    <section style={sectionStyles}>
+    <div style={heroStyles}>
       <Navbar />
-      <div style={workContainerStyles}>
-        {isMobile && <div style={gradientTopStyles} />}
-        <div style={titleContainerStyles}>
-          <p style={logoStyles}>DOLLAR CITY</p>
-          <div style={contentStyles}>
-            <p style={subtitle1Styles}>The store for purchasing household products</p>
-            <p style={subtitle2Styles}>Based in Bogota, Colombia</p>
-          </div>
-        </div>
-        {isMobile && <div style={gradientBottomStyles} />}
+
+      {/* "DOLLAR CITY" background text — Figma: Archivo Black, 200px desktop / 75px mobile */}
+      <div style={{
+        position: 'absolute',
+        left: '50%',
+        top: isMobile ? '233px' : '245px',
+        transform: 'translate(-50%, -50%)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        width: isMobile ? '663px' : '1544px',
+        textAlign: 'center',
+      }}>
+        <p style={{
+          fontFamily: `'Archivo Black', sans-serif`,
+          fontSize: isMobile ? '75px' : '200px',
+          fontWeight: 400,
+          lineHeight: '90px',
+          color: 'rgba(235,219,50,0.66)',
+          textAlign: 'center',
+          margin: 0,
+          whiteSpace: 'nowrap',
+        }}>DOLLAR CITY</p>
       </div>
-    </section>
+
+      {/* Phone mockup — Figma: 410×669px centered */}
+      <div style={{
+        position: 'absolute',
+        left: isMobile ? '53px' : '338px',
+        top: isMobile ? '203px' : '2px',
+        width: isMobile ? '259px' : '410px',
+        height: isMobile ? '421px' : '669px',
+        borderRadius: isMobile ? '24px' : '32px',
+        overflow: 'hidden',
+        boxShadow: '0 0 46px rgba(0,183,66,0.25)',
+      }}>
+        <img
+          src="/assets/images/hero/dollarcity-hero-mockup.png"
+          alt="Dollarcity app"
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '144.79%',
+            left: '0',
+            top: '-19.01%',
+            objectFit: 'cover',
+          }}
+        />
+      </div>
+
+      {/* Decorative rings */}
+      <Ring style={{ width: '524px', height: '518px', left: '-58px', top: '-293px' }} />
+      <Ring style={{ width: '524px', height: '518px', left: 'calc(75% + 1px)', top: '-259px' }} />
+      <Ring style={{ width: '157px', height: '156px', left: '39px', top: '778px' }} />
+      <Ring style={{ width: '59px', height: '58px', left: 'calc(66.67% + 37.67px)', top: '813px' }} />
+      <Ring style={{ width: '59px', height: '58px', left: 'calc(91.67% + 5.67px)', top: '576px' }} />
+    </div>
   )
 }
 

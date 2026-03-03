@@ -1,106 +1,108 @@
 import { colors, spacing, borderRadius, typography } from '../tokens'
 import { useState } from 'react'
 
+const SIZES = {
+  big:    { paddingTop: spacing.s,  paddingBottom: spacing.s,  paddingLeft: spacing.m,  paddingRight: spacing.m  },
+  M:      { paddingTop: '16px',     paddingBottom: '16px',     paddingLeft: '24px',     paddingRight: '24px'     },
+  medium: { paddingTop: '14px',     paddingBottom: '14px',     paddingLeft: '20px',     paddingRight: '20px'     },
+  S:      { paddingTop: '14px',     paddingBottom: '14px',     paddingLeft: '16px',     paddingRight: '16px'     },
+  small:  { paddingTop: spacing.xs, paddingBottom: spacing.xs, paddingLeft: spacing.s,  paddingRight: spacing.s  },
+  Xs:     { paddingTop: '8px',      paddingBottom: '8px',      paddingLeft: '16px',     paddingRight: '16px'     },
+}
+
 const SecondaryButton = ({ children, onClick, size = 'big', className, href, download }) => {
   const [isHovered, setIsHovered] = useState(false)
 
-  const getStyles = () => {
-    const baseStyles = {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: borderRadius.l,
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      cursor: 'pointer',
-      fontFamily: `'${typography.presets.button.fontFamily}', ${typography.fontFamilies.fallback}`,
-      fontSize: typography.presets.button.fontSize,
-      fontWeight: typography.presets.button.fontWeight,
-      lineHeight: typography.presets.button.lineHeight,
-      letterSpacing: typography.presets.button.letterSpacing,
-      position: 'relative',
-      flexShrink: 0,
-      fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
-      transition: 'all 0.3s ease',
-      textAlign: 'center',
-      backgroundColor: 'transparent',
-      width: '100%',
-      textDecoration: 'none',
-    }
+  const pad = SIZES[size] ?? SIZES.big
 
-    // Hover state - text color AND border color change
-    const textColor = isHovered ? colors.primary['400'] : colors.primary['700']
-    const borderColor = isHovered ? colors.primary['300'] : colors.primary['700']
-
-    // Size-specific padding
-    let padding = {}
-    if (size === 'big') {
-      padding = {
-        paddingTop: spacing.s,
-        paddingBottom: spacing.s,
-        paddingLeft: spacing.m,
-        paddingRight: spacing.m,
-      }
-    } else if (size === 'medium') {
-      padding = {
-        paddingTop: '14px',
-        paddingBottom: '14px',
-        paddingLeft: '20px',
-        paddingRight: '20px',
-      }
-    } else if (size === 'small') {
-      padding = {
-        paddingTop: spacing.xs,
-        paddingBottom: spacing.xs,
-        paddingLeft: spacing.s,
-        paddingRight: spacing.s,
-      }
-    }
-
-    return {
-      ...baseStyles,
-      color: textColor,
-      borderColor: borderColor,
-      ...padding,
-    }
+  const buttonStyles = {
+    ...pad,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '10px',
+    borderRadius: borderRadius.l,
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: colors.primary[700],
+    color: colors.primary[700],
+    cursor: 'pointer',
+    fontFamily: `'${typography.presets.button.fontFamily}', ${typography.fontFamilies.fallback}`,
+    fontSize: typography.presets.button.fontSize,
+    fontWeight: typography.presets.button.fontWeight,
+    lineHeight: typography.presets.button.lineHeight,
+    letterSpacing: typography.presets.button.letterSpacing,
+    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+    position: 'relative',
+    overflow: 'hidden',
+    flexShrink: 0,
+    backgroundColor: 'transparent',
+    textDecoration: 'none',
+    whiteSpace: 'nowrap',
   }
 
-  const handleMouseEnter = () => {
-    setIsHovered(true)
+  // Soft radial glow — fades in as a pure opacity transition.
+  // Radial gradient naturally has no hard edges so it looks like a blurred
+  // color wash, exactly matching the Figma hover state.
+  const sheenStyles = {
+    position: 'absolute',
+    inset: 0,
+    background: `radial-gradient(ellipse 130% 180% at 0% 100%,
+      rgba(93, 95, 152, 0.30) 0%,
+      rgba(93, 95, 152, 0.10) 50%,
+      transparent 75%)`,
+    opacity: isHovered ? 1 : 0,
+    transition: 'opacity 0.45s ease',
+    pointerEvents: 'none',
+    zIndex: 0,
   }
 
-  const handleMouseLeave = () => {
-    setIsHovered(false)
+  const contentStyles = {
+    position: 'relative',
+    zIndex: 1,
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '10px',
   }
 
-  // Si hay href, renderizar como un link
+  const inner = (
+    <>
+      {/* Diagonal fill sweep */}
+      <span style={sheenStyles} aria-hidden="true" />
+      {/* Visible content */}
+      <span style={contentStyles}>{children}</span>
+    </>
+  )
+
+  const handlers = {
+    onMouseEnter: () => setIsHovered(true),
+    onMouseLeave: () => setIsHovered(false),
+  }
+
   if (href) {
     return (
-      <a 
+      <a
         href={href}
         download={download}
         target="_blank"
         rel="noopener noreferrer"
-        style={getStyles()}
+        style={buttonStyles}
         className={className}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        {...handlers}
       >
-        {children}
+        {inner}
       </a>
     )
   }
 
-  // Si no hay href, renderizar como botón normal
   return (
-    <button 
-      style={getStyles()}
+    <button
+      style={buttonStyles}
       className={className}
       onClick={onClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      {...handlers}
     >
-      {children}
+      {inner}
     </button>
   )
 }

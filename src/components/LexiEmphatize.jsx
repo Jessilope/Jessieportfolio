@@ -31,7 +31,7 @@ const LexiEmphatize = () => {
     fontWeight: 400,
     lineHeight: isMobile ? '28px' : '32px',
     letterSpacing: '0',
-    color: '#370161',
+    color: '#5D5F98',
     textAlign: 'center',
     width: '100%',
     margin: 0,

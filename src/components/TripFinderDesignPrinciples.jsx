@@ -40,7 +40,7 @@ const TripFinderDesignPrinciples = () => {
     fontWeight: 700,
     lineHeight: '1.3',
     letterSpacing: '1.2px',
-    color: '#370161',
+    color: '#5D5F98',
     width: '100%',
     margin: 0,
     flexShrink: 0,
@@ -67,7 +67,7 @@ const TripFinderDesignPrinciples = () => {
 
   const lineStyles = {
     width: '3px',
-    backgroundColor: '#370161',
+    backgroundColor: '#5D5F98',
     flexShrink: 0,
     alignSelf: 'stretch',
     minHeight: isMobile ? '60px' : undefined,
@@ -95,7 +95,7 @@ const TripFinderDesignPrinciples = () => {
 
   const highlightSpanStyles = {
     lineHeight: '1.6',
-    color: '#580092',
+    color: '#5D5F98',
   }
 
   const normalSpanStyles = {

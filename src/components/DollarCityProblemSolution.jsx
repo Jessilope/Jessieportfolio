@@ -60,7 +60,7 @@ const DollarCityProblemSolution = () => {
 
   const lineStyles = {
     width: '3px',
-    backgroundColor: '#370161',
+    backgroundColor: '#5D5F98',
     flexShrink: 0,
     alignSelf: 'stretch',
     minHeight: isMobile ? '80px' : undefined,
@@ -97,7 +97,7 @@ const DollarCityProblemSolution = () => {
           <div style={highlightItemStyles}>
             <div style={lineStyles}></div>
             <p style={highlightTextStyles}>
-              <span style={{ color: '#370161', lineHeight: 1.6 }}>Problem</span>
+              <span style={{ color: '#5D5F98', lineHeight: 1.6 }}>Problem</span>
               <br />
               Although Dollar city has a digital presence to showcase their offerings and locations, so far online shopping is not available on their official platform.
             </p>
@@ -107,7 +107,7 @@ const DollarCityProblemSolution = () => {
           <div style={highlightItemStyles}>
             <div style={lineStyles}></div>
             <p style={highlightTextStyles}>
-              <span style={{ color: '#370161', lineHeight: 1.6 }}>Solution</span>
+              <span style={{ color: '#5D5F98', lineHeight: 1.6 }}>Solution</span>
               <br />
               Develop a responsive e-commerce app for Dollar City that offers a seamless and secure shopping experience, enabling users to browse products, check stock availability, and complete purchases with flexible payment and delivery options.
             </p>

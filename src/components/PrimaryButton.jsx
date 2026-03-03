@@ -1,118 +1,145 @@
-import { colors, spacing, borderRadius, typography } from '../tokens'
+/**
+ * PrimaryButton
+ * Source: Figma node 1927:3352
+ *
+ * States: default · hover (blob slides in from left) · active (large blob fills button, text inverts)
+ * Sizes:  M (default) · S · Xs
+ *
+ * Props:
+ *   children     — button label
+ *   onClick      — click handler
+ *   href         — if provided, renders as <a> tag
+ *   size         — 'M' | 'S' | 'Xs' | 'Big' | 'medium' | 'small'  (legacy aliases supported)
+ *   showIcon     — show right-arrow icon (default true)
+ *   className
+ */
+
 import { useState } from 'react'
+import { colors, borderRadius, typography } from '../tokens'
+import Icons from './Icons'
 
-const PrimaryButton = ({ children, onClick, size = 'Big', className }) => {
-  const [state, setState] = useState('Default')
+const SIZES = {
+  M:      { paddingTop: '16px', paddingBottom: '16px', paddingLeft: '24px', paddingRight: '24px' },
+  S:      { paddingTop: '14px', paddingBottom: '14px', paddingLeft: '16px', paddingRight: '16px' },
+  Xs:     { paddingTop: '8px',  paddingBottom: '8px',  paddingLeft: '16px', paddingRight: '16px' },
+  // Legacy size aliases
+  Big:    { paddingTop: '16px', paddingBottom: '16px', paddingLeft: '24px', paddingRight: '24px' },
+  medium: { paddingTop: '14px', paddingBottom: '14px', paddingLeft: '16px', paddingRight: '16px' },
+  small:  { paddingTop: '8px',  paddingBottom: '8px',  paddingLeft: '16px', paddingRight: '16px' },
+}
 
-  const getStyles = () => {
-    const baseStyles = {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: borderRadius.l,
-      border: 'none',
-      cursor: 'pointer',
-      fontFamily: `'${typography.presets.button.fontFamily}', ${typography.fontFamilies.fallback}`,
-      fontSize: typography.presets.button.fontSize,
-      fontWeight: typography.presets.button.fontWeight,
-      lineHeight: typography.presets.button.lineHeight,
-      letterSpacing: typography.presets.button.letterSpacing,
-      position: 'relative',
-      flexShrink: 0,
-      fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
-      transition: 'all 0.3s ease',
-      textAlign: 'left',
-    }
+const PrimaryButton = ({ children, onClick, href, size = 'M', showIcon = true, className }) => {
+  const [btnState, setBtnState] = useState('default')
 
-    // Default state colors
-    let backgroundColor = colors.semantic.buttonPrimary
-    let textColor = colors.semantic.buttonPrimaryText
+  const isHover  = btnState === 'hover'
+  const isActive = btnState === 'active'
 
-    // Hover state
-    if (state === 'Hover') {
-      backgroundColor = colors.semantic.buttonSecondaryHover
-    }
+  const pad = SIZES[size] ?? SIZES.M
 
-    // Click/Active state
-    if (state === 'Click') {
-      backgroundColor = colors.semantic.buttonSecondaryHover
-    }
-
-    // Size-specific padding
-    let padding = {}
-    if (size === 'Big') {
-      padding = {
-        paddingTop: spacing.s,
-        paddingBottom: spacing.s,
-        paddingLeft: spacing.m,
-        paddingRight: spacing.m,
-      }
-    } else if (size === 'medium') {
-      if (state === 'Click') {
-        padding = {
-          paddingTop: '14px',
-          paddingBottom: '14px',
-          paddingLeft: '20px',
-          paddingRight: '20px',
-        }
-      } else {
-        padding = {
-          paddingTop: '14px',
-          paddingBottom: '14px',
-          paddingLeft: spacing.s,
-          paddingRight: spacing.s,
-        }
-      }
-    } else if (size === 'small') {
-      padding = {
-        paddingTop: spacing.xs,
-        paddingBottom: spacing.xs,
-        paddingLeft: spacing.s,
-        paddingRight: spacing.s,
-      }
-    }
-
-    return {
-      ...baseStyles,
-      backgroundColor,
-      color: textColor,
-      ...padding,
-    }
+  const buttonStyles = {
+    ...pad,
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '10px',
+    borderRadius: borderRadius.l,
+    border: 'none',
+    cursor: 'pointer',
+    overflow: 'hidden',
+    position: 'relative',
+    flexShrink: 0,
+    backgroundColor: colors.primary[700],          // #5D5F98
+    color: isActive ? colors.primary[700] : '#FFFFFF',
+    fontFamily: `'${typography.presets.button.fontFamily}', ${typography.fontFamilies.fallback}`,
+    fontSize: typography.presets.button.fontSize,
+    fontWeight: typography.presets.button.fontWeight,
+    lineHeight: typography.presets.button.lineHeight,
+    letterSpacing: typography.presets.button.letterSpacing,
+    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+    transition: 'color 0.3s ease',
+    textDecoration: 'none',
+    whiteSpace: 'nowrap',
   }
 
-  const handleMouseEnter = () => {
-    setState('Hover')
+  // Hover fill: sweeps left-to-right across the full button (Smart Animate equivalent)
+  const hoverFillStyles = {
+    position: 'absolute',
+    inset: 0,
+    background: `linear-gradient(to right, ${colors.primary[600]}, ${colors.primary[600]})`,
+    transformOrigin: 'left center',
+    transform: isHover ? 'scaleX(1)' : 'scaleX(0)',
+    transition: isHover
+      ? 'transform 0.38s cubic-bezier(0.4, 0, 0.2, 1)'
+      : 'transform 0.28s cubic-bezier(0.4, 0, 0.2, 1)',
+    pointerEvents: 'none',
+    zIndex: 0,
   }
 
-  const handleMouseLeave = () => {
-    setState('Default')
+  // Active blob: large circle fills the button
+  const activeBlobStyles = {
+    position: 'absolute',
+    width: '300px',
+    height: '300px',
+    left: '50%',
+    top: '50%',
+    marginLeft: '-150px',
+    marginTop: '-150px',
+    borderRadius: '50%',
+    background: 'rgba(255,255,255,0.90)',
+    transform: isActive ? 'scale(1)' : 'scale(0)',
+    opacity: isActive ? 1 : 0,
+    transition: 'transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.22s ease',
+    pointerEvents: 'none',
+    zIndex: 0,
   }
 
-  const handleMouseDown = () => {
-    setState('Click')
+  const contentStyles = {
+    position: 'relative',
+    zIndex: 1,
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '10px',
   }
 
-  const handleMouseUp = () => {
-    setState('Hover')
+  const inner = (
+    <>
+      {/* Hover fill — sweeps left-to-right */}
+      <span style={hoverFillStyles} aria-hidden="true" />
+      {/* Active ripple blob */}
+      <span style={activeBlobStyles} aria-hidden="true" />
+      {/* Visible content */}
+      <span style={contentStyles}>
+        {children}
+        {showIcon && (
+          <Icons
+            icon="right-arrow"
+            state={isActive ? 'active' : 'Default'}
+            size={20}
+            style={{ color: isActive ? colors.primary[700] : '#FFFFFF' }}
+          />
+        )}
+      </span>
+    </>
+  )
+
+  const handlers = {
+    onMouseEnter: () => setBtnState('hover'),
+    onMouseLeave: () => setBtnState('default'),
+    onMouseDown:  () => setBtnState('active'),
+    onMouseUp:    () => setBtnState('hover'),
   }
 
-  const handleClick = (e) => {
-    if (onClick) {
-      onClick(e)
-    }
+  if (href) {
+    return (
+      <a href={href} style={buttonStyles} className={className} {...handlers}>
+        {inner}
+      </a>
+    )
   }
 
   return (
-    <button 
-      style={getStyles()}
-      className={className}
-      onClick={handleClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-    >
-      {children}
+    <button style={buttonStyles} className={className} onClick={onClick} {...handlers}>
+      {inner}
     </button>
   )
 }

@@ -22,7 +22,7 @@ const NavbarLink = ({ text = 'Home', showLine = false, onClick }) => {
     lineHeight: 1.6,
     position: 'relative',
     flexShrink: 0,
-    color: '#1B0022',
+    color: '#212121',
     fontSize: '16px',
     textAlign: 'left',
     letterSpacing: '0.8px',

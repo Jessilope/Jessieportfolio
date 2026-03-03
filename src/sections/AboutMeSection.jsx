@@ -87,7 +87,7 @@ const AboutMeSection = () => {
     fontWeight: 400,
     lineHeight: '1.6',
     letterSpacing: '0.8px',
-    color: '#1b0022',
+    color: '#212121',
     fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
     width: '100%',
     textAlign: 'left',

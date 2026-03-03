@@ -34,7 +34,7 @@ const DollarCityDefine = () => {
     fontWeight: 400,
     lineHeight: isMobile ? '28px' : '32px',
     letterSpacing: '0',
-    color: '#370161',
+    color: '#5D5F98',
     textAlign: 'center',
     width: '100%',
     margin: 0,
@@ -68,7 +68,7 @@ const DollarCityDefine = () => {
 
   const lineContainerStyles = {
     width: '3px',
-    backgroundColor: '#370161',
+    backgroundColor: '#5D5F98',
     flexShrink: 0,
     alignSelf: 'stretch',
     minHeight: isMobile ? '60px' : undefined,
@@ -141,7 +141,7 @@ const DollarCityDefine = () => {
             margin: '0', 
             lineHeight: 1.6,
             fontWeight: 700,
-            color: '#370161',
+            color: '#5D5F98',
             fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700"
           }}>
             How might I design a Dollar City mobile experience that feels fast, clear, and trustworthy, reducing friction and increasing user confidence in online purchases?

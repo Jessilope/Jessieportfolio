@@ -35,7 +35,7 @@ const TripFinderReflection = () => {
     fontStyle: 'normal',
     fontWeight: 400,
     lineHeight: '0',
-    color: '#370161',
+    color: '#5D5F98',
     textAlign: 'center',
     width: '100%',
     flexShrink: 0,

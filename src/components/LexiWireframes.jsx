@@ -41,7 +41,7 @@ const LexiWireframes = () => {
     fontWeight: 700,
     lineHeight: 1.3,
     letterSpacing: isMobile ? '1px' : '1.2px',
-    color: '#370161',
+    color: '#5D5F98',
     fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700",
     margin: 0,
     width: '100%',

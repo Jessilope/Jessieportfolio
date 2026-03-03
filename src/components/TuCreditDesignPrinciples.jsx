@@ -45,7 +45,7 @@ const TuCreditDesignPrinciples = () => {
     fontWeight: 700,
     lineHeight: '1.3',
     letterSpacing: '1.2px',
-    color: '#370161',
+    color: '#5D5F98',
     width: '100%',
     margin: 0,
     flexShrink: 0,
@@ -114,7 +114,7 @@ const TuCreditDesignPrinciples = () => {
   }
 
   const highlightTextStyles = {
-    color: '#580092',
+    color: '#5D5F98',
     lineHeight: '1.6',
     fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
   }
