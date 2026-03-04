@@ -145,7 +145,19 @@ const LexiEmpathyMap = () => {
           flexDirection: isMobile ? 'column' : 'row',
         }}>
 
-          {/* Left: 4 quadrants in 2 rows × 2 cols */}
+          {/* Left: 4 quadrants in 2 rows × 2 cols — image on mobile */}
+          {isMobile ? (
+            <img
+              src="/assets/images/lexi/empathy map.png"
+              alt="Empathy map"
+              style={{
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+                borderRadius: '8px',
+              }}
+            />
+          ) : (
           <div style={{
             display: 'flex',
             flexDirection: 'column',
@@ -166,8 +178,10 @@ const LexiEmpathyMap = () => {
               <Quadrant label="Does" items={DOES} />
             </div>
           </div>
+          )}
 
-          {/* Right: Persona card */}
+          {/* Right: Persona card — hidden on mobile */}
+          {!isMobile && (
           <div style={{
             display: 'flex',
             flexDirection: 'column',
@@ -251,6 +265,7 @@ const LexiEmpathyMap = () => {
               Jenna is a curious and committed language learner. She learns independently from home and is always exploring new ways to make her learning experience more intentional. She values having tools that adapt to her rhythm and goals.
             </p>
           </div>
+          )}
 
         </div>
       </AnimatedOnScroll>

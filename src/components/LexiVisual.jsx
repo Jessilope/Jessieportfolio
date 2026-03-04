@@ -63,7 +63,7 @@ const LexiVisual = () => {
       <AnimatedOnScroll animation="fadeIn" duration={600} style={{ width: '100%', maxWidth: '901px' }}>
         <p style={{
           fontFamily: FONT_POPPINS,
-          fontSize: isMobile ? '24px' : '32px',
+          fontSize: '32px',
           fontWeight: 500,
           lineHeight: 1.3,
           color: '#5d5f98',
@@ -72,8 +72,42 @@ const LexiVisual = () => {
         }}>Visual</p>
       </AnimatedOnScroll>
 
-      {/* Main content: Style guide */}
+      {/* Main content: Style guide — image on mobile, full layout on desktop */}
       <AnimatedOnScroll animation="slideUp" delay={100} duration={600} style={{ width: '100%', maxWidth: '901px' }}>
+        {isMobile ? (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', width: '100%' }}>
+            {/* Mobile header: Style guide subtitle + body */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', width: '100%' }}>
+              <p style={{
+                fontFamily: FONT_POPPINS,
+                fontSize: '20px',
+                fontWeight: 500,
+                lineHeight: 1.3,
+                letterSpacing: '1.2px',
+                color: '#8a8a8a',
+                margin: 0,
+              }}>Style guide</p>
+              <p style={{
+                fontFamily: FONT_BODY,
+                fontSize: '14px',
+                fontWeight: 400,
+                lineHeight: 1.6,
+                letterSpacing: '0.8px',
+                color: '#212121',
+                margin: 0,
+                fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+              }}>
+                The visual design system for Lexi emphasizes a modern, clean aesthetic that supports confidence and reduces cognitive load. Colors, typography, and components were carefully selected to create a supportive learning environment.
+              </p>
+            </div>
+            {/* Mobile image */}
+            <img
+              src="/assets/images/lexi/visual.png"
+              alt="Visual style guide"
+              style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '8px' }}
+            />
+          </div>
+        ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '64px', width: '100%' }}>
 
           {/* Header: title + body */}
@@ -204,7 +238,7 @@ const LexiVisual = () => {
                       lineHeight,
                       color: '#363636',
                       margin: 0,
-                    }}>Hello there</p>
+                    }}>Hello</p>
                   </div>
                 </div>
               ))}
@@ -236,6 +270,7 @@ const LexiVisual = () => {
           </div>
 
         </div>
+        )}
       </AnimatedOnScroll>
     </section>
   )

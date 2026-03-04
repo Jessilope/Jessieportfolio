@@ -124,9 +124,10 @@ const LexiIdeate = () => {
             }}>
               <Outcome />
 
-              {/* Mockup image */}
+              {/* Mockup image — hidden on mobile */}
+              {!isMobile && (
               <div style={{
-                width: isMobile ? '100%' : '384px',
+                width: '384px',
                 height: '401px',
                 flexShrink: 0,
                 position: 'relative',
@@ -147,6 +148,7 @@ const LexiIdeate = () => {
                   }}
                 />
               </div>
+              )}
             </div>
           </div>
 

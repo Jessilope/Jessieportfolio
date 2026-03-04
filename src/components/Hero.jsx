@@ -89,27 +89,20 @@ const Hero = () => {
   const sectionStyles = {
     backgroundColor: colors.backgrounds.main,
     width: '100%',
-    height: isMobile ? 'auto' : '100vh',
-    minHeight: isMobile ? 'auto' : '560px',
+    height: isMobile ? '880px' : '100vh',
+    minHeight: isMobile ? '880px' : '560px',
     position: 'relative',
     overflow: 'hidden',
-    // Mobile: simple flex column with padding
-    display: isMobile ? 'flex' : 'block',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: isMobile ? '180px' : '0',
-    paddingBottom: isMobile ? '100px' : '0',
-    paddingLeft: isMobile ? '24px' : '0',
-    paddingRight: isMobile ? '24px' : '0',
+    display: 'block',
     boxSizing: 'border-box',
   }
 
   // Desktop container: 895×562px, centered horizontally, 70px below vertical center
-  // Figma: left:calc(50%-0.5px) top:calc(50%+70px) -translate-x-1/2 -translate-y-1/2
   const containerStyles = isMobile ? {
-    position: 'relative',
-    width: '100%',
+    position: 'absolute',
+    top: '254px',
+    left: '24px',
+    right: '24px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -131,7 +124,7 @@ const Hero = () => {
     justifyContent: 'center',
   }
 
-  // Text content block — 717px centered, gap 24px
+  // Text content block — centered, gap 24px
   const textContainerStyles = {
     display: 'flex',
     flexDirection: 'column',
@@ -140,24 +133,25 @@ const Hero = () => {
     textAlign: 'center',
     width: '100%',
     maxWidth: isMobile ? '100%' : '717px',
-    margin: '0 auto',
+    margin: isMobile ? '157.5px auto 0' : '0 auto',
     position: 'relative',
     zIndex: 1,
   }
 
-  // Title — Poppins Regular 32px #5d5f98
+  // Title — Poppins Medium 32px #5d5f98
   const headerStyles = {
     fontFamily: `'Poppins', sans-serif`,
     fontSize: '32px',
-    fontWeight: 400,
+    fontWeight: isMobile ? 500 : 400,
     lineHeight: 1.3,
     letterSpacing: '0',
     color: colors.primary[700],
     margin: 0,
     width: '100%',
+    textAlign: 'center',
   }
 
-  // Description — Kantumruy 18px #a4a4a4, 662px wide
+  // Description — Kantumruy 18px #a4a4a4
   const bodyTextStyles = {
     fontFamily: `'${typography.presets.bodyLarge.fontFamily}', ${typography.fontFamilies.fallback}`,
     fontSize: '18px',
@@ -168,31 +162,31 @@ const Hero = () => {
     margin: 0,
     maxWidth: isMobile ? '100%' : '662px',
     width: '100%',
+    textAlign: isMobile ? 'center' : 'center',
     fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
   }
 
-  // Yellow Flower — bigger, adjusted position
+  // Yellow Flower — Figma: absolute x=258, y=100 within 880px section, 174×174px
   const yellowFlowerStyles = {
     position: 'absolute',
     left: isMobile ? 'auto' : '820px',
-    right: isMobile ? '-80px' : 'auto',
-    top: isMobile ? '20px' : '-20px',
-    width: isMobile ? '140px' : '380px',
-    height: isMobile ? '140px' : '405px',
-    zIndex: 0,
+    right: isMobile ? '-30px' : 'auto',
+    top: isMobile ? '130px' : '-20px',
+    width: isMobile ? '174px' : '380px',
+    height: isMobile ? '174px' : '405px',
+    zIndex: 2,
     opacity: yellowFlowerAnimation.isVisible ? 1 : 0,
     transform: yellowFlowerAnimation.isVisible ? 'scale(1)' : 'scale(0.9)',
     transition: 'opacity 900ms cubic-bezier(0.4, 0, 0.2, 1) 300ms, transform 900ms cubic-bezier(0.4, 0, 0.2, 1) 300ms',
   }
 
-  // Purple Flower — bigger, adjusted position
+  // Purple Flower — Figma: absolute x=-26, y=653 within 880px section, 210×219px
   const purpleFlowerStyles = {
     position: 'absolute',
-    left: isMobile ? '-70px' : '-320px',
-    top: isMobile ? 'auto' : '140px',
-    bottom: isMobile ? '-20px' : 'auto',
-    width: isMobile ? '170px' : '410px',
-    height: isMobile ? '170px' : '410px',
+    left: isMobile ? '-26px' : '-320px',
+    top: isMobile ? '653px' : '140px',
+    width: isMobile ? '210px' : '410px',
+    height: isMobile ? '219px' : '410px',
     zIndex: 0,
     opacity: purpleFlowerAnimation.isVisible ? 1 : 0,
     transform: purpleFlowerAnimation.isVisible ? 'scale(1)' : 'scale(0.9)',
@@ -214,29 +208,57 @@ const Hero = () => {
 
   return (
     <section id="landing" style={sectionStyles}>
-      <div style={containerStyles}>
-        {/* Text content — centered */}
-        <div style={textContainerStyles}>
-          <div ref={headerAnimation.ref} style={{ ...headerAnimationStyles, width: '100%' }}>
-            <p style={headerStyles}>Hello, I'm Jessie</p>
-          </div>
-          <div ref={bodyAnimation.ref} style={{ ...bodyAnimationStyles, width: '100%' }}>
-            <p style={bodyTextStyles}>
-              A product designer driven to create user-centered solutions who combines creativity and strategic thinking to craft intuitive and impactful digital experiences.
-            </p>
-          </div>
-        </div>
 
-        {/* Yellow Flower — top right, partially off-screen */}
-        <div ref={yellowFlowerAnimation.ref}>
-          <YellowFlower style={yellowFlowerStyles} />
-        </div>
+      {isMobile ? (
+        <>
+          {/* Mobile: Yellow flower — direct child of section */}
+          <div ref={yellowFlowerAnimation.ref}>
+            <YellowFlower style={yellowFlowerStyles} />
+          </div>
 
-        {/* Purple Flower — left, partially clipped */}
-        <div ref={purpleFlowerAnimation.ref}>
-          <PurpleFlower style={purpleFlowerStyles} />
+          {/* Mobile: Content container */}
+          <div style={containerStyles}>
+            <div style={textContainerStyles}>
+              <div ref={headerAnimation.ref} style={{ ...headerAnimationStyles, width: '100%' }}>
+                <p style={headerStyles}>Hello, I'm a UX/UI designer.</p>
+              </div>
+              <div ref={bodyAnimation.ref} style={{ ...bodyAnimationStyles, width: '100%' }}>
+                <p style={bodyTextStyles}>
+                  A product designer driven to create user-centered solutions who combines creativity and strategic thinking to craft intuitive and impactful digital experiences.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile: Purple flower — direct child of section */}
+          <div ref={purpleFlowerAnimation.ref}>
+            <PurpleFlower style={purpleFlowerStyles} />
+          </div>
+        </>
+      ) : (
+        /* Desktop: original layout — flowers inside container */
+        <div style={containerStyles}>
+          <div style={textContainerStyles}>
+            <div ref={headerAnimation.ref} style={{ ...headerAnimationStyles, width: '100%' }}>
+              <p style={headerStyles}>Hello, I'm Jessie</p>
+            </div>
+            <div ref={bodyAnimation.ref} style={{ ...bodyAnimationStyles, width: '100%' }}>
+              <p style={bodyTextStyles}>
+                A product designer driven to create user-centered solutions who combines creativity and strategic thinking to craft intuitive and impactful digital experiences.
+              </p>
+            </div>
+          </div>
+
+          <div ref={yellowFlowerAnimation.ref}>
+            <YellowFlower style={yellowFlowerStyles} />
+          </div>
+
+          <div ref={purpleFlowerAnimation.ref}>
+            <PurpleFlower style={purpleFlowerStyles} />
+          </div>
         </div>
-      </div>
+      )}
+
     </section>
   )
 }

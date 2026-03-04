@@ -179,53 +179,64 @@ const LexiUserPersona = () => {
             </p>
           </div>
 
-          {/* Persona 1 — Jenna Rodriguez (photo left) */}
-          <PersonaRow
-            photoLeft
-            photo="/assets/images/lexi/persona-jenna-2.jpg"
-            name="Jenna Rodriguez"
-            age="26 years old"
-            job="Remote professional"
-            location="Colombia"
-            family="Unmarried with children"
-            needsItems={[
-              'Do not travel to an institue',
-              'Get a better experience',
-              'Practice English consistently',
-              'Learn in a calm, focused environment',
-              'Optimize time spent',
-              'Track progress over time',
-            ]}
-            painItems={[
-              'Unwanted flirting in language exchange apps',
-              'Lack of structure in conversations',
-              'Feeling that her effort is not taken seriously',
-              'Difficulty staying consistent with current tools',
-            ]}
-          />
+          {/* Persona cards — image on mobile, full layout on desktop */}
+          {isMobile ? (
+            <img
+              src="/assets/images/lexi/user-persona.png"
+              alt="User personas"
+              style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '8px' }}
+            />
+          ) : (
+            <>
+              {/* Persona 1 — Jenna Rodriguez (photo left) */}
+              <PersonaRow
+                photoLeft
+                photo="/assets/images/lexi/persona-jenna-2.jpg"
+                name="Jenna Rodriguez"
+                age="26 years old"
+                job="Remote professional"
+                location="Colombia"
+                family="Unmarried with children"
+                needsItems={[
+                  'Do not travel to an institue',
+                  'Get a better experience',
+                  'Practice English consistently',
+                  'Learn in a calm, focused environment',
+                  'Optimize time spent',
+                  'Track progress over time',
+                ]}
+                painItems={[
+                  'Unwanted flirting in language exchange apps',
+                  'Lack of structure in conversations',
+                  'Feeling that her effort is not taken seriously',
+                  'Difficulty staying consistent with current tools',
+                ]}
+              />
 
-          {/* Persona 2 — Juan Morales (photo right) */}
-          <PersonaRow
-            photoLeft={false}
-            photo="/assets/images/lexi/persona-juan.jpg"
-            name="Juan Morales"
-            age="26 years old"
-            job="Remote professional"
-            location="Colombia"
-            family="Unmarried with children"
-            needsItems={[
-              'Anxiety when speaking with others',
-              'Fear of being judged for mistakes',
-              'Overwhelming or unstructured platforms',
-              'Slow progress despite effort',
-            ]}
-            painItems={[
-              'A safe, low-pressure learning environment',
-              'AI-guided conversations at his level',
-              'Encouraging, corrective feedback',
-              'Small wins that reinforce motivation',
-            ]}
-          />
+              {/* Persona 2 — Juan Morales (photo right) */}
+              <PersonaRow
+                photoLeft={false}
+                photo="/assets/images/lexi/persona-juan.jpg"
+                name="Juan Morales"
+                age="26 years old"
+                job="Remote professional"
+                location="Colombia"
+                family="Unmarried with children"
+                needsItems={[
+                  'Anxiety when speaking with others',
+                  'Fear of being judged for mistakes',
+                  'Overwhelming or unstructured platforms',
+                  'Slow progress despite effort',
+                ]}
+                painItems={[
+                  'A safe, low-pressure learning environment',
+                  'AI-guided conversations at his level',
+                  'Encouraging, corrective feedback',
+                  'Small wins that reinforce motivation',
+                ]}
+              />
+            </>
+          )}
 
         </div>
       </AnimatedOnScroll>

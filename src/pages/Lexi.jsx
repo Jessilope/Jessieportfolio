@@ -163,9 +163,6 @@ const Lexi = () => {
         <LexiVisual />
       </div>
 
-      {/* Typography Section */}
-      <LexiTypography />
-
       {/* Components Section */}
       <LexiComponents />
 

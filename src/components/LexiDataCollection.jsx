@@ -74,7 +74,7 @@ const CardStack = ({ scale = 1 }) => {
         position: 'relative',
         width: `${W * scale}px`,
         height: `${H * scale}px`,
-        flex: 1,
+        flexShrink: 0,
         cursor: 'pointer',
       }}
     >
@@ -142,6 +142,20 @@ const CardStack = ({ scale = 1 }) => {
 
 const LexiDataCollection = () => {
   const { isMobile } = useResponsive()
+  const cardWrapperRef = useRef(null)
+  const [cardScale, setCardScale] = React.useState(0.65)
+
+  React.useEffect(() => {
+    if (!isMobile) return
+    const el = cardWrapperRef.current
+    if (!el) return
+    const observer = new ResizeObserver(([entry]) => {
+      const w = entry.contentRect.width
+      if (w > 0) setCardScale(w / 620)
+    })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [isMobile])
 
   return (
     <section style={{
@@ -175,7 +189,7 @@ const LexiDataCollection = () => {
       <AnimatedOnScroll animation="slideUp" delay={100} duration={600} style={{ width: '100%' }}>
         <div style={{
           width: '100%',
-          maxWidth: '950px',
+          maxWidth: isMobile ? '100%' : '950px',
           backgroundColor: '#5d5f98',
           borderRadius: '24px',
           padding: '24px',
@@ -183,10 +197,11 @@ const LexiDataCollection = () => {
           flexDirection: isMobile ? 'column' : 'row',
           alignItems: 'center',
           justifyContent: 'space-between',
-          gap: isMobile ? '32px' : '0',
+          gap: isMobile ? '24px' : '0',
           boxSizing: 'border-box',
           overflow: 'hidden',
-          minHeight: `${470 + 48}px`,
+          minHeight: isMobile ? 'unset' : `${470 + 48}px`,
+          height: isMobile ? 'fit-content' : 'auto',
         }}>
           <div style={{ flex: 1, minWidth: 0 }}>
             <p style={{
@@ -202,7 +217,32 @@ const LexiDataCollection = () => {
             </p>
           </div>
 
-          <CardStack scale={isMobile ? 0.55 : 1} />
+          {isMobile ? (
+            <div
+              ref={cardWrapperRef}
+              style={{
+                width: '100%',
+                flexShrink: 0,
+                overflowX: 'hidden',
+                height: `${470 * cardScale}px`,
+                position: 'relative',
+              }}
+            >
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: '50%',
+                width: `${620}px`,
+                height: `${470}px`,
+                transform: `translateX(calc(-50% + ${87 * cardScale}px)) scale(${cardScale})`,
+                transformOrigin: 'top center',
+              }}>
+                <CardStack scale={1} />
+              </div>
+            </div>
+          ) : (
+            <CardStack scale={1} />
+          )}
         </div>
       </AnimatedOnScroll>
 

@@ -11,6 +11,7 @@ const Navbar = () => {
   const { isMobile } = useResponsive()
   const [menuOpen, setMenuOpen] = React.useState(false)
   const [isScrolled, setIsScrolled] = React.useState(false)
+  const [isBurgerPressed, setIsBurgerPressed] = React.useState(false)
 
   // Track scroll position to show/hide shadow
   React.useEffect(() => {
@@ -117,17 +118,19 @@ const Navbar = () => {
     flexShrink: 0,
   }
 
-  // Burger icon button
+  // Burger icon button — glass effect from Figma
   const burgerButtonStyles = {
     display: isMobile ? 'flex' : 'none',
     alignItems: 'center',
     justifyContent: 'center',
     width: '44px',
     height: '44px',
-    background: 'white',
+    background: 'rgba(255, 255, 255, 0.3)',
+    backdropFilter: 'blur(8px)',
+    WebkitBackdropFilter: 'blur(8px)',
     border: 'none',
-    borderRadius: '8px',
-    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+    borderRadius: '24px',
+    boxShadow: '0px 0px 4px 0px rgba(156, 156, 156, 0.25)',
     cursor: 'pointer',
     padding: '10px',
     flexShrink: 0,
@@ -150,10 +153,7 @@ const Navbar = () => {
 
   // Mobile dropdown panel
   const dropdownStyles = {
-    position: 'absolute',
-    top: '52px',
-    right: '0',
-    marginTop: '8px',
+    position: 'relative',
     width: '287px',
     backgroundColor: 'white',
     borderRadius: '16px',
@@ -170,7 +170,6 @@ const Navbar = () => {
     transform: menuOpen ? 'translateY(0)' : 'translateY(-10px)',
     pointerEvents: menuOpen ? 'auto' : 'none',
     transition: 'opacity 0.25s ease, transform 0.25s ease',
-    zIndex: 1001,
   }
 
   // Dropdown links container
@@ -331,15 +330,51 @@ const Navbar = () => {
         {/* Overlay */}
         <div style={overlayStyles} onClick={() => setMenuOpen(false)} />
 
-        {/* Floating burger button */}
+        {/* Floating burger/close button + dropdown */}
         <div style={{
           position: 'fixed',
           top: spacing.xxl,
           right: '24px',
           zIndex: 1001,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-end',
+          gap: '8px',
         }}>
-          <button style={burgerButtonStyles} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
-            {menuOpen ? <CloseIcon /> : <BurgerIcon />}
+          {/* Close / Burger button — glass pill */}
+          <button
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: isBurgerPressed ? 'rgba(255, 255, 255, 0.3)' : menuOpen ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.3)',
+              backdropFilter: 'blur(8px)',
+              WebkitBackdropFilter: 'blur(8px)',
+              border: 'none',
+              borderRadius: '24px',
+              boxShadow: '0px 0px 4px 0px rgba(156, 156, 156, 0.25)',
+              cursor: 'pointer',
+              padding: '8px',
+              flexShrink: 0,
+              zIndex: 1002,
+              transition: 'background 0.15s ease',
+            }}
+            onClick={() => setMenuOpen(!menuOpen)}
+            onMouseDown={() => setIsBurgerPressed(true)}
+            onMouseUp={() => setIsBurgerPressed(false)}
+            onMouseLeave={() => setIsBurgerPressed(false)}
+            onTouchStart={() => setIsBurgerPressed(true)}
+            onTouchEnd={() => setIsBurgerPressed(false)}
+            aria-label="Menu"
+          >
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              padding: '10px',
+              borderRadius: '8px',
+            }}>
+              {menuOpen ? <CloseIcon /> : <BurgerIcon />}
+            </div>
           </button>
 
           {/* Mobile dropdown */}

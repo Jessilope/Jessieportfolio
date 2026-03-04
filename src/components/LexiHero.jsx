@@ -43,14 +43,14 @@ const LexiHero = () => {
         position: 'absolute',
         left: 0,
         right: 0,
-        top: isMobile ? '380px' : '420px',
+        top: isMobile ? '520px' : '420px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
       }}>
         <p style={{
           fontFamily: `'Madimi One', sans-serif`,
-          fontSize: isMobile ? '150px' : '400px',
+          fontSize: isMobile ? '200px' : '400px',
           fontWeight: 400,
           lineHeight: '61.6px',
           letterSpacing: '12px',
@@ -65,7 +65,8 @@ const LexiHero = () => {
       {!isMobile && (
         <div style={{
           position: 'absolute',
-          left: 'calc(8.33% + 55.33px + 197.6px)',
+          left: '50%',
+          transform: 'translateX(-50%)',
           top: 'calc(293px + 33px)',
           width: '512.792px',
           height: '660.371px',
@@ -89,33 +90,29 @@ const LexiHero = () => {
         </div>
       )}
 
-      {/* Mobile: phone mockup positioned bottom-center */}
+      {/* Mobile: phone mockup — bigger, centered at bottom, clipped by section overflow:hidden */}
       {isMobile && (
         <div style={{
           position: 'absolute',
-          left: '8px',
-          top: '435px',
-          width: '403.024px',
-          height: '519.012px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          bottom: '-60px',
           display: 'flex',
-          alignItems: 'center',
+          alignItems: 'flex-end',
           justifyContent: 'center',
         }}>
           <div style={{ transform: 'rotate(12.83deg)', flexShrink: 0 }}>
-            <div style={{
-              width: '308.088px',
-              height: '462.132px',
-              borderRadius: '32px',
-              overflow: 'hidden',
-              boxShadow: '0 0 45px rgba(21,93,252,0.25)',
-              position: 'relative',
-            }}>
-              <img
-                src="/assets/images/hero/lexi-hero-mockup.png"
-                alt="Lexi app"
-                style={{ position: 'absolute', width: '100.08%', height: '100%', left: '-0.04%', top: 0, objectFit: 'cover' }}
-              />
-            </div>
+            <img
+              src="/assets/images/hero/lexi-hero-mockup.png"
+              alt="Lexi app"
+              style={{
+                width: '320px',
+                height: 'auto',
+                objectFit: 'contain',
+                filter: 'drop-shadow(0 0 45px rgba(21,93,252,0.25))',
+                display: 'block',
+              }}
+            />
           </div>
         </div>
       )}

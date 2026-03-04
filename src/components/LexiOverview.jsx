@@ -12,8 +12,9 @@ const features = [
 
 const FeatureCard = ({ icon, size, label, fontSize, lineHeight, letterSpacing, isMobile }) => (
   <div style={{
-    flex: '1 0 0',
-    minWidth: isMobile ? '140px' : '0',
+    flex: isMobile ? 'unset' : '1 0 0',
+    width: '100%',
+    minWidth: '0',
     height: '166px',
     backgroundColor: '#fff',
     border: '2px solid #f9f9f9',
@@ -130,11 +131,10 @@ const LexiOverview = () => {
           </div>
           <div style={{
             display: 'flex',
-            flexDirection: 'row',
+            flexDirection: isMobile ? 'column' : 'row',
             gap: '24px',
             alignItems: 'stretch',
             justifyContent: 'center',
-            flexWrap: isMobile ? 'wrap' : 'nowrap',
             width: '100%',
           }}>
             {features.map((f) => (

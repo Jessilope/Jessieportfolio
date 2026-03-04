@@ -18,17 +18,18 @@ const ProjectImage = ({ name, backgroundColor, route, navigate, isMobile = false
       transition: isMobile ? 'transform 0.3s ease-out, box-shadow 0.3s ease-out' : 'all 0.3s ease',
     }
 
-    // Mobile sizes - responsive width with aspect ratio
+    // Mobile sizes - responsive width with aspect ratio, click-only interaction
     if (isMobile) {
       const isPressed = state === 'Click'
       return {
         ...baseStyles,
         width: '100%',
-        maxWidth: '382px',
-        aspectRatio: '350 / 200',
-        height: 'auto',
-        transform: isPressed ? 'scale(1.05)' : 'scale(1)',
-        boxShadow: isPressed ? '2px 4px 8px 0px rgba(0, 0, 0, 0.15)' : 'none',
+        height: '178px',
+        transform: isPressed ? 'scale(1.04)' : 'scale(1)',
+        boxShadow: isPressed ? '0px 8px 24px rgba(0, 0, 0, 0.18)' : 'none',
+        transition: isPressed
+          ? 'transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease'
+          : 'transform 0.25s ease, box-shadow 0.25s ease',
       }
     }
 
@@ -67,20 +68,15 @@ const ProjectImage = ({ name, backgroundColor, route, navigate, isMobile = false
   }
 
   const handleMouseLeave = () => {
-    setState('Default')
+    if (!isMobile) setState('Default')
   }
 
   const handleMouseDown = () => {
-    setState('Click')
+    if (!isMobile) setState('Click')
   }
 
   const handleMouseUp = () => {
-    if (!isMobile) {
-      setState('Hover')
-    } else {
-      // Keep pressed state briefly for mobile animation
-      setTimeout(() => setState('Default'), 150)
-    }
+    if (!isMobile) setState('Hover')
   }
 
   const handleClick = () => {
@@ -98,15 +94,13 @@ const ProjectImage = ({ name, backgroundColor, route, navigate, isMobile = false
     }
   }
 
-  // Touch events for mobile
+  // Touch events for mobile — only these trigger the click animation
   const handleTouchStart = () => {
     if (isMobile) setState('Click')
   }
 
   const handleTouchEnd = () => {
-    if (isMobile) {
-      setTimeout(() => setState('Default'), 150)
-    }
+    if (isMobile) setTimeout(() => setState('Default'), 200)
   }
 
   const getTextStyles = () => {

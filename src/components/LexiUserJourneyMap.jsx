@@ -128,7 +128,21 @@ const LexiUserJourneyMap = () => {
         }}>User Journey Map</p>
       </AnimatedOnScroll>
 
-      {/* Journey map table */}
+      {/* Journey map table — image on mobile, full table on desktop */}
+      {isMobile ? (
+        <AnimatedOnScroll animation="slideUp" delay={100} duration={600} style={{ width: '100%' }}>
+          <img
+            src="/assets/images/lexi/uder-journeymap.png"
+            alt="User Journey Map"
+            style={{
+              width: '100%',
+              height: 'auto',
+              display: 'block',
+              borderRadius: '8px',
+            }}
+          />
+        </AnimatedOnScroll>
+      ) : (
       <AnimatedOnScroll animation="slideUp" delay={100} duration={600} style={{ width: '100%', maxWidth: '1088px', overflowX: isMobile ? 'auto' : 'visible' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', minWidth: isMobile ? '700px' : 'auto' }}>
 
@@ -184,6 +198,7 @@ const LexiUserJourneyMap = () => {
 
         </div>
       </AnimatedOnScroll>
+      )}
 
     </section>
   )
