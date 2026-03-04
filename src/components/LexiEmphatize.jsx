@@ -1,132 +1,163 @@
-import { colors, spacing } from '../tokens'
+import React from 'react'
+import { colors } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
+import AnimatedOnScroll from './AnimatedOnScroll'
+import Icons from './Icons'
+
+const PAIN_POINTS = [
+  'Fear making mistakes in front of others',
+  'Feel insecure about their language level',
+  'Worry that their effort will not be taken seriously',
+  'Avoid interaction when the experience feels judgmental or unstructured',
+]
+
+const PRIORITIES = [
+  'Guided interactions instead of open, unstructured conversations',
+  'Low-pressure practice that normalizes mistakes',
+  'Clear progress tracking to reinforce a sense of achievement',
+  'A calm, friendly tone that reduces tension and builds trust',
+]
+
+const ListItem = ({ text, iconName }) => (
+  <div style={{
+    display: 'flex',
+    gap: '12px',
+    alignItems: 'center',
+    width: '100%',
+  }}>
+    <Icons icon={iconName} state="active" size={24} style={{ flexShrink: 0 }} />
+    <p style={{
+      fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
+      fontSize: '16px',
+      fontWeight: 400,
+      lineHeight: 1.6,
+      letterSpacing: '0.8px',
+      color: '#212121',
+      margin: 0,
+      flex: '1 0 0',
+    }}>{text}</p>
+  </div>
+)
+
+const EmpathizeCard = ({ title, items, iconName, gradientTo, isMobile }) => (
+  <div style={{
+    flex: isMobile ? 'none' : '1 0 0',
+    width: isMobile ? '100%' : undefined,
+    height: isMobile ? 'auto' : '399px',
+    background: `linear-gradient(to bottom, #fff, ${gradientTo})`,
+    border: '1px solid #f9f9f9',
+    borderRadius: '16px',
+    padding: '16px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '48px',
+    boxSizing: 'border-box',
+  }}>
+    <p style={{
+      fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
+      fontSize: '18px',
+      fontWeight: 400,
+      lineHeight: 1.5,
+      letterSpacing: '0.9px',
+      color: '#bcbcbc',
+      textAlign: 'center',
+      margin: 0,
+      width: '100%',
+    }}>{title}</p>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      flex: '1 0 0',
+      gap: isMobile ? '16px' : '0',
+    }}>
+      {items.map((text, i) => (
+        <ListItem key={i} text={text} iconName={iconName} />
+      ))}
+    </div>
+  </div>
+)
 
 const LexiEmphatize = () => {
   const { isMobile } = useResponsive()
 
-  const sectionStyles = {
-    backgroundColor: colors.backgrounds.main,
-    width: '100%',
-    paddingLeft: isMobile ? '24px' : '96px',
-    paddingRight: isMobile ? '24px' : '218px',
-    paddingTop: isMobile ? '64px' : '128px',
-    paddingBottom: isMobile ? '32px' : '64px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-  }
-
-  const contentStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: isMobile ? '32px' : spacing.xxl, // 32px mobile, 48px desktop
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    width: '100%',
-  }
-
-  const headerStyles = {
-    fontFamily: `'Kanit', sans-serif`,
-    fontSize: isMobile ? '24px' : '32px',
-    fontWeight: 400,
-    lineHeight: isMobile ? '28px' : '32px',
-    letterSpacing: '0',
-    color: '#5D5F98',
-    textAlign: 'center',
-    width: '100%',
-    margin: 0,
-  }
-
-  const bodyContainerStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: isMobile ? '32px' : '54px',
-    alignItems: 'flex-start',
-    width: '100%',
-  }
-
-  const bodyTextStyles = {
-    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
-    fontSize: isMobile ? '14px' : '16px',
-    fontWeight: 400,
-    lineHeight: 1.6,
-    letterSpacing: '0',
-    color: colors.neutral['700'],
-    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
-    margin: 0,
-  }
-
-  const paragraphContainerStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    width: '100%',
-  }
-
-  const listStyles = {
-    margin: '0',
-    paddingLeft: isMobile ? '24px' : '48px',
-    listStyleType: 'disc',
-  }
-
   return (
-    <section style={sectionStyles}>
-      <div style={contentStyles}>
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
-          <p style={headerStyles}>Empathize</p>
+    <section style={{
+      backgroundColor: colors.backgrounds.main,
+      width: '100%',
+      paddingTop: '32px',
+      paddingBottom: '64px',
+      paddingLeft: isMobile ? '24px' : '96px',
+      paddingRight: isMobile ? '24px' : '96px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '64px',
+      boxSizing: 'border-box',
+    }}>
+
+      {/* Header + body */}
+      <AnimatedOnScroll animation="fadeIn" duration={700} style={{ width: '100%' }}>
+        <div style={{
+          width: '100%',
+          maxWidth: '902px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '48px',
+        }}>
+          <p style={{
+            fontFamily: `'Poppins', sans-serif`,
+            fontSize: isMobile ? '24px' : '32px',
+            fontWeight: 500,
+            lineHeight: 1.3,
+            letterSpacing: '0',
+            color: '#5D5F98',
+            textAlign: 'center',
+            margin: 0,
+            width: '100%',
+          }}>Empathize</p>
+
+          <p style={{
+            fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
+            fontSize: '16px',
+            fontWeight: 400,
+            lineHeight: 1.6,
+            letterSpacing: '0.8px',
+            color: '#212121',
+            margin: 0,
+          }}>
+            I focused on understanding how language beginners feel when practicing a new language, especially in digital environments that rely on social interaction. Even when learners enjoy the exchange, anxiety and pressure can limit participation and slow progress. However, studies also show that supportive interaction, real-time feedback, and a sense of accountability help reduce fear and increase motivation.
+          </p>
         </div>
+      </AnimatedOnScroll>
 
-        <div style={bodyContainerStyles}>
-          {/* Paragraph 1 */}
-          <div style={paragraphContainerStyles}>
-            <p style={bodyTextStyles}>
-              I focused on understanding how language beginners feel when practicing a new language, especially in digital environments that rely on social interaction. Even when learners enjoy the exchange, anxiety and pressure can limit participation and slow progress. However, studies also show that supportive interaction, real-time feedback, and a sense of accountability help reduce fear and increase motivation.
-            </p>
-          </div>
-
-          {/* Paragraph 2 with bullet list */}
-          <div style={paragraphContainerStyles}>
-            <p style={{ ...bodyTextStyles, marginBottom: '0' }}>
-              Many learners want to practice, but they:
-            </p>
-            <ul style={listStyles}>
-              <li style={{ marginBottom: '0' }}>
-                <span style={{ lineHeight: 1.6 }}>Fear making mistakes in front of others</span>
-              </li>
-              <li style={{ marginBottom: '0' }}>
-                <span style={{ lineHeight: 1.6 }}>Feel insecure about their language level</span>
-              </li>
-              <li style={{ marginBottom: '0' }}>
-                <span style={{ lineHeight: 1.6 }}>Worry that their effort will not be taken seriously</span>
-              </li>
-              <li style={{ marginBottom: '0' }}>
-                <span style={{ lineHeight: 1.6 }}>Avoid interaction when the experience feels judgmental or unstructured</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Paragraph 3 with bullet list */}
-          <div style={paragraphContainerStyles}>
-            <p style={{ ...bodyTextStyles, marginBottom: '0' }}>
-              This empathy-driven approach led me to prioritize:
-            </p>
-            <ul style={listStyles}>
-              <li style={{ marginBottom: '0' }}>
-                <span style={{ lineHeight: 1.6 }}>Guided interactions instead of open, unstructured conversations</span>
-              </li>
-              <li style={{ marginBottom: '0' }}>
-                <span style={{ lineHeight: 1.6 }}>Low-pressure practice that normalizes mistakes</span>
-              </li>
-              <li style={{ marginBottom: '0' }}>
-                <span style={{ lineHeight: 1.6 }}>Clear progress tracking to reinforce a sense of achievement</span>
-              </li>
-              <li style={{ marginBottom: '0' }}>
-                <span style={{ lineHeight: 1.6 }}>A calm, friendly tone that reduces tension and builds trust</span>
-              </li>
-            </ul>
-          </div>
+      {/* Two cards */}
+      <AnimatedOnScroll animation="slideUp" delay={100} duration={600} style={{ width: '100%' }}>
+        <div style={{
+          width: '100%',
+          maxWidth: '902px',
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          gap: '29px',
+          alignItems: isMobile ? 'stretch' : 'center',
+        }}>
+          <EmpathizeCard
+            title="Many learners want to practice but they"
+            items={PAIN_POINTS}
+            iconName="warning"
+            gradientTo="#fff5f5"
+            isMobile={isMobile}
+          />
+          <EmpathizeCard
+            title="This led me to prioritize"
+            items={PRIORITIES}
+            iconName="success"
+            gradientTo="#f2fdee"
+            isMobile={isMobile}
+          />
         </div>
-      </div>
+      </AnimatedOnScroll>
+
     </section>
   )
 }

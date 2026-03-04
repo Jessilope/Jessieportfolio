@@ -1,0 +1,7 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Warning">
+<path id="Vector 65 (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M13.0618 4.4295C12.6212 3.54786 11.3635 3.54786 10.9229 4.4295L3.89 18.5006C3.49248 19.2959 4.07061 20.2317 4.95949 20.2317H19.0252C19.9141 20.2317 20.4922 19.2959 20.0947 18.5006L13.0618 4.4295ZM9.34188 3.6387C10.4339 1.45376 13.5508 1.45377 14.6428 3.63871L21.6757 17.7098C22.6608 19.6809 21.2281 22 19.0252 22H4.95949C2.75661 22 1.32387 19.6809 2.30902 17.7098L9.34188 3.6387Z" fill="var(--fill-0, #FF3B30)"/>
+<path id="Vector 66" d="M12 8V13" stroke="var(--stroke-0, #FF3B30)" stroke-width="1.7" stroke-linecap="round"/>
+<path id="Vector 67" d="M12 16L12 16.5" stroke="var(--stroke-0, #FF3B30)" stroke-width="1.7" stroke-linecap="round"/>
+</g>
+</svg>

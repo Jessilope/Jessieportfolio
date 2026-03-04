@@ -1,107 +1,149 @@
-import { colors, spacing } from '../tokens'
+import React from 'react'
+import { colors } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 import AnimatedOnScroll from './AnimatedOnScroll'
+import Icons from './Icons'
+
+const features = [
+  { icon: 'component', size: 36, label: 'Components UI KIT', fontSize: '18px', lineHeight: 1.5, letterSpacing: '0.9px' },
+  { icon: 'layers',    size: 36, label: 'Organized Layers',  fontSize: '16px', lineHeight: 1.6, letterSpacing: '0.8px' },
+  { icon: 'screen',    size: 36, label: 'Modern app screens', fontSize: '16px', lineHeight: 1.6, letterSpacing: '0.8px' },
+]
+
+const FeatureCard = ({ icon, size, label, fontSize, lineHeight, letterSpacing, isMobile }) => (
+  <div style={{
+    flex: '1 0 0',
+    minWidth: isMobile ? '140px' : '0',
+    height: '166px',
+    backgroundColor: '#fff',
+    border: '2px solid #f9f9f9',
+    borderRadius: '16px',
+    padding: '16px 24px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    boxSizing: 'border-box',
+  }}>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '24px',
+      alignItems: 'center',
+      width: '100%',
+    }}>
+      <Icons icon={icon} state="active" size={size} />
+      <p style={{
+        fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
+        fontSize,
+        fontWeight: 400,
+        lineHeight,
+        letterSpacing,
+        color: '#1f1f1f',
+        textAlign: 'center',
+        margin: 0,
+        width: '100%',
+      }}>{label}</p>
+    </div>
+  </div>
+)
 
 const LexiOverview = () => {
   const { isMobile } = useResponsive()
 
-  const sectionStyles = {
-    backgroundColor: colors.backgrounds.main,
-    width: '100%',
-    paddingLeft: isMobile ? '24px' : '96px',
-    paddingRight: isMobile ? '24px' : '64px',
-    paddingTop: isMobile ? '64px' : '128px',
-    paddingBottom: isMobile ? '32px' : '48px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-  }
-
-  const contentStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: spacing.xxl, // 48px
-    alignItems: 'flex-start',
-    width: '100%',
-    flex: 1,
-  }
-
-  const headerStyles = {
-    fontFamily: `'Kanit', sans-serif`,
-    fontSize: isMobile ? '24px' : '32px',
-    fontWeight: 400,
-    lineHeight: isMobile ? '28px' : '32px',
-    letterSpacing: '0',
-    color: '#5D5F98',
-    textAlign: 'center',
-    width: '100%',
-    margin: 0,
-  }
-
-  const bodyTextStyles = {
-    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
-    fontSize: isMobile ? '14px' : '16px',
-    fontWeight: 400,
-    lineHeight: 1.6,
-    letterSpacing: '0',
-    color: colors.neutral['700'],
-    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
-    margin: 0,
-    width: '100%',
-  }
-
-  const paragraphContainerStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    width: '100%',
-  }
-
-  const listStyles = {
-    margin: '0',
-    paddingLeft: '24px',
-    listStyleType: 'disc',
-  }
-
   return (
-    <section style={sectionStyles}>
-      <div style={contentStyles}>
-        <AnimatedOnScroll animation="fadeIn" duration={700}>
-          <p style={headerStyles}>
-            A Supportive AI-Driven Language Learning Experience
+    <section style={{
+      backgroundColor: colors.backgrounds.main,
+      width: '100%',
+      paddingTop: '128px',
+      paddingBottom: '48px',
+      paddingLeft: isMobile ? '24px' : '96px',
+      paddingRight: isMobile ? '24px' : '96px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '48px',
+      boxSizing: 'border-box',
+    }}>
+
+      {/* Content overview */}
+      <AnimatedOnScroll animation="fadeIn" duration={700} style={{ width: '100%' }}>
+        <div style={{
+          width: '100%',
+          maxWidth: '902px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '24px',
+        }}>
+          <p style={{
+            fontFamily: `'Poppins', sans-serif`,
+            fontSize: '24px',
+            fontWeight: 500,
+            lineHeight: 1.3,
+            letterSpacing: '1.2px',
+            color: '#c8c8c8',
+            margin: 0,
+          }}>
+            Project overview
           </p>
-        </AnimatedOnScroll>
-        
-        <AnimatedOnScroll animation="slideUp" delay={100} duration={600}>
-          <div style={paragraphContainerStyles}>
-            <p style={bodyTextStyles}>
-              The app LEXI provides a structured and supportive environment where users can practice without fear of judgment, making language learning feel approachable rather than intimidating. Through the integration of Lexi AI, users receive personalized guidance, adaptive conversations, and meaningful practice tailored to their level and interests. As a result, learners feel more secure, more motivated, and more willing to communicate — transforming language practice into a consistent, natural habit instead of a stressful experience.
+          <p style={{
+            fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
+            fontSize: '16px',
+            fontWeight: 400,
+            lineHeight: 1.6,
+            letterSpacing: '0.8px',
+            color: '#212121',
+            margin: 0,
+          }}>
+            The app LEXI provides a structured and supportive environment where users can practice without fear of judgment, making language learning feel approachable rather than intimidating. Through the integration of Lexi AI, users receive personalized guidance, adaptive conversations, and meaningful practice tailored to their level and interests. As a result, learners feel more secure, more motivated, and more willing to communicate transforming language practice into a consistent, natural habit instead of a stressful experience.
+          </p>
+        </div>
+      </AnimatedOnScroll>
+
+      {/* Main features */}
+      <AnimatedOnScroll animation="slideUp" delay={100} duration={600} style={{ width: '100%' }}>
+        <div style={{
+          width: '100%',
+          maxWidth: '902px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '16px',
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '100%',
+          }}>
+            <p style={{
+              fontFamily: `'Poppins', sans-serif`,
+              fontSize: '20px',
+              fontWeight: 500,
+              lineHeight: 1.2,
+              letterSpacing: '1px',
+              color: '#c8c8c8',
+              margin: 0,
+              flex: '1 0 0',
+            }}>
+              Main feature
             </p>
           </div>
-        </AnimatedOnScroll>
-
-        <AnimatedOnScroll animation="slideUp" delay={200} duration={600}>
-          <div style={paragraphContainerStyles}>
-            <div style={bodyTextStyles}>
-              <p style={{ margin: '0 0 0 0', lineHeight: 1.6 }}>The final outcome is a mobile app flow composed of six core screens:</p>
-              <ul style={listStyles}>
-                <li style={{ marginBottom: '0' }}>
-                  <span style={{ lineHeight: 1.6 }}>Home</span>
-                </li>
-                <li style={{ marginBottom: '0' }}>
-                  <span style={{ lineHeight: 1.6 }}>Messages by LEXI</span>
-                </li>
-                <li style={{ marginBottom: '0' }}>
-                  <span style={{ lineHeight: 1.6 }}>Vocabulary</span>
-                </li>
-                <li style={{ marginBottom: '0' }}>
-                  <span style={{ lineHeight: 1.6 }}>Profile track</span>
-                </li>
-              </ul>
-            </div>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '24px',
+            alignItems: 'stretch',
+            justifyContent: 'center',
+            flexWrap: isMobile ? 'wrap' : 'nowrap',
+            width: '100%',
+          }}>
+            {features.map((f) => (
+              <FeatureCard key={f.label} {...f} isMobile={isMobile} />
+            ))}
           </div>
-        </AnimatedOnScroll>
-      </div>
+        </div>
+      </AnimatedOnScroll>
+
     </section>
   )
 }

@@ -1,158 +1,205 @@
-import { colors, spacing } from '../tokens'
+import React, { useState, useRef } from 'react'
+import { colors } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
+import AnimatedOnScroll from './AnimatedOnScroll'
 
-// Image paths
-const dataCollectionImages = {
-  review1: '/assets/images/lexi/data-collection-1.png',
-  review2: '/assets/images/lexi/data-collection-2.png',
-  review3: '/assets/images/lexi/data-collection-3.png',
-  review4: '/assets/images/lexi/data-collection-4.png',
-  review5: '/assets/images/lexi/data-collection-5.png',
+const ALL_IMAGES = [
+  '/assets/images/lexi/data-collection/state 1/Data collection 1.png',
+  '/assets/images/lexi/data-collection/state 1/Data collection 2.png',
+  '/assets/images/lexi/data-collection/state 1/Data collection 3.png',
+  '/assets/images/lexi/data-collection/state 1/Data collection 4.png',
+  '/assets/images/lexi/data-collection/state 1/Data collection 5.png',
+]
+
+// All cards share the same bottom edge (front card bottom = top + height)
+const FRONT = { top: 64, left: 18, width: 410, height: 342 }
+const bottomEdge = FRONT.top + FRONT.height  // 406
+// Center X of front card — back cards align horizontally to it
+const frontCx = FRONT.left + FRONT.width / 2  // 223
+
+const makeSlot = (width, height, rotate) => ({
+  top:  bottomEdge - height,
+  left: Math.round(frontCx - width / 2),
+  width,
+  height,
+  rotate,
+})
+
+const SLOTS = [
+  { ...FRONT, rotate: 0 },       // front
+  makeSlot(370, 308, 10),        // slot 1
+  makeSlot(330, 275, 19),        // slot 2
+  makeSlot(295, 246, 28),        // slot 3
+  makeSlot(262, 219, 37),        // slot 4 — furthest back
+]
+
+// Smart Animate ease-in-out (Figma default)
+const EASING = 'cubic-bezier(0.42, 0, 0.58, 1)'
+const DURATION = 600
+
+const CardStack = ({ scale = 1 }) => {
+  const [deck, setDeck] = useState([0, 1, 2, 3, 4])
+  // exitingCard: imgIdx that is currently in its exit micro-animation before deck rotates
+  const [exitingCard, setExitingCard] = useState(null)
+  const lockedRef = useRef(false)
+
+  const W = 620
+  const H = 470
+
+  const handleClick = () => {
+    if (lockedRef.current) return
+    lockedRef.current = true
+
+    const frontCard = deck[0]
+
+    // Phase 1: exit animation on front card (scale down + fade out, 200ms)
+    setExitingCard(frontCard)
+
+    setTimeout(() => {
+      // Phase 2: rotate deck — back card teleports behind, rest animate smoothly
+      setExitingCard(null)
+      setDeck(prev => {
+        const [front, ...rest] = prev
+        return [...rest, front]
+      })
+      // Unlock after transition finishes
+      setTimeout(() => { lockedRef.current = false }, DURATION + 50)
+    }, 200)
+  }
+
+  return (
+    <div
+      onClick={handleClick}
+      style={{
+        position: 'relative',
+        width: `${W * scale}px`,
+        height: `${H * scale}px`,
+        flexShrink: 0,
+        cursor: 'pointer',
+      }}
+    >
+      {[...deck].reverse().map((imgIdx) => {
+        const deckPos = deck.indexOf(imgIdx)
+        const slot = SLOTS[deckPos]
+        const zIdx = 10 - deckPos * 2
+        const isExiting = exitingCard === imgIdx
+        // The card at the very back just teleported there — no transition
+        const isBack = deckPos === deck.length - 1
+
+        let transform = `rotate(${slot.rotate}deg)`
+        let opacity = 1
+        let transition = `all ${DURATION}ms ${EASING}`
+        let currentZIdx = zIdx
+
+        if (isExiting) {
+          // Shrink and fade the front card out before the deck rotates
+          transform = `rotate(${slot.rotate}deg) scale(0.9) translateY(8px)`
+          opacity = 0
+          transition = 'transform 0.2s cubic-bezier(0.4, 0, 1, 1), opacity 0.2s ease'
+          currentZIdx = 20
+        } else if (isBack) {
+          // Instantly snaps behind — no visible fly-through
+          transition = 'none'
+        }
+
+        return (
+          <div
+            key={imgIdx}
+            style={{
+              position: 'absolute',
+              top: `${slot.top * scale}px`,
+              left: `${slot.left * scale}px`,
+              width: `${slot.width * scale}px`,
+              height: `${slot.height * scale}px`,
+              transform,
+              transformOrigin: 'bottom center',
+              opacity,
+              borderRadius: `${16 * scale}px`,
+              overflow: 'hidden',
+              background: 'transparent',
+              boxShadow: '0px 4px 24px 0px rgba(0,0,0,0.12)',
+              zIndex: currentZIdx,
+              transition,
+            }}
+          >
+            <img
+              alt=""
+              src={ALL_IMAGES[imgIdx]}
+              style={{ display: 'block', width: '100%', height: '100%', objectFit: 'fill', pointerEvents: 'none' }}
+            />
+          </div>
+        )
+      })}
+    </div>
+  )
 }
 
 const LexiDataCollection = () => {
   const { isMobile } = useResponsive()
 
-  const sectionStyles = {
-    backgroundColor: colors.backgrounds.main,
-    width: '100%',
-    paddingLeft: isMobile ? '24px' : '96px',
-    paddingRight: isMobile ? '24px' : '218px',
-    paddingTop: isMobile ? '64px' : '128px',
-    paddingBottom: isMobile ? '32px' : '48px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-  }
-
-  const contentStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: isMobile ? '48px' : '112px',
-    alignItems: 'center',
-    width: '100%',
-  }
-
-  const textSectionStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: isMobile ? '24px' : '48px',
-    alignItems: 'center',
-    width: '100%',
-  }
-
-  const titleStyles = {
-    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
-    fontSize: isMobile ? '20px' : '24px',
-    fontWeight: 700,
-    lineHeight: 1.3,
-    letterSpacing: '1.2px',
-    color: '#5D5F98',
-    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700",
-    margin: 0,
-    width: '100%',
-  }
-
-  const bodyTextStyles = {
-    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
-    fontSize: isMobile ? '14px' : '16px',
-    fontWeight: 400,
-    lineHeight: 1.6,
-    letterSpacing: '0',
-    color: colors.neutral['700'],
-    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
-    margin: 0,
-    width: '100%',
-  }
-
-  const imagesRowStyles = {
-    display: 'flex',
-    flexDirection: 'row',
-    gap: isMobile ? '16px' : '10px',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    width: '100%',
-    maxWidth: isMobile ? '100%' : '1005px',
-    overflowX: 'auto',
-    overflowY: 'visible',
-    paddingBottom: '16px',
-    scrollbarWidth: 'thin',
-    scrollbarColor: '#5D5F98 #f0f0f0',
-  }
-
-  const imageContainerStyles = (width, height) => ({
-    width: isMobile ? '100%' : `${width}px`,
-    maxWidth: isMobile ? '300px' : `${width}px`,
-    height: isMobile ? 'auto' : `${height}px`,
-    position: 'relative',
-    flexShrink: 0,
-    overflow: 'hidden',
-  })
-
-  const imageStyles = {
-    position: isMobile ? 'relative' : 'absolute',
-    width: '100%',
-    height: 'auto',
-    left: isMobile ? 'auto' : 0,
-    top: isMobile ? 'auto' : 0,
-    maxWidth: 'none',
-    pointerEvents: 'none',
-  }
-
   return (
-    <section style={sectionStyles}>
-      <div style={contentStyles}>
-        {/* Text Section */}
-        <div style={textSectionStyles}>
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
-            <p style={titleStyles}>Data collection</p>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
-            <p style={bodyTextStyles}>
-              The research phase focused on analyzing real user experiences with language exchange apps. I reviewed open-source data from App Store and Google Play comments and benchmarked platforms such as HelloTalk and Tandem. Recurring feedback revealed user discomfort related to unwanted flirting, lack of seriousness, and feeling unsafe while practicing a language. These insights helped validate the problem and informed key design decisions for creating a more respectful and guided learning experience with Lexi.
+    <section style={{
+      backgroundColor: colors.backgrounds.main,
+      width: '100%',
+      paddingTop: '128px',
+      paddingBottom: '64px',
+      paddingLeft: isMobile ? '24px' : '96px',
+      paddingRight: isMobile ? '24px' : '96px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '32px',
+      boxSizing: 'border-box',
+    }}>
+
+      <AnimatedOnScroll animation="fadeIn" duration={700} style={{ width: '100%' }}>
+        <div style={{ width: '100%', maxWidth: '950px' }}>
+          <p style={{
+            fontFamily: `'Poppins', sans-serif`,
+            fontSize: '24px',
+            fontWeight: 500,
+            lineHeight: 1.3,
+            letterSpacing: '1.2px',
+            color: '#c8c8c8',
+            margin: 0,
+          }}>Data collection</p>
+        </div>
+      </AnimatedOnScroll>
+
+      <AnimatedOnScroll animation="slideUp" delay={100} duration={600} style={{ width: '100%' }}>
+        <div style={{
+          width: '100%',
+          maxWidth: '950px',
+          backgroundColor: '#5d5f98',
+          borderRadius: '24px',
+          padding: '24px',
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: isMobile ? '32px' : '0',
+          boxSizing: 'border-box',
+          overflow: 'hidden',
+          minHeight: `${470 + 48}px`,
+        }}>
+          <div style={{ width: isMobile ? '100%' : '345px', flexShrink: 0 }}>
+            <p style={{
+              fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
+              fontSize: '16px',
+              fontWeight: 400,
+              lineHeight: 1.6,
+              letterSpacing: '0.8px',
+              color: '#eaebf2',
+              margin: 0,
+            }}>
+              The research phase focused on analyzing real user experiences with language exchange apps. I reviewed open-source data from App Store and Google Play comments and benchmarked platforms such as HelloTalk and Tandem.
             </p>
           </div>
-        </div>
 
-        {/* All Images in One Row with Horizontal Scroll */}
-        <div style={imagesRowStyles}>
-          <div style={imageContainerStyles(299, 379)}>
-            <img 
-              src={dataCollectionImages.review1}
-              alt="App review 1"
-              style={imageStyles}
-            />
-          </div>
-          <div style={imageContainerStyles(319, 421)}>
-            <img 
-              src={dataCollectionImages.review2}
-              alt="App review 2"
-              style={imageStyles}
-            />
-          </div>
-          <div style={imageContainerStyles(328, 416)}>
-            <img 
-              src={dataCollectionImages.review3}
-              alt="App review 3"
-              style={imageStyles}
-            />
-          </div>
-          <div style={imageContainerStyles(296, 572.225)}>
-            <img 
-              src={dataCollectionImages.review4}
-              alt="App review 4"
-              style={imageStyles}
-            />
-          </div>
-          <div style={imageContainerStyles(338, 444)}>
-            <img 
-              src={dataCollectionImages.review5}
-              alt="App review 5"
-              style={imageStyles}
-            />
-          </div>
+          <CardStack scale={isMobile ? 0.55 : 1} />
         </div>
-      </div>
+      </AnimatedOnScroll>
+
     </section>
   )
 }
