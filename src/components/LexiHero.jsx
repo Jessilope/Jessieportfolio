@@ -41,12 +41,11 @@ const LexiHero = () => {
       {/* Giant "LEXI" background text — Figma: Madimi One 400px, rgba(21,93,252,0.26) */}
       <div style={{
         position: 'absolute',
-        left: isMobile ? '50%' : 'calc(8.33% + 55.33px)',
-        top: '293px',
-        transform: isMobile ? 'translateX(-50%)' : 'none',
-        width: isMobile ? '412px' : '956px',
+        left: 0,
+        right: 0,
+        top: isMobile ? '380px' : '420px',
         display: 'flex',
-        flexDirection: 'column',
+        justifyContent: 'center',
         alignItems: 'center',
       }}>
         <p style={{

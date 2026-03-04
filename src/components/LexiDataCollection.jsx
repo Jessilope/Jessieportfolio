@@ -74,7 +74,7 @@ const CardStack = ({ scale = 1 }) => {
         position: 'relative',
         width: `${W * scale}px`,
         height: `${H * scale}px`,
-        flexShrink: 0,
+        flex: 1,
         cursor: 'pointer',
       }}
     >
@@ -117,7 +117,7 @@ const CardStack = ({ scale = 1 }) => {
               borderRadius: `${16 * scale}px`,
               overflow: 'hidden',
               background: 'transparent',
-              boxShadow: '0px 4px 24px 0px rgba(0,0,0,0.12)',
+              boxShadow: 'none',
               zIndex: currentZIdx,
               transition,
             }}
@@ -125,7 +125,13 @@ const CardStack = ({ scale = 1 }) => {
             <img
               alt=""
               src={ALL_IMAGES[imgIdx]}
-              style={{ display: 'block', width: '100%', height: '100%', objectFit: 'fill', pointerEvents: 'none' }}
+              style={{
+                display: 'block',
+                width: '100%',
+                height: '100%',
+                objectFit: 'fill',
+                pointerEvents: 'none',
+              }}
             />
           </div>
         )
@@ -182,7 +188,7 @@ const LexiDataCollection = () => {
           overflow: 'hidden',
           minHeight: `${470 + 48}px`,
         }}>
-          <div style={{ width: isMobile ? '100%' : '345px', flexShrink: 0 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
             <p style={{
               fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
               fontSize: '16px',

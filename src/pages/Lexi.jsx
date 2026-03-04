@@ -176,23 +176,56 @@ const Lexi = () => {
 
       {/* Reflection Section */}
       <div id="reflection" style={{
-        ...sectionStyles,
-        backgroundColor: '#fffefb',
-        paddingLeft: isMobile ? '24px' : '64px',
-        paddingRight: isMobile ? '24px' : '218px',
+        backgroundColor: '#fffefa',
         width: '100%',
-        maxWidth: isMobile ? '100%' : '1281px',
+        paddingTop: '128px',
+        paddingBottom: '48px',
+        paddingLeft: isMobile ? '24px' : '96px',
+        paddingRight: isMobile ? '24px' : '96px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        boxSizing: 'border-box',
       }}>
         <div style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: spacing.xxl,
+          gap: '48px',
+          alignItems: 'center',
           width: '100%',
+          maxWidth: '903px',
         }}>
-          <h2 style={{ ...headerStyles, fontSize: isMobile ? '24px' : '32px' }}>Reflection</h2>
-          <p style={{ ...bodyTextStyles, width: '100%', fontSize: isMobile ? '14px' : '16px' }}>
-            Designing Lexi was a deeply intentional process that reinforced the value of staying connected to the user's emotional experience throughout each design decision. By starting with empathy, defining clear goals, and building structured workflows, I created a product that feels supportive, modern, and confidence-driven—helping beginners transform their relationship with language learning.
-          </p>
+          {/* Title */}
+          <p style={{
+            fontFamily: `'Poppins', sans-serif`,
+            fontSize: isMobile ? '24px' : '32px',
+            fontWeight: 500,
+            lineHeight: 1.3,
+            letterSpacing: '0',
+            color: '#5d5f98',
+            textAlign: 'center',
+            margin: 0,
+            width: '100%',
+          }}>Reflection</p>
+
+          {/* Body */}
+          <div style={{
+            fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
+            fontSize: isMobile ? '14px' : '16px',
+            fontWeight: 400,
+            lineHeight: 1.6,
+            letterSpacing: '0.8px',
+            color: '#212121',
+            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+            width: '100%',
+          }}>
+            <p style={{ margin: 0 }}>
+              This Lexi project was developed as a personal and educational exploration. I'm satisfied with the progress made throughout the process and with how the final experience addresses both functional and emotional user needs. Each stage challenged me to think more critically and intentionally as a designer.
+            </p>
+            <p style={{ margin: 0 }}>
+              Through this project, I gained a deeper understanding of the complete process behind designing a language-learning app. I learned that effective design goes beyond visuals and features—it requires empathy, research, and a clear understanding of different user motivations and learning behaviors. This project reinforced the importance of designing for emotional safety as much as usability, especially when building experiences centered on learning and confidence.
+            </p>
+          </div>
         </div>
       </div>
 

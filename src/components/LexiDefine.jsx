@@ -1,141 +1,106 @@
-import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
+import AnimatedOnScroll from './AnimatedOnScroll'
+
+const FONT_BODY = `'Kantumruy', 'Noto Sans', sans-serif`
+const FONT_POPPINS = `'Poppins', sans-serif`
+
+const Highlight = ({ text }) => (
+  <div style={{
+    display: 'flex',
+    gap: '16px',
+    alignItems: 'flex-start',
+    width: '100%',
+  }}>
+    <div style={{
+      width: '3px',
+      borderRadius: '2px',
+      backgroundColor: '#ADAECD',
+      alignSelf: 'stretch',
+      flexShrink: 0,
+      minHeight: '20px',
+    }} />
+    <p style={{
+      fontFamily: FONT_BODY,
+      fontSize: '16px',
+      fontWeight: 400,
+      lineHeight: 1.6,
+      letterSpacing: '0.8px',
+      color: '#212121',
+      margin: 0,
+      flex: '1 0 0',
+      minWidth: 0,
+      fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+    }}>{text}</p>
+  </div>
+)
 
 const LexiDefine = () => {
   const { isMobile } = useResponsive()
 
-  const sectionStyles = {
-    backgroundColor: '#fffefb',
-    width: '100%',
-    paddingLeft: isMobile ? '24px' : '64px',
-    paddingRight: isMobile ? '24px' : '218px',
-    paddingTop: isMobile ? '64px' : '128px',
-    paddingBottom: isMobile ? '32px' : '48px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-  }
-
-  const contentStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: isMobile ? '32px' : spacing.xxl, // 48px
-    alignItems: 'center',
-    width: '100%',
-  }
-
-  const headerStyles = {
-    fontFamily: `'Kanit', sans-serif`,
-    fontSize: isMobile ? '24px' : '32px',
-    fontWeight: 400,
-    lineHeight: isMobile ? '28px' : '32px',
-    letterSpacing: '0',
-    color: '#5D5F98',
-    textAlign: 'center',
-    margin: 0,
-  }
-
-  const bodyTextStyles = {
-    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
-    fontSize: isMobile ? '14px' : '16px',
-    fontWeight: 400,
-    lineHeight: 1.6,
-    letterSpacing: '0.8px',
-    color: colors.neutral['700'],
-    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
-    margin: 0,
-    width: '100%',
-  }
-
-  const highlightContainerStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: isMobile ? '24px' : '32px',
-    alignItems: 'center',
-    width: '100%',
-  }
-
-  const highlightItemStyles = {
-    display: 'flex',
-    gap: '9px',
-    alignItems: isMobile ? 'flex-start' : 'center',
-    width: '100%',
-  }
-
-  const lineContainerStyles = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '0',
-    flexShrink: 0,
-  }
-
-  const highlightTextStyles = {
-    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
-    fontSize: isMobile ? '14px' : '16px',
-    fontWeight: 400,
-    lineHeight: 1.6,
-    letterSpacing: '0.8px',
-    color: colors.neutral['700'],
-    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
-    margin: 0,
-    width: isMobile ? '100%' : '747px',
-    flexShrink: isMobile ? 1 : 0,
-  }
-
-  const highlightLabelStyles = {
-    color: '#5D5F98',
-  }
-
   return (
-    <section style={sectionStyles}>
-      <div style={contentStyles}>
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
-          <p style={headerStyles}>Define</p>
-        </div>
-        
-        <p style={bodyTextStyles}>
-          Based on the insights gathered during the empathy phase, I defined a clear point of view to focus the problem on a specific user and need.
-        </p>
+    <section style={{
+      backgroundColor: '#fffefb',
+      width: '100%',
+      paddingTop: isMobile ? '64px' : '112px',
+      paddingBottom: isMobile ? '32px' : '48px',
+      paddingLeft: isMobile ? '24px' : '96px',
+      paddingRight: isMobile ? '24px' : '96px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      boxSizing: 'border-box',
+    }}>
+      <AnimatedOnScroll animation="slideUp" duration={600} style={{ width: '100%', maxWidth: '902px' }}>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: isMobile ? '32px' : '32px',
+          alignItems: 'center',
+          width: '100%',
+        }}>
 
-        <div style={highlightContainerStyles}>
-          {/* Point of View */}
-          <div style={highlightItemStyles}>
-            <div style={{ 
-              width: '3px',
-              minHeight: isMobile ? '100px' : '81px',
-              height: isMobile ? 'auto' : '81px',
-              backgroundColor: '#5D5F98',
-              flexShrink: 0,
-              alignSelf: 'stretch',
-              borderRadius: '1.5px',
-            }} />
-            <p style={highlightTextStyles}>
-              <span style={highlightLabelStyles}>Point of View</span>
-              <br />
-              Amanda is a self-motivated language learner who needs an engaging, professional, and flexible tool because she values consistent learning and is looking for an experience where her goals are taken seriously.
-            </p>
+          {/* Title */}
+          <p style={{
+            fontFamily: FONT_POPPINS,
+            fontSize: isMobile ? '24px' : '32px',
+            fontWeight: 500,
+            lineHeight: 1.3,
+            letterSpacing: '0',
+            color: '#5d5f98',
+            textAlign: 'center',
+            margin: 0,
+            whiteSpace: 'nowrap',
+          }}>Define</p>
+
+          {/* Body text */}
+          <p style={{
+            fontFamily: FONT_BODY,
+            fontSize: isMobile ? '14px' : '16px',
+            fontWeight: 400,
+            lineHeight: 1.6,
+            letterSpacing: '0.8px',
+            color: '#212121',
+            margin: 0,
+            width: '100%',
+            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+          }}>
+            Based on the insights gathered during the empathy phase, I defined a clear point of view to focus the problem on a specific user and need. And the final outcome hoped by learners
+          </p>
+
+          {/* Highlights */}
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '32px',
+            alignItems: 'center',
+            width: '100%',
+          }}>
+            <Highlight text="Jenna is a self-motivated language learner who needs an engaging, professional, and flexible tool because she values consistent learning and is looking for an experience where her goals are taken seriously." />
+            <Highlight text="How might we create a natural learning experience that helps Amanda practice English consistently while feeling guided, as if she were learning with a native speaker?" />
           </div>
 
-          {/* How Might We */}
-          <div style={{ ...highlightItemStyles, gap: '11px' }}>
-            <div style={{ 
-              width: '3px',
-              minHeight: isMobile ? '80px' : '56px',
-              height: isMobile ? 'auto' : '56px',
-              backgroundColor: '#5D5F98',
-              flexShrink: 0,
-              alignSelf: 'stretch',
-              borderRadius: '1.5px',
-            }} />
-            <p style={highlightTextStyles}>
-              <span style={highlightLabelStyles}>How Might We</span>
-              <br />
-              How might we create a natural learning experience that helps Amanda practice English consistently while feeling guided, as if she were learning with a native speaker?
-            </p>
-          </div>
         </div>
-      </div>
+      </AnimatedOnScroll>
     </section>
   )
 }

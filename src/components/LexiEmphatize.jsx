@@ -103,7 +103,7 @@ const LexiEmphatize = () => {
           maxWidth: '902px',
           display: 'flex',
           flexDirection: 'column',
-          gap: '48px',
+          gap: '32px',
         }}>
           <p style={{
             fontFamily: `'Poppins', sans-serif`,
