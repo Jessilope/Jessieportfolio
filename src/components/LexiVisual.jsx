@@ -35,7 +35,7 @@ const labelStyle = {
   fontWeight: 400,
   lineHeight: 1.6,
   letterSpacing: '0.8px',
-  color: '#c8c8c8',
+  color: '#8a8a8a',
   margin: 0,
   textAlign: 'center',
   fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
@@ -158,7 +158,7 @@ const LexiVisual = () => {
                 fontWeight: 400,
                 lineHeight: 1.6,
                 letterSpacing: '0.8px',
-                color: '#c8c8c8',
+                color: '#8a8a8a',
                 margin: 0,
                 fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
               }}>Typography</p>

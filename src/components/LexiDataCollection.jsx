@@ -180,7 +180,7 @@ const LexiDataCollection = () => {
             fontWeight: 500,
             lineHeight: 1.3,
             letterSpacing: '1.2px',
-            color: '#c8c8c8',
+            color: '#8a8a8a',
             margin: 0,
           }}>Data collection</p>
         </div>
@@ -241,7 +241,9 @@ const LexiDataCollection = () => {
               </div>
             </div>
           ) : (
-            <CardStack scale={1} />
+            <div style={{ flexShrink: 0, marginRight: '-120px' }}>
+              <CardStack scale={1} />
+            </div>
           )}
         </div>
       </AnimatedOnScroll>

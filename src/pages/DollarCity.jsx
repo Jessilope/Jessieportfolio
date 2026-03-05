@@ -6,14 +6,12 @@ import DollarCityEmpathize from '../components/DollarCityEmpathize'
 import DollarCityDataCollection from '../components/DollarCityDataCollection'
 import DollarCityUserJourneyMap from '../components/DollarCityUserJourneyMap'
 import DollarCityDefine from '../components/DollarCityDefine'
-import DollarCityProblemSolution from '../components/DollarCityProblemSolution'
 import DollarCityUserPersona from '../components/DollarCityUserPersona'
 import DollarCityIdeate from '../components/DollarCityIdeate'
 import DollarCityOOUX from '../components/DollarCityOOUX'
 import DollarCityDesignPrinciples from '../components/DollarCityDesignPrinciples'
 import DollarCityWireframes from '../components/DollarCityWireframes'
 import DollarCityVisual from '../components/DollarCityVisual'
-import DollarCityTypography from '../components/DollarCityTypography'
 import DollarCityComponents from '../components/DollarCityComponents'
 import DollarCityPrototype from '../components/DollarCityPrototype'
 import DollarCityReflection from '../components/DollarCityReflection'
@@ -129,11 +127,6 @@ const DollarCity = () => {
         <DollarCityDefine />
       </div>
 
-      {/* Problem and Solution Section */}
-      <div id="problem-solution">
-        <DollarCityProblemSolution />
-      </div>
-
       {/* User Persona Section */}
       <div id="user-persona">
         <DollarCityUserPersona />
@@ -162,11 +155,6 @@ const DollarCity = () => {
       {/* Visual Section */}
       <div id="visual">
         <DollarCityVisual />
-      </div>
-
-      {/* Typography Section */}
-      <div id="typography">
-        <DollarCityTypography />
       </div>
 
       {/* Components Section */}

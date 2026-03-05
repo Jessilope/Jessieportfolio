@@ -78,27 +78,18 @@ const Icons = ({ icon = 'right-arrow', state = 'Default', size = 24, style, clas
         </div>
       )
 
-    /* ── Layers — Figma node 1873:6309, 3 absolute positioned layers ── */
+    /* ── Layers — Figma node 1873:6309, 3 stacked layer images ── */
     case 'layers':
       return (
         <div style={{ ...wrap, position: 'relative' }} className={className}>
-          {/* Bottom layer — #5D5F98, occupies top 56.68% of height */}
-          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: '43.32%' }}>
-            <svg width="100%" height="100%" viewBox="0 0 36 20.403" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-              <path d="M35.436 9.221C35.399 9.197 35.362 9.175 35.323 9.154L18.609 0.154C18.229 -0.051 17.771 -0.051 17.39 0.154L0.676 9.154C0.055 9.484 -0.181 10.254 0.149 10.875C0.169 10.914 0.192 10.951 0.216 10.988L18 20.403L35.784 10.988C36.175 10.404 36.02 9.613 35.436 9.221Z" fill="#5D5F98"/>
-            </svg>
-          </div>
-          {/* Middle layer — #EAEBF2, inset top=43.03%, bottom=21.9% */}
           <div style={{ position: 'absolute', top: '43.03%', left: 0, right: 0, bottom: '21.9%' }}>
-            <svg width="100%" height="100%" viewBox="0 0 36 12.793" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-              <path d="M35.843 1.897C35.724 1.676 35.543 1.495 35.322 1.376L32.768 0L18.601 7.501C18.224 7.701 17.774 7.701 17.397 7.501L3.23 0L0.675 1.376C0.05 1.713 -0.183 2.493 0.155 3.118C0.274 3.339 0.455 3.52 0.675 3.639L17.389 12.639C17.77 12.844 18.228 12.844 18.608 12.639L35.322 3.639C35.947 3.301 36.18 2.521 35.843 1.897Z" fill="#EAEBF2"/>
-            </svg>
+            <img src="/assets/images/icons/icon-layers-1.svg" alt="" style={{ position: 'absolute', width: '100%', height: '100%' }} />
           </div>
-          {/* Top layer — #ADAECD, inset top=64.46%, bottom=0 */}
           <div style={{ position: 'absolute', top: '64.46%', left: 0, right: 0, bottom: 0 }}>
-            <svg width="100%" height="100%" viewBox="0 0 36 12.625" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-              <path d="M35.436 1.443C35.399 1.419 35.362 1.396 35.323 1.376L32.769 0L18.601 7.501C18.225 7.701 17.775 7.701 17.398 7.501L3.231 0L0.676 1.376C0.056 1.705 -0.181 2.476 0.149 3.097C0.169 3.135 0.192 3.173 0.216 3.209L18 12.625L35.784 3.209C36.175 2.625 36.02 1.835 35.436 1.443Z" fill="#ADAECD"/>
-            </svg>
+            <img src="/assets/images/icons/icon-layers-2.svg" alt="" style={{ position: 'absolute', width: '100%', height: '100%' }} />
+          </div>
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: '43.32%' }}>
+            <img src="/assets/images/icons/icon-layers-3.svg" alt="" style={{ position: 'absolute', width: '100%', height: '100%' }} />
           </div>
         </div>
       )
@@ -119,26 +110,16 @@ const Icons = ({ icon = 'right-arrow', state = 'Default', size = 24, style, clas
     /* ── Screen / Phone ────────────────────────────────────── */
     case 'screen':
       return (
-        <div style={wrap} className={className}>
-          <svg width={size * 0.67} height={size} viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M19.875 0H18H6H4.125C1.8495 0 0 1.8495 0 4.125V31.875C0 34.1505 1.8495 36 4.125 36H19.875C22.1505 36 24 34.1505 24 31.875V4.125C24 1.8495 22.1505 0 19.875 0ZM21 31.5C21 32.328 20.328 33 19.5 33H4.5C3.672 33 3 32.328 3 31.5V4.5C3 3.672 3.672 3 4.5 3H5.25C6.078 3 6.75 3.672 6.75 4.5C6.75 5.328 7.422 6 8.25 6H15.75C16.578 6 17.25 5.328 17.25 4.5C17.25 3.672 17.922 3 18.75 3H19.5C20.328 3 21 3.672 21 4.5V31.5Z"
-              fill={c}
-            />
-          </svg>
+        <div style={{ ...wrap, width: size * 0.67, height: size }} className={className}>
+          <img src="/assets/images/icons/icon-screen.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
         </div>
       )
 
     /* ── Component (hub/connector) ─────────────────────────── */
     case 'component':
       return (
-        <div style={wrap} className={className}>
-          <svg width={size} height={size} viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M25.695 19.023H30.636C31.055 20.039 32.052 20.756 33.213 20.756C34.75 20.756 36 19.5 36 17.957C36 16.414 34.75 15.159 33.213 15.159C32.052 15.159 31.055 15.875 30.636 16.891H25.695V12.642C25.695 12.401 25.659 12.168 25.593 11.948L32.143 5.414C32.473 5.552 32.834 5.629 33.213 5.629C34.75 5.629 36 4.373 36 2.83C36 1.287 34.75 0.032 33.213 0.032C31.676 0.032 30.426 1.287 30.426 2.83C30.426 3.214 30.503 3.581 30.644 3.914L24.145 10.398C23.891 10.303 23.616 10.251 23.33 10.251H19.055V5.388C20.07 4.97 20.787 3.967 20.787 2.798C20.787 1.255 19.537 0 18 0C16.463 0 15.213 1.255 15.213 2.798C15.213 3.967 15.93 4.97 16.945 5.388V10.251H12.67C12.384 10.251 12.109 10.303 11.855 10.397L5.357 3.914C5.497 3.58 5.574 3.214 5.574 2.83C5.574 1.287 4.324 0.032 2.787 0.032C1.25 0.032 0 1.287 0 2.83C0 4.373 1.25 5.629 2.787 5.629C3.166 5.629 3.527 5.552 3.857 5.414L10.407 11.948C10.341 12.168 10.305 12.401 10.305 12.642V16.891H5.364C4.945 15.875 3.948 15.159 2.787 15.159C1.25 15.159 0 16.414 0 17.957C0 19.5 1.25 20.756 2.787 20.756C3.948 20.756 4.945 20.039 5.364 19.023H10.305V23.272C10.305 23.538 10.349 23.793 10.428 24.031L3.857 30.586C3.527 30.448 3.166 30.372 2.787 30.372C1.25 30.372 0 31.627 0 33.17C0 34.713 1.25 35.968 2.787 35.968C4.324 35.968 5.574 34.713 5.574 33.17C5.574 32.786 5.497 32.42 5.357 32.086L11.919 25.539C12.155 25.619 12.407 25.663 12.67 25.663H16.945V30.612C15.93 31.03 15.213 32.033 15.213 33.202C15.213 34.745 16.463 36 18 36C19.537 36 20.787 34.745 20.787 33.202C20.787 32.033 20.07 31.03 19.055 30.612V25.663H23.33C23.593 25.663 23.845 25.619 24.081 25.539L30.643 32.087C30.503 32.42 30.426 32.786 30.426 33.17C30.426 34.713 31.676 35.968 33.213 35.968C34.75 35.968 36 34.713 36 33.17C36 31.627 34.75 30.372 33.213 30.372C32.834 30.372 32.472 30.448 32.142 30.587L25.572 24.031C25.652 23.793 25.695 23.538 25.695 23.272V19.023ZM23.586 23.272C23.586 23.415 23.471 23.531 23.33 23.531H12.67C12.529 23.531 12.414 23.415 12.414 23.272V12.642C12.414 12.5 12.529 12.384 12.67 12.384H23.33C23.471 12.384 23.586 12.5 23.586 12.642V23.272Z"
-              fill={c}
-            />
-          </svg>
+        <div style={{ ...wrap, position: 'relative' }} className={className}>
+          <img src="/assets/images/icons/icon-component.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
         </div>
       )
 
@@ -181,22 +162,30 @@ const Icons = ({ icon = 'right-arrow', state = 'Default', size = 24, style, clas
         </div>
       )
 
-    /* ── Customize / Magic wand ─────────────────────────────── */
+    /* ── Customize / Magic wand — Figma node 1873:6312 ─────── */
     case 'customize':
       return (
-        <div style={wrap} className={className}>
-          <svg width={size} height={size} viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            {/* Wand body */}
-            <path
-              d="M30.27 20.41L25.79 13.64C25.51 13.21 25.42 12.69 25.56 12.19L27.57 4.72C27.83 3.75 26.87 2.89 25.93 3.18L18.45 5.19C17.95 5.33 17.42 5.24 16.99 4.97L10.22 0.49C9.35 -0.07 8.22 0.54 8.17 1.59L7.83 9.37C7.8 9.99 7.52 10.56 7.06 10.96L0.92 15.97C0.11 16.62 0.33 17.95 1.33 18.3L6.63 20.23C10.53 21.69 9.77 20.94 11.23 24.83L13.16 30.13C13.52 31.13 14.85 31.34 15.5 30.53L20.51 24.39C20.87 23.95 21.41 23.69 21.97 23.66L30.13 23.29C31.18 23.24 31.79 22.11 31.22 21.24L30.27 20.41Z"
-              fill={c}
-            />
-            {/* Corner accents */}
-            <rect x="0" y="0" width="5.5" height="5.5" rx="1.12" fill={c} opacity="0.3"/>
-            <rect x="30.5" y="0" width="5.5" height="5.5" rx="1.12" fill={c} opacity="0.3"/>
-            <rect x="0" y="30.5" width="5.5" height="5.5" rx="1.12" fill={c} opacity="0.3"/>
-            <rect x="30.5" y="30.5" width="5.5" height="5.5" rx="1.12" fill={c} opacity="0.3"/>
-          </svg>
+        <div style={{ ...wrap, position: 'relative' }} className={className}>
+          {/* inset-[0_0_84.67%_84.67%] → top:0 right:0 bottom:84.67% left:84.67% */}
+          <div style={{ position: 'absolute', top: 0, right: 0, bottom: '84.67%', left: '84.67%' }}>
+            <img src="/assets/images/icons/icon-customize-1.svg" alt="" style={{ position: 'absolute', width: '100%', height: '100%' }} />
+          </div>
+          {/* inset-[54%_0_31.33%_84.67%] → top:54% right:0 bottom:31.33% left:84.67% */}
+          <div style={{ position: 'absolute', top: '54%', right: 0, bottom: '31.33%', left: '84.67%' }}>
+            <img src="/assets/images/icons/icon-customize-2.svg" alt="" style={{ position: 'absolute', width: '100%', height: '100%' }} />
+          </div>
+          {/* inset-[0_54%_84.67%_31.33%] → top:0 right:54% bottom:84.67% left:31.33% */}
+          <div style={{ position: 'absolute', top: 0, right: '54%', bottom: '84.67%', left: '31.33%' }}>
+            <img src="/assets/images/icons/icon-customize-3.svg" alt="" style={{ position: 'absolute', width: '100%', height: '100%' }} />
+          </div>
+          {/* inset-[44.67%_44.67%_0_0] → top:44.67% right:44.67% bottom:0 left:0 */}
+          <div style={{ position: 'absolute', top: '44.67%', right: '44.67%', bottom: 0, left: 0 }}>
+            <img src="/assets/images/icons/icon-customize-4.svg" alt="" style={{ position: 'absolute', width: '100%', height: '100%' }} />
+          </div>
+          {/* inset-[9.33%_9.33%_43.33%_43.33%] → top:9.33% right:9.33% bottom:43.33% left:43.33% */}
+          <div style={{ position: 'absolute', top: '9.33%', right: '9.33%', bottom: '43.33%', left: '43.33%' }}>
+            <img src="/assets/images/icons/icon-customize-5.svg" alt="" style={{ position: 'absolute', width: '100%', height: '100%' }} />
+          </div>
         </div>
       )
 

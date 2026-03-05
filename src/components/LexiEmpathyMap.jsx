@@ -116,7 +116,7 @@ const LexiEmpathyMap = () => {
             fontWeight: 500,
             lineHeight: 1.3,
             letterSpacing: '1.2px',
-            color: '#c8c8c8',
+            color: '#8a8a8a',
             margin: 0,
           }}>Empathy map</p>
           <p style={{

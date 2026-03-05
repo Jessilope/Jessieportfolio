@@ -74,7 +74,7 @@ const PersonaPhoto = ({ src, name, age, job, location, family }) => (
       }} />
       <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
         <p style={{ fontFamily: FONT_POPPINS, fontSize: '20px', fontWeight: 500, lineHeight: 1.2, letterSpacing: '1px', color: '#fffefa', margin: 0 }}>{name}</p>
-        <p style={{ fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 400, lineHeight: 1.6, letterSpacing: '0.8px', color: '#c8c8c8', margin: 0 }}>{age}</p>
+        <p style={{ fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 400, lineHeight: 1.6, letterSpacing: '0.8px', color: '#8a8a8a', margin: 0 }}>{age}</p>
       </div>
     </div>
 

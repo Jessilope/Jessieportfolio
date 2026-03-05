@@ -158,7 +158,7 @@ const Hero = () => {
     fontWeight: 400,
     lineHeight: 1.5,
     letterSpacing: '0.9px',
-    color: colors.neutral['400'],
+    color: '#212121',
     margin: 0,
     maxWidth: isMobile ? '100%' : '662px',
     width: '100%',

@@ -24,7 +24,7 @@ const LexiDataCollectionResearch = () => {
     fontWeight: 500,
     lineHeight: 1.2,
     letterSpacing: '1px',
-    color: '#c8c8c8',
+    color: '#8a8a8a',
     margin: '0 0 16px 0',
   }
 
@@ -51,7 +51,7 @@ const LexiDataCollectionResearch = () => {
             fontWeight: 500,
             lineHeight: 1.3,
             letterSpacing: '1.2px',
-            color: '#c8c8c8',
+            color: '#8a8a8a',
             margin: 0,
           }}>Findings</p>
 
@@ -75,7 +75,7 @@ const LexiDataCollectionResearch = () => {
             <br />
 
             {/* Public Opinion */}
-            <p style={{ ...subheadStyle, color: '#bcbcbc' }}>Public Opinion</p>
+            <p style={{ ...subheadStyle, color: '#8a8a8a' }}>Public Opinion</p>
             <p style={bodyStyle}>
               Learners described the exchange as enjoyable and worthwhile, even when they did not feel fully competent. They appreciated real-time corrections, the chance to practice authentic communication, and the personal connections formed. While perceived competence did not drastically increase, the sense of achievement and sustained participation underscored the value of the program in boosting confidence and motivation. comments and benchmarked platforms such as HelloTalk and Tandem. Recurring feedback revealed user discomfort related to unwanted flirting, lack of seriousness, and feeling unsafe while practicing a language. These insights helped validate the problem and informed key design decisions for creating a more respectful and guided learning experience with Lexi.
             </p>

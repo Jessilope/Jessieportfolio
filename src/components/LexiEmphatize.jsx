@@ -59,7 +59,7 @@ const EmpathizeCard = ({ title, items, iconName, gradientTo, isMobile }) => (
       fontWeight: 400,
       lineHeight: 1.5,
       letterSpacing: '0.9px',
-      color: '#bcbcbc',
+      color: '#8a8a8a',
       textAlign: 'center',
       margin: 0,
       width: '100%',

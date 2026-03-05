@@ -1,148 +1,158 @@
-import { colors, spacing } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
+import AnimatedOnScroll from './AnimatedOnScroll'
+import Icons from './Icons'
+
+const FONT_BODY = `'Kantumruy', 'Noto Sans', sans-serif`
+
+const problems = [
+  'There are not enough cashiers available.',
+  'Feel insecure about online payments',
+  'Items placed in the wrong price section.',
+  'May be poor customer service',
+]
+
+const priorities = [
+  'Make customer feel confident that they are making the right choice',
+  'Avoid confusion or unnecessary steps',
+  'See clear prices upfront',
+  'Find products quickly',
+]
+
+const ListItem = ({ text, iconName }) => (
+  <div style={{ display: 'flex', gap: '12px', alignItems: 'center', width: '100%' }}>
+    <Icons icon={iconName} state="active" size={24} style={{ flexShrink: 0 }} />
+    <p style={{
+      fontFamily: FONT_BODY,
+      fontSize: '16px',
+      fontWeight: 400,
+      lineHeight: 1.6,
+      letterSpacing: '0.8px',
+      color: '#212121',
+      margin: 0,
+      flex: '1 0 0',
+    }}>{text}</p>
+  </div>
+)
+
+const EmpathizeCard = ({ title, items, iconName, gradientTo, isMobile }) => (
+  <div style={{
+    flex: isMobile ? 'none' : '1 0 0',
+    width: isMobile ? '100%' : undefined,
+    height: isMobile ? 'auto' : '399px',
+    background: `linear-gradient(to bottom, #fff, ${gradientTo})`,
+    border: '1px solid #f9f9f9',
+    borderRadius: '16px',
+    padding: '16px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '48px',
+    boxSizing: 'border-box',
+  }}>
+    <p style={{
+      fontFamily: FONT_BODY,
+      fontSize: '18px',
+      fontWeight: 400,
+      lineHeight: 1.5,
+      letterSpacing: '0.9px',
+      color: '#8a8a8a',
+      textAlign: 'center',
+      margin: 0,
+      width: '100%',
+    }}>{title}</p>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      flex: '1 0 0',
+      gap: isMobile ? '16px' : '0',
+    }}>
+      {items.map((text, i) => (
+        <ListItem key={i} text={text} iconName={iconName} />
+      ))}
+    </div>
+  </div>
+)
 
 const DollarCityEmpathize = () => {
   const { isMobile } = useResponsive()
 
-  const sectionStyles = {
-    backgroundColor: '#fffefa',
-    width: '100%',
-    paddingLeft: isMobile ? '24px' : '96px',
-    paddingRight: isMobile ? '24px' : '218px',
-    paddingTop: isMobile ? '64px' : '128px',
-    paddingBottom: isMobile ? '32px' : '64px',
-    display: 'flex',
-    alignItems: 'center',
-  }
-
-  const contentStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: isMobile ? '32px' : spacing.xxl, // 48px
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    width: isMobile ? '100%' : '1033px',
-    flexShrink: 0,
-  }
-
-  const titleStyles = {
-    fontFamily: `'Kanit', sans-serif`,
-    fontSize: isMobile ? '24px' : '32px',
-    fontWeight: 400,
-    lineHeight: isMobile ? '28px' : '32px',
-    letterSpacing: '0',
-    color: '#5D5F98',
-    textAlign: 'center',
-    width: '100%',
-    margin: 0,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-  }
-
-  const bodyContainerStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: isMobile ? '24px' : spacing.l, // 32px
-    alignItems: 'flex-start',
-    width: '100%',
-    flexShrink: 0,
-  }
-
-  const textStyles = {
-    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
-    fontSize: isMobile ? '14px' : '16px',
-    fontWeight: 400,
-    lineHeight: 1.6,
-    letterSpacing: '0',
-    color: colors.neutral['700'],
-    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
-    margin: 0,
-    width: '100%',
-  }
-
-  const listStyles = {
-    margin: 0,
-    paddingLeft: isMobile ? '20px' : '24px',
-    listStyleType: 'disc',
-    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
-    fontSize: isMobile ? '14px' : '16px',
-    fontWeight: 400,
-    lineHeight: 1.6,
-    letterSpacing: '0',
-    color: colors.neutral['700'],
-    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
-  }
-
-  const listItemStyles = {
-    marginBottom: 0,
-  }
-
   return (
-    <section style={sectionStyles}>
-      <div style={contentStyles}>
-        {/* Title */}
-        <div style={titleStyles}>
-          <p style={{ margin: 0, lineHeight: '32px' }}>Empathize</p>
+    <section style={{
+      backgroundColor: '#fffefa',
+      width: '100%',
+      paddingLeft: isMobile ? '24px' : '96px',
+      paddingRight: isMobile ? '24px' : '96px',
+      paddingTop: '128px',
+      paddingBottom: '48px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '48px',
+      boxSizing: 'border-box',
+    }}>
+
+      {/* Title + body */}
+      <AnimatedOnScroll animation="fadeIn" duration={700} style={{ width: '100%' }}>
+        <div style={{
+          width: '100%',
+          maxWidth: '902px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '24px',
+          margin: '0 auto',
+        }}>
+          <p style={{
+            fontFamily: `'Poppins', sans-serif`,
+            fontSize: isMobile ? '24px' : '32px',
+            fontWeight: 500,
+            lineHeight: 1.3,
+            letterSpacing: '0',
+            color: '#5D5F98',
+            textAlign: 'center',
+            margin: 0,
+          }}>Empathize</p>
+          <p style={{
+            fontFamily: FONT_BODY,
+            fontSize: isMobile ? '14px' : '16px',
+            fontWeight: 400,
+            lineHeight: 1.6,
+            letterSpacing: '0.8px',
+            color: '#212121',
+            margin: 0,
+          }}>
+            I focused on understanding how people behave when shopping for low-cost, everyday products and what they expect from a digital experience. Dollar City customers usually shop with a clear intention. They are not looking to explore endlessly.
+          </p>
         </div>
+      </AnimatedOnScroll>
 
-        {/* Body */}
-        <div style={bodyContainerStyles}>
-          {/* First text block */}
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
-            <div style={textStyles}>
-              <p style={{ margin: '0', lineHeight: 1.6 }}>
-                I focused on understanding how people behave when shopping for low-cost, everyday products and what they expect from a digital experience.
-              </p>
-              <p style={{ margin: '0', lineHeight: 1.6 }}>
-                Dollar City customers usually shop with a clear intention. They are not looking to explore endlessly; they want to:
-              </p>
-            </div>
-          </div>
-
-          {/* First list */}
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
-            <ul style={listStyles}>
-              <li style={listItemStyles}>
-                <span style={{ lineHeight: 1.6 }}>Find products quickly</span>
-              </li>
-              <li style={listItemStyles}>
-                <span style={{ lineHeight: 1.6 }}>See clear prices upfront</span>
-              </li>
-              <li style={listItemStyles}>
-                <span style={{ lineHeight: 1.6 }}>Avoid confusion or unnecessary steps</span>
-              </li>
-              <li style={listItemStyles}>
-                <span style={{ lineHeight: 1.6 }}>Feel confident that they are making the right choice</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Second text block */}
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
-            <div style={textStyles}>
-              <p style={{ margin: '0', lineHeight: 1.6 }}>
-                Many users associate Dollar City with speed and practicality, so any digital experience that feels slow or complex would create frustration. This insight shaped the emotional goal of the app: make users feel in control, efficient, and reassured throughout the journey. So, I prioritized:
-              </p>
-            </div>
-          </div>
-
-          {/* Second list */}
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
-            <ul style={listStyles}>
-              <li style={listItemStyles}>
-                <span style={{ lineHeight: 1.6 }}>Familiar patterns instead of innovation for innovation's sake</span>
-              </li>
-              <li style={listItemStyles}>
-                <span style={{ lineHeight: 1.6 }}>Clear visual hierarchy to reduce cognitive load</span>
-              </li>
-              <li style={listItemStyles}>
-                <span style={{ lineHeight: 1.6 }}>Simple language and predictable interactions</span>
-              </li>
-            </ul>
-          </div>
+      {/* Two cards */}
+      <AnimatedOnScroll animation="slideUp" delay={100} duration={600} style={{ width: '100%' }}>
+        <div style={{
+          width: '100%',
+          maxWidth: '902px',
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          gap: '29px',
+          alignItems: isMobile ? 'stretch' : 'center',
+          margin: '0 auto',
+        }}>
+          <EmpathizeCard
+            title="Many customers want to buy but"
+            items={problems}
+            iconName="warning"
+            gradientTo="#fff5f5"
+            isMobile={isMobile}
+          />
+          <EmpathizeCard
+            title="This led me to prioritize"
+            items={priorities}
+            iconName="success"
+            gradientTo="#f2fdee"
+            isMobile={isMobile}
+          />
         </div>
-      </div>
+      </AnimatedOnScroll>
+
     </section>
   )
 }

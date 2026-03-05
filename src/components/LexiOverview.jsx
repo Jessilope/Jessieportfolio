@@ -82,7 +82,7 @@ const LexiOverview = () => {
             fontWeight: 500,
             lineHeight: 1.3,
             letterSpacing: '1.2px',
-            color: '#c8c8c8',
+            color: '#8a8a8a',
             margin: 0,
           }}>
             Project overview
@@ -122,7 +122,7 @@ const LexiOverview = () => {
               fontWeight: 500,
               lineHeight: 1.2,
               letterSpacing: '1px',
-              color: '#c8c8c8',
+              color: '#8a8a8a',
               margin: 0,
               flex: '1 0 0',
             }}>
