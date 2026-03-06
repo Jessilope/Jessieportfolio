@@ -10,7 +10,6 @@ import TuCreditIdeate from '../components/TuCreditIdeate'
 import TuCreditDesignPrinciples from '../components/TuCreditDesignPrinciples'
 import TuCreditWireframes from '../components/TuCreditWireframes'
 import TuCreditVisual from '../components/TuCreditVisual'
-import TuCreditColorPalette from '../components/TuCreditColorPalette'
 import TuCreditComponentSet from '../components/TuCreditComponentSet'
 import TuCreditPrototype from '../components/TuCreditPrototype'
 import TuCreditReflection from '../components/TuCreditReflection'
@@ -92,7 +91,6 @@ const TuCredit = () => {
       {/* Visual Section */}
       <div id="visual">
         <TuCreditVisual />
-        <TuCreditColorPalette />
         <TuCreditComponentSet />
       </div>
 

@@ -1,5 +1,14 @@
-import { colors, spacing, borderRadius, typography } from '../tokens'
+/**
+ * SecondaryButton
+ * Figma node 1930:3418
+ *
+ * States:
+ *  default — outlined #5D5F98, subtle gradient blob visible bottom-right, text #5D5F98
+ *  hover   — large #5D5F98 blob fills entire button, text turns white
+ */
+
 import { useState } from 'react'
+import { colors, spacing, borderRadius, typography } from '../tokens'
 
 const SIZES = {
   big:    { paddingTop: spacing.s,  paddingBottom: spacing.s,  paddingLeft: spacing.m,  paddingRight: spacing.m  },
@@ -25,7 +34,8 @@ const SecondaryButton = ({ children, onClick, size = 'big', className, href, dow
     borderWidth: '1px',
     borderStyle: 'solid',
     borderColor: colors.primary[700],
-    color: colors.primary[700],
+    // Text color transitions default→hover
+    color: isHovered ? '#f9f9f9' : colors.primary[700],
     cursor: 'pointer',
     fontFamily: `'${typography.presets.button.fontFamily}', ${typography.fontFamilies.fallback}`,
     fontSize: typography.presets.button.fontSize,
@@ -39,20 +49,42 @@ const SecondaryButton = ({ children, onClick, size = 'big', className, href, dow
     backgroundColor: 'transparent',
     textDecoration: 'none',
     whiteSpace: 'nowrap',
+    transition: 'color 0.3s ease',
   }
 
-  // Soft radial glow — fades in as a pure opacity transition.
-  // Radial gradient naturally has no hard edges so it looks like a blurred
-  // color wash, exactly matching the Figma hover state.
-  const sheenStyles = {
+  // Default subtle blob — gradient in bottom-right, always visible at rest
+  // Figma: left:26px top:54px, 114×101px, gradient from transparent→#5D5F98
+  const defaultBlobStyles = {
     position: 'absolute',
-    inset: 0,
-    background: `radial-gradient(ellipse 130% 180% at 0% 100%,
-      rgba(93, 95, 152, 0.30) 0%,
-      rgba(93, 95, 152, 0.10) 50%,
-      transparent 75%)`,
+    width: '114.441px',
+    height: '101.633px',
+    left: '26px',
+    top: '54px',
+    borderRadius: '200px',
+    background: 'linear-gradient(180.58deg, rgba(255,255,255,0) 10.15%, rgb(93,95,152) 148.12%)',
+    transform: 'rotate(-0.41deg)',
+    opacity: isHovered ? 0 : 1,
+    transition: 'opacity 0.3s ease',
+    pointerEvents: 'none',
+    zIndex: 0,
+  }
+
+  // Hover fill blob — large oval fills entire button from top-left
+  // Figma: left:-20.74px top:-57.32px, 217×200px, solid #5D5F98
+  const hoverBlobStyles = {
+    position: 'absolute',
+    width: '217.162px',
+    height: '199.856px',
+    left: '-20.74px',
+    top: '-57.32px',
+    borderRadius: '200px',
+    backgroundColor: colors.primary[700],
+    transform: isHovered ? 'scale(1) rotate(-0.41deg)' : 'scale(0) rotate(-0.41deg)',
+    transformOrigin: 'center center',
     opacity: isHovered ? 1 : 0,
-    transition: 'opacity 0.45s ease',
+    transition: isHovered
+      ? 'transform 0.65s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease'
+      : 'transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease',
     pointerEvents: 'none',
     zIndex: 0,
   }
@@ -67,9 +99,8 @@ const SecondaryButton = ({ children, onClick, size = 'big', className, href, dow
 
   const inner = (
     <>
-      {/* Diagonal fill sweep */}
-      <span style={sheenStyles} aria-hidden="true" />
-      {/* Visible content */}
+      <span style={defaultBlobStyles} aria-hidden="true" />
+      <span style={hoverBlobStyles} aria-hidden="true" />
       <span style={contentStyles}>{children}</span>
     </>
   )
@@ -96,12 +127,7 @@ const SecondaryButton = ({ children, onClick, size = 'big', className, href, dow
   }
 
   return (
-    <button
-      style={buttonStyles}
-      className={className}
-      onClick={onClick}
-      {...handlers}
-    >
+    <button style={buttonStyles} className={className} onClick={onClick} {...handlers}>
       {inner}
     </button>
   )

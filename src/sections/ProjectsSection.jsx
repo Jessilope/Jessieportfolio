@@ -64,9 +64,9 @@ const PROJECTS = [
     hoverShadow: '0 0 25px rgba(1,119,65,0.25)',
     // Phones in correct Figma order: categories list | home | product detail
     mockups: [
-      { src: '/assets/images/dollarcity/mockup-2.png', left: 171, top: 110, w: 96,  h: 155, rotation: 0, fit: 'contain' },
-      { src: '/assets/images/dollarcity/mockup-3.png', left: 283, top: 63,  w: 88,  h: 184, rotation: 0, fit: 'contain' },
-      { src: '/assets/images/dollarcity/mockup-1.png', left: 387, top: 92,  w: 90,  h: 173, rotation: 0, fit: 'contain' },
+      { src: '/assets/images/dollarcity/mockup-2.png', left: 162, top: 95,  w: 95,  h: 155, rotation: 0, fit: 'contain' },
+      { src: '/assets/images/dollarcity/mockup-3.png', left: 278, top: 55,  w: 88,  h: 188, rotation: 0, fit: 'contain' },
+      { src: '/assets/images/dollarcity/mockup-1.png', left: 388, top: 75,  w: 92,  h: 175, rotation: 0, fit: 'contain' },
     ],
   },
 ]

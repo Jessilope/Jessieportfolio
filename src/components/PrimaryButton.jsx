@@ -1,17 +1,11 @@
 /**
  * PrimaryButton
- * Source: Figma node 1927:3352
+ * Figma node 1927:3352
  *
- * States: default · hover (blob slides in from left) · active (large blob fills button, text inverts)
- * Sizes:  M (default) · S · Xs
- *
- * Props:
- *   children     — button label
- *   onClick      — click handler
- *   href         — if provided, renders as <a> tag
- *   size         — 'M' | 'S' | 'Xs' | 'Big' | 'medium' | 'small'  (legacy aliases supported)
- *   showIcon     — show right-arrow icon (default true)
- *   className
+ * States:
+ *  default — solid #5D5F98, white text
+ *  hover   — small blob enters from bottom-right corner
+ *  active  — large blob fills button
  */
 
 import { useState } from 'react'
@@ -22,7 +16,6 @@ const SIZES = {
   M:      { paddingTop: '16px', paddingBottom: '16px', paddingLeft: '24px', paddingRight: '24px' },
   S:      { paddingTop: '14px', paddingBottom: '14px', paddingLeft: '16px', paddingRight: '16px' },
   Xs:     { paddingTop: '8px',  paddingBottom: '8px',  paddingLeft: '16px', paddingRight: '16px' },
-  // Legacy size aliases
   Big:    { paddingTop: '16px', paddingBottom: '16px', paddingLeft: '24px', paddingRight: '24px' },
   medium: { paddingTop: '14px', paddingBottom: '14px', paddingLeft: '16px', paddingRight: '16px' },
   small:  { paddingTop: '8px',  paddingBottom: '8px',  paddingLeft: '16px', paddingRight: '16px' },
@@ -48,47 +41,48 @@ const PrimaryButton = ({ children, onClick, href, size = 'M', showIcon = true, c
     overflow: 'hidden',
     position: 'relative',
     flexShrink: 0,
-    backgroundColor: colors.primary[700],          // #5D5F98
-    color: isActive ? colors.primary[700] : '#FFFFFF',
+    backgroundColor: colors.primary[700],
+    color: '#f9f9f9',
     fontFamily: `'${typography.presets.button.fontFamily}', ${typography.fontFamilies.fallback}`,
     fontSize: typography.presets.button.fontSize,
     fontWeight: typography.presets.button.fontWeight,
     lineHeight: typography.presets.button.lineHeight,
     letterSpacing: typography.presets.button.letterSpacing,
     fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
-    transition: 'color 0.3s ease',
     textDecoration: 'none',
     whiteSpace: 'nowrap',
   }
 
-  // Hover fill: sweeps left-to-right across the full button (Smart Animate equivalent)
-  const hoverFillStyles = {
+  // Hover blob — starts small at bottom-right, scales up to fill the button
+  const hoverBlobStyles = {
     position: 'absolute',
-    inset: 0,
-    background: `linear-gradient(to right, ${colors.primary[600]}, ${colors.primary[600]})`,
-    transformOrigin: 'left center',
-    transform: isHover ? 'scaleX(1)' : 'scaleX(0)',
+    width: '66.866px',
+    height: '71.549px',
+    left: '47.14px',
+    top: '55.98px',
+    borderRadius: '50%',
+    backgroundColor: 'rgba(255,255,255,0.35)',
+    transform: isHover ? 'scale(4.5)' : 'scale(0)',
+    opacity: isHover ? 1 : 0,
     transition: isHover
-      ? 'transform 0.38s cubic-bezier(0.4, 0, 0.2, 1)'
-      : 'transform 0.28s cubic-bezier(0.4, 0, 0.2, 1)',
+      ? 'transform 0.65s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease'
+      : 'transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease',
     pointerEvents: 'none',
     zIndex: 0,
   }
 
-  // Active blob: large circle fills the button
+  // Active blob — large circle fills button on click
   const activeBlobStyles = {
     position: 'absolute',
-    width: '300px',
-    height: '300px',
-    left: '50%',
-    top: '50%',
-    marginLeft: '-150px',
-    marginTop: '-150px',
+    width: '186.338px',
+    height: '186.338px',
+    left: '-10.81px',
+    top: '-70.9px',
     borderRadius: '50%',
-    background: 'rgba(255,255,255,0.90)',
+    backgroundColor: 'rgba(255,255,255,0.30)',
     transform: isActive ? 'scale(1)' : 'scale(0)',
     opacity: isActive ? 1 : 0,
-    transition: 'transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.22s ease',
+    transition: 'transform 0.28s cubic-bezier(0.4,0,0.2,1), opacity 0.22s ease',
     pointerEvents: 'none',
     zIndex: 0,
   }
@@ -103,19 +97,16 @@ const PrimaryButton = ({ children, onClick, href, size = 'M', showIcon = true, c
 
   const inner = (
     <>
-      {/* Hover fill — sweeps left-to-right */}
-      <span style={hoverFillStyles} aria-hidden="true" />
-      {/* Active ripple blob */}
+      <span style={hoverBlobStyles} aria-hidden="true" />
       <span style={activeBlobStyles} aria-hidden="true" />
-      {/* Visible content */}
       <span style={contentStyles}>
         {children}
         {showIcon && (
           <Icons
             icon="right-arrow"
-            state={isActive ? 'active' : 'Default'}
+            state="Default"
             size={20}
-            style={{ color: isActive ? colors.primary[700] : '#FFFFFF' }}
+            style={{ color: '#f9f9f9' }}
           />
         )}
       </span>

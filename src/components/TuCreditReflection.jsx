@@ -1,82 +1,56 @@
-import { colors } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
+import AnimatedOnScroll from './AnimatedOnScroll'
+
+const FONT_BODY    = `'Kantumruy', 'Noto Sans', sans-serif`
+const FONT_HEADING = `'Poppins', sans-serif`
 
 const TuCreditReflection = () => {
   const { isMobile } = useResponsive()
 
-  const sectionStyles = {
-    backgroundColor: '#fffefa',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    paddingLeft: isMobile ? '24px' : '96px',
-    paddingRight: isMobile ? '24px' : '218px',
-    paddingTop: isMobile ? '64px' : '128px',
-    paddingBottom: isMobile ? '32px' : '48px',
-    width: '100%',
-    flexShrink: 0,
-  }
-
-  const containerStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: isMobile ? '24px' : '48px',
-    alignItems: 'center',
-    lineHeight: '0',
-    width: '100%',
-    flexShrink: 0,
-  }
-
-  const titleContainerStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    fontFamily: `'Kanit', sans-serif`,
-    fontSize: isMobile ? '24px' : '32px',
-    fontStyle: 'normal',
-    fontWeight: 400,
-    color: '#5D5F98',
-    textAlign: 'center',
-    width: '100%',
-    flexShrink: 0,
-  }
-
-  const titleStyles = {
-    lineHeight: isMobile ? '28px' : '32px',
-    margin: 0,
-  }
-
-  const descriptionContainerStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
-    fontSize: isMobile ? '14px' : '16px',
-    fontWeight: 400,
-    letterSpacing: '0.8px',
-    color: colors.semantic.textPrimary,
-    width: '100%',
-    flexShrink: 0,
-    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
-  }
-
-  const paragraphStyles = {
-    lineHeight: '1.6',
-    margin: 0,
-  }
-
   return (
-    <div style={sectionStyles}>
-      <div style={containerStyles}>
-        <div style={titleContainerStyles}>
-          <p style={titleStyles}>Reflection</p>
-        </div>
-        <div style={descriptionContainerStyles}>
-          <p style={paragraphStyles}>
+    <div style={{
+      backgroundColor: '#fffefa',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      paddingLeft: isMobile ? '24px' : '96px',
+      paddingRight: isMobile ? '24px' : '96px',
+      paddingTop: isMobile ? '64px' : '128px',
+      paddingBottom: isMobile ? '32px' : '48px',
+      width: '100%',
+      flexShrink: 0,
+      boxSizing: 'border-box',
+    }}>
+      <AnimatedOnScroll animation="fadeIn" delay={0} duration={700} style={{ width: '100%', maxWidth: '903px' }}>
+        <div style={{
+          display: 'flex', flexDirection: 'column', gap: '48px',
+          alignItems: 'center', width: '100%',
+        }}>
+          <p style={{
+            fontFamily: FONT_HEADING,
+            fontSize: isMobile ? '24px' : '32px',
+            fontWeight: 500,
+            lineHeight: 1.3,
+            color: '#5D5F98',
+            textAlign: 'center',
+            margin: 0,
+            width: '100%',
+          }}>Reflection</p>
+          <p style={{
+            fontFamily: FONT_BODY,
+            fontSize: isMobile ? '14px' : '16px',
+            fontWeight: 400,
+            lineHeight: 1.6,
+            letterSpacing: '0.8px',
+            color: '#212121',
+            margin: 0,
+            width: '100%',
+            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+          }}>
             This project allowed me to explore the complexity behind designing financial products and reinforced the importance of clarity and trust in user experience. Working on TuCredit helped me understand that users don't just need functional tools, but guidance, education, and reassurance when making high-impact decisions
           </p>
         </div>
-      </div>
+      </AnimatedOnScroll>
     </div>
   )
 }
