@@ -256,7 +256,6 @@ const ClosingSection = () => {
         {/* Center text - positioned absolutely relative to section */}
         <div style={textContainerStyles}>
           <h2 style={titleStyles}>Design for good :)</h2>
-          <p style={subtitleStyles}>Thank you for watching</p>
         </div>
       </section>
     )
@@ -354,7 +353,6 @@ const ClosingSection = () => {
         {/* Center text */}
         <div style={textContainerStyles}>
           <h2 style={titleStyles}>Design for good :)</h2>
-          <p style={subtitleStyles}>Thank you for watching</p>
         </div>
       </div>
     </section>

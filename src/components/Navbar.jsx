@@ -10,15 +10,7 @@ const Navbar = () => {
   const location = useLocation()
   const { isMobile } = useResponsive()
   const [menuOpen, setMenuOpen] = React.useState(false)
-  const [isScrolled, setIsScrolled] = React.useState(false)
   const [isBurgerPressed, setIsBurgerPressed] = React.useState(false)
-
-  // Track scroll position to show/hide shadow
-  React.useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   // Close menu on route change
   React.useEffect(() => {
@@ -38,27 +30,33 @@ const Navbar = () => {
   // Navbar container
   const navbarStyles = {
     position: 'fixed',
-    top: spacing.xxl,
-    left: '50%',
-    transform: 'translateX(-50%)',
-    width: isMobile ? '380px' : '1152px',
-    height: isMobile ? '56px' : '88px',
-    backgroundColor: 'rgba(248, 247, 244, 0.2)',
-    backdropFilter: 'blur(10px)',
-    WebkitBackdropFilter: 'blur(10px)',
-    borderRadius: borderRadius.xxl,
-    boxShadow: isScrolled ? shadows.navbar : 'none',
-    transition: 'box-shadow 0.3s ease',
+    top: 0,
+    left: 0,
+    right: 0,
+    width: '100%',
+    height: isMobile ? 'auto' : 'auto',
+    backgroundColor: '#fffefa',
+    boxShadow: '0px 2px 12px -4px rgba(0,0,0,0.10)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: isMobile ? spacing.m : '16px',
+    paddingBottom: isMobile ? spacing.m : '16px',
+    paddingLeft: isMobile ? spacing.m : '96px',
+    paddingRight: isMobile ? spacing.m : '96px',
+    overflow: 'hidden',
+    flexShrink: 0,
+    zIndex: 1000,
+    boxSizing: 'border-box',
+  }
+
+  // Inner content wrapper — mirrors Projects section centering
+  const navInnerStyles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingTop: isMobile ? spacing.m : spacing.s,
-    paddingBottom: isMobile ? spacing.m : spacing.s,
-    paddingLeft: isMobile ? spacing.m : spacing.l,
-    paddingRight: isMobile ? spacing.m : spacing.l,
-    overflow: 'visible',
-    flexShrink: 0,
-    zIndex: 1000,
+    width: '100%',
+    maxWidth: '1090px',
   }
 
   // Logo container
@@ -330,114 +328,166 @@ const Navbar = () => {
         {/* Overlay */}
         <div style={overlayStyles} onClick={() => setMenuOpen(false)} />
 
-        {/* Floating burger/close button + dropdown */}
-        <div style={{
+        {/* Mobile navbar — full-width bar fixed at top */}
+        <nav style={{
           position: 'fixed',
-          top: spacing.xxl,
-          right: '24px',
-          zIndex: 1001,
+          top: 0,
+          left: 0,
+          right: 0,
+          width: '100%',
+          backgroundColor: '#fffefa',
+          boxShadow: '0px 2px 12px -4px rgba(0,0,0,0.10)',
+          borderRadius: menuOpen ? '0 0 4px 4px' : '0 0 4px 4px',
           display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-end',
-          gap: '8px',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '16px 24px',
+          boxSizing: 'border-box',
+          zIndex: 1000,
+          overflow: menuOpen ? 'visible' : 'hidden',
         }}>
-          {/* Close / Burger button — glass pill */}
+          {/* Logo */}
+          <div style={logoContainerStyles} onClick={handleLogoClick}>
+            <p style={logoTextStyles}>Jessie</p>
+          </div>
+
+          {/* Burger / Close button — plain, no glass */}
           <button
             style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              background: isBurgerPressed ? 'rgba(255, 255, 255, 0.3)' : menuOpen ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.3)',
-              backdropFilter: 'blur(8px)',
-              WebkitBackdropFilter: 'blur(8px)',
+              width: '32px',
+              height: '32px',
+              background: 'none',
               border: 'none',
-              borderRadius: '24px',
-              boxShadow: '0px 0px 4px 0px rgba(156, 156, 156, 0.25)',
               cursor: 'pointer',
-              padding: '8px',
+              padding: 0,
               flexShrink: 0,
-              zIndex: 1002,
-              transition: 'background 0.15s ease',
+              position: 'relative',
+              overflow: 'hidden',
             }}
             onClick={() => setMenuOpen(!menuOpen)}
-            onMouseDown={() => setIsBurgerPressed(true)}
-            onMouseUp={() => setIsBurgerPressed(false)}
-            onMouseLeave={() => setIsBurgerPressed(false)}
-            onTouchStart={() => setIsBurgerPressed(true)}
-            onTouchEnd={() => setIsBurgerPressed(false)}
             aria-label="Menu"
           >
-            <div style={{
+            {/* Burger icon — slides out upward when menu opens */}
+            <span style={{
+              position: 'absolute',
               display: 'flex',
               alignItems: 'center',
-              padding: '10px',
-              borderRadius: '8px',
+              justifyContent: 'center',
+              width: '20px',
+              height: '20px',
+              opacity: menuOpen ? 0 : 1,
+              transform: menuOpen ? 'rotate(90deg) scale(0.7)' : 'rotate(0deg) scale(1)',
+              transition: 'opacity 0.25s ease, transform 0.25s ease',
+              pointerEvents: 'none',
             }}>
-              {menuOpen ? <CloseIcon /> : <BurgerIcon />}
-            </div>
+              <BurgerIcon />
+            </span>
+            {/* Close icon — slides in from below when menu opens */}
+            <span style={{
+              position: 'absolute',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '20px',
+              height: '20px',
+              opacity: menuOpen ? 1 : 0,
+              transform: menuOpen ? 'rotate(0deg) scale(1)' : 'rotate(-90deg) scale(0.7)',
+              transition: 'opacity 0.25s ease, transform 0.25s ease',
+              pointerEvents: 'none',
+            }}>
+              <CloseIcon />
+            </span>
           </button>
 
-          {/* Mobile dropdown */}
-          <div style={dropdownStyles}>
-            <div style={dropdownLinksContainerStyles}>
-              <div style={dropdownLinksContentStyles}>
-                <button style={dropdownLinkStyles} onClick={handleWorkClick}>
-                  <p style={dropdownLinkTextStyles}>Work</p>
+          {/* Dropdown panel — extends below the bar */}
+          <div style={{
+            position: 'absolute',
+            top: '100%',
+            left: 0,
+            width: '100%',
+            height: menuOpen ? '165px' : '0px',
+            backgroundColor: '#fffefa',
+            overflow: 'hidden',
+            transition: 'height 0.25s ease',
+            boxShadow: menuOpen ? '0px 4px 8px 0px rgba(0,0,0,0.10)' : 'none',
+            borderRadius: '0 0 4px 4px',
+            zIndex: 999,
+          }}>
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '4px',
+              alignItems: 'center',
+              justifyContent: 'center',
+              paddingTop: '24px',
+              paddingBottom: '16px',
+              paddingLeft: '8px',
+              paddingRight: '8px',
+              width: '100%',
+            }}>
+              {[
+                { label: 'Work',  handler: handleWorkClick },
+                { label: 'Home',  handler: handleHomeClick },
+                { label: 'About', handler: handleAboutClick },
+              ].map(({ label, handler }) => (
+                <button key={label} style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '4px',
+                  width: '100%',
+                  height: '34px',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  flexShrink: 0,
+                }} onClick={handler}>
+                  <p style={{
+                    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
+                    fontSize: '16px',
+                    fontWeight: 400,
+                    lineHeight: 1.6,
+                    letterSpacing: '0.8px',
+                    color: '#22282f',
+                    margin: 0,
+                    whiteSpace: 'nowrap',
+                    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+                  }}>{label}</p>
                 </button>
-                <button style={dropdownLinkStyles} onClick={handleHomeClick}>
-                  <p style={dropdownLinkTextStyles}>Home</p>
-                </button>
-                <button style={dropdownLinkStyles} onClick={handleAboutClick}>
-                  <p style={dropdownLinkTextStyles}>About</p>
-                </button>
-              </div>
-
-              <div style={dropdownButtonsStyles}>
-                <a href="mailto:ale.mogollon06@gmail.com" style={dropdownPrimaryBtnStyles}>
-                  Contact me
-                </a>
-                <a href={documents.cv} target="_blank" rel="noopener noreferrer" style={dropdownSecondaryBtnStyles}>
-                  Download CV
-                  <DownloadIcon />
-                </a>
-              </div>
+              ))}
             </div>
           </div>
-        </div>
+        </nav>
       </>
     )
   }
 
   return (
     <nav style={navbarStyles}>
-      {/* Logo */}
-      <div style={logoContainerStyles} onClick={handleLogoClick}>
-        <p style={logoTextStyles}>JESSIE</p>
-      </div>
-      
-      {/* Nav Links */}
-      <div style={navLinksWrapperStyles}>
-        <div style={navLinksStyles}>
-          <NavbarLink text="Work" onClick={handleWorkClick} />
-          <NavbarLink text="Home" onClick={handleHomeClick} />
-          <NavbarLink text="About" onClick={handleAboutClick} />
+      <div style={navInnerStyles}>
+        {/* Logo */}
+        <div style={logoContainerStyles} onClick={handleLogoClick}>
+          <p style={logoTextStyles}>JESSIE</p>
         </div>
-      </div>
-
-      {/* Buttons */}
-      <div style={buttonGroupStyles}>
-        <SecondaryButton href={documents.cv}>
-          Download CV
-        </SecondaryButton>
-        <PrimaryButton href="mailto:ale.mogollon06@gmail.com" showIcon={false}>
-          Contact me
-        </PrimaryButton>
+        
+        {/* Nav Links */}
+        <div style={navLinksWrapperStyles}>
+          <div style={navLinksStyles}>
+            <NavbarLink text="Work" onClick={handleWorkClick} />
+            <NavbarLink text="Home" onClick={handleHomeClick} />
+            <NavbarLink text="About me" onClick={handleAboutClick} />
+          </div>
+        </div>
       </div>
     </nav>
   )
 }
 
-// NavbarLink Component - Con animación de underline (estados: Default, Hover, Click)
+// NavbarLink Component - Color change on hover/click (no underline)
 const NavbarLink = ({ text, onClick }) => {
   const [isHovered, setIsHovered] = React.useState(false)
   const [isClicked, setIsClicked] = React.useState(false)
@@ -457,67 +507,33 @@ const NavbarLink = ({ text, onClick }) => {
   }
 
   const textStyles = {
-    fontFamily: `'${typography.presets.navLink.fontFamily}', ${typography.fontFamilies.fallback}`,
-    fontSize: typography.presets.navLink.fontSize, // 16px
-    fontWeight: typography.presets.navLink.fontWeight, // 400
-    lineHeight: typography.presets.navLink.lineHeight, // 1.6
-    letterSpacing: typography.presets.navLink.letterSpacing, // 0.8px
-    color: colors.semantic.textPrimary,
+    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
+    fontSize: '16px',
+    fontWeight: 400,
+    lineHeight: 1.6,
+    letterSpacing: '0.8px',
+    color: (isHovered || isClicked) ? '#7f8d9f' : '#22282f',
     margin: 0,
     textAlign: 'left',
+    whiteSpace: 'nowrap',
     fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
-  }
-
-  // Container para la línea animada
-  const lineContainerStyles = {
-    height: '0px',
-    width: '100%',
-    position: 'relative',
-    flexShrink: 0,
-  }
-
-  // Línea amarilla - estado hover (línea delgada)
-  const hoverLineStyles = {
-    position: 'absolute',
-    top: '-2px',
-    left: 0,
-    right: 0,
-    height: '2px',
-    backgroundColor: colors.secondary['600'], // #FFDF5B
-    opacity: isHovered && !isClicked ? 1 : 0,
-    transition: 'opacity 0.3s ease',
-  }
-
-  // Línea amarilla - estado click (línea más gruesa)
-  const clickLineStyles = {
-    position: 'absolute',
-    top: '-2px',
-    left: 0,
-    right: 0,
-    height: '3px',
-    backgroundColor: colors.secondary['600'], // #FFDF5B
-    opacity: isClicked ? 1 : 0,
-    transition: 'opacity 0.3s ease',
+    transition: 'color 0.25s ease',
   }
 
   const handleClick = () => {
     setIsClicked(true)
-    setTimeout(() => setIsClicked(false), 300) // Reset después de la animación
+    setTimeout(() => setIsClicked(false), 300)
     if (onClick) onClick()
   }
 
   return (
-    <button 
+    <button
       style={linkButtonStyles}
       onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <p style={textStyles}>{text}</p>
-      <div style={lineContainerStyles}>
-        <div style={hoverLineStyles} />
-        <div style={clickLineStyles} />
-      </div>
     </button>
   )
 }
@@ -527,20 +543,17 @@ const NavbarLink = ({ text, onClick }) => {
 // Import React for useState
 import React from 'react'
 
-// Burger icon (3 horizontal lines)
+// Burger icon — exact paths from Figma (asymmetric middle line)
 const BurgerIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M3 6H21" stroke="#5D5F98" strokeWidth="2" strokeLinecap="round" />
-    <path d="M3 12H21" stroke="#5D5F98" strokeWidth="2" strokeLinecap="round" />
-    <path d="M3 18H21" stroke="#5D5F98" strokeWidth="2" strokeLinecap="round" />
+  <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1.5 3H19.5M1.5 10H16.5M1.5 17H19.5" stroke="#5D5F98" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 )
 
-// Close icon (X)
+// Close icon — exact paths from Figma (X with subtle center gap)
 const CloseIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M6 6L18 18" stroke="#5D5F98" strokeWidth="2" strokeLinecap="round" />
-    <path d="M18 6L6 18" stroke="#5D5F98" strokeWidth="2" strokeLinecap="round" />
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 2.5L17 17.5M9 10H10M2 17.5L17 2.5" stroke="#5D5F98" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 )
 
