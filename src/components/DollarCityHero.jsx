@@ -1,104 +1,174 @@
 import Navbar from './Navbar'
 import useResponsive from '../hooks/useResponsive'
 
-const Ring = ({ style }) => (
+const FONT_BODY = `'Kantumruy', 'Noto Sans', sans-serif`
+
+const Tag = ({ children }) => (
   <div style={{
-    position: 'absolute',
+    backgroundColor: 'white',
+    border: '0.5px solid #cdd1d7',
+    borderRadius: '4px',
+    padding: '8px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    ...style,
+    flexShrink: 0,
   }}>
-    <div style={{
-      transform: 'rotate(19.63deg)',
-      borderRadius: '50%',
-      border: '1.5px solid rgba(255,255,255,0.25)',
-      width: '79%',
-      height: '79%',
-      flexShrink: 0,
-    }} />
+    <span style={{
+      fontFamily: FONT_BODY,
+      fontSize: '12px',
+      fontWeight: 400,
+      lineHeight: 1.6,
+      letterSpacing: '0.624px',
+      color: '#7f8d9f',
+      whiteSpace: 'nowrap',
+      fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+    }}>{children}</span>
   </div>
 )
+
+const TAGS = ['UX-UI Design', 'Figma', 'Gemini']
 
 const DollarCityHero = () => {
   const { isMobile } = useResponsive()
 
-  const heroStyles = {
-    position: 'relative',
-    width: '100%',
-    height: isMobile ? '700px' : '892px',
-    background: 'linear-gradient(to bottom, #087831 0%, #6ec98a 55%, #ffffff 100%)',
-    overflow: 'hidden',
-    flexShrink: 0,
-  }
-
   return (
-    <div style={heroStyles}>
+    <div style={{
+      position: 'relative',
+      width: '100%',
+      height: '100vh',
+      minHeight: '600px',
+      backgroundColor: '#fffefa',
+      overflow: 'hidden',
+      flexShrink: 0,
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'flex-start',
+      paddingLeft: isMobile ? '24px' : '96px',
+      paddingRight: isMobile ? '24px' : '96px',
+      paddingBottom: isMobile ? '220px' : '0',
+      boxSizing: 'border-box',
+    }}>
       <Navbar />
 
-      {/* Rings */}
-      <Ring style={{ width: '524px', height: '518px', left: '-58px', top: '-293px' }} />
-      <Ring style={{ width: '524px', height: '518px', left: 'calc(75% + 1px)', top: '-259px' }} />
-      <Ring style={{ width: '59px',  height: '58px',  left: 'calc(91.67% + 5.67px)', top: '576px' }} />
-      <Ring style={{ width: '157px', height: '156px', left: '39px', top: '778px' }} />
-      <Ring style={{ width: '59px',  height: '58px',  left: 'calc(66.67% + 37.67px)', top: '813px' }} />
-
-      {/* Content container — matches Figma: left:96px top:203px width:1088px */}
+      {/* Text content block — maxWidth wrapper mirrors navbar centering */}
       <div style={{
-        position: 'absolute',
-        left: isMobile ? '0' : '96px',
-        top: isMobile ? '120px' : '203px',
-        width: isMobile ? '100%' : '1088px',
-        height: isMobile ? 'auto' : '669px',
-      }}>
-      </div>
-
-      {/* "DOLLAR CITY" background text — absolute to hero */}
-      <div style={{
-        position: 'absolute',
-        left: '50%',
-        top: isMobile ? '233px' : '448px',
-        transform: 'translate(-50%, -50%)',
         width: '100%',
-        textAlign: 'center',
-        pointerEvents: 'none',
-        zIndex: 0,
-      }}>
-        <p style={{
-          fontFamily: `'Archivo Black', sans-serif`,
-          fontSize: isMobile ? '75px' : '200px',
-          fontWeight: 400,
-          lineHeight: 1,
-          color: 'rgba(235,219,50,0.66)',
-          textAlign: 'center',
-          margin: 0,
-          whiteSpace: 'nowrap',
-        }}>DOLLAR CITY</p>
-      </div>
-
-      {/* Phone mockup — bottom center of hero, no background */}
-      <div style={{
-        position: 'absolute',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        bottom: isMobile ? '-40px' : '-180px',
-        width: isMobile ? '260px' : '410px',
+        maxWidth: isMobile ? 'none' : '1090px',
+        margin: '0 auto',
+        position: 'relative',
         zIndex: 2,
-        pointerEvents: 'none',
       }}>
-        <img
-          src="/assets/images/hero/dollarcity-hero-mockup.png"
-          alt="Dollarcity app"
-          style={{
-            width: '100%',
-            height: 'auto',
-            objectFit: 'contain',
-            display: 'block',
-            filter: 'drop-shadow(0px 0px 46px rgba(0,183,66,0.25))',
-          }}
-        />
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '32px',
+        width: isMobile ? '100%' : '556px',
+        boxSizing: 'border-box',
+      }}>
+        {/* Tools and tech */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
+          <p style={{
+            fontFamily: FONT_BODY,
+            fontSize: '12px',
+            fontWeight: 400,
+            lineHeight: 1.6,
+            letterSpacing: '0.624px',
+            color: '#66778c',
+            margin: 0,
+            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+          }}>TOOLS AND TECH</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+            {TAGS.map(tag => <Tag key={tag}>{tag}</Tag>)}
+          </div>
+        </div>
+
+        {/* Title + subtitle */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
+          <p style={{
+            fontFamily: `'Poppins', sans-serif`,
+            fontSize: isMobile ? '48px' : '80px',
+            fontWeight: 600,
+            lineHeight: 1.4,
+            letterSpacing: isMobile ? '2.4px' : '4px',
+            color: '#39424e',
+            margin: 0,
+          }}>Dollarcity</p>
+          <p style={{
+            fontFamily: FONT_BODY,
+            fontSize: '16px',
+            fontWeight: 300,
+            lineHeight: 1.6,
+            letterSpacing: '0.8px',
+            color: '#39424e',
+            margin: 0,
+            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
+          }}>
+            Fast, simple shopping for everyday essentials.{isMobile ? ' ' : <br />}
+            Browse, add, and pay in seconds.
+          </p>
+        </div>
+      </div>
       </div>
 
+      {/* Phone mockups — desktop only */}
+      {!isMobile && (
+        <div style={{
+          position: 'absolute',
+          left: 'calc(50% + 32px)',
+          top: '138px',
+          width: '460px',
+          height: 'calc(100vh - 138px)',
+          zIndex: 1,
+        }}>
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            overflow: 'hidden',
+            pointerEvents: 'none',
+          }}>
+            <img
+              src="/assets/images/hero/dollarcity-hero-mockup.png"
+              alt="Dollarcity app"
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '144.79%',
+                left: '0',
+                top: '-19.01%',
+                maxWidth: 'none',
+                display: 'block',
+              }}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Phone mockup — mobile */}
+      {isMobile && (
+        <div style={{
+          position: 'absolute',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          bottom: '-40px',
+          width: '260px',
+          zIndex: 1,
+          pointerEvents: 'none',
+        }}>
+          <img
+            src="/assets/images/hero/dollarcity-hero-mockup.png"
+            alt="Dollarcity app"
+            style={{
+              width: '100%',
+              height: 'auto',
+              objectFit: 'contain',
+              display: 'block',
+              filter: 'drop-shadow(0px 0px 46px rgba(0,183,66,0.25))',
+            }}
+          />
+        </div>
+      )}
     </div>
   )
 }

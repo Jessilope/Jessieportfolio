@@ -1,96 +1,154 @@
 import Navbar from './Navbar'
 import useResponsive from '../hooks/useResponsive'
 
-// Decorative ring shapes matching Figma "Subtract" blob-ring elements
-// Recreated as CSS circle outlines (stroke only, no fill)
-const Ring = ({ style }) => (
+const FONT_BODY = `'Kantumruy', 'Noto Sans', sans-serif`
+
+const Tag = ({ children }) => (
   <div style={{
-    borderRadius: '50%',
-    border: '1.5px solid rgba(255,255,255,0.35)',
-    position: 'absolute',
-    ...style,
-  }} />
+    backgroundColor: 'white',
+    border: '0.5px solid #cdd1d7',
+    borderRadius: '4px',
+    padding: '8px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+  }}>
+    <span style={{
+      fontFamily: FONT_BODY,
+      fontSize: '12px',
+      fontWeight: 400,
+      lineHeight: 1.6,
+      letterSpacing: '0.624px',
+      color: '#7f8d9f',
+      whiteSpace: 'nowrap',
+      fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+    }}>{children}</span>
+  </div>
 )
+
+const TAGS = ['UX-UI design', 'Figma', 'ChatGPT', 'Figma Make']
 
 const LexiHero = () => {
   const { isMobile } = useResponsive()
 
-  // Figma: height 892px, gradient from #155dfc to white, centered
-  const heroStyles = {
-    position: 'relative',
-    width: '100%',
-    height: '892px',
-    background: 'linear-gradient(to bottom, #155dfc 0%, #b3c9ff 60%, #ffffff 100%)',
-    overflow: 'hidden',
-    flexShrink: 0,
-  }
-
-  const mobileHeroStyles = {
-    position: 'relative',
-    width: '100%',
-    height: '892px',
-    background: 'linear-gradient(to bottom, #155dfc 0%, #b3c9ff 65%, #ffffff 100%)',
-    overflow: 'hidden',
-    flexShrink: 0,
-  }
-
   return (
-    <div style={isMobile ? mobileHeroStyles : heroStyles}>
+    <div style={{
+      position: 'relative',
+      width: '100%',
+      height: '892px',
+      backgroundColor: '#fffefa',
+      overflow: 'hidden',
+      flexShrink: 0,
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'stretch',
+      paddingLeft: isMobile ? '24px' : '96px',
+      paddingRight: isMobile ? '24px' : '96px',
+      paddingBottom: isMobile ? '199px' : '0',
+      boxSizing: 'border-box',
+    }}>
       <Navbar />
 
-      {/* Giant "LEXI" background text — Figma: Madimi One 400px, rgba(21,93,252,0.26) */}
+      {/* Text content block — maxWidth wrapper mirrors navbar centering */}
       <div style={{
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        top: isMobile ? '520px' : '420px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        width: '100%',
+        maxWidth: isMobile ? 'none' : '1090px',
+        margin: '0 auto',
+        position: 'relative',
+        zIndex: 2,
       }}>
-        <p style={{
-          fontFamily: `'Madimi One', sans-serif`,
-          fontSize: isMobile ? '200px' : '400px',
-          fontWeight: 400,
-          lineHeight: '61.6px',
-          letterSpacing: '12px',
-          color: 'rgba(21,93,252,0.26)',
-          textAlign: 'center',
-          margin: 0,
-          whiteSpace: 'nowrap',
-        }}>LEXI</p>
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '32px',
+        width: isMobile ? '100%' : '625px',
+        boxSizing: 'border-box',
+      }}>
+        {/* Tools and tech */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
+          <p style={{
+            fontFamily: FONT_BODY,
+            fontSize: '12px',
+            fontWeight: 400,
+            lineHeight: 1.6,
+            letterSpacing: '0.624px',
+            color: '#66778c',
+            margin: 0,
+            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+          }}>TOOLS AND TECH</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+            {TAGS.map(tag => <Tag key={tag}>{tag}</Tag>)}
+          </div>
+        </div>
+
+        {/* Title + subtitle */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
+          <p style={{
+            fontFamily: `'Poppins', sans-serif`,
+            fontSize: isMobile ? '48px' : '88px',
+            fontWeight: 600,
+            lineHeight: 1.4,
+            letterSpacing: isMobile ? '2.4px' : '4.4px',
+            color: '#39424e',
+            margin: 0,
+          }}>Lexi App</p>
+          <p style={{
+            fontFamily: FONT_BODY,
+            fontSize: '16px',
+            fontWeight: 300,
+            lineHeight: 1.6,
+            letterSpacing: '0.8px',
+            color: '#39424e',
+            margin: 0,
+            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+          }}>
+            Smart language learning, powered by AI.{isMobile ? ' ' : <br />}
+            {' '}Practice real conversations anytime, anywhere.
+          </p>
+        </div>
+      </div>
       </div>
 
-      {/* Phone mockup — Figma: 392×588px, rotate(12.83deg), shadow */}
+      {/* Phone mockup — desktop */}
       {!isMobile && (
         <div style={{
           position: 'absolute',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          top: 'calc(293px + 33px)',
-          width: '512.792px',
-          height: '660.371px',
+          left: 'calc(41.67% + 3.01px)',
+          top: '155.82px',
+          width: '657.917px',
+          height: '847.262px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          zIndex: 1,
         }}>
           <div style={{ transform: 'rotate(12.83deg)', flexShrink: 0 }}>
-            <img
-              src="/assets/images/hero/lexi-hero-mockup.png"
-              alt="Lexi app"
-              style={{
-                width: '392px',
-                height: '588px',
-                objectFit: 'contain',
-                filter: 'drop-shadow(0 0 45px rgba(21,93,252,0.25))',
-                display: 'block',
-              }}
-            />
+            <div style={{
+              width: '502.939px',
+              height: '754.409px',
+              position: 'relative',
+              overflow: 'hidden',
+            }}>
+              <img
+                src="/assets/images/hero/lexi-hero-mockup.png"
+                alt="Lexi app"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: '-0.04%',
+                  width: '100.08%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
+                }}
+              />
+            </div>
           </div>
         </div>
       )}
 
-      {/* Mobile: phone mockup — bigger, centered at bottom, clipped by section overflow:hidden */}
       {isMobile && (
         <div style={{
           position: 'absolute',
@@ -100,6 +158,7 @@ const LexiHero = () => {
           display: 'flex',
           alignItems: 'flex-end',
           justifyContent: 'center',
+          zIndex: 1,
         }}>
           <div style={{ transform: 'rotate(12.83deg)', flexShrink: 0 }}>
             <img
@@ -109,27 +168,12 @@ const LexiHero = () => {
                 width: '320px',
                 height: 'auto',
                 objectFit: 'contain',
-                filter: 'drop-shadow(0 0 45px rgba(21,93,252,0.25))',
                 display: 'block',
               }}
             />
           </div>
         </div>
       )}
-
-      {/* Decorative rings — exact Figma positions (relative to the 892px hero section) */}
-      {/* Top-left large */}
-      <Ring style={{ width: '413px', height: '403px', left: '-54px', top: '-260px' }} />
-      {/* Left medium */}
-      <Ring style={{ width: '277px', height: '270px', left: '-265px', top: '216.97px' }} />
-      {/* Bottom-left small */}
-      <Ring style={{ width: '124px', height: '121px', left: '20px', top: '778px' }} />
-      {/* Right small */}
-      <Ring style={{ width: '46px', height: '45px', left: 'calc(91.67% + 18.67px)', top: '642px' }} />
-      {/* Bottom-right tiny */}
-      <Ring style={{ width: '46px', height: '45px', left: 'calc(75% - 38px)', top: '833px' }} />
-      {/* Top-right large */}
-      <Ring style={{ width: '413px', height: '403px', left: 'calc(75% + 58px)', top: '-139px' }} />
     </div>
   )
 }

@@ -1,164 +1,191 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { colors } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 import AnimatedOnScroll from './AnimatedOnScroll'
 
-const ALL_IMAGES = [
-  '/assets/images/lexi/data-collection/state 1/Data collection 1.png',
-  '/assets/images/lexi/data-collection/state 1/Data collection 2.png',
-  '/assets/images/lexi/data-collection/state 1/Data collection 3.png',
-  '/assets/images/lexi/data-collection/state 1/Data collection 4.png',
-  '/assets/images/lexi/data-collection/state 1/Data collection 5.png',
+const FONT_BODY    = `'Kantumruy', 'Noto Sans', sans-serif`
+const FONT_HEADING = `'Poppins', sans-serif`
+
+const REVIEWS = [
+  {
+    title: 'Injusta',
+    stars: 2,
+    date: '6 de abril',
+    source: 'Faunalond',
+    text: 'Tengo pruebas de que fui acosada y amenazada en la app; pero antes de poder reportar al usuario, la aplicación cerró mi cuenta y ahora no puedo crear una nueva. Lo triste es que quisiera poder seguir usando la aplicación por sus beneficios (en tanto a practicar idiomas se refiere).',
+  },
+  {
+    title: 'App de citas disfrazada',
+    stars: 1,
+    date: '6 de abril',
+    source: 'Faunalond',
+    text: 'Literal es un app disfrazada que realmente es tinder, todos los hombres te escriben con otras intenciones y si quieres hablar con mujeres te toca pagar subscripción, le doy 1 estrella porque no le puedo dar 0.',
+  },
+  {
+    title: 'Mas o menos',
+    stars: 3,
+    date: 'Hace 4 años',
+    source: 'UNICORNIO ZOMBIE',
+    text: 'La idea de la app es buena pero los usuarios están allí con otras intenciones, perdí el interés rápidamente al ver que solo me hablaban hombres buscando de todo menos un intercambio de idiomas. Decepcionada completamente, no la recomiendo.',
+  },
+  {
+    title: 'Es un tinder disfrazado',
+    stars: 4,
+    date: '6 de abril',
+    source: 'Faunalond',
+    text: 'La aplicación es genial, me gustó, tiene muchas herramientas, sin embargo, hay muchas personas que escriben con otro tipo de intenciones, y personalmente eso me quita el interés en querer entablar conversaciones en la plataforma.',
+  },
 ]
 
-// All cards share the same bottom edge (front card bottom = top + height)
-const FRONT = { top: 64, left: 18, width: 410, height: 342 }
-const bottomEdge = FRONT.top + FRONT.height  // 406
-// Center X of front card — back cards align horizontally to it
-const frontCx = FRONT.left + FRONT.width / 2  // 223
+const StarIcon = ({ filled }) => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
+    <path d="M8 1.5l1.545 3.13 3.455.502-2.5 2.436.59 3.44L8 9.27l-3.09 1.737.59-3.44L3 5.132l3.455-.502L8 1.5z" fill={filled ? '#FFB800' : '#D9D9D9'} />
+  </svg>
+)
 
-const makeSlot = (width, height, rotate) => ({
-  top:  bottomEdge - height,
-  left: Math.round(frontCx - width / 2),
-  width,
-  height,
-  rotate,
-})
+const Stars = ({ count }) => (
+  <div style={{ display: 'flex', gap: '2px', alignItems: 'center' }}>
+    {[1, 2, 3, 4, 5].map(i => <StarIcon key={i} filled={i <= count} />)}
+  </div>
+)
 
-const SLOTS = [
-  { ...FRONT, rotate: 0 },       // front
-  makeSlot(370, 308, 10),        // slot 1
-  makeSlot(330, 275, 19),        // slot 2
-  makeSlot(295, 246, 28),        // slot 3
-  makeSlot(262, 219, 37),        // slot 4 — furthest back
-]
+const ReviewCard = ({ review }) => (
+  <div style={{
+    width: '100%',
+    backgroundColor: 'white',
+    border: '0.5px solid #cdd1d7',
+    borderRadius: '8px',
+    padding: '16px',
+    boxSizing: 'border-box',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '18px',
+  }}>
+    <p style={{
+      fontFamily: FONT_BODY,
+      fontSize: '18px',
+      fontWeight: 700,
+      lineHeight: 1.5,
+      color: '#000000',
+      margin: 0,
+      fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700",
+    }}>{review.title}</p>
 
-// Smart Animate ease-in-out (Figma default)
-const EASING = 'cubic-bezier(0.42, 0, 0.58, 1)'
-const DURATION = 600
+    <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+      <Stars count={review.stars} />
+      <p style={{
+        fontFamily: FONT_BODY,
+        fontSize: '12px',
+        fontWeight: 400,
+        lineHeight: 1.6,
+        letterSpacing: '0.624px',
+        color: '#7f8d9f',
+        margin: 0,
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+      }}>{review.date} · {review.source}</p>
+    </div>
 
-const CardStack = ({ scale = 1 }) => {
-  const [deck, setDeck] = useState([0, 1, 2, 3, 4])
-  // exitingCard: imgIdx that is currently in its exit micro-animation before deck rotates
-  const [exitingCard, setExitingCard] = useState(null)
-  const lockedRef = useRef(false)
+    <p style={{
+      fontFamily: FONT_BODY,
+      fontSize: '18px',
+      fontWeight: 400,
+      lineHeight: 1.5,
+      letterSpacing: '0.9px',
+      color: '#4f5d6d',
+      margin: 0,
+      fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+    }}>{review.text}</p>
+  </div>
+)
 
-  const W = 620
-  const H = 470
+const ReviewCarousel = ({ reviews, isMobile }) => {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [exitingIndex, setExitingIndex] = useState(null)
+  const activeRef = useRef(0)
 
-  const handleClick = () => {
-    if (lockedRef.current) return
-    lockedRef.current = true
-
-    const frontCard = deck[0]
-
-    // Phase 1: exit animation on front card (scale down + fade out, 200ms)
-    setExitingCard(frontCard)
-
-    setTimeout(() => {
-      // Phase 2: rotate deck — back card teleports behind, rest animate smoothly
-      setExitingCard(null)
-      setDeck(prev => {
-        const [front, ...rest] = prev
-        return [...rest, front]
-      })
-      // Unlock after transition finishes
-      setTimeout(() => { lockedRef.current = false }, DURATION + 50)
-    }, 200)
-  }
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const current = activeRef.current
+      setExitingIndex(current)
+      const next = (current + 1) % reviews.length
+      activeRef.current = next
+      setActiveIndex(next)
+      setTimeout(() => setExitingIndex(null), 600)
+    }, 4000)
+    return () => clearInterval(interval)
+  }, [reviews.length])
 
   return (
-    <div
-      onClick={handleClick}
-      style={{
-        position: 'relative',
-        width: `${W * scale}px`,
-        height: `${H * scale}px`,
-        flexShrink: 0,
-        cursor: 'pointer',
-      }}
-    >
-      {[...deck].reverse().map((imgIdx) => {
-        const deckPos = deck.indexOf(imgIdx)
-        const slot = SLOTS[deckPos]
-        const zIdx = 10 - deckPos * 2
-        const isExiting = exitingCard === imgIdx
-        // The card at the very back just teleported there — no transition
-        const isBack = deckPos === deck.length - 1
+    <div style={{
+      position: 'relative',
+      width: isMobile ? '100%' : '451px',
+      height: '371px',
+      overflow: 'hidden',
+      flexShrink: 0,
+    }}>
+      {reviews.map((review, i) => {
+        const isActive = i === activeIndex
+        const isExiting = i === exitingIndex
 
-        let transform = `rotate(${slot.rotate}deg)`
-        let opacity = 1
-        let transition = `all ${DURATION}ms ${EASING}`
-        let currentZIdx = zIdx
+        let opacity = 0
+        let transform = 'translateX(40px) scale(0.97)'
 
-        if (isExiting) {
-          // Shrink and fade the front card out before the deck rotates
-          transform = `rotate(${slot.rotate}deg) scale(0.9) translateY(8px)`
+        if (isActive) {
+          opacity = 1
+          transform = 'translateX(0) scale(1)'
+        } else if (isExiting) {
           opacity = 0
-          transition = 'transform 0.2s cubic-bezier(0.4, 0, 1, 1), opacity 0.2s ease'
-          currentZIdx = 20
-        } else if (isBack) {
-          // Instantly snaps behind — no visible fly-through
-          transition = 'none'
+          transform = 'translateX(-40px) scale(0.97)'
         }
 
         return (
-          <div
-            key={imgIdx}
-            style={{
-              position: 'absolute',
-              top: `${slot.top * scale}px`,
-              left: `${slot.left * scale}px`,
-              width: `${slot.width * scale}px`,
-              height: `${slot.height * scale}px`,
-              transform,
-              transformOrigin: 'bottom center',
-              opacity,
-              borderRadius: `${16 * scale}px`,
-              overflow: 'hidden',
-              background: 'transparent',
-              boxShadow: 'none',
-              zIndex: currentZIdx,
-              transition,
-            }}
-          >
-            <img
-              alt=""
-              src={ALL_IMAGES[imgIdx]}
-              style={{
-                display: 'block',
-                width: '100%',
-                height: '100%',
-                objectFit: 'fill',
-                pointerEvents: 'none',
-              }}
-            />
+          <div key={i} style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            opacity,
+            transform,
+            transition: 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out',
+            pointerEvents: isActive ? 'auto' : 'none',
+          }}>
+            <ReviewCard review={review} />
           </div>
         )
       })}
+
+      {/* Dot indicators */}
+      <div style={{
+        position: 'absolute',
+        bottom: '8px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        display: 'flex',
+        gap: '6px',
+        alignItems: 'center',
+      }}>
+        {reviews.map((_, i) => (
+          <div key={i} style={{
+            width: i === activeIndex ? '16px' : '6px',
+            height: '6px',
+            borderRadius: '3px',
+            backgroundColor: i === activeIndex ? '#5d5f98' : '#cdd1d7',
+            transition: 'width 0.4s ease-in-out, background-color 0.4s ease-in-out',
+          }} />
+        ))}
+      </div>
     </div>
   )
 }
 
 const LexiDataCollection = () => {
   const { isMobile } = useResponsive()
-  const cardWrapperRef = useRef(null)
-  const [cardScale, setCardScale] = React.useState(0.65)
-
-  React.useEffect(() => {
-    if (!isMobile) return
-    const el = cardWrapperRef.current
-    if (!el) return
-    const observer = new ResizeObserver(([entry]) => {
-      const w = entry.contentRect.width
-      if (w > 0) setCardScale(w / 620)
-    })
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [isMobile])
 
   return (
-    <section style={{
+    <section id="data-collection" style={{
       backgroundColor: colors.backgrounds.main,
       width: '100%',
       paddingTop: '128px',
@@ -172,81 +199,62 @@ const LexiDataCollection = () => {
       boxSizing: 'border-box',
     }}>
 
-      <AnimatedOnScroll animation="fadeIn" duration={700} style={{ width: '100%' }}>
-        <div style={{ width: '100%', maxWidth: '950px' }}>
-          <p style={{
-            fontFamily: `'Poppins', sans-serif`,
-            fontSize: '24px',
-            fontWeight: 500,
-            lineHeight: 1.3,
-            letterSpacing: '1.2px',
-            color: '#8a8a8a',
-            margin: 0,
-          }}>Data collection</p>
-        </div>
-      </AnimatedOnScroll>
+      <div style={{
+        display: 'flex',
+        flexDirection: isMobile ? 'column' : 'row',
+        gap: '24px',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        width: '100%',
+        maxWidth: '950px',
+        margin: '0 auto',
+        padding: '24px',
+        borderRadius: '16px',
+        boxSizing: 'border-box',
+      }}>
 
-      <AnimatedOnScroll animation="slideUp" delay={100} duration={600} style={{ width: '100%' }}>
+        {/* Left — title + description (staggered entrance) */}
         <div style={{
-          width: '100%',
-          maxWidth: isMobile ? '100%' : '950px',
-          backgroundColor: '#5d5f98',
-          borderRadius: '24px',
-          padding: '24px',
           display: 'flex',
-          flexDirection: isMobile ? 'column' : 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: isMobile ? '24px' : '0',
-          boxSizing: 'border-box',
-          overflow: 'hidden',
-          minHeight: isMobile ? 'unset' : `${470 + 48}px`,
-          height: isMobile ? 'fit-content' : 'auto',
+          flexDirection: 'column',
+          gap: '32px',
+          width: isMobile ? '100%' : '429px',
+          flexShrink: 0,
         }}>
-          <div style={{ flex: 1, minWidth: 0 }}>
+          <AnimatedOnScroll animation="slideUp" duration={600} delay={0}>
             <p style={{
-              fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
-              fontSize: '16px',
-              fontWeight: 400,
+              fontFamily: FONT_HEADING,
+              fontSize: isMobile ? '20px' : '24px',
+              fontWeight: 500,
+              lineHeight: 1.3,
+              letterSpacing: '1.2px',
+              color: '#8a8a8a',
+              margin: 0,
+            }}>Data collection</p>
+          </AnimatedOnScroll>
+
+          <AnimatedOnScroll animation="slideUp" duration={600} delay={180}>
+            <p style={{
+              fontFamily: FONT_BODY,
+              fontSize: isMobile ? '14px' : '16px',
+              fontWeight: 300,
               lineHeight: 1.6,
               letterSpacing: '0.8px',
-              color: '#eaebf2',
+              color: '#39424e',
               margin: 0,
+              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
             }}>
               The research phase focused on analyzing real user experiences with language exchange apps. I reviewed open-source data from App Store and Google Play comments and benchmarked platforms such as HelloTalk and Tandem.
             </p>
-          </div>
-
-          {isMobile ? (
-            <div
-              ref={cardWrapperRef}
-              style={{
-                width: '100%',
-                flexShrink: 0,
-                overflowX: 'hidden',
-                height: `${470 * cardScale}px`,
-                position: 'relative',
-              }}
-            >
-              <div style={{
-                position: 'absolute',
-                top: 0,
-                left: '50%',
-                width: `${620}px`,
-                height: `${470}px`,
-                transform: `translateX(calc(-50% + ${87 * cardScale}px)) scale(${cardScale})`,
-                transformOrigin: 'top center',
-              }}>
-                <CardStack scale={1} />
-              </div>
-            </div>
-          ) : (
-            <div style={{ flexShrink: 0, marginRight: '-120px' }}>
-              <CardStack scale={1} />
-            </div>
-          )}
+          </AnimatedOnScroll>
         </div>
-      </AnimatedOnScroll>
+
+        {/* Right — auto-rotating carousel */}
+        <AnimatedOnScroll animation="slideLeft" duration={700} delay={300} style={{ flexShrink: 0 }}>
+          <ReviewCarousel reviews={REVIEWS} isMobile={isMobile} />
+        </AnimatedOnScroll>
+
+      </div>
 
     </section>
   )

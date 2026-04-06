@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { colors, spacing, typography } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
+import ContentTable from '../components/ContentTable'
 import LexiHero from '../components/LexiHero'
 import LexiOverview from '../components/LexiOverview'
 import LexiEmphatize from '../components/LexiEmphatize'
@@ -17,7 +18,6 @@ import LexiVisual from '../components/LexiVisual'
 import LexiTypography from '../components/LexiTypography'
 import LexiComponents from '../components/LexiComponents'
 import LexiPrototype from '../components/LexiPrototype'
-import ContentTable from '../components/ContentTable'
 import Footer from '../components/Footer'
 
 const Lexi = () => {
@@ -28,7 +28,6 @@ const Lexi = () => {
     const handleScroll = () => {
       const sections = ['overview', 'empathize', 'define', 'ideate', 'visual', 'prototype', 'reflection']
       const scrollPosition = window.scrollY + 300
-
       for (const section of sections) {
         const element = document.getElementById(section)
         if (element) {
@@ -40,17 +39,15 @@ const Lexi = () => {
         }
       }
     }
-
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const handleSectionClick = (section) => {
     const element = document.getElementById(section.toLowerCase())
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
+
   const pageStyles = {
     backgroundColor: colors.backgrounds.main,
     width: '100%',

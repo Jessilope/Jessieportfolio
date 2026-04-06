@@ -97,7 +97,7 @@ const Navbar = () => {
   // Nav links container
   const navLinksStyles = {
     display: 'flex',
-    gap: spacing.xl,
+    gap: '24px',
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
@@ -210,7 +210,7 @@ const Navbar = () => {
   // Dropdown link text
   const dropdownLinkTextStyles = {
     fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
-    fontWeight: 400,
+    fontWeight: 300,
     fontSize: '16px',
     lineHeight: 1.6,
     letterSpacing: '0.8px',
@@ -449,7 +449,7 @@ const Navbar = () => {
                   <p style={{
                     fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
                     fontSize: '16px',
-                    fontWeight: 400,
+                    fontWeight: 300,
                     lineHeight: 1.6,
                     letterSpacing: '0.8px',
                     color: '#22282f',
@@ -471,7 +471,7 @@ const Navbar = () => {
       <div style={navInnerStyles}>
         {/* Logo */}
         <div style={logoContainerStyles} onClick={handleLogoClick}>
-          <p style={logoTextStyles}>JESSIE</p>
+          <p style={logoTextStyles}>jessie</p>
         </div>
         
         {/* Nav Links */}
@@ -509,7 +509,7 @@ const NavbarLink = ({ text, onClick }) => {
   const textStyles = {
     fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
     fontSize: '16px',
-    fontWeight: 400,
+    fontWeight: 300,
     lineHeight: 1.6,
     letterSpacing: '0.8px',
     color: (isHovered || isClicked) ? '#7f8d9f' : '#22282f',

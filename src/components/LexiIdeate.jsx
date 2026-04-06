@@ -61,9 +61,9 @@ const Outcome = () => (
               fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700",
             }}>{label}</p>
             <p style={{
-              fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 400,
+              fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 300,
               lineHeight: 1.6, letterSpacing: '0.8px', color: '#212121',
-              margin: 0, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+              margin: 0, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
             }}>{desc}</p>
           </div>
         </div>
@@ -106,9 +106,9 @@ const LexiIdeate = () => {
           {/* Body text + outcome + mockup */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', width: '100%' }}>
             <p style={{
-              fontFamily: FONT_BODY, fontSize: isMobile ? '14px' : '16px', fontWeight: 400,
+              fontFamily: FONT_BODY, fontSize: isMobile ? '14px' : '16px', fontWeight: 300,
               lineHeight: 1.6, letterSpacing: '0.8px', color: '#212121',
-              margin: 0, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+              margin: 0, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
             }}>
               With a clear problem statement and "How Might" questions defined, I explored multiple solution ideas focused on helping users practice consistently while feeling safe and supported. The ideation phase centered on transforming user needs into actionable features, using AI as a guide rather than a replacement for human learning.
             </p>

@@ -32,7 +32,7 @@ const COLORS = [
 const labelStyle = {
   fontFamily: FONT_BODY,
   fontSize: '16px',
-  fontWeight: 400,
+  fontWeight: 300,
   lineHeight: 1.6,
   letterSpacing: '0.8px',
   color: '#8a8a8a',
@@ -90,7 +90,7 @@ const LexiVisual = () => {
               <p style={{
                 fontFamily: FONT_BODY,
                 fontSize: '14px',
-                fontWeight: 400,
+                fontWeight: 300,
                 lineHeight: 1.6,
                 letterSpacing: '0.8px',
                 color: '#212121',
@@ -124,7 +124,7 @@ const LexiVisual = () => {
             <p style={{
               fontFamily: FONT_BODY,
               fontSize: isMobile ? '14px' : '16px',
-              fontWeight: 400,
+              fontWeight: 300,
               lineHeight: 1.6,
               letterSpacing: '0.8px',
               color: '#212121',
@@ -155,7 +155,7 @@ const LexiVisual = () => {
               <p style={{
                 fontFamily: FONT_BODY,
                 fontSize: '16px',
-                fontWeight: 400,
+                fontWeight: 300,
                 lineHeight: 1.6,
                 letterSpacing: '0.8px',
                 color: '#8a8a8a',

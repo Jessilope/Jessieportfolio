@@ -29,25 +29,25 @@ const ListItem = ({ text, iconName }) => (
     <p style={{
       fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
       fontSize: '16px',
-      fontWeight: 400,
+      fontWeight: 300,
       lineHeight: 1.6,
       letterSpacing: '0.8px',
-      color: '#212121',
+      color: '#22282f',
       margin: 0,
       flex: '1 0 0',
     }}>{text}</p>
   </div>
 )
 
-const EmpathizeCard = ({ title, items, iconName, gradientTo, isMobile }) => (
+const EmpathizeCard = ({ title, items, iconName, isMobile }) => (
   <div style={{
     flex: isMobile ? 'none' : '1 0 0',
     width: isMobile ? '100%' : undefined,
     height: isMobile ? 'auto' : '399px',
-    background: `linear-gradient(to bottom, #fff, ${gradientTo})`,
-    border: '1px solid #f9f9f9',
+    backgroundColor: '#ffffff',
+    border: '1px solid #cdd1d7',
     borderRadius: '16px',
-    padding: '16px',
+    padding: '32px 24px 16px 24px',
     display: 'flex',
     flexDirection: 'column',
     gap: '48px',
@@ -59,7 +59,7 @@ const EmpathizeCard = ({ title, items, iconName, gradientTo, isMobile }) => (
       fontWeight: 400,
       lineHeight: 1.5,
       letterSpacing: '0.9px',
-      color: '#8a8a8a',
+      color: '#22282f',
       textAlign: 'center',
       margin: 0,
       width: '100%',
@@ -120,10 +120,10 @@ const LexiEmphatize = () => {
           <p style={{
             fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
             fontSize: '16px',
-            fontWeight: 400,
+            fontWeight: 300,
             lineHeight: 1.6,
             letterSpacing: '0.8px',
-            color: '#212121',
+            color: '#22282f',
             margin: 0,
           }}>
             I focused on understanding how language beginners feel when practicing a new language, especially in digital environments that rely on social interaction. Even when learners enjoy the exchange, anxiety and pressure can limit participation and slow progress. However, studies also show that supportive interaction, real-time feedback, and a sense of accountability help reduce fear and increase motivation.
@@ -145,14 +145,12 @@ const LexiEmphatize = () => {
             title="Many learners want to practice but they"
             items={PAIN_POINTS}
             iconName="warning"
-            gradientTo="#fff5f5"
             isMobile={isMobile}
           />
           <EmpathizeCard
             title="This led me to prioritize"
             items={PRIORITIES}
             iconName="success"
-            gradientTo="#f2fdee"
             isMobile={isMobile}
           />
         </div>

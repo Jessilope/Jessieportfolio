@@ -74,21 +74,20 @@ const PROJECTS = [
     title: 'Tu credit',
     subtitle: 'Mortgage loans',
     route: '/tucredit',
-    cardType: 'wide',
-    // Single wide rotated image that scales on hover
-    composite: {
-      src: '/assets/images/tucredit/card-composite.png',
-      rotation: 16.7,
-      imgW: '158.02%', imgH: '150.63%', imgL: '-28.52%', imgT: '-25.23%',
-      // Desktop outer container
-      outerL: 99.72, outerT: 114.59, outerW: 383.52, outerH: 306.28,
-      defaultW: 334.58, defaultH: 219.38,
-      hoverW:   387.02, hoverH:   253.77,
-      // Mobile outer container
-      mOuterL: 50.58, mOuterT: 94.59, mOuterW: 280.97, mOuterH: 224.39,
-      mDefaultW: 245.12, mDefaultH: 160.72,
-      mHoverW:   280.65, mHoverH:   184.02,
-    },
+    cardType: 'screenshots',
+    // Two desktop screenshots positioned from Figma (node 2488:5671)
+    screenshots: [
+      {
+        src: '/assets/images/tucredit/Home4 1.png',
+        outerL: 108.5, outerT: 129.5, outerW: 197, outerH: 274,
+        mOuterL: 74, mOuterT: 88, mOuterW: 134, mOuterH: 187,
+      },
+      {
+        src: '/assets/images/tucredit/Requisitos 1.png',
+        outerL: 262.5, outerT: 155.5, outerW: 183, outerH: 267,
+        mOuterL: 179, mOuterT: 106, mOuterW: 125, mOuterH: 182,
+      },
+    ],
   },
   {
     id: 'tripfinder',
@@ -259,10 +258,56 @@ const WideMockup = ({ c, isHovered, isMobile }) => {
   )
 }
 
+// ─── Desktop screenshot mockup renderer (TuCredit new design) ─────────────────
+const ScreenshotMockups = ({ screenshots, isMobile, isActive }) =>
+  screenshots.map((s, i) => (
+    <div key={i} style={{
+      position: 'absolute',
+      left: `${isMobile ? s.mOuterL : s.outerL}px`,
+      top: `${isMobile ? s.mOuterT : s.outerT}px`,
+      width: `${isMobile ? s.mOuterW : s.outerW}px`,
+      height: `${isMobile ? s.mOuterH : s.outerH}px`,
+      borderRadius: '8px',
+      boxShadow: 'none',
+      overflow: 'hidden',
+      zIndex: i + 1,
+      pointerEvents: 'none',
+    }}>
+      <img src={s.src} alt="" style={{
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        objectPosition: 'top left',
+        display: 'block',
+        pointerEvents: 'none',
+        transform: isActive ? 'scale(1.06)' : 'scale(1)',
+        transition: 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)',
+        transformOrigin: 'center center',
+      }} />
+    </div>
+  ))
+
 // ─── Card component ────────────────────────────────────────────────────────────
 const ProjectCard = ({ project, isMobile }) => {
   const navigate = useNavigate()
   const [isHovered, setIsHovered] = useState(false)
+  const [isTapped, setIsTapped] = useState(false)
+
+  // On mobile: "active" is driven by tap, not hover
+  const isActive = isMobile ? isTapped : isHovered
+
+  const handleClick = () => {
+    if (isMobile) {
+      // Show the effect then navigate
+      setIsTapped(true)
+      setTimeout(() => {
+        setIsTapped(false)
+        navigate(project.route)
+      }, 350)
+    } else {
+      navigate(project.route)
+    }
+  }
 
   const mockups = isMobile
     ? (project.mobileMockups || project.mockups)
@@ -283,12 +328,13 @@ const ProjectCard = ({ project, isMobile }) => {
         flexDirection: 'column',
         flexShrink: 0,
         boxSizing: 'border-box',
-        boxShadow: isHovered ? '0px 0px 12px 0px rgba(0,0,0,0.1)' : 'none',
-        transition: 'box-shadow 0.3s ease',
+        boxShadow: isActive ? '0px 0px 12px 0px rgba(0,0,0,0.1)' : 'none',
+        transform: isMobile ? (isTapped ? 'scale(1.02)' : 'scale(1)') : 'none',
+        transition: 'box-shadow 0.3s ease, transform 0.3s ease',
       }}
-      onClick={() => navigate(project.route)}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onClick={handleClick}
+      onMouseEnter={() => !isMobile && setIsHovered(true)}
+      onMouseLeave={() => !isMobile && setIsHovered(false)}
     >
       {/* Text content */}
       <div style={{
@@ -317,7 +363,7 @@ const ProjectCard = ({ project, isMobile }) => {
           }}>
             {project.title}
           </p>
-          <CardArrow active={isHovered} />
+          <CardArrow active={isActive} />
         </div>
         <p style={{
           fontFamily: FONT_BODY,
@@ -335,9 +381,11 @@ const ProjectCard = ({ project, isMobile }) => {
 
       {/* Mockup images */}
       {project.cardType === 'wide' ? (
-        <WideMockup c={project.composite} isHovered={isHovered} isMobile={isMobile} />
+        <WideMockup c={project.composite} isHovered={isActive} isMobile={isMobile} />
+      ) : project.cardType === 'screenshots' ? (
+        <ScreenshotMockups screenshots={project.screenshots} isMobile={isMobile} isActive={isActive} />
       ) : (
-        <PhoneMockups mockups={mockups} isHovered={isHovered} />
+        <PhoneMockups mockups={mockups} isHovered={isActive} />
       )}
     </div>
   )

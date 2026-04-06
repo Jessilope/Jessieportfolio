@@ -69,11 +69,11 @@ const DollarCityWireframes = () => {
             <p style={{
               fontFamily: FONT_BODY,
               fontSize: isMobile ? '14px' : '16px',
-              fontWeight: 400,
+              fontWeight: 300,
               lineHeight: 1.6,
               letterSpacing: '0.8px',
               color: '#212121',
-              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
               margin: 0,
             }}>
               With the information architecture defined and the OOUX method in place, I translated ideas into low-fidelity wireframes to validate structure, flow, and hierarchy before focusing on visual details.

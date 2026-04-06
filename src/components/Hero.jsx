@@ -20,8 +20,9 @@ const DownloadIcon = () => (
 )
 
 // Primary (Let's talk) button with hover blob effect
-const TalkButton = ({ children, onClick }) => {
+const TalkButton = ({ children, onClick, isMobile, isTablet }) => {
   const [hovered, setHovered] = useState(false)
+  const padding = isMobile ? '12px 16px' : isTablet ? '14px 16px' : '16px 24px'
   return (
     <button
       onClick={onClick}
@@ -32,7 +33,7 @@ const TalkButton = ({ children, onClick }) => {
         alignItems: 'center',
         justifyContent: 'center',
         gap: '8px',
-        padding: '16px 24px',
+        padding,
         backgroundColor: '#5d5f98',
         borderRadius: '8px',
         border: 'none',
@@ -74,8 +75,9 @@ const TalkButton = ({ children, onClick }) => {
 }
 
 // Secondary (Download CV) button with hover blob effect
-const DownloadButton = ({ href }) => {
+const DownloadButton = ({ href, isMobile, isTablet }) => {
   const [hovered, setHovered] = useState(false)
+  const padding = isMobile ? '12px 16px' : isTablet ? '14px 16px' : '16px 24px'
   return (
     <a href={href} download style={{ textDecoration: 'none' }}>
       <button
@@ -86,7 +88,7 @@ const DownloadButton = ({ href }) => {
           alignItems: 'center',
           justifyContent: 'center',
           gap: '10px',
-          padding: '16px 24px',
+          padding,
           backgroundColor: '#eaebf2',
           borderRadius: '8px',
           border: 'none',
@@ -129,7 +131,7 @@ const DownloadButton = ({ href }) => {
 }
 
 const Hero = () => {
-  const { isMobile } = useResponsive()
+  const { isMobile, isTablet } = useResponsive()
 
   const headingAnim = useScrollAnimation({ threshold: 0.2 })
   const bodyAnim    = useScrollAnimation({ threshold: 0.2 })
@@ -234,12 +236,12 @@ const Hero = () => {
             transition: 'opacity 700ms cubic-bezier(0.4, 0, 0.2, 1) 300ms, transform 700ms cubic-bezier(0.4, 0, 0.2, 1) 300ms',
           }}
         >
-          <TalkButton onClick={() => {
+          <TalkButton isMobile={isMobile} isTablet={isTablet} onClick={() => {
             window.location.href = 'mailto:ale.mogollon06@gmail.com'
           }}>
             Let´s talk
           </TalkButton>
-          <DownloadButton href={documents.cv} />
+          <DownloadButton href={documents.cv} isMobile={isMobile} isTablet={isTablet} />
         </div>
       </div>
     </section>

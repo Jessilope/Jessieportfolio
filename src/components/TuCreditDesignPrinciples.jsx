@@ -60,9 +60,9 @@ const StepperItem = ({ num, title, desc, hasLine }) => (
         color: '#595959', fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700", margin: 0,
       }}>{title}</p>
       <p style={{
-        fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 400, lineHeight: 1.6,
+        fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 300, lineHeight: 1.6,
         letterSpacing: '0.8px', color: '#212121',
-        fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400", margin: 0,
+        fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300", margin: 0,
       }}>{desc}</p>
     </div>
   </div>
@@ -99,9 +99,9 @@ const TuCreditDesignPrinciples = () => {
             }}>Design Principles</p>
             <p style={{
               fontFamily: FONT_BODY, fontSize: isMobile ? '14px' : '16px',
-              fontWeight: 400, lineHeight: 1.6, letterSpacing: '0.8px',
+              fontWeight: 300, lineHeight: 1.6, letterSpacing: '0.8px',
               color: '#212121', margin: 0,
-              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
             }}>
               To address these challenges, I translated research findings into a set of design principles that would act as decision-making anchors throughout the project.
             </p>

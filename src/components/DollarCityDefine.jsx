@@ -55,11 +55,11 @@ const DollarCityDefine = () => {
           <div style={{
             fontFamily: FONT_BODY,
             fontSize: isMobile ? '14px' : '16px',
-            fontWeight: 400,
+            fontWeight: 300,
             lineHeight: 1.6,
             letterSpacing: '0.8px',
             color: '#212121',
-            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
             width: '100%',
           }}>
             <p style={{ margin: 0 }}>
@@ -96,11 +96,11 @@ const DollarCityDefine = () => {
                 <p style={{
                   fontFamily: FONT_BODY,
                   fontSize: isMobile ? '14px' : '16px',
-                  fontWeight: 400,
+                  fontWeight: 300,
                   lineHeight: 1.6,
                   letterSpacing: '0.8px',
                   color: '#212121',
-                  fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+                  fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
                   margin: 0,
                   flex: '1 0 0',
                 }}>{text}</p>

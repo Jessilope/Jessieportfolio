@@ -84,9 +84,9 @@ const TuCreditVisual = () => {
               {/* Left: big Aa display */}
               <div style={{ flex: '1 0 0', display: 'flex', flexDirection: 'column', gap: '16px', minWidth: 0, position: 'relative' }}>
                 <p style={{
-                  fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 400,
+                  fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 300,
                   lineHeight: 1.6, letterSpacing: '0.8px', color: '#c8c8c8',
-                  margin: 0, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+                  margin: 0, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
                   width: '289px',
                 }}>Typography</p>
 
@@ -142,10 +142,10 @@ const TuCreditVisual = () => {
               <div key={label} style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center', flex: '1 0 0', minWidth: 0 }}>
                 <div style={{ width: '100%', height: '76px', backgroundColor: bg, borderRadius: '24px', border: border || 'none' }} />
                 <p style={{
-                  fontFamily: FONT_BODY, fontSize: '14px', fontWeight: 400,
+                  fontFamily: FONT_BODY, fontSize: '14px', fontWeight: 300,
                   lineHeight: 1.6, letterSpacing: '0.8px', color: '#c8c8c8',
                   textAlign: 'center', whiteSpace: 'nowrap', margin: 0,
-                  fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+                  fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
                 }}>{label}</p>
               </div>
             ))}

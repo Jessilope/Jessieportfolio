@@ -129,11 +129,11 @@ const OOUXCard = ({ icon, iconBg, title, sections }) => (
               <li key={item} style={{
                 fontFamily: FONT_BODY,
                 fontSize: '16px',
-                fontWeight: 400,
+                fontWeight: 300,
                 lineHeight: 1.6,
                 letterSpacing: '0.8px',
                 color: '#212121',
-                fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+                fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
               }}>{item}</li>
             ))}
           </ul>

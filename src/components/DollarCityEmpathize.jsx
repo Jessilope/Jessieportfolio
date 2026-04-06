@@ -24,25 +24,25 @@ const ListItem = ({ text, iconName }) => (
     <p style={{
       fontFamily: FONT_BODY,
       fontSize: '16px',
-      fontWeight: 400,
+      fontWeight: 300,
       lineHeight: 1.6,
       letterSpacing: '0.8px',
-      color: '#212121',
+      color: '#22282f',
       margin: 0,
       flex: '1 0 0',
     }}>{text}</p>
   </div>
 )
 
-const EmpathizeCard = ({ title, items, iconName, gradientTo, isMobile }) => (
+const EmpathizeCard = ({ title, items, iconName, isMobile }) => (
   <div style={{
     flex: isMobile ? 'none' : '1 0 0',
     width: isMobile ? '100%' : undefined,
     height: isMobile ? 'auto' : '399px',
-    background: `linear-gradient(to bottom, #fff, ${gradientTo})`,
-    border: '1px solid #f9f9f9',
+    backgroundColor: '#ffffff',
+    border: '1px solid #cdd1d7',
     borderRadius: '16px',
-    padding: '16px',
+    padding: '32px 24px 16px 24px',
     display: 'flex',
     flexDirection: 'column',
     gap: '48px',
@@ -54,7 +54,7 @@ const EmpathizeCard = ({ title, items, iconName, gradientTo, isMobile }) => (
       fontWeight: 400,
       lineHeight: 1.5,
       letterSpacing: '0.9px',
-      color: '#8a8a8a',
+      color: '#22282f',
       textAlign: 'center',
       margin: 0,
       width: '100%',
@@ -114,10 +114,10 @@ const DollarCityEmpathize = () => {
           <p style={{
             fontFamily: FONT_BODY,
             fontSize: isMobile ? '14px' : '16px',
-            fontWeight: 400,
+            fontWeight: 300,
             lineHeight: 1.6,
             letterSpacing: '0.8px',
-            color: '#212121',
+            color: '#22282f',
             margin: 0,
           }}>
             I focused on understanding how people behave when shopping for low-cost, everyday products and what they expect from a digital experience. Dollar City customers usually shop with a clear intention. They are not looking to explore endlessly.
@@ -140,14 +140,12 @@ const DollarCityEmpathize = () => {
             title="Many customers want to buy but"
             items={problems}
             iconName="warning"
-            gradientTo="#fff5f5"
             isMobile={isMobile}
           />
           <EmpathizeCard
             title="This led me to prioritize"
             items={priorities}
             iconName="success"
-            gradientTo="#f2fdee"
             isMobile={isMobile}
           />
         </div>

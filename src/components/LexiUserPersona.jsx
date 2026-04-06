@@ -74,7 +74,7 @@ const PersonaPhoto = ({ src, name, age, job, location, family }) => (
       }} />
       <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: '4px', width: '100%' }}>
         <p style={{ fontFamily: FONT_POPPINS, fontSize: '20px', fontWeight: 500, lineHeight: 1.2, letterSpacing: '1px', color: '#fffefa', margin: 0 }}>{name}</p>
-        <p style={{ fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 400, lineHeight: 1.6, letterSpacing: '0.8px', color: '#8a8a8a', margin: 0 }}>{age}</p>
+        <p style={{ fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 300, lineHeight: 1.6, letterSpacing: '0.8px', color: '#8a8a8a', margin: 0 }}>{age}</p>
       </div>
     </div>
 
@@ -87,7 +87,7 @@ const PersonaPhoto = ({ src, name, age, job, location, family }) => (
       ].map(({ Icon, label }) => (
         <div key={label} style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
           <Icon />
-          <p style={{ fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 400, lineHeight: 1.6, letterSpacing: '0.8px', color: '#212121', margin: 0, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400" }}>{label}</p>
+          <p style={{ fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 300, lineHeight: 1.6, letterSpacing: '0.8px', color: '#212121', margin: 0, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300" }}>{label}</p>
         </div>
       ))}
     </div>
@@ -122,11 +122,11 @@ const InfoBox = ({ iconType, title, items }) => {
             marginLeft: '24px',
             fontFamily: FONT_BODY,
             fontSize: '16px',
-            fontWeight: 400,
+            fontWeight: 300,
             lineHeight: 1.6,
             letterSpacing: '0.8px',
             color: '#212121',
-            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
           }}>{item}</li>
         </ul>
       ))}
@@ -171,9 +171,9 @@ const LexiUserPersona = () => {
               lineHeight: 1.3, letterSpacing: '1.2px', color: '#8a8a8a', margin: 0,
             }}>User personas</p>
             <p style={{
-              fontFamily: FONT_BODY, fontSize: isMobile ? '14px' : '16px', fontWeight: 400,
+              fontFamily: FONT_BODY, fontSize: isMobile ? '14px' : '16px', fontWeight: 300,
               lineHeight: 1.6, letterSpacing: '0.8px', color: '#212121', margin: 0,
-              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
             }}>
               So, I identified two different types of language learners based on their goals, motivation levels, and learning habits. From these insights, I created user personas to synthesize their behaviors, frustrations, and expectations.
             </p>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { colors, spacing } from '../tokens'
+import ContentTable from '../components/ContentTable'
 import TuCreditHero from '../components/TuCreditHero'
 import TuCreditOverview from '../components/TuCreditOverview'
 import TuCreditEmpathize from '../components/TuCreditEmpathize'
@@ -13,7 +14,6 @@ import TuCreditVisual from '../components/TuCreditVisual'
 import TuCreditComponentSet from '../components/TuCreditComponentSet'
 import TuCreditPrototype from '../components/TuCreditPrototype'
 import TuCreditReflection from '../components/TuCreditReflection'
-import ContentTable from '../components/ContentTable'
 import Footer from '../components/Footer'
 
 const TuCredit = () => {
@@ -23,7 +23,6 @@ const TuCredit = () => {
     const handleScroll = () => {
       const sections = ['overview', 'empathize', 'define', 'ideate', 'visual', 'prototype', 'reflection']
       const scrollPosition = window.scrollY + 300
-
       for (const section of sections) {
         const element = document.getElementById(section)
         if (element) {
@@ -35,16 +34,13 @@ const TuCredit = () => {
         }
       }
     }
-
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const handleSectionClick = (section) => {
     const element = document.getElementById(section.toLowerCase())
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   const pageStyles = {

@@ -90,7 +90,7 @@ const LexiOverview = () => {
           <p style={{
             fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
             fontSize: '16px',
-            fontWeight: 400,
+            fontWeight: 300,
             lineHeight: 1.6,
             letterSpacing: '0.8px',
             color: '#212121',

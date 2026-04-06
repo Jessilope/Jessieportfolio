@@ -45,7 +45,7 @@ const PersonaPhoto = ({ src, name, age }) => (
     <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(102,102,102,0.2) 11.76%, rgba(0,0,0,0.2) 71.15%)' }} />
     <div style={{ position: 'absolute', bottom: '8px', left: '7px', right: '7px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
       <p style={{ fontFamily: FONT_HEADING, fontSize: '20px', fontWeight: 500, lineHeight: 1.2, letterSpacing: '1px', color: '#fffefa', margin: 0, width: '100%' }}>{name}</p>
-      <p style={{ fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 400, lineHeight: 1.6, letterSpacing: '0.8px', color: '#ffffff', margin: 0, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400" }}>{age}</p>
+      <p style={{ fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 300, lineHeight: 1.6, letterSpacing: '0.8px', color: '#ffffff', margin: 0, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300" }}>{age}</p>
     </div>
   </div>
 )
@@ -55,7 +55,7 @@ const PersonaInfo = ({ job, location, family }) => (
     {[{ Icon: BriefcaseIcon, text: job }, { Icon: LocationIcon, text: location }, { Icon: FamilyIcon, text: family }].map(({ Icon, text }) => (
       <div key={text} style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
         <Icon />
-        <p style={{ fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 400, lineHeight: 1.6, letterSpacing: '0.8px', color: '#212121', margin: 0, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400" }}>{text}</p>
+        <p style={{ fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 300, lineHeight: 1.6, letterSpacing: '0.8px', color: '#212121', margin: 0, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300" }}>{text}</p>
       </div>
     ))}
   </div>
@@ -70,7 +70,7 @@ const InfoCard = ({ Icon, title, items }) => (
       </div>
       <ul style={{ margin: 0, paddingLeft: '24px' }}>
         {items.map((item, i) => (
-          <li key={i} style={{ fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 400, lineHeight: 1.6, letterSpacing: '0.8px', color: '#212121', fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400" }}>{item}</li>
+          <li key={i} style={{ fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 300, lineHeight: 1.6, letterSpacing: '0.8px', color: '#212121', fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300" }}>{item}</li>
         ))}
       </ul>
     </div>
@@ -142,7 +142,7 @@ const TuCreditUserPersonas = () => {
         <AnimatedOnScroll animation="fadeIn" delay={0} duration={700} style={{ width: '100%' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '100%' }}>
             <p style={{ fontFamily: FONT_HEADING, fontSize: isMobile ? '20px' : '24px', fontWeight: 500, lineHeight: 1.3, letterSpacing: '1.2px', color: '#8a8a8a', margin: 0 }}>User personas</p>
-            <p style={{ fontFamily: FONT_BODY, fontSize: isMobile ? '14px' : '16px', fontWeight: 400, lineHeight: 1.6, letterSpacing: '0.8px', color: '#5b5b5b', margin: 0, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400" }}>
+            <p style={{ fontFamily: FONT_BODY, fontSize: isMobile ? '14px' : '16px', fontWeight: 300, lineHeight: 1.6, letterSpacing: '0.8px', color: '#5b5b5b', margin: 0, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300" }}>
               I created user personas to represent the main user types interacting with the mortgage experience. These personas helped keep real user needs, motivations, and concerns at the center of the design process.
             </p>
           </div>

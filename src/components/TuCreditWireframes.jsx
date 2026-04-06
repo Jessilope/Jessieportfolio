@@ -37,9 +37,9 @@ const TuCreditWireframes = () => {
             }}>Wireframes</p>
             <p style={{
               fontFamily: FONT_BODY, fontSize: isMobile ? '14px' : '16px',
-              fontWeight: 400, lineHeight: 1.6, letterSpacing: '0.8px',
+              fontWeight: 300, lineHeight: 1.6, letterSpacing: '0.8px',
               color: '#5b5b5b', margin: 0,
-              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
             }}>
               I started by mapping out a low-fidelity user flow to visualize the main steps of the mortgage process before designing high-fidelity screens. With the design principles defined, This low-fidelity wireframes establish structure, content hierarchy, and user flow. The focus at this stage was on organizing information in a way that feels clear and guided.
             </p>

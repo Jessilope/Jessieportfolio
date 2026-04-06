@@ -55,11 +55,11 @@ const TuCreditDataCollection = () => {
             width: '100%',
             fontFamily: FONT_BODY,
             fontSize: isMobile ? '14px' : '16px',
-            fontWeight: 400,
+            fontWeight: 300,
             lineHeight: 1.6,
             letterSpacing: '0.8px',
             color: '#eaebf2',
-            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
           }}>
             <p style={{ margin: 0 }}>
               As part of the research phase, I analyzed mortgage loan flows from multiple banks to identify common patterns and expectations across digital credit experiences. The benchmark revealed a high level of consistency in how banks structure and communicate mortgage information.

@@ -145,11 +145,11 @@ export const typography = {
       lineHeight: 1.5,
       letterSpacing: '0.9px',
     },
-    // Body — Kantumruy Regular 16px
+    // Body — Kantumruy Light 16px
     body: {
       fontFamily: 'Kantumruy',
       fontSize: '16px',
-      fontWeight: 400,
+      fontWeight: 300,
       lineHeight: 1.6,
       letterSpacing: '0.8px',
     },

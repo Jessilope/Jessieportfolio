@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { colors } from '../tokens'
+import ContentTable from '../components/ContentTable'
 import TripFinderHero from '../components/TripFinderHero'
 import TripFinderOverview from '../components/TripFinderOverview'
 import TripFinderDesignPrinciples from '../components/TripFinderDesignPrinciples'
@@ -8,7 +9,6 @@ import TripFinderColorPalette from '../components/TripFinderColorPalette'
 import TripFinderComponentSet from '../components/TripFinderComponentSet'
 import TripFinderPrototype from '../components/TripFinderPrototype'
 import TripFinderReflection from '../components/TripFinderReflection'
-import ContentTable from '../components/ContentTable'
 import Footer from '../components/Footer'
 
 const TripFinder = () => {
@@ -16,31 +16,26 @@ const TripFinder = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['overview', 'design-principles', 'visual', 'prototype', 'reflection']
+      const sections = ['overview', 'empathize', 'define', 'ideate', 'visual', 'prototype', 'reflection']
       const scrollPosition = window.scrollY + 300
-
       for (const section of sections) {
         const element = document.getElementById(section)
         if (element) {
           const { offsetTop, offsetHeight } = element
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section.charAt(0).toUpperCase() + section.slice(1).replace('-', ' '))
+            setActiveSection(section.charAt(0).toUpperCase() + section.slice(1))
             break
           }
         }
       }
     }
-
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const handleSectionClick = (section) => {
-    const sectionId = section.toLowerCase().replace(' ', '-')
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+    const element = document.getElementById(section.toLowerCase())
+    if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   const pageStyles = {

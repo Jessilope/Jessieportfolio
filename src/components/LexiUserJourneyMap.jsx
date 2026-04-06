@@ -161,7 +161,7 @@ const LexiUserJourneyMap = () => {
                 <p style={{
                   fontFamily: FONT_BODY,
                   fontSize: '16px',
-                  fontWeight: 400,
+                  fontWeight: 300,
                   lineHeight: 1.6,
                   letterSpacing: '0.8px',
                   color: '#000',

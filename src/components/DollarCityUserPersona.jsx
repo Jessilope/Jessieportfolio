@@ -91,11 +91,11 @@ const PersonaPhoto = ({ src, name, age }) => (
       <p style={{
         fontFamily: FONT_BODY,
         fontSize: '16px',
-        fontWeight: 400,
+        fontWeight: 300,
         lineHeight: 1.6,
         letterSpacing: '0.8px',
         color: '#c8c8c8',
-        fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+        fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
         margin: 0,
       }}>{age}</p>
     </div>
@@ -115,11 +115,11 @@ const PersonaInfo = ({ job, location, family }) => (
         <p style={{
           fontFamily: FONT_BODY,
           fontSize: '16px',
-          fontWeight: 400,
+          fontWeight: 300,
           lineHeight: 1.6,
           letterSpacing: '0.8px',
           color: '#212121',
-          fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+          fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
           margin: 0,
         }}>{text}</p>
       </div>
@@ -162,11 +162,11 @@ const InfoCard = ({ iconType, title, items }) => {
             <li key={item} style={{
               fontFamily: FONT_BODY,
               fontSize: '16px',
-              fontWeight: 400,
+              fontWeight: 300,
               lineHeight: 1.6,
               letterSpacing: '0.8px',
               color: '#212121',
-              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
             }}>{item}</li>
           ))}
         </ul>
@@ -264,11 +264,11 @@ const DollarCityUserPersona = () => {
             <p style={{
               fontFamily: FONT_BODY,
               fontSize: '16px',
-              fontWeight: 400,
+              fontWeight: 300,
               lineHeight: 1.6,
               letterSpacing: '0.8px',
               color: '#212121',
-              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
               margin: 0,
             }}>
               Based on the research insights, I identified two different types of users who typically shop at this kind of store. From these patterns, I created user personas to synthesize their behaviors, needs, and concerns, helping guide design decisions in the next stages.

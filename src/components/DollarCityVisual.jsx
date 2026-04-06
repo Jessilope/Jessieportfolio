@@ -26,7 +26,7 @@ const COLORS_FLEX = [
 const labelStyle = {
   fontFamily: FONT_BODY,
   fontSize: '14px',
-  fontWeight: 400,
+  fontWeight: 300,
   lineHeight: 1.6,
   letterSpacing: '0.8px',
   color: '#c8c8c8',
@@ -81,10 +81,10 @@ const DollarCityVisual = () => {
               {/* Left: big Aa */}
               <div style={{ flex: '1 0 0', display: 'flex', flexDirection: 'column', gap: '16px', minWidth: 0, position: 'relative' }}>
                 <p style={{
-                  fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 400,
+                  fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 300,
                   lineHeight: 1.6, letterSpacing: '0.8px', color: '#c8c8c8',
                   margin: 0, width: '289px',
-                  fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+                  fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
                 }}>Typography</p>
                 <p style={{
                   fontFamily: FONT_ARIAL, fontSize: '200px', fontWeight: 700,
