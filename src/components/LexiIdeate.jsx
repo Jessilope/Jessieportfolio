@@ -42,8 +42,8 @@ const StepIndicator = ({ n, showLine }) => (
   </div>
 )
 
-const Outcome = () => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '465px', flexShrink: 0 }}>
+const Outcome = ({ isMobile }) => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: isMobile ? '100%' : '465px', flexShrink: 0 }}>
     <p style={{
       fontFamily: FONT_BODY, fontSize: '18px', fontWeight: 400,
       lineHeight: 1.5, letterSpacing: '0.9px', color: '#8a8a8a',
@@ -79,8 +79,8 @@ const LexiIdeate = () => {
     <section style={{
       backgroundColor: '#fffefb',
       width: '100%',
-      paddingTop: '128px',
-      paddingBottom: isMobile ? '32px' : '64px',
+      paddingTop: isMobile ? '48px' : '64px',
+      paddingBottom: isMobile ? '48px' : '64px',
       paddingLeft: isMobile ? '24px' : '96px',
       paddingRight: isMobile ? '24px' : '96px',
       display: 'flex',
@@ -122,7 +122,7 @@ const LexiIdeate = () => {
               flexDirection: isMobile ? 'column' : 'row',
               width: '100%',
             }}>
-              <Outcome />
+              <Outcome isMobile={isMobile} />
 
               {/* Mockup image — hidden on mobile */}
               {!isMobile && (
@@ -132,7 +132,7 @@ const LexiIdeate = () => {
                 flexShrink: 0,
                 position: 'relative',
                 overflow: 'hidden',
-                opacity: 0.7,
+                opacity: 0.85,
               }}>
                 <img
                   alt="App mockup"

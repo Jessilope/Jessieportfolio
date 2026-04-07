@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import Navbar from './Navbar'
 import useResponsive from '../hooks/useResponsive'
 
@@ -28,6 +29,76 @@ const Tag = ({ children }) => (
 )
 
 const TAGS = ['UX-UI design', 'Figma', 'ChatGPT', 'Figma Make']
+
+// Desktop highlight widths from Figma: Lexi=184px, App=213px
+// Mobile highlight widths from Figma:  Lexi=100px, App=118px
+const LexiTitle = ({ isMobile }) => {
+  const [activeWord, setActiveWord] = useState('lexi')
+
+  // On mobile there's no hover — auto-cycle the highlight instead
+  useEffect(() => {
+    if (!isMobile) return
+    const interval = setInterval(() => {
+      setActiveWord(prev => (prev === 'lexi' ? 'app' : 'lexi'))
+    }, 1800)
+    return () => clearInterval(interval)
+  }, [isMobile])
+
+  const fontSize      = isMobile ? '48px' : '88px'
+  const letterSpacing = isMobile ? '2.4px' : '4.4px'
+  const hlHeight      = isMobile ? '67px' : '122px'
+  const lexiWidth     = isMobile ? '100px' : '184px'
+  const appWidth      = isMobile ? '118px' : '213px'
+  const strokeWidth   = isMobile ? '1px' : '1.5px'
+
+  const appActive = activeWord === 'app'
+
+  const textBase = {
+    fontFamily: `'Poppins', sans-serif`,
+    fontSize,
+    fontWeight: 600,
+    lineHeight: 1.4,
+    letterSpacing,
+    margin: 0,
+    position: 'relative',
+    zIndex: 1,
+    transition: 'color 300ms ease',
+    whiteSpace: 'nowrap',
+    cursor: 'default',
+  }
+
+  return (
+    <div style={{ position: 'relative', display: 'flex', alignItems: 'flex-start' }}>
+      {/* sliding highlight block */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: appActive ? lexiWidth : '0px',
+        width: appActive ? appWidth : lexiWidth,
+        height: hlHeight,
+        backgroundColor: '#668aff',
+        transition: 'left 400ms cubic-bezier(0.4, 0, 0.2, 1), width 400ms cubic-bezier(0.4, 0, 0.2, 1)',
+        zIndex: 0,
+      }} />
+      <p
+        style={{
+          ...textBase,
+          color: appActive ? 'transparent' : '#313248',
+          WebkitTextStroke: appActive ? `${strokeWidth} #313248` : '0px transparent',
+        }}
+        onMouseEnter={() => setActiveWord('lexi')}
+      >Lexi</p>
+      <p
+        style={{
+          ...textBase,
+          color: appActive ? '#313248' : 'transparent',
+          WebkitTextStroke: appActive ? '0px transparent' : `${strokeWidth} #313248`,
+        }}
+        onMouseEnter={() => setActiveWord('app')}
+      > App</p>
+    </div>
+  )
+}
 
 const LexiHero = () => {
   const { isMobile } = useResponsive()
@@ -85,15 +156,7 @@ const LexiHero = () => {
 
         {/* Title + subtitle */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
-          <p style={{
-            fontFamily: `'Poppins', sans-serif`,
-            fontSize: isMobile ? '48px' : '88px',
-            fontWeight: 600,
-            lineHeight: 1.4,
-            letterSpacing: isMobile ? '2.4px' : '4.4px',
-            color: '#39424e',
-            margin: 0,
-          }}>Lexi App</p>
+          <LexiTitle isMobile={isMobile} />
           <p style={{
             fontFamily: FONT_BODY,
             fontSize: '16px',
@@ -165,7 +228,7 @@ const LexiHero = () => {
               src="/assets/images/hero/lexi-hero-mockup.png"
               alt="Lexi app"
               style={{
-                width: '320px',
+                width: '270px',
                 height: 'auto',
                 objectFit: 'contain',
                 display: 'block',

@@ -45,13 +45,14 @@ const EmpathizeCard = ({ title, items, iconName, isMobile }) => (
     width: isMobile ? '100%' : undefined,
     height: isMobile ? 'auto' : '399px',
     backgroundColor: '#ffffff',
-    border: '1px solid #cdd1d7',
+    border: '1px solid #e8e8ea',
     borderRadius: '16px',
     padding: '32px 24px 16px 24px',
     display: 'flex',
     flexDirection: 'column',
     gap: '48px',
     boxSizing: 'border-box',
+    boxShadow: '0px 0px 12px 0px rgba(0,0,0,0.25)',
   }}>
     <p style={{
       fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
@@ -83,10 +84,11 @@ const LexiEmphatize = () => {
 
   return (
     <section style={{
-      backgroundColor: colors.backgrounds.main,
+      backgroundColor: '#5d5f98',
+      borderRadius: '12px',
       width: '100%',
-      paddingTop: '32px',
-      paddingBottom: '64px',
+      paddingTop: isMobile ? '48px' : '64px',
+      paddingBottom: isMobile ? '48px' : '64px',
       paddingLeft: isMobile ? '24px' : '96px',
       paddingRight: isMobile ? '24px' : '96px',
       display: 'flex',
@@ -107,11 +109,11 @@ const LexiEmphatize = () => {
         }}>
           <p style={{
             fontFamily: `'Poppins', sans-serif`,
-            fontSize: isMobile ? '24px' : '32px',
-            fontWeight: 500,
-            lineHeight: 1.3,
-            letterSpacing: '0',
-            color: '#5D5F98',
+            fontSize: isMobile ? '32px' : '40px',
+            fontWeight: 600,
+            lineHeight: 1.4,
+            letterSpacing: '2px',
+            color: '#f8f9fa',
             textAlign: 'center',
             margin: 0,
             width: '100%',
@@ -123,10 +125,11 @@ const LexiEmphatize = () => {
             fontWeight: 300,
             lineHeight: 1.6,
             letterSpacing: '0.8px',
-            color: '#22282f',
+            color: '#f8f9fa',
             margin: 0,
+            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
           }}>
-            I focused on understanding how language beginners feel when practicing a new language, especially in digital environments that rely on social interaction. Even when learners enjoy the exchange, anxiety and pressure can limit participation and slow progress. However, studies also show that supportive interaction, real-time feedback, and a sense of accountability help reduce fear and increase motivation.
+            I focused on understanding how <strong style={{ fontWeight: 700 }}>language beginners</strong> feel when practicing a new language, especially in digital environments that rely on social interaction. Even when learners enjoy the exchange, <strong style={{ fontWeight: 700 }}>anxiety and pressure</strong> can limit participation and slow progress. However, studies also show that <strong style={{ fontWeight: 700 }}>supportive interaction, real-time feedback, and a sense of accountability</strong> help reduce fear and increase motivation.
           </p>
         </div>
       </AnimatedOnScroll>
@@ -138,7 +141,7 @@ const LexiEmphatize = () => {
           maxWidth: '902px',
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
-          gap: '29px',
+          gap: '24px',
           alignItems: isMobile ? 'stretch' : 'center',
         }}>
           <EmpathizeCard

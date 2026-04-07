@@ -5,12 +5,12 @@ import AnimatedOnScroll from './AnimatedOnScroll'
 import Icons from './Icons'
 
 const features = [
-  { icon: 'component', size: 36, label: 'Components UI KIT', fontSize: '18px', lineHeight: 1.5, letterSpacing: '0.9px' },
-  { icon: 'layers',    size: 36, label: 'Organized Layers',  fontSize: '16px', lineHeight: 1.6, letterSpacing: '0.8px' },
-  { icon: 'screen',    size: 36, label: 'Modern app screens', fontSize: '16px', lineHeight: 1.6, letterSpacing: '0.8px' },
+  { icon: 'component', size: 36, label: 'Components UI KIT' },
+  { icon: 'layers',    size: 36, label: 'Organized Layers'  },
+  { icon: 'screen',    size: 36, label: 'Modern app screens' },
 ]
 
-const FeatureCard = ({ icon, size, label, fontSize, lineHeight, letterSpacing, isMobile }) => (
+const FeatureCard = ({ icon, size, label, isMobile }) => (
   <div style={{
     flex: isMobile ? 'unset' : '1 0 0',
     width: '100%',
@@ -36,14 +36,15 @@ const FeatureCard = ({ icon, size, label, fontSize, lineHeight, letterSpacing, i
       <Icons icon={icon} state="active" size={size} />
       <p style={{
         fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
-        fontSize,
-        fontWeight: 400,
-        lineHeight,
-        letterSpacing,
+        fontSize: '16px',
+        fontWeight: 300,
+        lineHeight: 1.6,
+        letterSpacing: '0.8px',
         color: '#1f1f1f',
         textAlign: 'center',
         margin: 0,
         width: '100%',
+        fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
       }}>{label}</p>
     </div>
   </div>
@@ -56,8 +57,8 @@ const LexiOverview = () => {
     <section style={{
       backgroundColor: colors.backgrounds.main,
       width: '100%',
-      paddingTop: '128px',
-      paddingBottom: '48px',
+      paddingTop: isMobile ? '48px' : '64px',
+      paddingBottom: isMobile ? '48px' : '64px',
       paddingLeft: isMobile ? '24px' : '96px',
       paddingRight: isMobile ? '24px' : '96px',
       display: 'flex',
@@ -74,15 +75,15 @@ const LexiOverview = () => {
           maxWidth: '902px',
           display: 'flex',
           flexDirection: 'column',
-          gap: '24px',
+          gap: '32px',
         }}>
           <p style={{
             fontFamily: `'Poppins', sans-serif`,
-            fontSize: '24px',
+            fontSize: '32px',
             fontWeight: 500,
             lineHeight: 1.3,
-            letterSpacing: '1.2px',
-            color: '#8a8a8a',
+            letterSpacing: 0,
+            color: '#d1d1d8',
             margin: 0,
           }}>
             Project overview
@@ -93,10 +94,11 @@ const LexiOverview = () => {
             fontWeight: 300,
             lineHeight: 1.6,
             letterSpacing: '0.8px',
-            color: '#212121',
+            color: '#22282f',
             margin: 0,
+            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
           }}>
-            The app LEXI provides a structured and supportive environment where users can practice without fear of judgment, making language learning feel approachable rather than intimidating. Through the integration of Lexi AI, users receive personalized guidance, adaptive conversations, and meaningful practice tailored to their level and interests. As a result, learners feel more secure, more motivated, and more willing to communicate transforming language practice into a consistent, natural habit instead of a stressful experience.
+            The app LEXI provides a <strong style={{ fontWeight: 700 }}>structured and supportive</strong> environment where users can practice without fear of judgment, making language learning feel approachable rather than intimidating. Through the integration of Lexi AI, users receive <strong style={{ fontWeight: 700 }}>personalized guidance</strong>, <strong style={{ fontWeight: 700 }}>adaptive conversations</strong>, and <strong style={{ fontWeight: 700 }}>meaningful practice</strong> tailored to their level and interests. As a result, learners feel more secure, more motivated, and more willing to communicate transforming language practice into a consistent, natural habit instead of a stressful experience.
           </p>
         </div>
       </AnimatedOnScroll>
@@ -122,7 +124,7 @@ const LexiOverview = () => {
               fontWeight: 500,
               lineHeight: 1.2,
               letterSpacing: '1px',
-              color: '#8a8a8a',
+              color: '#d1d1d8',
               margin: 0,
               flex: '1 0 0',
             }}>

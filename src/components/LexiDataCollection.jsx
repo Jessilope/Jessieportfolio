@@ -49,7 +49,7 @@ const Stars = ({ count }) => (
   </div>
 )
 
-const ReviewCard = ({ review }) => (
+const ReviewCard = ({ review, isMobile }) => (
   <div style={{
     width: '100%',
     backgroundColor: 'white',
@@ -63,7 +63,7 @@ const ReviewCard = ({ review }) => (
   }}>
     <p style={{
       fontFamily: FONT_BODY,
-      fontSize: '18px',
+      fontSize: isMobile ? '14px' : '18px',
       fontWeight: 700,
       lineHeight: 1.5,
       color: '#000000',
@@ -90,10 +90,10 @@ const ReviewCard = ({ review }) => (
 
     <p style={{
       fontFamily: FONT_BODY,
-      fontSize: '18px',
+      fontSize: isMobile ? '13px' : '18px',
       fontWeight: 400,
       lineHeight: 1.5,
-      letterSpacing: '0.9px',
+      letterSpacing: isMobile ? '0.65px' : '0.9px',
       color: '#4f5d6d',
       margin: 0,
       fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
@@ -120,58 +120,63 @@ const ReviewCarousel = ({ reviews, isMobile }) => {
 
   return (
     <div style={{
-      position: 'relative',
       width: isMobile ? '100%' : '451px',
-      height: '371px',
-      overflow: 'hidden',
       flexShrink: 0,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '12px',
     }}>
-      {reviews.map((review, i) => {
-        const isActive = i === activeIndex
-        const isExiting = i === exitingIndex
+      {/* Card area */}
+      <div style={{
+        position: 'relative',
+        width: '100%',
+        height: isMobile ? '280px' : '340px',
+        overflow: 'hidden',
+      }}>
+        {reviews.map((review, i) => {
+          const isActive = i === activeIndex
+          const isExiting = i === exitingIndex
 
-        let opacity = 0
-        let transform = 'translateX(40px) scale(0.97)'
+          let opacity = 0
+          let transform = 'translateX(40px) scale(0.97)'
 
-        if (isActive) {
-          opacity = 1
-          transform = 'translateX(0) scale(1)'
-        } else if (isExiting) {
-          opacity = 0
-          transform = 'translateX(-40px) scale(0.97)'
-        }
+          if (isActive) {
+            opacity = 1
+            transform = 'translateX(0) scale(1)'
+          } else if (isExiting) {
+            opacity = 0
+            transform = 'translateX(-40px) scale(0.97)'
+          }
 
-        return (
-          <div key={i} style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            opacity,
-            transform,
-            transition: 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out',
-            pointerEvents: isActive ? 'auto' : 'none',
-          }}>
-            <ReviewCard review={review} />
-          </div>
-        )
-      })}
+          return (
+            <div key={i} style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              opacity,
+              transform,
+              transition: 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out',
+              pointerEvents: isActive ? 'auto' : 'none',
+            }}>
+              <ReviewCard review={review} isMobile={isMobile} />
+            </div>
+          )
+        })}
+      </div>
 
       {/* Dot indicators */}
       <div style={{
-        position: 'absolute',
-        bottom: '8px',
-        left: '50%',
-        transform: 'translateX(-50%)',
         display: 'flex',
+        justifyContent: 'center',
         gap: '6px',
         alignItems: 'center',
       }}>
         {reviews.map((_, i) => (
           <div key={i} style={{
-            width: i === activeIndex ? '16px' : '6px',
-            height: '6px',
-            borderRadius: '3px',
+            width: i === activeIndex ? '22px' : '10px',
+            height: '10px',
+            borderRadius: '5px',
             backgroundColor: i === activeIndex ? '#5d5f98' : '#cdd1d7',
             transition: 'width 0.4s ease-in-out, background-color 0.4s ease-in-out',
           }} />
@@ -188,8 +193,8 @@ const LexiDataCollection = () => {
     <section id="data-collection" style={{
       backgroundColor: colors.backgrounds.main,
       width: '100%',
-      paddingTop: '128px',
-      paddingBottom: '64px',
+      paddingTop: isMobile ? '48px' : '64px',
+      paddingBottom: isMobile ? '48px' : '64px',
       paddingLeft: isMobile ? '24px' : '96px',
       paddingRight: isMobile ? '24px' : '96px',
       display: 'flex',
@@ -250,7 +255,7 @@ const LexiDataCollection = () => {
         </div>
 
         {/* Right — auto-rotating carousel */}
-        <AnimatedOnScroll animation="slideLeft" duration={700} delay={300} style={{ flexShrink: 0 }}>
+        <AnimatedOnScroll animation="slideLeft" duration={700} delay={300} style={{ flexShrink: 0, width: isMobile ? '100%' : 'auto' }}>
           <ReviewCarousel reviews={REVIEWS} isMobile={isMobile} />
         </AnimatedOnScroll>
 

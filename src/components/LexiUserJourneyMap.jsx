@@ -104,8 +104,8 @@ const LexiUserJourneyMap = () => {
     <section style={{
       backgroundColor: '#fffefb',
       width: '100%',
-      paddingTop: isMobile ? '64px' : '64px',
-      paddingBottom: isMobile ? '32px' : '48px',
+      paddingTop: isMobile ? '48px' : '64px',
+      paddingBottom: isMobile ? '48px' : '64px',
       paddingLeft: isMobile ? '24px' : '96px',
       paddingRight: isMobile ? '24px' : '96px',
       display: 'flex',

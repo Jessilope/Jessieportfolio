@@ -471,7 +471,7 @@ const Navbar = () => {
       <div style={navInnerStyles}>
         {/* Logo */}
         <div style={logoContainerStyles} onClick={handleLogoClick}>
-          <p style={logoTextStyles}>jessie</p>
+          <p style={logoTextStyles}>Jessie</p>
         </div>
         
         {/* Nav Links */}

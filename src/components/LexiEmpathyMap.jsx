@@ -26,7 +26,7 @@ const Highlight = ({ text }) => (
       fontWeight: 300,
       lineHeight: 1.6,
       letterSpacing: '0.8px',
-      color: '#212121',
+      color: '#22282f',
       margin: 0,
       fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
     }}>{text}</p>
@@ -96,8 +96,8 @@ const LexiEmpathyMap = () => {
     <section style={{
       backgroundColor: '#fffefb',
       width: '100%',
-      paddingTop: '128px',
-      paddingBottom: '48px',
+      paddingTop: isMobile ? '48px' : '64px',
+      paddingBottom: isMobile ? '48px' : '64px',
       paddingLeft: isMobile ? '24px' : '96px',
       paddingRight: isMobile ? '24px' : '96px',
       display: 'flex',
@@ -109,14 +109,14 @@ const LexiEmpathyMap = () => {
 
       {/* Header */}
       <AnimatedOnScroll animation="fadeIn" duration={700} style={{ width: '100%', maxWidth: '903px' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', width: '100%' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '100%' }}>
           <p style={{
             fontFamily: FONT_POPPINS,
             fontSize: '24px',
             fontWeight: 500,
             lineHeight: 1.3,
-            letterSpacing: '1.2px',
-            color: '#8a8a8a',
+            letterSpacing: 0,
+            color: '#8d8d99',
             margin: 0,
           }}>Empathy map</p>
           <p style={{
@@ -125,7 +125,7 @@ const LexiEmpathyMap = () => {
             fontWeight: 300,
             lineHeight: 1.6,
             letterSpacing: '0.8px',
-            color: '#212121',
+            color: '#22282f',
             margin: 0,
             fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
           }}>
@@ -135,12 +135,11 @@ const LexiEmpathyMap = () => {
       </AnimatedOnScroll>
 
       {/* Empathy map body: quadrants + persona */}
-      <AnimatedOnScroll animation="slideUp" delay={100} duration={600} style={{ width: '100%', maxWidth: '1088px' }}>
+      <AnimatedOnScroll animation="slideUp" delay={100} duration={600} style={{ width: '100%', maxWidth: '902px' }}>
         <div style={{
           display: 'flex',
           alignItems: 'flex-start',
           justifyContent: 'space-between',
-          gap: '40px',
           width: '100%',
           flexDirection: isMobile ? 'column' : 'row',
         }}>
@@ -162,10 +161,9 @@ const LexiEmpathyMap = () => {
             display: 'flex',
             flexDirection: 'column',
             gap: '45px',
-            flex: '1 0 0',
+            width: '697px',
+            flexShrink: 0,
             minWidth: 0,
-            paddingLeft: '16px',
-            paddingRight: '16px',
           }}>
             {/* Row 1: Says + Thinks */}
             <div style={{ display: 'flex', gap: '32px', alignItems: 'flex-start', width: '100%' }}>
@@ -186,7 +184,7 @@ const LexiEmpathyMap = () => {
             display: 'flex',
             flexDirection: 'column',
             gap: '27px',
-            width: isMobile ? '100%' : '309px',
+            width: isMobile ? '100%' : '205px',
             flexShrink: 0,
           }}>
             {/* Persona image */}
@@ -258,7 +256,7 @@ const LexiEmpathyMap = () => {
               fontWeight: 300,
               lineHeight: 1.6,
               letterSpacing: '0.8px',
-              color: '#212121',
+              color: '#8d8d99',
               margin: 0,
               fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
             }}>
