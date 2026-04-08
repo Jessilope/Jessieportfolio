@@ -106,8 +106,8 @@ const DollarCityDesignPrinciples = () => {
       width: '100%',
       paddingLeft: isMobile ? '24px' : '96px',
       paddingRight: isMobile ? '24px' : '96px',
-      paddingTop: isMobile ? '64px' : '112px',
-      paddingBottom: isMobile ? '32px' : '48px',
+      paddingTop: isMobile ? '48px' : '64px',
+      paddingBottom: isMobile ? '48px' : '64px',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -180,7 +180,7 @@ const DollarCityDesignPrinciples = () => {
               position: 'relative',
               flexShrink: 0,
               overflow: 'hidden',
-              opacity: 0.7,
+              opacity: 0.9,
             }}>
               <img
                 src={MOCKUP_IMG}

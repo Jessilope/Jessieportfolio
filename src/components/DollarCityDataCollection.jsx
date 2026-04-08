@@ -104,8 +104,8 @@ const DollarCityDataCollection = () => {
     <section id="data-collection" style={{
       backgroundColor: '#fffefa',
       width: '100%',
-      paddingTop: '112px',
-      paddingBottom: '64px',
+      paddingTop: isMobile ? '48px' : '64px',
+      paddingBottom: isMobile ? '48px' : '64px',
       paddingLeft: isMobile ? '24px' : '96px',
       paddingRight: isMobile ? '24px' : '96px',
       display: 'flex',
@@ -165,9 +165,9 @@ const DollarCityDataCollection = () => {
           {/* Right — scrollable review list */}
           <div style={{
             width: isMobile ? '100%' : '451px',
-            height: isMobile ? 'auto' : '371px',
+            height: isMobile ? '320px' : '371px',
             overflowX: 'hidden',
-            overflowY: isMobile ? 'visible' : 'auto',
+            overflowY: 'auto',
             display: 'flex',
             flexDirection: 'column',
             gap: '33px',

@@ -7,8 +7,8 @@ const DollarCityReflection = () => {
     <div id="reflection" style={{
       backgroundColor: '#fffefa',
       width: '100%',
-      paddingTop: '128px',
-      paddingBottom: '48px',
+      paddingTop: isMobile ? '48px' : '64px',
+      paddingBottom: isMobile ? '48px' : '64px',
       paddingLeft: isMobile ? '24px' : '96px',
       paddingRight: isMobile ? '24px' : '96px',
       display: 'flex',

@@ -116,8 +116,8 @@ const DollarCityUserJourneyMap = () => {
     <section id="user-journey-map" style={{
       backgroundColor: '#fffefb',
       width: '100%',
-      paddingTop: '128px',
-      paddingBottom: '48px',
+      paddingTop: isMobile ? '48px' : '64px',
+      paddingBottom: isMobile ? '48px' : '64px',
       paddingLeft: isMobile ? '24px' : '96px',
       paddingRight: isMobile ? '24px' : '96px',
       display: 'flex',
@@ -145,7 +145,7 @@ const DollarCityUserJourneyMap = () => {
             fontWeight: 500,
             lineHeight: 1.3,
             letterSpacing: '1.2px',
-            color: '#8a8a8a',
+            color: isMobile ? '#d1d1d8' : '#8a8a8a',
             margin: 0,
           }}>User Journey Map</p>
         </div>
@@ -157,7 +157,7 @@ const DollarCityUserJourneyMap = () => {
           <img
             src="/assets/images/dollarcity/user-journey-map.png"
             alt="User Journey Map"
-            style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '16px' }}
+            style={{ width: '100%', height: 'auto', display: 'block' }}
           />
         ) : (
           <div style={{

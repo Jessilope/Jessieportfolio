@@ -15,7 +15,7 @@ const DollarCityIdeate = () => {
       width: '100%',
       paddingLeft: isMobile ? '24px' : '96px',
       paddingRight: isMobile ? '24px' : '96px',
-      paddingTop: isMobile ? '64px' : '112px',
+      paddingTop: isMobile ? '48px' : '64px',
       paddingBottom: isMobile ? '48px' : '64px',
       display: 'flex',
       alignItems: 'center',

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import Navbar from './Navbar'
 import useResponsive from '../hooks/useResponsive'
 
@@ -29,6 +30,72 @@ const Tag = ({ children }) => (
 
 const TAGS = ['UX-UI Design', 'Figma', 'Gemini']
 
+// "Dollar" + "city" — highlight color #4ad07e (green)
+const DollarCityTitle = ({ isMobile }) => {
+  const [activeWord, setActiveWord] = useState('dollar')
+
+  useEffect(() => {
+    if (!isMobile) return
+    const interval = setInterval(() => {
+      setActiveWord(prev => (prev === 'dollar' ? 'city' : 'dollar'))
+    }, 1800)
+    return () => clearInterval(interval)
+  }, [isMobile])
+
+  const fontSize      = isMobile ? '48px' : '80px'
+  const letterSpacing = isMobile ? '2.4px' : '4px'
+  const hlHeight      = isMobile ? '67px' : '112px'
+  const dollarWidth   = isMobile ? '156px' : '260px'
+  const cityWidth     = isMobile ? '102px' : '170px'
+  const strokeWidth   = isMobile ? '1px' : '1.5px'
+  const cityActive    = activeWord === 'city'
+
+  const textBase = {
+    fontFamily: `'Poppins', sans-serif`,
+    fontSize,
+    fontWeight: 600,
+    lineHeight: 1.4,
+    letterSpacing,
+    margin: 0,
+    position: 'relative',
+    zIndex: 1,
+    transition: 'color 300ms ease',
+    whiteSpace: 'nowrap',
+    cursor: 'default',
+  }
+
+  return (
+    <div style={{ position: 'relative', display: 'flex', alignItems: 'flex-start' }}>
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: cityActive ? dollarWidth : '0px',
+        width: cityActive ? cityWidth : dollarWidth,
+        height: hlHeight,
+        backgroundColor: '#4ad07e',
+        transition: 'left 400ms cubic-bezier(0.4, 0, 0.2, 1), width 400ms cubic-bezier(0.4, 0, 0.2, 1)',
+        zIndex: 0,
+      }} />
+      <p
+        style={{
+          ...textBase,
+          color: cityActive ? 'transparent' : '#313248',
+          WebkitTextStroke: cityActive ? `${strokeWidth} #313248` : '0px transparent',
+        }}
+        onMouseEnter={() => !isMobile && setActiveWord('dollar')}
+      >Dollar</p>
+      <p
+        style={{
+          ...textBase,
+          color: cityActive ? '#313248' : 'transparent',
+          WebkitTextStroke: cityActive ? '0px transparent' : `${strokeWidth} #313248`,
+        }}
+        onMouseEnter={() => !isMobile && setActiveWord('city')}
+      >city</p>
+    </div>
+  )
+}
+
 const DollarCityHero = () => {
   const { isMobile } = useResponsive()
 
@@ -36,8 +103,8 @@ const DollarCityHero = () => {
     <div style={{
       position: 'relative',
       width: '100%',
-      height: '100vh',
-      minHeight: '600px',
+      height: isMobile ? 'auto' : '100vh',
+      minHeight: isMobile ? '100svh' : '600px',
       backgroundColor: '#fffefa',
       overflow: 'hidden',
       flexShrink: 0,
@@ -47,7 +114,8 @@ const DollarCityHero = () => {
       alignItems: 'flex-start',
       paddingLeft: isMobile ? '24px' : '96px',
       paddingRight: isMobile ? '24px' : '96px',
-      paddingBottom: isMobile ? '220px' : '0',
+      paddingTop: isMobile ? '80px' : '0',
+      paddingBottom: isMobile ? '320px' : '0',
       boxSizing: 'border-box',
     }}>
       <Navbar />
@@ -86,15 +154,7 @@ const DollarCityHero = () => {
 
         {/* Title + subtitle */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
-          <p style={{
-            fontFamily: `'Poppins', sans-serif`,
-            fontSize: isMobile ? '48px' : '80px',
-            fontWeight: 600,
-            lineHeight: 1.4,
-            letterSpacing: isMobile ? '2.4px' : '4px',
-            color: '#39424e',
-            margin: 0,
-          }}>Dollarcity</p>
+          <DollarCityTitle isMobile={isMobile} />
           <p style={{
             fontFamily: FONT_BODY,
             fontSize: '16px',
@@ -151,7 +211,7 @@ const DollarCityHero = () => {
           position: 'absolute',
           left: '50%',
           transform: 'translateX(-50%)',
-          bottom: '-40px',
+          bottom: '24px',
           width: '260px',
           zIndex: 1,
           pointerEvents: 'none',

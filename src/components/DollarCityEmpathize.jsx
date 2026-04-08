@@ -78,12 +78,13 @@ const DollarCityEmpathize = () => {
 
   return (
     <section style={{
-      backgroundColor: '#fffefa',
+      backgroundColor: '#5d5f98',
+      borderRadius: '12px',
       width: '100%',
       paddingLeft: isMobile ? '24px' : '96px',
       paddingRight: isMobile ? '24px' : '96px',
-      paddingTop: '128px',
-      paddingBottom: '48px',
+      paddingTop: isMobile ? '48px' : '64px',
+      paddingBottom: isMobile ? '48px' : '64px',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -107,7 +108,7 @@ const DollarCityEmpathize = () => {
             fontWeight: 500,
             lineHeight: 1.3,
             letterSpacing: '0',
-            color: '#5D5F98',
+            color: '#f8f9fa',
             textAlign: 'center',
             margin: 0,
           }}>Empathize</p>
@@ -117,7 +118,7 @@ const DollarCityEmpathize = () => {
             fontWeight: 300,
             lineHeight: 1.6,
             letterSpacing: '0.8px',
-            color: '#22282f',
+            color: '#f8f9fa',
             margin: 0,
           }}>
             I focused on understanding how people behave when shopping for low-cost, everyday products and what they expect from a digital experience. Dollar City customers usually shop with a clear intention. They are not looking to explore endlessly.

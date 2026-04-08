@@ -6,8 +6,9 @@ const FONT_HEADING = `'Poppins', sans-serif`
 const FONT_ARIAL   = `'Arial', sans-serif`
 const FONT_MONT    = `'Montserrat', sans-serif`
 
-const colorPaletteImage   = '/assets/images/dollarcity/color-palette.png'
-const visualMockupPreview = '/assets/images/dollarcity/visual-mockup-preview.png'
+const colorPaletteImage      = '/assets/images/dollarcity/color-palette.png'
+const visualMockupPreview    = '/assets/images/dollarcity/visual-mockup-preview.png'
+const visualStyleguideMobile = '/assets/images/dollarcity/visual-styleguide-mobile.png'
 
 // ── Color palette — exact Figma widths ──────────────────────────────────────
 // Primary: 231px, Secondary: 161px, Neutral: 132px, then 4 status chips flex
@@ -45,11 +46,11 @@ const DollarCityVisual = () => {
       width: '100%',
       paddingLeft: isMobile ? '24px' : '96px',
       paddingRight: isMobile ? '24px' : '96px',
-      paddingTop: isMobile ? '64px' : '128px',
-      paddingBottom: isMobile ? '32px' : '48px',
+      paddingTop: isMobile ? '48px' : '64px',
+      paddingBottom: isMobile ? '48px' : '64px',
       display: 'flex',
       flexDirection: 'column',
-      gap: '48px',
+      gap: isMobile ? '24px' : '48px',
       alignItems: 'center',
       boxSizing: 'border-box',
     }}>
@@ -65,14 +66,24 @@ const DollarCityVisual = () => {
 
       {/* ── Content block ────────────────────────────── */}
       <AnimatedOnScroll animation="fadeIn" delay={100} duration={700} style={{ width: '100%', maxWidth: '901px' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '64px', alignItems: 'flex-start', width: '100%' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: isMobile ? '32px' : '64px', alignItems: 'flex-start', width: '100%' }}>
 
           {/* "Style guide" subtitle */}
           <p style={{
             fontFamily: FONT_HEADING, fontSize: isMobile ? '20px' : '24px',
-            fontWeight: 500, lineHeight: 1.3, letterSpacing: '1.2px',
-            color: '#8a8a8a', margin: 0,
+            fontWeight: 500, lineHeight: isMobile ? 1.2 : 1.3,
+            letterSpacing: isMobile ? '1px' : '1.2px',
+            color: isMobile ? '#8d8d99' : '#8a8a8a', margin: 0,
           }}>Style guide</p>
+
+          {/* ── Mobile: single composite style-guide image ── */}
+          {isMobile && (
+            <img
+              src={visualStyleguideMobile}
+              alt="Style guide"
+              style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '8px' }}
+            />
+          )}
 
           {/* ── Typography panel — desktop only ──────── */}
           {!isMobile && (
@@ -166,9 +177,7 @@ const DollarCityVisual = () => {
           )}
 
           {/* ── Color palette ─────────────────────────── */}
-          {isMobile ? (
-            <img src={colorPaletteImage} alt="Color palette" style={{ width: '100%', height: 'auto', display: 'block' }} />
-          ) : (
+          {!isMobile && (
             <div style={{ display: 'flex', gap: '4px', alignItems: 'flex-start', width: '100%' }}>
               {/* Fixed-width primary, secondary, neutral */}
               {COLORS_FIXED.map(({ bg, label, width }) => (

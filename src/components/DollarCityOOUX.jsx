@@ -4,12 +4,13 @@ import AnimatedOnScroll from './AnimatedOnScroll'
 const FONT_BODY    = `'Kantumruy', 'Noto Sans', sans-serif`
 const FONT_HEADING = `'Poppins', sans-serif`
 
-const oouxTableImage = '/assets/images/dollarcity/ooux-table.png'
+const oouxTableImage  = '/assets/images/dollarcity/ooux-table.png'
+const oouxMobileImage = '/assets/images/dollarcity/ooux-mobile.png'
 
 // ── Card data ────────────────────────────────────────────────────────────────
 const CARDS = [
   {
-    icon: '/assets/images/dollarcity/ooux-icon-search.svg',
+    icon: '/assets/icons/ooux-icon-search.svg',
     iconBg: '#ad46ff',
     title: 'Dollarcity products',
     sections: [
@@ -20,7 +21,7 @@ const CARDS = [
     ],
   },
   {
-    icon: '/assets/images/dollarcity/ooux-icon-cart.svg',
+    icon: '/assets/icons/ooux-icon-cart.svg',
     iconBg: '#2b7fff',
     title: 'Cart',
     sections: [
@@ -31,7 +32,7 @@ const CARDS = [
     ],
   },
   {
-    icon: '/assets/images/dollarcity/ooux-icon-home.svg',
+    icon: '/assets/icons/ooux-icon-home.svg',
     iconBg: '#00c950',
     title: 'Home',
     sections: [
@@ -42,7 +43,7 @@ const CARDS = [
     ],
   },
   {
-    icon: '/assets/images/dollarcity/ooux-icon-creditcard.svg',
+    icon: '/assets/icons/ooux-icon-creditcard.svg',
     iconBg: '#ff6900',
     title: 'Purchase',
     sections: [
@@ -53,7 +54,7 @@ const CARDS = [
     ],
   },
   {
-    icon: '/assets/images/dollarcity/ooux-icon-check.svg',
+    icon: '/assets/icons/ooux-icon-check.svg',
     iconBg: '#f6339a',
     title: 'Confirmation',
     sections: [
@@ -64,7 +65,7 @@ const CARDS = [
     ],
   },
   {
-    icon: '/assets/images/dollarcity/ooux-icon-package.svg',
+    icon: '/assets/icons/ooux-icon-package.svg',
     iconBg: '#00bba7',
     title: 'Order',
     sections: [
@@ -153,34 +154,35 @@ const DollarCityOOUX = () => {
       width: '100%',
       paddingLeft: isMobile ? '24px' : '96px',
       paddingRight: isMobile ? '24px' : '96px',
-      paddingTop: isMobile ? '64px' : '128px',
-      paddingBottom: '48px',
+      paddingTop: isMobile ? '48px' : '64px',
+      paddingBottom: isMobile ? '48px' : '64px',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      gap: '32px',
+      gap: isMobile ? '48px' : '32px',
       boxSizing: 'border-box',
     }}>
 
       {/* ── Title + body ──────────────────────────────── */}
       <AnimatedOnScroll animation="fadeIn" delay={0} duration={700} style={{ width: '100%', maxWidth: '902px' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '100%' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: isMobile ? '16px' : '24px', width: '100%' }}>
           <p style={{
             fontFamily: FONT_HEADING,
             fontSize: isMobile ? '20px' : '24px',
             fontWeight: 500,
             lineHeight: 1.3,
             letterSpacing: '1.2px',
-            color: '#8a8a8a',
+            color: isMobile ? '#8d8d99' : '#8a8a8a',
             margin: 0,
           }}>OOUX</p>
           <p style={{
-            fontFamily: `'Inter', sans-serif`,
+            fontFamily: FONT_BODY,
             fontSize: '16px',
-            fontWeight: 500,
-            lineHeight: 1.5,
-            letterSpacing: '-0.176px',
-            color: '#212121',
+            fontWeight: 300,
+            lineHeight: 1.6,
+            letterSpacing: '0.8px',
+            color: '#22282f',
+            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
             margin: 0,
           }}>
             I defined the information architecture using an Object-Oriented UX (OOUX) approach. By identifying core objects such as products, categories, cart, and payment methods, I organized the experience around elements users already understand.
@@ -192,9 +194,9 @@ const DollarCityOOUX = () => {
       {isMobile ? (
         <AnimatedOnScroll animation="fadeIn" delay={100} duration={700} style={{ width: '100%' }}>
           <img
-            src={oouxTableImage}
+            src={oouxMobileImage}
             alt="OOUX table"
-            style={{ width: '100%', height: 'auto', display: 'block' }}
+            style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '8px' }}
           />
         </AnimatedOnScroll>
       ) : (

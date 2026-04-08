@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import Navbar from './Navbar'
 import useResponsive from '../hooks/useResponsive'
 
@@ -28,6 +29,72 @@ const Tag = ({ children }) => (
 )
 
 const TAGS = ['UX-UI Design', 'Figma', 'ChatGPT', 'Design Kit']
+
+// "Trip" + "finder" — highlight color #ffdf5b (yellow)
+const TripFinderTitle = ({ isMobile }) => {
+  const [activeWord, setActiveWord] = useState('trip')
+
+  useEffect(() => {
+    if (!isMobile) return
+    const interval = setInterval(() => {
+      setActiveWord(prev => (prev === 'trip' ? 'finder' : 'trip'))
+    }, 1800)
+    return () => clearInterval(interval)
+  }, [isMobile])
+
+  const fontSize       = isMobile ? '48px' : '88px'
+  const letterSpacing  = isMobile ? '2.4px' : '4.4px'
+  const hlHeight       = isMobile ? '67px' : '123px'
+  const tripWidth      = isMobile ? '100px' : '184px'
+  const finderWidth    = isMobile ? '155px' : '285px'
+  const strokeWidth    = isMobile ? '1px' : '1.5px'
+  const finderActive   = activeWord === 'finder'
+
+  const textBase = {
+    fontFamily: `'Poppins', sans-serif`,
+    fontSize,
+    fontWeight: 600,
+    lineHeight: 1.4,
+    letterSpacing,
+    margin: 0,
+    position: 'relative',
+    zIndex: 1,
+    transition: 'color 300ms ease',
+    whiteSpace: 'nowrap',
+    cursor: 'default',
+  }
+
+  return (
+    <div style={{ position: 'relative', display: 'flex', alignItems: 'flex-start' }}>
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: finderActive ? tripWidth : '0px',
+        width: finderActive ? finderWidth : tripWidth,
+        height: hlHeight,
+        backgroundColor: '#ffdf5b',
+        transition: 'left 400ms cubic-bezier(0.4, 0, 0.2, 1), width 400ms cubic-bezier(0.4, 0, 0.2, 1)',
+        zIndex: 0,
+      }} />
+      <p
+        style={{
+          ...textBase,
+          color: finderActive ? 'transparent' : '#313248',
+          WebkitTextStroke: finderActive ? `${strokeWidth} #313248` : '0px transparent',
+        }}
+        onMouseEnter={() => !isMobile && setActiveWord('trip')}
+      >Trip</p>
+      <p
+        style={{
+          ...textBase,
+          color: finderActive ? '#313248' : 'transparent',
+          WebkitTextStroke: finderActive ? '0px transparent' : `${strokeWidth} #313248`,
+        }}
+        onMouseEnter={() => !isMobile && setActiveWord('finder')}
+      >finder</p>
+    </div>
+  )
+}
 
 const TripFinderHero = () => {
   const { isMobile } = useResponsive()
@@ -85,15 +152,7 @@ const TripFinderHero = () => {
 
         {/* Title + subtitle */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
-          <p style={{
-            fontFamily: `'Poppins', sans-serif`,
-            fontSize: isMobile ? '48px' : '88px',
-            fontWeight: 600,
-            lineHeight: 1.4,
-            letterSpacing: isMobile ? '2.4px' : '4.4px',
-            color: '#39424e',
-            margin: 0,
-          }}>Tripfinder</p>
+          <TripFinderTitle isMobile={isMobile} />
           <p style={{
             fontFamily: FONT_BODY,
             fontSize: '16px',

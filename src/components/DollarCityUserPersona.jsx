@@ -233,9 +233,10 @@ const DollarCityUserPersona = () => {
     <section style={{
       backgroundColor: '#fffefb',
       width: '100%',
-      padding: isMobile
-        ? '64px 24px 48px'
-        : '112px 96px 48px',
+      paddingTop: isMobile ? '48px' : '112px',
+      paddingBottom: isMobile ? '48px' : '48px',
+      paddingLeft: isMobile ? '24px' : '96px',
+      paddingRight: isMobile ? '24px' : '96px',
       display: 'flex',
       alignItems: 'center',
       boxSizing: 'border-box',
@@ -243,7 +244,7 @@ const DollarCityUserPersona = () => {
       <div style={{
         display: 'flex',
         flexDirection: 'column',
-        gap: '48px',
+        gap: isMobile ? '24px' : '48px',
         alignItems: 'flex-start',
         width: '100%',
         maxWidth: '902px',
@@ -258,7 +259,7 @@ const DollarCityUserPersona = () => {
               fontWeight: 500,
               lineHeight: 1.3,
               letterSpacing: '1.2px',
-              color: '#8a8a8a',
+              color: isMobile ? '#8d8d99' : '#8a8a8a',
               margin: 0,
             }}>User personas</p>
             <p style={{
@@ -282,7 +283,7 @@ const DollarCityUserPersona = () => {
             <img
               src={IMG_MOBILE}
               alt="User personas"
-              style={{ width: '100%', height: 'auto', display: 'block' }}
+              style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '8px' }}
             />
           </AnimatedOnScroll>
         ) : (
