@@ -39,7 +39,7 @@ const TuCreditVisual = () => {
       flexDirection: 'column',
       gap: '48px',
       alignItems: 'center',
-      paddingTop: isMobile ? '48px' : '128px',
+      paddingTop: isMobile ? '64px' : '128px',
       paddingBottom: '48px',
       paddingLeft: isMobile ? '24px' : '96px',
       paddingRight: isMobile ? '24px' : '96px',
@@ -52,7 +52,7 @@ const TuCreditVisual = () => {
       <AnimatedOnScroll animation="fadeIn" delay={0} duration={700} style={{ width: '100%', maxWidth: '901px' }}>
         <p style={{
           fontFamily: FONT_HEADING,
-          fontSize: isMobile ? '24px' : '32px',
+          fontSize: '32px',
           fontWeight: 500,
           lineHeight: 1.3,
           color: '#5D5F98',
@@ -64,92 +64,105 @@ const TuCreditVisual = () => {
 
       {/* ── Content block ────────────────────────────── */}
       <AnimatedOnScroll animation="fadeIn" delay={100} duration={700} style={{ width: '100%', maxWidth: '901px' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '64px', alignItems: 'flex-start', width: '100%' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: isMobile ? '32px' : '64px', alignItems: 'flex-start', width: '100%' }}>
 
           {/* "Style guide" subtitle */}
           <p style={{
             fontFamily: FONT_HEADING,
             fontSize: isMobile ? '20px' : '24px',
             fontWeight: 500,
-            lineHeight: 1.3,
-            letterSpacing: '1.2px',
+            lineHeight: 1.2,
+            letterSpacing: '1px',
             color: '#8a8a8a',
             margin: 0,
           }}>Style guide</p>
 
-          {/* ── Typography panel — desktop only ──────── */}
-          {!isMobile && (
-            <div style={{ display: 'flex', gap: '28px', alignItems: 'flex-start', width: '100%' }}>
-
-              {/* Left: big Aa display */}
-              <div style={{ flex: '1 0 0', display: 'flex', flexDirection: 'column', gap: '16px', minWidth: 0, position: 'relative' }}>
-                <p style={{
-                  fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 300,
-                  lineHeight: 1.6, letterSpacing: '0.8px', color: '#c8c8c8',
-                  margin: 0, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
-                  width: '289px',
-                }}>Typography</p>
-
-                {/* Huge Aa */}
-                <p style={{
-                  fontFamily: FONT_SAIRA, fontSize: '200px', fontWeight: 700,
-                  lineHeight: 1.2, letterSpacing: '10px', color: '#ececec',
-                  margin: 0, fontVariationSettings: "'wdth' 100",
-                }}>Aa</p>
-
-                {/* "Saira" label — overlaid mid-height */}
-                <p style={{
-                  fontFamily: FONT_HEADING, fontSize: '24px', fontWeight: 500,
-                  lineHeight: 1.3, letterSpacing: '1.2px', color: '#595959',
-                  margin: 0, position: 'absolute', top: '169.5px', left: 0,
-                  transform: 'translateY(-50%)', width: '289px',
-                }}>Saira</p>
-
-                {/* Lorem ipsum */}
-                <p style={{
-                  fontFamily: FONT_SAIRA, fontSize: '18px', fontWeight: 400,
-                  lineHeight: 1.5, letterSpacing: '0.9px', color: '#363636',
-                  margin: 0, fontVariationSettings: "'wdth' 100",
-                }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-              </div>
-
-              {/* Right: type scale — single vertical list, width 529px */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '529px', flexShrink: 0 }}>
-                {TYPE_ITEMS.map((item, i) => (
-                  <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: '4px', alignItems: 'flex-start', width: '100%' }}>
-                    <p style={{
-                      fontFamily: FONT_SAIRA, fontSize: item.labelSize || '24px', fontWeight: 400,
-                      lineHeight: 1.5, color: '#929292', width: '100%',
-                      margin: 0, fontVariationSettings: "'wdth' 100", whiteSpace: 'pre-wrap',
-                    }}>{item.label}</p>
-                    <p style={{
-                      fontFamily: FONT_SAIRA, fontSize: item.size, fontWeight: item.weight,
-                      lineHeight: item.lh, color: '#303030', width: '100%',
-                      margin: 0, fontVariationSettings: "'wdth' 100",
-                    }}>{item.text}</p>
-                  </div>
-                ))}
-              </div>
-
+          {/* ── Mobile: single image replaces typography + palette ── */}
+          {isMobile && (
+            <div style={{ position: 'relative', width: '100%', aspectRatio: '1190 / 1590', flexShrink: 0 }}>
+              <img
+                src="/assets/images/tucredit/visual-style-guide-mobile.png"
+                alt="Style guide"
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none', display: 'block' }}
+              />
             </div>
           )}
 
-          {/* ── Color palette ─────────────────────────── */}
-          <div style={{ display: 'flex', gap: '4px', alignItems: 'flex-start', justifyContent: 'center', width: '100%' }}>
-            {COLORS.map(({ bg, label, border }) => (
-              <div key={label} style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center', flex: '1 0 0', minWidth: 0 }}>
-                <div style={{ width: '100%', height: '76px', backgroundColor: bg, borderRadius: '24px', border: border || 'none' }} />
-                <p style={{
-                  fontFamily: FONT_BODY, fontSize: '14px', fontWeight: 300,
-                  lineHeight: 1.6, letterSpacing: '0.8px', color: '#c8c8c8',
-                  textAlign: 'center', whiteSpace: 'nowrap', margin: 0,
-                  fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
-                }}>{label}</p>
+          {/* ── Desktop: typography panel + color palette ─────────── */}
+          {!isMobile && (
+            <>
+              <div style={{ display: 'flex', gap: '28px', alignItems: 'flex-start', width: '100%' }}>
+
+                {/* Left: big Aa display */}
+                <div style={{ flex: '1 0 0', display: 'flex', flexDirection: 'column', gap: '16px', minWidth: 0, position: 'relative' }}>
+                  <p style={{
+                    fontFamily: FONT_BODY, fontSize: '16px', fontWeight: 300,
+                    lineHeight: 1.6, letterSpacing: '0.8px', color: '#c8c8c8',
+                    margin: 0, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
+                    width: '289px',
+                  }}>Typography</p>
+
+                  {/* Huge Aa */}
+                  <p style={{
+                    fontFamily: FONT_SAIRA, fontSize: '200px', fontWeight: 700,
+                    lineHeight: 1.2, letterSpacing: '10px', color: '#ececec',
+                    margin: 0, fontVariationSettings: "'wdth' 100",
+                  }}>Aa</p>
+
+                  {/* "Saira" label — overlaid mid-height */}
+                  <p style={{
+                    fontFamily: FONT_HEADING, fontSize: '24px', fontWeight: 500,
+                    lineHeight: 1.3, letterSpacing: '1.2px', color: '#595959',
+                    margin: 0, position: 'absolute', top: '169.5px', left: 0,
+                    transform: 'translateY(-50%)', width: '289px',
+                  }}>Saira</p>
+
+                  {/* Lorem ipsum */}
+                  <p style={{
+                    fontFamily: FONT_SAIRA, fontSize: '18px', fontWeight: 400,
+                    lineHeight: 1.5, letterSpacing: '0.9px', color: '#363636',
+                    margin: 0, fontVariationSettings: "'wdth' 100",
+                  }}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </p>
+                </div>
+
+                {/* Right: type scale — single vertical list, width 529px */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '529px', flexShrink: 0 }}>
+                  {TYPE_ITEMS.map((item, i) => (
+                    <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: '4px', alignItems: 'flex-start', width: '100%' }}>
+                      <p style={{
+                        fontFamily: FONT_SAIRA, fontSize: item.labelSize || '24px', fontWeight: 400,
+                        lineHeight: 1.5, color: '#929292', width: '100%',
+                        margin: 0, fontVariationSettings: "'wdth' 100", whiteSpace: 'pre-wrap',
+                      }}>{item.label}</p>
+                      <p style={{
+                        fontFamily: FONT_SAIRA, fontSize: item.size, fontWeight: item.weight,
+                        lineHeight: item.lh, color: '#303030', width: '100%',
+                        margin: 0, fontVariationSettings: "'wdth' 100",
+                      }}>{item.text}</p>
+                    </div>
+                  ))}
+                </div>
+
               </div>
-            ))}
-          </div>
+
+              {/* ── Color palette ─────────────────────────── */}
+              <div style={{ display: 'flex', gap: '4px', alignItems: 'flex-start', justifyContent: 'center', width: '100%' }}>
+                {COLORS.map(({ bg, label, border }) => (
+                  <div key={label} style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center', flex: '1 0 0', minWidth: 0 }}>
+                    <div style={{ width: '100%', height: '76px', backgroundColor: bg, borderRadius: '24px', border: border || 'none' }} />
+                    <p style={{
+                      fontFamily: FONT_BODY, fontSize: '14px', fontWeight: 300,
+                      lineHeight: 1.6, letterSpacing: '0.8px', color: '#c8c8c8',
+                      textAlign: 'center', whiteSpace: 'nowrap', margin: 0,
+                      fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
+                    }}>{label}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
 
         </div>
       </AnimatedOnScroll>

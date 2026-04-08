@@ -73,7 +73,7 @@ const RowText = ({ subtitle, body, isMobile, titleDelay = 0, bodyDelay = 150 }) 
         fontWeight: 500,
         lineHeight: 1.3,
         letterSpacing: '1.2px',
-        color: '#5d5f98',
+        color: '#8a8a8a',
         margin: 0,
       }}>{subtitle}</p>
     </AnimatedOnScroll>

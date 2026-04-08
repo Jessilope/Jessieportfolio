@@ -4,33 +4,53 @@ import AnimatedOnScroll from './AnimatedOnScroll'
 const FONT_BODY    = `'Kantumruy', 'Noto Sans', sans-serif`
 const FONT_HEADING = `'Poppins', sans-serif`
 
-// Highlight block: vertical line + text (same pattern as DollarCityDefine/LexiDefine)
-const Highlight = ({ label, text }) => (
-  <div style={{ display: 'flex', gap: '16px', alignItems: 'center', width: '100%' }}>
-    {/* Vertical line */}
+const defineIllustration = '/assets/images/tucredit/define-illustration.svg'
+
+const B = ({ children }) => (
+  <strong style={{ fontWeight: 700, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700" }}>
+    {children}
+  </strong>
+)
+
+const Highlight = ({ label, children }) => (
+  <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start', width: '100%' }}>
     <div style={{
       width: '3px',
-      alignSelf: 'stretch',
-      backgroundColor: '#ADAECD',
       borderRadius: '2px',
+      backgroundColor: '#ffffff',
+      alignSelf: 'stretch',
       flexShrink: 0,
+      minHeight: '20px',
     }} />
-    {/* Text */}
     <div style={{
-      fontFamily: FONT_BODY,
-      fontSize: '16px',
-      fontWeight: 300,
-      lineHeight: 1.6,
-      letterSpacing: '0.8px',
-      color: '#5b5b5b',
       flex: '1 0 0',
       minWidth: 0,
-      fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '2px',
     }}>
       {label && (
-        <p style={{ color: '#5D5F98', margin: 0 }}>{label}</p>
+        <p style={{
+          fontFamily: FONT_BODY,
+          fontSize: '16px',
+          fontWeight: 700,
+          lineHeight: 1.6,
+          letterSpacing: '0.8px',
+          color: '#ffffff',
+          margin: 0,
+          fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700",
+        }}>{label}</p>
       )}
-      <p style={{ margin: 0 }}>{text}</p>
+      <p style={{
+        fontFamily: FONT_BODY,
+        fontSize: '16px',
+        fontWeight: 300,
+        lineHeight: 1.6,
+        letterSpacing: '0.8px',
+        color: '#ffffff',
+        margin: 0,
+        fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
+      }}>{children}</p>
     </div>
   </div>
 )
@@ -39,82 +59,104 @@ const TuCreditDefine = () => {
   const { isMobile } = useResponsive()
 
   return (
-    <div style={{
-      backgroundColor: '#fffefb',
+    <section style={{
+      backgroundColor: '#6f71a7',
+      borderRadius: '12px',
+      width: '100%',
+      paddingTop:    isMobile ? '48px' : '64px',
+      paddingBottom: isMobile ? '48px' : '64px',
+      paddingLeft:   isMobile ? '24px' : '0',
+      paddingRight:  isMobile ? '24px' : '0',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      paddingLeft: isMobile ? '24px' : '96px',
-      paddingRight: isMobile ? '24px' : '96px',
-      paddingTop: isMobile ? '64px' : '128px',
-      paddingBottom: isMobile ? '32px' : '48px',
-      width: '100%',
       boxSizing: 'border-box',
     }}>
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '48px',
-        alignItems: 'center',
-        width: '100%',
-        maxWidth: '902px',
-      }}>
+      <AnimatedOnScroll animation="slideUp" duration={600} style={{ width: '968px' }}>
+        <div style={{
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          gap: isMobile ? '40px' : '77px',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
 
-        {/* ── Title ────────────────────────────────── */}
-        <AnimatedOnScroll animation="fadeIn" delay={0} duration={700} style={{ width: '100%' }}>
-          <p style={{
-            fontFamily: FONT_HEADING,
-            fontSize: isMobile ? '24px' : '32px',
-            fontWeight: 500,
-            lineHeight: 1.3,
-            letterSpacing: 0,
-            color: '#5D5F98',
-            textAlign: 'center',
-            width: '100%',
-            margin: 0,
-          }}>Define</p>
-        </AnimatedOnScroll>
-
-        {/* ── Intro paragraph ──────────────────────── */}
-        <AnimatedOnScroll animation="fadeIn" delay={50} duration={700} style={{ width: '100%' }}>
-          <p style={{
-            fontFamily: FONT_BODY,
-            fontSize: isMobile ? '14px' : '16px',
-            fontWeight: 300,
-            lineHeight: 1.6,
-            letterSpacing: '0.8px',
-            color: '#5b5b5b',
-            margin: 0,
-            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+          {/* ── Left: text content ─────────────────── */}
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '24px',
+            width: isMobile ? '100%' : '484px',
+            flexShrink: 0,
           }}>
-            Based on the research and benchmark analysis, it became clear that applying for a mortgage loan is often overwhelming for users. While banks provide extensive information, it is frequently presented using complex language, long forms, and fragmented flows that make it difficult for users to understand where to start and what is required of them.
-          </p>
-        </AnimatedOnScroll>
+            <p style={{
+              fontFamily: FONT_HEADING,
+              fontSize: isMobile ? '32px' : '40px',
+              fontWeight: 600,
+              lineHeight: 1.4,
+              letterSpacing: '2px',
+              color: '#ffffff',
+              margin: 0,
+            }}>Define</p>
 
-        {/* ── Highlight blocks ─────────────────────── */}
-        <AnimatedOnScroll animation="fadeIn" delay={100} duration={700} style={{ width: '100%' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', width: '100%' }}>
+            <p style={{
+              fontFamily: FONT_BODY,
+              fontSize: isMobile ? '14px' : '16px',
+              fontWeight: 300,
+              lineHeight: 1.6,
+              letterSpacing: '0.8px',
+              color: '#ffffff',
+              margin: 0,
+              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
+            }}>
+              Based on the research and benchmark analysis, it became clear that applying for a mortgage loan is often{' '}
+              <B>overwhelming for users.</B>
+              {' '}While banks provide extensive information, it is frequently presented using{' '}
+              <B>complex language, long forms, and fragmented</B>
+              {' '}flows that make it difficult for users to understand where to start and what is required of them.
+            </p>
 
-            <Highlight
-              label={null}
-              text="Users need a mortgage experience that helps them learn, prepare, and evaluate their options before committing to an application."
-            />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', width: '100%' }}>
 
-            <Highlight
-              label="Point of View (POV)"
-              text="A first-time home buyer needs a clear and educational mortgage experience because they want to understand loan options, requirements, and financial implications before making a high-impact decision."
-            />
+              <Highlight>
+                Users need a mortgage experience that helps them{' '}
+                <B>learn, prepare, and evaluate</B>
+                {' '}their options before committing to an application.
+              </Highlight>
 
-            <Highlight
-              label="How Might We (HMW)"
-              text="How might we design a mortgage loan experience that educates users, simplifies complex financial information, and helps them evaluate their eligibility and options with confidence?"
-            />
+              <Highlight label="Point of View (POV)">
+                A first-time home buyer needs a{' '}
+                <B>clear and educational</B>
+                {' '}mortgage experience because they want to understand loan options, requirements, and financial implications before making a high-impact decision.
+              </Highlight>
 
+              <Highlight label="How Might We (HMW)">
+                How might we design a mortgage loan experience that{' '}
+                <B>educates users, simplifies complex financial information,</B>
+                {' '}and helps them evaluate their eligibility and options with confidence?
+              </Highlight>
+
+            </div>
           </div>
-        </AnimatedOnScroll>
 
-      </div>
-    </div>
+          {/* ── Right: illustration ────────────────── */}
+          {!isMobile && (
+            <img
+              src={defineIllustration}
+              alt="Define illustration"
+              style={{
+                width: '375px',
+                height: '375px',
+                objectFit: 'contain',
+                flexShrink: 0,
+                display: 'block',
+              }}
+            />
+          )}
+
+        </div>
+      </AnimatedOnScroll>
+    </section>
   )
 }
 

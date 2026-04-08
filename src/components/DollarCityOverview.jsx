@@ -4,20 +4,20 @@ import AnimatedOnScroll from './AnimatedOnScroll'
 import Icons from './Icons'
 
 const features = [
-  { icon: 'component', size: 36, label: 'Components UI KIT',  fontSize: '18px', lineHeight: 1.5, letterSpacing: '0.9px' },
-  { icon: 'layers',    size: 36, label: 'Organized Layers',   fontSize: '16px', lineHeight: 1.6, letterSpacing: '0.8px' },
-  { icon: 'screen',    size: 36, label: 'Modern app screens', fontSize: '16px', lineHeight: 1.6, letterSpacing: '0.8px' },
-  { icon: 'customize', size: 36, label: 'Easy to Customize',  fontSize: '18px', lineHeight: 1.5, letterSpacing: '0.9px' },
+  { icon: 'component', size: 36, label: 'Components UI KIT',  fontSize: '16px', fontWeight: 300, lineHeight: 1.6, letterSpacing: '0.8px' },
+  { icon: 'layers',    size: 36, label: 'Organized Layers',   fontSize: '16px', fontWeight: 300, lineHeight: 1.6, letterSpacing: '0.8px' },
+  { icon: 'screen',    size: 36, label: 'Modern app screens', fontSize: '16px', fontWeight: 300, lineHeight: 1.6, letterSpacing: '0.8px' },
+  { icon: 'customize', size: 36, label: 'Easy to Customize',  fontSize: '18px', fontWeight: 700, lineHeight: 1.5, letterSpacing: '0.9px' },
 ]
 
-const FeatureCard = ({ icon, size, label, fontSize, lineHeight, letterSpacing, isMobile }) => (
+const FeatureCard = ({ icon, size, label, fontSize, fontWeight, lineHeight, letterSpacing, isMobile }) => (
   <div style={{
     flex: isMobile ? 'unset' : '1 0 0',
     width: '100%',
     minWidth: '0',
     height: '166px',
     backgroundColor: '#fff',
-    border: '2px solid #f9f9f9',
+    border: '2px solid #e8e8ea',
     borderRadius: '16px',
     padding: '16px 24px',
     display: 'flex',
@@ -37,14 +37,14 @@ const FeatureCard = ({ icon, size, label, fontSize, lineHeight, letterSpacing, i
       <p style={{
         fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
         fontSize,
-        fontWeight: 400,
+        fontWeight,
         lineHeight,
         letterSpacing,
         color: '#1f1f1f',
         textAlign: 'center',
         margin: 0,
         width: '100%',
-        fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+        fontVariationSettings: `'CTGR' 0, 'wdth' 100, 'wght' ${fontWeight}`,
       }}>{label}</p>
     </div>
   </div>

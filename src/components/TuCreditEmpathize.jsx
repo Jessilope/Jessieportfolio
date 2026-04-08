@@ -1,15 +1,16 @@
 import useResponsive from '../hooks/useResponsive'
 import AnimatedOnScroll from './AnimatedOnScroll'
+import Icons from './Icons'
 
 const FONT_BODY    = `'Kantumruy', 'Noto Sans', sans-serif`
 const FONT_HEADING = `'Poppins', sans-serif`
 
 // ── Feature cards ────────────────────────────────────────────────────────────
 const FEATURES = [
-  { icon: '/assets/images/tucredit/icon-path.svg',  label: 'Choose the path'    },
-  { icon: '/assets/images/tucredit/icon-user.svg',  label: 'Start application'  },
-  { icon: '/assets/images/tucredit/icon-face.svg',  label: 'Check identity'     },
-  { icon: '/assets/images/tucredit/icon-cycle.svg', label: 'Track process'      },
+  { icon: 'path',  label: 'Choose the path'   },
+  { icon: 'user',  label: 'Start application' },
+  { icon: 'face',  label: 'Check identity'    },
+  { icon: 'cycle', label: 'Track process'     },
 ]
 
 const FeatureCard = ({ icon, label, isMobile }) => (
@@ -17,7 +18,7 @@ const FeatureCard = ({ icon, label, isMobile }) => (
     flex: '1 0 0',
     height: isMobile ? 'auto' : '166px',
     backgroundColor: '#ffffff',
-    border: '2px solid #f9f9f9',
+    border: '2px solid #e8e8ea',
     borderRadius: '16px',
     padding: '16px 24px',
     display: 'flex',
@@ -28,9 +29,7 @@ const FeatureCard = ({ icon, label, isMobile }) => (
     minWidth: 0,
     boxSizing: 'border-box',
   }}>
-    <div style={{ width: '36px', height: '36px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <img src={icon} alt="" style={{ width: '36px', height: '36px', display: 'block' }} />
-    </div>
+    <Icons icon={icon} state="active" size={36} />
     <p style={{
       fontFamily: FONT_BODY,
       fontSize: '16px',
@@ -40,47 +39,57 @@ const FeatureCard = ({ icon, label, isMobile }) => (
       color: '#1f1f1f',
       textAlign: 'center',
       margin: 0,
-      fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+      fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
     }}>{label}</p>
   </div>
 )
+
+const bold = { fontWeight: 700, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 700" }
 
 const TuCreditEmpathize = () => {
   const { isMobile } = useResponsive()
 
   return (
+    /* Outer cream wrapper — same pattern as DollarCityWireframes */
     <div style={{
       backgroundColor: '#fffefa',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      paddingLeft: isMobile ? '24px' : '96px',
-      paddingRight: isMobile ? '24px' : '96px',
-      paddingTop: isMobile ? '48px' : '64px',
-      paddingBottom: isMobile ? '32px' : '64px',
       width: '100%',
+      paddingLeft:  isMobile ? '24px' : '96px',
+      paddingRight: isMobile ? '24px' : '96px',
+      paddingTop:    isMobile ? '48px' : '64px',
+      paddingBottom: isMobile ? '48px' : '64px',
+      display: 'flex',
+      justifyContent: 'center',
       boxSizing: 'border-box',
     }}>
+
+      {/* Inner purple card with rounded corners */}
       <div style={{
+        backgroundColor: '#5d5f98',
+        borderRadius: '12px',
+        width: '100%',
+        maxWidth: '1090px',
+        paddingLeft:  isMobile ? '20px' : '64px',
+        paddingRight: isMobile ? '20px' : '64px',
+        paddingTop:    isMobile ? '28px' : '64px',
+        paddingBottom: isMobile ? '28px' : '64px',
         display: 'flex',
         flexDirection: 'column',
-        gap: '64px',
         alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-        maxWidth: '902px',
+        gap: '64px',
+        boxSizing: 'border-box',
       }}>
 
         {/* ── Title + body ─────────────────────────── */}
-        <AnimatedOnScroll animation="fadeIn" delay={0} duration={700} style={{ width: '100%' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', alignItems: 'center', width: '100%' }}>
+        <AnimatedOnScroll animation="fadeIn" delay={0} duration={700} style={{ width: '100%', maxWidth: '902px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', alignItems: 'center', width: '100%' }}>
             <p style={{
               fontFamily: FONT_HEADING,
               fontSize: isMobile ? '24px' : '32px',
               fontWeight: 500,
               lineHeight: 1.3,
               letterSpacing: 0,
-              color: '#5D5F98',
+              color: '#ffffff',
               textAlign: 'center',
               width: '100%',
               margin: 0,
@@ -91,18 +100,24 @@ const TuCreditEmpathize = () => {
               fontWeight: 300,
               lineHeight: 1.6,
               letterSpacing: '0.8px',
-              color: '#212121',
+              color: '#ffffff',
               width: '100%',
               margin: 0,
-              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
             }}>
-              To better understand users interested in mortgage loans, I focused on how people perceive and approach long-term financial decisions. For many users, applying for a mortgage is one of the most significant commitments they will ever make, often accompanied by fear, confusion, and a lack of financial confidence. Research showed that potential borrowers want to feel informed and in control, but they frequently struggle with complex terminology, unclear requirements, and overwhelming information. Many users delay or abandon the process because they feel unprepared or unsure about their eligibility, even before starting an application.
+              To better understand users interested in mortgage loans, I focused on how people perceive and approach long-term financial decisions. For many users, applying for a mortgage is{' '}
+              <span style={bold}>one of the most significant commitments</span>
+              {' '}they will ever make,{' '}
+              <span style={bold}>often accompanied by fear, confusion, and a lack of financial confidence.</span>
+              {' '}Research showed that potential borrowers want to feel informed and in control, but they frequently struggle with complex{' '}
+              <span style={bold}>terminology, unclear requirements, and overwhelming information.</span>
+              {' '}Many users delay or abandon the process because they feel unprepared or unsure about their eligibility, even before starting an application.
             </p>
           </div>
         </AnimatedOnScroll>
 
         {/* ── What do users do? ────────────────────── */}
-        <AnimatedOnScroll animation="fadeIn" delay={100} duration={700} style={{ width: '100%' }}>
+        <AnimatedOnScroll animation="fadeIn" delay={100} duration={700} style={{ width: '100%', maxWidth: '902px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '29px', width: '100%' }}>
             <p style={{
               fontFamily: FONT_HEADING,
@@ -110,7 +125,7 @@ const TuCreditEmpathize = () => {
               fontWeight: 500,
               lineHeight: 1.2,
               letterSpacing: '1px',
-              color: '#8a8a8a',
+              color: '#ffffff',
               margin: 0,
             }}>What do users do?</p>
             <div style={{

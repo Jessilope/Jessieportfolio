@@ -149,16 +149,22 @@ const Icons = ({ icon = 'right-arrow', state = 'Default', size = 24, style, clas
         </div>
       )
 
-    /* ── Cycle / Process ────────────────────────────────────── */
+    /* ── Cycle / Process (uil:process) ─────────────────────── */
     case 'cycle':
       return (
-        <div style={wrap} className={className}>
-          <svg width={size} height={size} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M17.31 0L0.541 16.77C-0.18 17.491 -0.18 18.659 0.541 19.379C1.261 20.1 2.429 20.1 3.15 19.379L19.92 2.61L19.212 0.708L17.31 0Z"
-              fill={c}
-            />
-          </svg>
+        <div style={{ ...wrap, position: 'relative' }} className={className}>
+          <div style={{
+            position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+            borderRadius: '53px', overflow: 'hidden',
+            aspectRatio: '1 / 1',
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: '8.34%', right: '8.37%', bottom: '8.32%', left: '8.3%',
+            }}>
+              <img src="/assets/images/icons/icon-cycle.svg" alt="" style={{ position: 'absolute', width: '100%', height: '100%', display: 'block' }} />
+            </div>
+          </div>
         </div>
       )
 

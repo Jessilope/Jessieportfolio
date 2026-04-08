@@ -108,20 +108,38 @@ const TuCreditDesignPrinciples = () => {
           </div>
         </AnimatedOnScroll>
 
-        {/* ── Stepper ──────────────────────────────── */}
+        {/* ── Stepper + Illustration ───────────────── */}
         <AnimatedOnScroll animation="fadeIn" delay={100} duration={700} style={{ width: '100%' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center', width: isMobile ? '100%' : '465px' }}>
-            <p style={{
-              fontFamily: FONT_BODY, fontSize: '18px', fontWeight: 400, lineHeight: 1.5,
-              letterSpacing: '0.9px', color: '#8a8a8a', textAlign: 'center',
-              whiteSpace: 'nowrap', margin: 0, marginBottom: '16px',
-              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
-            }}>Expected outcome</p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
-              {STEPS.map((step) => (
-                <StepperItem key={step.num} {...step} />
-              ))}
+          <div style={{
+            display: 'flex',
+            flexDirection: isMobile ? 'column' : 'row',
+            gap: '48px',
+            alignItems: 'center',
+            width: '100%',
+          }}>
+            {/* Left: stepper */}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center', width: isMobile ? '100%' : '465px', flexShrink: 0 }}>
+              <p style={{
+                fontFamily: FONT_BODY, fontSize: '18px', fontWeight: 400, lineHeight: 1.5,
+                letterSpacing: '0.9px', color: '#8a8a8a', textAlign: 'center',
+                whiteSpace: 'nowrap', margin: 0, marginBottom: '16px',
+                fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+              }}>Expected outcome</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
+                {STEPS.map((step) => (
+                  <StepperItem key={step.num} {...step} />
+                ))}
+              </div>
             </div>
+
+            {/* Right: illustration */}
+            {!isMobile && (
+              <img
+                src="/assets/images/tucredit/design-principles-illustration.svg"
+                alt="Design principles illustration"
+                style={{ width: '387px', height: '387px', objectFit: 'contain', flexShrink: 0, display: 'block' }}
+              />
+            )}
           </div>
         </AnimatedOnScroll>
 

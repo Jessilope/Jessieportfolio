@@ -61,8 +61,10 @@ const TuCreditWireframes = () => {
             }}>
               {/* Wireframe 1 — top portion */}
               <div style={{
-                width: isMobile ? '100%' : '421px',
-                height: isMobile ? '220px' : '498px',
+                flex: isMobile ? 'none' : '1 1 0',
+                width: isMobile ? '100%' : undefined,
+                maxWidth: '421px',
+                aspectRatio: '421 / 498',
                 borderRadius: isMobile ? '20px' : '34px',
                 flexShrink: 0,
                 overflow: 'hidden',
@@ -86,8 +88,10 @@ const TuCreditWireframes = () => {
 
               {/* Wireframe 2 — mid portion */}
               <div style={{
-                width: isMobile ? '100%' : '425px',
-                height: isMobile ? '220px' : '502px',
+                flex: isMobile ? 'none' : '1 1 0',
+                width: isMobile ? '100%' : undefined,
+                maxWidth: '425px',
+                aspectRatio: '425 / 502',
                 borderRadius: isMobile ? '20px' : '34px',
                 flexShrink: 0,
                 overflow: 'hidden',
@@ -118,8 +122,9 @@ const TuCreditWireframes = () => {
               width: '100%',
             }}>
               <div style={{
-                width: isMobile ? '100%' : '515px',
-                height: isMobile ? '220px' : '384px',
+                width: '100%',
+                maxWidth: '515px',
+                aspectRatio: '515 / 384',
                 borderRadius: isMobile ? '25px' : '50px',
                 flexShrink: 0,
                 overflow: 'hidden',

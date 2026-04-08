@@ -1,97 +1,95 @@
+import { useEffect, useRef } from 'react'
 import useResponsive from '../hooks/useResponsive'
 import AnimatedOnScroll from './AnimatedOnScroll'
 
 const FONT_BODY    = `'Kantumruy', 'Noto Sans', sans-serif`
 const FONT_HEADING = `'Poppins', sans-serif`
 
-const mockup1 = '/assets/images/tucredit/mockup-1.png'
-const mockup2 = '/assets/images/tucredit/mockup-2.png'
-const mockup3 = '/assets/images/tucredit/mockup-3.png'
-const mockup4 = '/assets/images/tucredit/mockup-4.png'
+const VIDEO_HOME      = '/assets/images/tucredit/videos/Home-prototype.mp4'
+const VIDEO_TABS      = '/assets/images/tucredit/videos/navegation-tabs.mp4'
+const VIDEO_OVERLAYS  = '/assets/images/tucredit/videos/Overlays.mp4'
 
-// Stripe items — from Figma node 2821:6615
-// Each item: { src, w, h, radius, img: {w,h,l,t} | null (= object-fit:cover) }
-const STRIPE_DATA = [
-  { src: mockup2, w: 423, h: 587, radius: 6,
-    img: { w: '101.59%', h: '304.31%', l: '-0.72%', t: '0' } },
-  { src: mockup1, w: 427, h: 510, radius: 15,
-    img: { w: '100.93%', h: '354.73%', l: '-0.57%', t: '-115.77%' } },
-  { src: mockup3, w: 375, h: 547, radius: 15,
-    img: { w: '100%', h: '139.67%', l: '0', t: '-5.24%' } },
-  { src: mockup4, w: 497, h: 519, radius: 15,
-    img: null },
-]
+// ── Video player ──────────────────────────────────────────────────────────────
 
-// Keyframe styles injected once
-const KEYFRAMES = `
-  @keyframes stripeLeft {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
-  @keyframes stripeRight {
-    from { transform: translateX(-50%); }
-    to   { transform: translateX(0); }
-  }
-`
+const VideoPlayer = ({ src, animDelay = 200 }) => {
+  const videoRef = useRef(null)
 
-// Duplicated items for seamless infinite loop
-const StripeTrack = ({ reverse = false, scale = 1 }) => {
-  const items = [...STRIPE_DATA, ...STRIPE_DATA]
-  const anim = reverse
-    ? `stripeRight 32s linear infinite`
-    : `stripeLeft 28s linear infinite`
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) video.play().catch(() => {})
+        else video.pause()
+      },
+      { threshold: 0.25 }
+    )
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <div style={{ overflow: 'hidden', width: '100%', flexShrink: 0 }}>
+    <AnimatedOnScroll animation="fadeIn" duration={800} delay={animDelay} style={{ width: '100%' }}>
       <div style={{
-        display: 'flex',
-        gap: `${24 * scale}px`,
-        animation: anim,
-        width: 'fit-content',
-        willChange: 'transform',
+        width: '100%',
+        borderRadius: '16px',
+        overflow: 'hidden',
+        backgroundColor: '#e8e8ea',
       }}>
-        {items.map((m, i) => (
-          <div key={i} style={{
-            width: `${m.w * scale}px`,
-            height: `${m.h * scale}px`,
-            borderRadius: `${m.radius}px`,
-            overflow: 'hidden',
-            position: 'relative',
-            flexShrink: 0,
-          }}>
-            {m.img ? (
-              <img src={m.src} alt="" style={{
-                position: 'absolute',
-                width: m.img.w,
-                height: m.img.h,
-                left: m.img.l,
-                top: m.img.t,
-                maxWidth: 'none',
-                pointerEvents: 'none',
-                display: 'block',
-              }} />
-            ) : (
-              <img src={m.src} alt="" style={{
-                position: 'absolute',
-                inset: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                maxWidth: 'none',
-                pointerEvents: 'none',
-                display: 'block',
-              }} />
-            )}
-          </div>
-        ))}
+        <video
+          ref={videoRef}
+          src={src}
+          muted
+          loop
+          playsInline
+          style={{ width: '100%', height: 'auto', display: 'block' }}
+        />
       </div>
-    </div>
+    </AnimatedOnScroll>
   )
 }
 
+// ── Section text ──────────────────────────────────────────────────────────────
+
+const SectionText = ({ subtitle, body, isMobile }) => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%' }}>
+    <AnimatedOnScroll animation="slideUp" duration={600} delay={80}>
+      <p style={{
+        fontFamily: FONT_HEADING,
+        fontSize: isMobile ? '20px' : '24px',
+        fontWeight: 500,
+        lineHeight: 1.3,
+        letterSpacing: '1.2px',
+        color: '#8d8d99',
+        margin: 0,
+      }}>{subtitle}</p>
+    </AnimatedOnScroll>
+    <AnimatedOnScroll animation="slideUp" duration={600} delay={200}>
+      <div style={{
+        fontFamily: FONT_BODY,
+        fontSize: isMobile ? '14px' : '16px',
+        fontWeight: 300,
+        lineHeight: 1.6,
+        letterSpacing: '0.8px',
+        color: '#313248',
+        margin: 0,
+        fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+      }}>{body}</div>
+    </AnimatedOnScroll>
+  </div>
+)
+
 const TuCreditPrototype = () => {
   const { isMobile } = useResponsive()
-  const scale = isMobile ? 0.45 : 1
+
+  const sectionStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '32px',
+    width: '100%',
+    maxWidth: '903px',
+  }
 
   return (
     <div id="prototype" style={{
@@ -107,39 +105,63 @@ const TuCreditPrototype = () => {
       flexShrink: 0,
       boxSizing: 'border-box',
       overflow: 'hidden',
+      gap: isMobile ? '48px' : '64px',
     }}>
-      <style>{KEYFRAMES}</style>
 
-      <div style={{
-        display: 'flex', flexDirection: 'column', gap: isMobile ? '32px' : '48px',
-        alignItems: 'center', width: '100%', maxWidth: '903px',
-      }}>
+      {/* ── Title + description ────────────────────────────────── */}
+      <AnimatedOnScroll animation="fadeIn" delay={0} duration={700} style={{ width: '100%', maxWidth: '903px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', alignItems: 'center', width: '100%' }}>
+          <p style={{
+            fontFamily: FONT_HEADING, fontSize: isMobile ? '24px' : '32px',
+            fontWeight: 500, lineHeight: 1.3, color: '#5D5F98',
+            textAlign: 'center', margin: 0, width: '100%',
+          }}>Prototype</p>
+          <p style={{
+            fontFamily: FONT_BODY, fontSize: isMobile ? '14px' : '16px',
+            fontWeight: 300, lineHeight: 1.6, letterSpacing: '0.8px',
+            color: '#313248', margin: 0, width: '100%',
+            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+          }}>
+            The prototype brings the experience together by connecting screens into a clear and guided flow. At this stage, the focus was on demonstrating how users move from understanding mortgage concepts to exploring requirements and evaluating loan options.
+          </p>
+        </div>
+      </AnimatedOnScroll>
 
-        {/* Title + description */}
-        <AnimatedOnScroll animation="fadeIn" delay={0} duration={700} style={{ width: '100%' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', alignItems: 'center', width: '100%' }}>
-            <p style={{
-              fontFamily: FONT_HEADING, fontSize: isMobile ? '24px' : '32px',
-              fontWeight: 500, lineHeight: 1.3, color: '#5D5F98',
-              textAlign: 'center', margin: 0, width: '100%',
-            }}>Prototype</p>
-            <p style={{
-              fontFamily: FONT_BODY, fontSize: isMobile ? '14px' : '16px',
-              fontWeight: 300, lineHeight: 1.6, letterSpacing: '0.8px',
-              color: '#212121', margin: 0, width: '100%',
-              fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
-            }}>
-              The prototype brings the experience together by connecting screens into a clear and guided flow. At this stage, the focus was on demonstrating how users move from understanding mortgage concepts to exploring requirements and evaluating loan options.
-            </p>
-          </div>
-        </AnimatedOnScroll>
-
-        {/* Stripe — scrolls left */}
-        <AnimatedOnScroll animation="fadeIn" delay={100} duration={700} style={{ width: '100%' }}>
-          <StripeTrack reverse={false} scale={scale} />
-        </AnimatedOnScroll>
-
+      {/* ── Section 1: Home overview ───────────────────────────── */}
+      <div style={sectionStyle}>
+        <SectionText
+          subtitle="Home overview"
+          body="A clear overview of the home experience, designed for simplicity and focus. Key elements are structured to guide users effortlessly through the platform."
+          isMobile={isMobile}
+        />
+        <VideoPlayer src={VIDEO_HOME} animDelay={150} />
       </div>
+
+      {/* ── Section 2: Tabs & Navegation ──────────────────────── */}
+      <div style={sectionStyle}>
+        <SectionText
+          subtitle="Tabs & Navegation"
+          body="Connected tabs create a smooth and intuitive navigation flow. Each section is easily accessible, enhancing usability and continuity."
+          isMobile={isMobile}
+        />
+        <VideoPlayer src={VIDEO_TABS} animDelay={150} />
+      </div>
+
+      {/* ── Section 3: Overlays & Pop-ups ─────────────────────── */}
+      <div style={sectionStyle}>
+        <SectionText
+          subtitle="Overlays & Pop-ups"
+          body={
+            <>
+              <p style={{ margin: 0 }}>Dynamic overlays provide additional context without disrupting the experience.</p>
+              <p style={{ margin: 0 }}>They enhance interaction while keeping the interface clean and focused.</p>
+            </>
+          }
+          isMobile={isMobile}
+        />
+        <VideoPlayer src={VIDEO_OVERLAYS} animDelay={150} />
+      </div>
+
     </div>
   )
 }
