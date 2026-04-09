@@ -158,7 +158,7 @@ const DownloadButton = ({ href, isMobile, isTablet }) => {
   const [hovered, setHovered] = useState(false)
   const padding = isMobile ? '12px 16px' : isTablet ? '14px 16px' : '16px 24px'
   return (
-    <a href={href} download style={{ textDecoration: 'none' }}>
+    <a href={href} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
       <button
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
