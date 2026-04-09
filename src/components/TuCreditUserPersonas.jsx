@@ -119,7 +119,6 @@ const PERSONAS = [
   },
 ]
 
-// ── Main component ───────────────────────────────────────────────────────────
 const TuCreditUserPersonas = () => {
   const { isMobile } = useResponsive()
 
@@ -136,13 +135,13 @@ const TuCreditUserPersonas = () => {
       width: '100%',
       boxSizing: 'border-box',
     }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', alignItems: 'center', width: '100%', maxWidth: '902px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', alignItems: 'center', width: '100%', maxWidth: isMobile ? '100%' : '902px' }}>
 
         {/* ── Header ───────────────────────────────── */}
         <AnimatedOnScroll animation="fadeIn" delay={0} duration={700} style={{ width: '100%' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '100%' }}>
             <p style={{ fontFamily: FONT_HEADING, fontSize: isMobile ? '20px' : '24px', fontWeight: 500, lineHeight: 1.3, letterSpacing: '1.2px', color: '#8a8a8a', margin: 0 }}>User personas</p>
-            <p style={{ fontFamily: FONT_BODY, fontSize: isMobile ? '14px' : '16px', fontWeight: 300, lineHeight: 1.6, letterSpacing: '0.8px', color: '#5b5b5b', margin: 0, fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300" }}>
+            <p style={{ fontFamily: FONT_BODY, fontSize: isMobile ? '14px' : '16px', fontWeight: 300, lineHeight: 1.6, letterSpacing: '0.8px', color: '#5b5b5b', margin: 0, width: '100%', fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300" }}>
               I created user personas to represent the main user types interacting with the mortgage experience. These personas helped keep real user needs, motivations, and concerns at the center of the design process.
             </p>
           </div>
@@ -150,16 +149,16 @@ const TuCreditUserPersonas = () => {
 
         {/* ── Personas ─────────────────────────────── */}
         {isMobile ? (
-          /* Mobile: single image, full width */
-          <AnimatedOnScroll animation="fadeIn" delay={100} duration={700} style={{ width: '100%' }}>
+          /* Mobile: single image */
+          <AnimatedOnScroll animation="fadeIn" delay={100} duration={700} style={{ width: '100%', maxWidth: '100%' }}>
             <img
               src="/assets/images/tucredit/user-personas-mobile.png"
               alt="User personas"
-              style={{ width: '100%', height: 'auto', display: 'block' }}
+              style={{ width: '100%', maxWidth: '100%', height: 'auto', display: 'block' }}
             />
           </AnimatedOnScroll>
         ) : (
-          /* Desktop: component layout */
+          /* Desktop + Tablet: original 3-column layout */
           PERSONAS.map((p, idx) => (
             <AnimatedOnScroll key={p.id} animation="fadeIn" delay={idx * 100} duration={700} style={{ width: '100%' }}>
               <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', width: '100%' }}>

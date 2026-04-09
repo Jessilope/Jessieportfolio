@@ -72,7 +72,7 @@ const TuCreditDefine = () => {
       justifyContent: 'center',
       boxSizing: 'border-box',
     }}>
-      <AnimatedOnScroll animation="slideUp" duration={600} style={{ width: '968px' }}>
+      <AnimatedOnScroll animation="slideUp" duration={600} style={{ width: isMobile ? '100%' : '968px' }}>
         <div style={{
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
