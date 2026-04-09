@@ -82,14 +82,9 @@ const ProjectImage = ({ name, backgroundColor, route, navigate, isMobile = false
   const handleClick = () => {
     if (route && navigate) {
       if (isMobile) {
-        // Delay navigation to allow animation to complete
-        setTimeout(() => {
-          navigate(route)
-          window.scrollTo(0, 0)
-        }, 200)
+        setTimeout(() => navigate(route), 200)
       } else {
         navigate(route)
-        window.scrollTo(0, 0)
       }
     }
   }

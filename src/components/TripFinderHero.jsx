@@ -28,7 +28,7 @@ const Tag = ({ children }) => (
   </div>
 )
 
-const TAGS = ['UX-UI Design', 'Figma', 'ChatGPT', 'Design Kit']
+const TAGS = ['UI Design', 'Figma', 'ChatGPT', 'Design Kit']
 
 // "Trip" + "finder" — highlight color #ffdf5b (yellow)
 const TripFinderTitle = ({ isMobile }) => {
@@ -228,32 +228,48 @@ const TripFinderHero = () => {
         </div>
       )}
 
-      {/* Phone mockup — mobile */}
+      {/* Phone mockups — mobile (~45% of desktop) */}
       {isMobile && (
-        <div style={{
-          position: 'absolute',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          bottom: '-20px',
-          width: '240px',
-          height: '260px',
-          borderRadius: '16px',
-          overflow: 'hidden',
-          zIndex: 1,
-          pointerEvents: 'none',
-        }}>
-          <img
-            src="/assets/images/tripfinder/card-mockup 3.png"
-            alt="Tripfinder app"
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              display: 'block',
-              borderRadius: '16px',
-            }}
-          />
-        </div>
+        <>
+          {/* Back phone (dark) — right, higher */}
+          <div style={{
+            position: 'absolute',
+            left: '184px',
+            top: '520px',
+            width: '130px',
+            height: '282px',
+            borderRadius: '10px',
+            boxShadow: '0px 0px 24px 4px rgba(0,0,0,0.1)',
+            overflow: 'hidden',
+            zIndex: 1,
+            pointerEvents: 'none',
+          }}>
+            <img
+              src="/assets/images/tripfinder/card-mockup 2.png"
+              alt="Tripfinder app"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+          </div>
+          {/* Front phone (white) — left, lower */}
+          <div style={{
+            position: 'absolute',
+            left: '76px',
+            top: '558px',
+            width: '125px',
+            height: '270px',
+            borderRadius: '8px',
+            boxShadow: '0px 0px 24px 4px rgba(0,0,0,0.1)',
+            overflow: 'hidden',
+            zIndex: 2,
+            pointerEvents: 'none',
+          }}>
+            <img
+              src="/assets/images/tripfinder/card-mockup 3.png"
+              alt="Tripfinder app detail"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+          </div>
+        </>
       )}
     </div>
   )

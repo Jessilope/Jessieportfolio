@@ -1,120 +1,63 @@
-import { colors } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
+import AnimatedOnScroll from './AnimatedOnScroll'
 
 const TripFinderOverview = () => {
   const { isMobile } = useResponsive()
 
-  const sectionStyles = {
-    backgroundColor: '#fffefa',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    paddingLeft: isMobile ? '24px' : '96px',
-    paddingRight: isMobile ? '24px' : '64px',
-    paddingTop: isMobile ? '64px' : '128px',
-    paddingBottom: isMobile ? '32px' : '48px',
-    width: '100%',
-    flexShrink: 0,
-  }
-
-  const containerStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: isMobile ? '32px' : '48px',
-    alignItems: 'flex-start',
-    width: isMobile ? '100%' : '1126px',
-    flexShrink: 0,
-  }
-
-  const titleStyles = {
-    fontFamily: `'Kanit', sans-serif`,
-    fontSize: isMobile ? '24px' : '32px',
-    fontStyle: 'normal',
-    fontWeight: 400,
-    lineHeight: isMobile ? '28px' : '32px',
-    textAlign: 'center',
-    color: '#5D5F98',
-    width: '100%',
-    margin: 0,
-    flexShrink: 0,
-  }
-
-  const textBlockStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
-    fontSize: isMobile ? '14px' : '16px',
-    fontWeight: 400,
-    lineHeight: '1.6',
-    letterSpacing: '0.8px',
-    color: colors.semantic.textPrimary,
-    width: '100%',
-    flexShrink: 0,
-    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
-  }
-
-  const paragraphStyles = {
-    margin: 0,
-    marginBottom: 0,
-  }
-
-  const lastParagraphStyles = {
-    margin: 0,
-  }
-
-  const listContainerStyles = {
-    fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
-    fontSize: isMobile ? '14px' : '16px',
-    fontWeight: 400,
-    lineHeight: '0',
-    letterSpacing: '0.8px',
-    color: colors.semantic.textPrimary,
-    width: '100%',
-    flexShrink: 0,
-    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
-  }
-
-  const listParagraphStyles = {
-    lineHeight: '1.6',
-    margin: 0,
-    marginBottom: 0,
-  }
-
-  const listStyles = {
-    listStyleType: 'disc',
-    marginBottom: 0,
-    paddingLeft: '24px',
-  }
-
-  const listItemStyles = {
-    marginBottom: 0,
-    marginLeft: '24px',
-  }
-
-  const listItemSpanStyles = {
-    lineHeight: '1.6',
-  }
-
   return (
-    <div style={sectionStyles}>
-      <div style={containerStyles}>
-        {/* Title */}
-        <p style={titleStyles}>
-          TripFinder: A Visual Concept for Women Who Travel Alone
-        </p>
+    <section style={{
+      backgroundColor: '#fffefa',
+      width: '100%',
+      paddingTop: isMobile ? '48px' : '128px',
+      paddingBottom: isMobile ? '32px' : '48px',
+      paddingLeft: isMobile ? '24px' : '96px',
+      paddingRight: isMobile ? '24px' : '96px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      boxSizing: 'border-box',
+    }}>
+      <AnimatedOnScroll animation="fadeIn" duration={700} style={{ width: '100%' }}>
+        <div style={{
+          width: '100%',
+          maxWidth: '902px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '24px',
+          margin: '0 auto',
+        }}>
+          <p style={{
+            fontFamily: `'Poppins', sans-serif`,
+            fontSize: isMobile ? '20px' : '24px',
+            fontWeight: 500,
+            lineHeight: 1.3,
+            letterSpacing: '1.2px',
+            color: '#8d8d99',
+            margin: 0,
+          }}>Project Overview</p>
 
-        {/* First text block */}
-        <div style={textBlockStyles}>
-          <p style={paragraphStyles}>
-            TripFinder is a UI-focused project designed to improve my visual and interface design skills. The concept targets women who travel alone, with the goal of creating an experience that feels safe, calm, and inspiring.
-          </p>
-          <p style={lastParagraphStyles}>
-            For this project, I intentionally focused on UI design rather than research, allowing me to explore layout, visual hierarchy, color, and component consistency without constraints.
-          </p>
+          <div style={{
+            fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
+            fontSize: isMobile ? '14px' : '16px',
+            fontWeight: 300,
+            lineHeight: 1.6,
+            letterSpacing: '0.8px',
+            color: '#22282f',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '12px',
+            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
+          }}>
+            <p style={{ margin: 0 }}>
+              TripFinder is a UI-focused project designed to improve my visual and interface design skills. The concept targets women who travel alone, with the goal of creating an experience that feels safe, calm, and inspiring.
+            </p>
+            <p style={{ margin: 0 }}>
+              For this project, I intentionally focused on UI design rather than research, allowing me to explore layout, visual hierarchy, color, and component consistency without constraints.
+            </p>
+          </div>
         </div>
-      </div>
-    </div>
+      </AnimatedOnScroll>
+    </section>
   )
 }
 

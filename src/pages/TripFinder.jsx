@@ -5,7 +5,6 @@ import TripFinderHero from '../components/TripFinderHero'
 import TripFinderOverview from '../components/TripFinderOverview'
 import TripFinderDesignPrinciples from '../components/TripFinderDesignPrinciples'
 import TripFinderTypography from '../components/TripFinderTypography'
-import TripFinderColorPalette from '../components/TripFinderColorPalette'
 import TripFinderComponentSet from '../components/TripFinderComponentSet'
 import TripFinderPrototype from '../components/TripFinderPrototype'
 import TripFinderReflection from '../components/TripFinderReflection'
@@ -68,7 +67,6 @@ const TripFinder = () => {
       {/* Visual Section */}
       <div id="visual">
         <TripFinderTypography />
-        <TripFinderColorPalette />
         <TripFinderComponentSet />
       </div>
 

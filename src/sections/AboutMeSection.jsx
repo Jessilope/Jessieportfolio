@@ -41,12 +41,13 @@ const AboutMeSection = () => {
     paddingRight: isMobile ? '24px' : '96px',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     boxSizing: 'border-box',
   }
 
   const contentStyles = {
     width: '100%',
+    maxWidth: '1090px',
     display: 'flex',
     flexDirection: 'column',
     gap: '32px',
@@ -58,7 +59,7 @@ const AboutMeSection = () => {
     flexDirection: isMobile ? 'column' : 'row',
     justifyContent: 'space-between',
     alignItems: isMobile ? 'flex-start' : 'flex-start',
-    gap: isMobile ? '0' : '0',
+    gap: isMobile ? '0' : '64px',
   }
 
   const textContentStyles = {
@@ -75,7 +76,7 @@ const AboutMeSection = () => {
     fontWeight: isMobile ? 400 : typography.presets.header.fontWeight, // 400
     lineHeight: isMobile ? '32px' : typography.presets.header.lineHeight, // 1.4
     letterSpacing: isMobile ? '0' : typography.presets.header.letterSpacing, // 2.4px
-    color: colors.primary['700'],
+    color: '#313248',
     margin: 0,
     width: '100%',
     textAlign: 'left',
@@ -84,13 +85,14 @@ const AboutMeSection = () => {
   const descriptionStyles = {
     fontFamily: `'Kantumruy', 'Noto Sans', sans-serif`,
     fontSize: '16px',
-    fontWeight: 400,
+    fontWeight: 300,
     lineHeight: '1.6',
     letterSpacing: '0.8px',
     color: '#212121',
-    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+    fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
     width: '100%',
     textAlign: 'left',
+    margin: 0,
   }
 
   const imageColumnStyles = {
@@ -143,14 +145,9 @@ const AboutMeSection = () => {
           {/* Left: Text content */}
           <div style={textContentStyles}>
             <h2 style={titleStyles}>Hey, this is Jessie</h2>
-            <div style={descriptionStyles}>
-              <p style={{ margin: '0 0 1em 0' }}>
-                I am a junior designer in training with a strong passion for the tech world and its intersection with design. I'm eager to continue growing in this field, exploring new challenges, and never stop learning.
-              </p>
-              <p style={{ margin: 0 }}>
-                I enjoy understanding how people interact with digital products and translating those insights into clear, intuitive experiences, always aiming to improve both usability and visual clarity.
-              </p>
-            </div>
+            <p style={descriptionStyles}>
+              I am a junior designer in training with a strong passion for the tech world and its intersection with design. I'm eager to continue growing in this field, exploring new challenges, and never stop learning. I enjoy understanding how people interact with digital products and translating those insights into clear, intuitive experiences, always aiming to improve both usability and visual clarity.
+            </p>
           </div>
 
           {/* Right: Image and social icons - Desktop only */}
