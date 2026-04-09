@@ -428,12 +428,12 @@ const ProjectsSection = () => {
           <p style={{
             fontFamily: FONT_BODY,
             fontSize: '18px',
-            fontWeight: 400,
+            fontWeight: 300,
             lineHeight: 1.5,
             letterSpacing: '0.9px',
             color: '#495564',
             margin: 0,
-            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 400",
+            fontVariationSettings: "'CTGR' 0, 'wdth' 100, 'wght' 300",
           }}>
             These personal projects were created as an opportunity to apply user-centered design principles, accessibility, and clarity across different contexts.
           </p>
