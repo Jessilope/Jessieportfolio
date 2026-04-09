@@ -20,7 +20,7 @@
 // DOCUMENTS
 // ===========================================
 export const documents = {
-  cv: '/assets/documents/cv.pdf',
+  cv: '/assets/documents/Resume.pdf',
 }
 
 // ===========================================
