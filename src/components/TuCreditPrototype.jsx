@@ -151,12 +151,7 @@ const TuCreditPrototype = () => {
       <div style={sectionStyle}>
         <SectionText
           subtitle="Overlays & Pop-ups"
-          body={
-            <>
-              <p style={{ margin: 0 }}>Dynamic overlays provide additional context without disrupting the experience.</p>
-              <p style={{ margin: 0 }}>They enhance interaction while keeping the interface clean and focused.</p>
-            </>
-          }
+          body="They enhance interaction while keeping the interface clean and focused. Dynamic overlays provide additional context without disrupting the experience."
           isMobile={isMobile}
         />
         <VideoPlayer src={VIDEO_OVERLAYS} animDelay={150} />

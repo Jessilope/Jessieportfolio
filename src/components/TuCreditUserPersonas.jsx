@@ -149,20 +149,22 @@ const TuCreditUserPersonas = () => {
         </AnimatedOnScroll>
 
         {/* ── Personas ─────────────────────────────── */}
-        {PERSONAS.map((p, idx) => (
-          <AnimatedOnScroll key={p.id} animation="fadeIn" delay={idx * 100} duration={700} style={{ width: '100%' }}>
-            {isMobile ? (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%' }}>
-                <PersonaPhoto src={p.src} name={p.name} age={p.age} />
-                <PersonaInfo job={p.job} location={p.location} family={p.family} />
-                <InfoCard Icon={TargetIcon} title="Needs and expectations" items={p.needs} />
-                <InfoCard Icon={ThumbsDownIcon} title="Painpoints and Frustations" items={p.pains} />
-              </div>
-            ) : (
+        {isMobile ? (
+          /* Mobile: single image, full width */
+          <AnimatedOnScroll animation="fadeIn" delay={100} duration={700} style={{ width: '100%' }}>
+            <img
+              src="/assets/images/tucredit/user-personas-mobile.png"
+              alt="User personas"
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+            />
+          </AnimatedOnScroll>
+        ) : (
+          /* Desktop: component layout */
+          PERSONAS.map((p, idx) => (
+            <AnimatedOnScroll key={p.id} animation="fadeIn" delay={idx * 100} duration={700} style={{ width: '100%' }}>
               <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', width: '100%' }}>
                 {p.photoLeft ? (
                   <>
-                    {/* Photo + info on left */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'center', flexShrink: 0 }}>
                       <PersonaPhoto src={p.src} name={p.name} age={p.age} />
                       <PersonaInfo job={p.job} location={p.location} family={p.family} />
@@ -174,7 +176,6 @@ const TuCreditUserPersonas = () => {
                   <>
                     <InfoCard Icon={TargetIcon} title="Needs and expectations" items={p.needs} />
                     <InfoCard Icon={ThumbsDownIcon} title="Painpoints and Frustations" items={p.pains} />
-                    {/* Photo + info on right */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'center', flexShrink: 0 }}>
                       <PersonaPhoto src={p.src} name={p.name} age={p.age} />
                       <PersonaInfo job={p.job} location={p.location} family={p.family} />
@@ -182,9 +183,9 @@ const TuCreditUserPersonas = () => {
                   </>
                 )}
               </div>
-            )}
-          </AnimatedOnScroll>
-        ))}
+            </AnimatedOnScroll>
+          ))
+        )}
 
       </div>
     </div>
