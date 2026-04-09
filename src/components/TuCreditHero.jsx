@@ -72,7 +72,7 @@ const TuCreditTitle = ({ isMobile }) => {
         left: creditActive ? tuWidth : '0px',
         width: creditActive ? creditWidth : tuWidth,
         height: hlHeight,
-        backgroundColor: '#f59c42',
+        backgroundColor: '#cda6ff',
         transition: 'left 400ms cubic-bezier(0.4, 0, 0.2, 1), width 400ms cubic-bezier(0.4, 0, 0.2, 1)',
         zIndex: 0,
       }} />
@@ -215,15 +215,16 @@ const TuCreditHero = () => {
         </>
       )}
 
-      {/* Desktop screenshots — mobile */}
+      {/* Screenshots — mobile */}
       {isMobile && (
         <>
+          {/* Home4 1 — behind, left (~60% of desktop size) */}
           <div style={{
             position: 'absolute',
-            left: '22%',
-            bottom: '60px',
-            width: '140px',
-            height: '195px',
+            left: '52px',
+            top: '530px',
+            width: '175px',
+            height: '242px',
             borderRadius: '6px',
             overflow: 'hidden',
             zIndex: 1,
@@ -236,13 +237,14 @@ const TuCreditHero = () => {
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top left', display: 'block' }}
             />
           </div>
+          {/* Requisitos 1 — front, right (~60% of desktop size) */}
           <div style={{
             position: 'absolute',
-            left: '50%',
-            bottom: '35px',
-            width: '130px',
-            height: '190px',
-            borderRadius: '10px',
+            left: '159px',
+            top: '555px',
+            width: '180px',
+            height: '263px',
+            borderRadius: '8px',
             overflow: 'hidden',
             zIndex: 2,
             pointerEvents: 'none',

@@ -1,10 +1,89 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { colors } from '../tokens'
 import useResponsive from '../hooks/useResponsive'
 import useScrollAnimation from '../hooks/useScrollAnimation'
 import { documents } from '../assets'
 
 const FONT_BODY = `'Kantumruy', 'Noto Sans', sans-serif`
+
+// ── Flip-clock hero title ─────────────────────────────────────────────────────
+const FLIP_WORDS = ['Scalable Products', 'Intelligent Systems', 'AI Solutions']
+
+const FlipHeroTitle = ({ isMobile }) => {
+  const [wordIdx, setWordIdx]         = useState(0)
+  const [text, setText]               = useState('')
+  const [isDeleting, setIsDeleting]   = useState(false)
+  const [cursorOn, setCursorOn]       = useState(true)
+
+  // Blinking cursor
+  useEffect(() => {
+    const blink = setInterval(() => setCursorOn(v => !v), 530)
+    return () => clearInterval(blink)
+  }, [])
+
+  // Typewriter logic
+  useEffect(() => {
+    const current = FLIP_WORDS[wordIdx]
+
+    if (!isDeleting && text.length < current.length) {
+      const t = setTimeout(() => setText(current.slice(0, text.length + 1)), 110)
+      return () => clearTimeout(t)
+    }
+    if (!isDeleting && text.length === current.length) {
+      const t = setTimeout(() => setIsDeleting(true), 2200)
+      return () => clearTimeout(t)
+    }
+    if (isDeleting && text.length > 0) {
+      const t = setTimeout(() => setText(text.slice(0, -1)), 65)
+      return () => clearTimeout(t)
+    }
+    if (isDeleting && text.length === 0) {
+      setIsDeleting(false)
+      setWordIdx(prev => (prev + 1) % FLIP_WORDS.length)
+    }
+  }, [text, isDeleting, wordIdx])
+
+  const fontSize      = isMobile ? 'clamp(26px, 8vw, 42px)' : '68px'
+  const letterSpacing = isMobile ? 'clamp(1px, 0.5vw, 2px)' : '3.4px'
+  const strokeWidth   = isMobile ? '1px'  : '2px'
+  const textStyle = {
+    fontFamily: `'Poppins', sans-serif`,
+    fontSize,
+    fontWeight: 600,
+    lineHeight: 1.4,
+    letterSpacing,
+    margin: 0,
+    whiteSpace: 'nowrap',
+  }
+
+  return (
+    <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: 'flex-start', gap: isMobile ? '0px' : '16px', flexWrap: 'nowrap' }}>
+      {/* Static first word */}
+      <p style={{ ...textStyle, color: '#313248', fontWeight: 800 }}>Building</p>
+
+      {/* Typed word + cursor */}
+      <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+        <p style={{
+          ...textStyle,
+          color: 'transparent',
+          WebkitTextStroke: `${strokeWidth} #313248`,
+          minWidth: '4px',
+        }}>
+          {text}
+        </p>
+        <span style={{
+          ...textStyle,
+          color: '#313248',
+          opacity: cursorOn ? 1 : 0,
+          userSelect: 'none',
+          marginLeft: '3px',
+        }}>|</span>
+      </div>
+    </div>
+  )
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 
 const RightArrowIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -184,17 +263,7 @@ const Hero = () => {
               transition: 'opacity 800ms cubic-bezier(0.4, 0, 0.2, 1)',
             }}
           >
-            <p style={{
-              fontFamily: `'Poppins', sans-serif`,
-              fontSize: isMobile ? '42px' : '68px',
-              fontWeight: 600,
-              lineHeight: 1.4,
-              letterSpacing: isMobile ? '2px' : '3.4px',
-              color: '#39424e',
-              margin: 0,
-            }}>
-              Building Experiences
-            </p>
+            <FlipHeroTitle isMobile={isMobile} />
           </div>
 
           {/* Body */}
@@ -209,7 +278,7 @@ const Hero = () => {
             <p style={{
               fontFamily: FONT_BODY,
               fontSize: isMobile ? '16px' : '18px',
-              fontWeight: 400,
+              fontWeight: 300,
               lineHeight: 1.5,
               letterSpacing: '0.9px',
               color: '#495564',
@@ -243,6 +312,34 @@ const Hero = () => {
           </TalkButton>
           <DownloadButton href={documents.cv} isMobile={isMobile} isTablet={isTablet} />
         </div>
+      </div>
+
+      {/* Scroll-down arrow */}
+      <style>{`
+        @keyframes bounceDown {
+          0%, 100% { transform: translateY(0);    }
+          50%       { transform: translateY(10px); }
+        }
+      `}</style>
+      <div style={{
+        position: 'absolute',
+        bottom: isMobile ? '28px' : '36px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '4px',
+        animation: 'bounceDown 1.8s ease-in-out infinite',
+        opacity: 0.55,
+        cursor: 'pointer',
+      }}>
+        <svg width={isMobile ? '28' : '32'} height={isMobile ? '28' : '32'} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 9L12 15L18 9" stroke="#5d5f98" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        <svg width={isMobile ? '28' : '32'} height={isMobile ? '28' : '32'} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 9L12 15L18 9" stroke="#5d5f98" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.4"/>
+        </svg>
       </div>
     </section>
   )
